@@ -11,11 +11,11 @@ node_modules
 web_modules/
 
 # blitz
-/.blitz/
-/.next/
+web/.blitz/
+web/.next/
 *.sqlite
 *.sqlite-journal
-.now
+web/.now
 .blitz**
 blitz-log.log
 
@@ -23,9 +23,9 @@ blitz-log.log
 .DS_Store
 
 # local env files
-.env.local
-.env.*.local
-.envrc
+web/.env.local
+web/.env.*.local
+web/.envrc
 
 # Logs
 logs
