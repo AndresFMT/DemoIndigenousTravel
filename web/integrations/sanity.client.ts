@@ -1,0 +1,20 @@
+import {createClient, groq} from 'next-sanity';
+
+import sanityClient from '@sanity/client';
+
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION;
+const apiKey = process.env.SANITY_API_DEPLOY_STUDIO;
+
+const client = sanityClient({
+    projectId,
+    dataset,
+    apiVersion,
+    token: apiKey,
+    useCdn: true
+});
+
+export default client;
+
+// const data = await client.fetch(groq`*[]`);
