@@ -26,6 +26,7 @@ blitz-log.log
 web/.env.local
 web/.env.*.local
 web/.envrc
+web/.env.production
 
 # Logs
 logs
