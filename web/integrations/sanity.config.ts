@@ -1,5 +1,5 @@
 import {visionTool} from '@sanity/vision'
-import {defineConfig} from 'sanity'
+import {defineConfig, createAuthStore} from 'sanity'
 import {deskTool} from 'sanity/desk'
 
 import {schemaTypes} from './schemas'
@@ -15,9 +15,22 @@ export default defineConfig({
   dataset,
   plugins: [deskTool(), visionTool()],
   token: apiKey,
-
   schema: {
     types: schemaTypes,
   },
+  auth: createAuthStore({
+    projectId,
+    dataset,
+    mode: 'replace',
+    loginMethod: 'cookie', // "dual" | "cookie" | undefined 
+    redirectOnSingle: false,
+    providers: [
+      {
+        name: 'enterprise-sso',
+        title: 'My Enterprise SSO',
+        url: 'http://localhost:3000/api/login',
+      },
+    ],
+  })
 })
 

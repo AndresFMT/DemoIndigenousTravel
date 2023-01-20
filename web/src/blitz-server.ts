@@ -9,6 +9,7 @@ export const { gSSP, gSP, api } = setupBlitzServer({
   plugins: [
     AuthServerPlugin({
       ...authConfig,
+      cookiePrefix: "web",
       storage: PrismaStorage(db),
       isAuthorized: simpleRolesIsAuthorized,
     }),

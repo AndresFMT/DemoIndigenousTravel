@@ -1,7 +1,13 @@
 import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import {
+  dashboardTool,
+  sanityTutorialsWidget,
+  projectUsersWidget,
+  projectInfoWidget,} from "@sanity/dashboard"
+import {schemaTypes, schemaTypesAdmin} from './schemas'
+import {myStructure, defaultDocumentNodeResolver} from './structure/deskStructure'
 
 export default defineConfig([{
   name: 'admin-workspace',
@@ -11,12 +17,23 @@ export default defineConfig([{
   projectId: 'uimvg3pl',
   dataset: 'production',
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [
+    deskTool({
+      structure: myStructure,
+      defaultDocumentNode: defaultDocumentNodeResolver,
+    }), 
+    visionTool(),
+    dashboardTool({ widgets: [
+      sanityTutorialsWidget(),
+      projectUsersWidget(),
+      projectInfoWidget(),
+    ]}),
+  ],
 
   schema: {
     types: (prev, context) => {
         console.log(context);
-        return [...schemaTypes, ...prev];
+        return [...schemaTypesAdmin, ...prev];
     },
   },
 },
