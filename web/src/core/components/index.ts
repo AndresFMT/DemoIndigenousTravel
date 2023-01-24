@@ -3,8 +3,6 @@ export * from './player';
 export * from './animate';
 export * from './carousel';
 export * from './skeleton';
-export * from './header';
-export * from './nav';
 
 export { default as Logo } from './Logo';
 export { default as Page } from './Page';

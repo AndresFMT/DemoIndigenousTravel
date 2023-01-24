@@ -2,7 +2,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 // config
-import { COMPONENTS_DIRECTORY } from '../../config';
+import { COMPONENTS_DIRECTORY } from 'src/config';
 
 // ----------------------------------------------------------------------
 

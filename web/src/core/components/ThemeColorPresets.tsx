@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 // @mui
 import { alpha, useTheme, createTheme, ThemeProvider } from '@mui/material/styles';
@@ -10,10 +9,6 @@ import createGradient from 'src/utils/createGradient';
 import componentsOverride from 'src/theme/overrides';
 
 // ----------------------------------------------------------------------
-
-ThemeColorPresets.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default function ThemeColorPresets({ children }) {
   const defaultTheme = useTheme();
@@ -46,5 +41,6 @@ export default function ThemeColorPresets({ children }) {
   const theme = createTheme(themeOptions);
   theme.components = componentsOverride(theme);
 
+  console.log(theme);
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

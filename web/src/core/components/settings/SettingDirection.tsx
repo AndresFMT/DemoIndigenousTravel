@@ -5,9 +5,9 @@ import alignHorizontalRight from '@iconify/icons-carbon/align-horizontal-right';
 import { styled } from '@mui/material/styles';
 import { ToggleButton, Typography } from '@mui/material';
 // hooks
-import { useSettings } from '../../hooks';
+import { useSettings } from 'src/hooks';
 //
-import Iconify from '../Iconify';
+import { Iconify } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

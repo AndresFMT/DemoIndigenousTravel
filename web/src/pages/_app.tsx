@@ -3,8 +3,18 @@ import { AuthenticationError, AuthorizationError } from "blitz"
 import React from "react"
 import { withBlitz } from "src/blitz-client"
 
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+
 import "app/core/styles/index.css";
-import Layout from '../core/layouts/Layout';
+import Layout from 'src/core/layouts/Layout';
+import { SettingsProvider } from "src/contexts/SettingsContext";
+import ThemeProvider from "src/theme";
+import ThemeColorPresets from "src/core/components/ThemeColorPresets";
+import { MotionLazyContainer } from "src/core/components";
+import Settings from 'src/core/components/settings';
+import ProgressBar from 'src/core/components/ProgressBar';
+
 
 function RootErrorFallback({ error }: ErrorFallbackProps) {
   if (error instanceof AuthenticationError) {
@@ -28,11 +38,26 @@ function RootErrorFallback({ error }: ErrorFallbackProps) {
 
 function MyApp({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
+
   return (
     <ErrorBoundary FallbackComponent={RootErrorFallback}>
-      <Layout>
-        {getLayout(<Component {...pageProps} />)}
-      </Layout>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <SettingsProvider>
+          <ThemeProvider>
+            <ThemeColorPresets>
+              <MotionLazyContainer>
+                <Layout>
+                  <>
+                    <Settings/>
+                    <ProgressBar/>
+                    {getLayout(<Component {...pageProps} />)}
+                  </>
+                </Layout>
+              </MotionLazyContainer>
+            </ThemeColorPresets>
+          </ThemeProvider>
+        </SettingsProvider>
+      </LocalizationProvider>
     </ErrorBoundary>
   )
 }

@@ -1,17 +1,35 @@
 import Head from "next/head"
-import React, { FC } from "react"
-import useSWR from 'swr';
+import dynamic from 'next/dynamic';
+import React from "react"
+
 import { BlitzLayout } from "@blitzjs/next"
+import { useTheme } from '@mui/material/styles';
+import { CacheProvider } from "@emotion/react";
 
-import {Header} from '../components';
+const Header = dynamic(() => import('./header/Header'), { ssr: false });
+const HeaderSimple = dynamic(() => import('./header/HeaderSimple'), { ssr: false });
+const Footer = dynamic(() => import('./footer/Footer'), { ssr: false });
+const FooterSimple = dynamic(() => import('./footer/FooterSimple'), { ssr: false });
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+type LayoutProps = {
+  children?: Node;
+  title?: string;
+  transparentHeader:  boolean;
+  disabledHeader: boolean;
+  disabledFooter: boolean;
+  simpleHeader: boolean;
+  simpleFooter: boolean;
+}
 
-const Layout: BlitzLayout<{ title?: string; children?: React.ReactNode }> = ({
+const Layout: BlitzLayout<LayoutProps> = ({
   title,
   children,
+  transparentHeader,
+  disabledHeader,
+  disabledFooter,
+  simpleHeader,
+  simpleFooter,
 }) => {
-  const { data, error, isLoading } = useSWR('/api/sanity-nav', fetcher);
 
   return (
     <>
@@ -19,9 +37,17 @@ const Layout: BlitzLayout<{ title?: string; children?: React.ReactNode }> = ({
         <title>{title || "web"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header transparent={false} data={data} isLoading={isLoading} error={error}/>
+      {disabledHeader ? null : (
+        <>
+          {simpleHeader ? (
+            <HeaderSimple transparent={transparentHeader} />
+          ) : (
+            <Header transparent={transparentHeader} />
+          )}
+        </>
+      )}
       {children}
-      
+      {disabledFooter ? null : <>{simpleFooter ? <FooterSimple /> : <Footer />}</>}
     </>
   )
 }

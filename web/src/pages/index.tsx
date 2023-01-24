@@ -4,10 +4,13 @@ import Link from "next/link"
 import Layout from "src/core/layouts/Layout"
 import { useCurrentUser } from "src/users/hooks/useCurrentUser"
 import logout from "src/auth/mutations/logout"
-import logo from "public/logo.png"
 import { useMutation } from "@blitzjs/rpc"
 import { Routes, BlitzPage } from "@blitzjs/next"
 import { useRouter } from 'next/router';
+import { Page } from "src/core/components"
+import {
+  HomeHero
+} from 'src/sections/home';
 /*
  * This file is just for a pleasant getting started page for your new app.
  * You can delete everything in here and start from scratch if you like.
@@ -57,16 +60,21 @@ const UserInfo = () => {
   }
 }
 
-const Home: BlitzPage = () => {
+const HomePage: BlitzPage = () => {
   return (
-    <div>
-      <h1>Hello, world!</h1>
-
+    <Page>
       <Suspense fallback="Loading...">
         <UserInfo />
+
+        <HomeHero />
       </Suspense>
-    </div>
+    </Page>
   )
 }
 
-export default Home
+HomePage.getLayout = function getLayout(page) {
+  return <Layout simpleFooter>{page}</Layout>;
+};
+
+export default HomePage;
+

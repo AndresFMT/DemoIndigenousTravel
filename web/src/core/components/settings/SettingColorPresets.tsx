@@ -2,7 +2,7 @@
 import { alpha, styled } from '@mui/material/styles';
 import { Grid, Paper, Radio, RadioGroup, CardActionArea, FormControlLabel } from '@mui/material';
 // hooks
-import { useSettings } from '../../hooks';
+import { useSettings } from 'src/hooks';
 
 // ----------------------------------------------------------------------
 
