@@ -77,21 +77,6 @@ const Header = ({transparent}) => {
             <Logo onDark={transparent && !isScrolling} />
 
             <Link href="/" >
-              <Label
-                color="info"
-                sx={{
-                  ml: 0.5,
-                  px: 0.5,
-                  top: -14,
-                  left: 64,
-                  height: 20,
-                  fontSize: 11,
-                  cursor: 'pointer',
-                  position: 'absolute',
-                }}
-              >
-                v1.4
-              </Label>
             </Link>
           </Box>
 
