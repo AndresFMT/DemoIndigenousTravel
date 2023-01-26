@@ -22,6 +22,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head >
           <meta name="theme-color" content={palette.light.primary.main} />
+          <link href={`/fonts/NunitoSans.css`} rel="stylesheet" />
         </Head>
 
         <body>
@@ -44,11 +45,11 @@ MyDocument.getInitialProps = async (ctx) => {
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (App) => (props) =>
-        (
-          <CacheProvider value={cache}>
-            <App {...props} />
-          </CacheProvider>
-        ),
+      (
+        <CacheProvider value={cache}>
+          <App {...props} />
+        </CacheProvider>
+      ),
     });
 
   const initialProps = await Document.getInitialProps(ctx);

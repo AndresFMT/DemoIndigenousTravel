@@ -2,8 +2,8 @@ import { pxToRem, responsiveFontSizes } from 'src/utils/getFontValue';
 
 // ----------------------------------------------------------------------
 
-const FONT_PRIMARY = 'Poppins, sans-serif';
-const FONT_SECONDARY = 'Barlow, sans-serif';
+const FONT_PRIMARY = 'NunitoSans, sans-serif';
+const FONT_SECONDARY = 'NunitoSans, sans-serif';
 
 const typography = {
   fontFamily: FONT_PRIMARY,
