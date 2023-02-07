@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { Typography, Divider, Stack } from '@mui/material';
 // utils
-import { fDate } from '../../../utils/formatTime';
+import { fDate } from 'src/utils/formatTime';
 // components
-import { SocialsButton } from '../../../components';
+import { SocialsButton } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

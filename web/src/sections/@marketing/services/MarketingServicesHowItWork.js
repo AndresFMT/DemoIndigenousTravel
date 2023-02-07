@@ -10,9 +10,9 @@ import {
 } from '@mui/lab';
 import { Stack, Typography, Container } from '@mui/material';
 // utils
-import cssStyles from '../../../utils/cssStyles';
+import cssStyles from 'src/utils/cssStyles';
 // hooks
-import useResponsive from '../../../hooks/useResponsive';
+import useResponsive from 'src/hooks/useResponsive';
 
 // ----------------------------------------------------------------------
 

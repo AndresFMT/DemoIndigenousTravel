@@ -7,7 +7,7 @@ import launchIcon from '@iconify/icons-carbon/launch';
 // @mui
 import { Typography, Stack, Link } from '@mui/material';
 // components
-import { Iconify, TextIconLabel, Image } from '../../../components';
+import { Iconify, TextIconLabel, Image } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

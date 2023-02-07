@@ -10,7 +10,7 @@ import {
 } from '@mui/lab';
 import { Stack, Typography, Container } from '@mui/material';
 // hooks
-import useResponsive from '../../../hooks/useResponsive';
+import useResponsive from 'src/hooks/useResponsive';
 
 // ----------------------------------------------------------------------
 

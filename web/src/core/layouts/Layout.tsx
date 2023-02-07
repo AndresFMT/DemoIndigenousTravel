@@ -1,6 +1,6 @@
 import Head from "next/head"
 import dynamic from 'next/dynamic';
-import React from "react"
+import React, {ReactNode} from "react"
 
 import { BlitzLayout } from "@blitzjs/next"
 import { useTheme } from '@mui/material/styles';
@@ -12,13 +12,13 @@ const Footer = dynamic(() => import('./footer/Footer'), { ssr: false });
 const FooterSimple = dynamic(() => import('./footer/FooterSimple'), { ssr: false });
 
 type LayoutProps = {
-  children?: Node;
+  children?: ReactNode;
   title?: string;
-  transparentHeader:  boolean;
-  disabledHeader: boolean;
-  disabledFooter: boolean;
-  simpleHeader: boolean;
-  simpleFooter: boolean;
+  transparentHeader?:  boolean;
+  disabledHeader?: boolean;
+  disabledFooter?: boolean;
+  simpleHeader?: boolean;
+  simpleFooter?: boolean;
 }
 
 const Layout: BlitzLayout<LayoutProps> = ({

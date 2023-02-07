@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Routes } from '@blitzjs/next';
 
 import NextLink from 'next/link';
@@ -10,9 +10,10 @@ import { useOffSetTop, useResponsive } from 'src/hooks';
 import { HEADER_DESKTOP_HEIGHT } from 'src/config';
 import { ToolbarStyle, ToolbarShadowStyle } from './HeaderToolbarStyle';
 import { Logo, Label } from 'src/core/components';
-import { NavDesktop,  NavMobile} from 'src/core/layouts/nav';
+import { NavDesktop,  NavMobile, navConfig} from 'src/core/layouts/nav';
 import Searchbar from 'src/core/components/Searchbar';
 import LanguagePopover from 'src/core/components/LanguagePopover';
+
 
 const navItemsChildrenReducer = (accumulator, currentValue, index, array) => {
     const newValue = {
@@ -47,15 +48,12 @@ const sanitizeTestData = () => {
 
   const navItems = topLayer.navItems.map(navItemsCallback);
 
-  console.log(navItems);
-
   return navItems;
 };
 
 const Header = ({transparent}) => {
 
   const theme = useTheme();
-  const navConfig = sanitizeTestData();
 
   const isDesktop = useResponsive('up', 'md');
 
@@ -74,10 +72,10 @@ const Header = ({transparent}) => {
           }}
         >
           <Box sx={{ lineHeight: 0, position: 'relative' }}>
-            <Logo onDark={transparent && !isScrolling} />
+            <NextLink href="/" >
+              <Logo onDark={transparent && !isScrolling} sx={{}}/>
 
-            <Link href="/" >
-            </Link>
+            </NextLink>
           </Box>
 
           {isDesktop && (

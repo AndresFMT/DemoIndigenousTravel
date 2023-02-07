@@ -4,7 +4,7 @@ import playIcon from '@iconify/icons-carbon/play';
 import { styled, alpha } from '@mui/material/styles';
 import { Grid, Stack, Container, Typography, Button, Box } from '@mui/material';
 // components
-import { Iconify, Image } from '../../../components';
+import { Iconify, Image } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

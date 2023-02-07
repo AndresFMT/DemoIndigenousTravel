@@ -2,9 +2,9 @@
 import { styled } from '@mui/material/styles';
 import { Container, Typography } from '@mui/material';
 // _data
-import _mock from '../../../../_data/mock';
+import _mock from '_data/mock';
 // components
-import { PlayerWithImage } from '../../../components';
+import { PlayerWithImage } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

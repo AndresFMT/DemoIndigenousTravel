@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { Box, Container, Typography, Stack } from '@mui/material';
 // components
-import { Image } from '../../../components';
+import { Image } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

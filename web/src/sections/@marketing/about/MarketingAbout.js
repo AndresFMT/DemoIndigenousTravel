@@ -9,9 +9,9 @@ import directionStraightRight from '@iconify/icons-carbon/direction-straight-rig
 import { styled, alpha } from '@mui/material/styles';
 import { Grid, Box, Container, Typography, Button } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../utils/formatNumber';
+import { fShortenNumber } from 'src/utils/formatNumber';
 // components
-import { Iconify, CountUpNumber, Image } from '../../../components';
+import { Iconify, CountUpNumber, Image } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

@@ -14,9 +14,9 @@ import {
   AccordionDetails,
 } from '@mui/material';
 // _data
-import { _faqs } from '../../../_data/mock';
+import { _faqs } from '_data/mock';
 // components
-import { Iconify, Image } from '../../components';
+import { Iconify, Image } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

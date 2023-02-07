@@ -5,7 +5,7 @@ import directionStraightRight from '@iconify/icons-carbon/direction-straight-rig
 import { styled, alpha } from '@mui/material/styles';
 import { Stack, Container, Typography, Card, Box } from '@mui/material';
 // components
-import { Iconify, SvgIconStyle } from '../../../components';
+import { Iconify, SvgIconStyle } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

@@ -1,11 +1,11 @@
 // @mui
 import { Grid, Container, Typography, Box } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../utils/formatNumber';
+import { fShortenNumber } from 'src/utils/formatNumber';
 // _data
 import _mock from '../../../../_data/mock';
 // components
-import { Image, CountUpNumber } from '../../../components';
+import { Image, CountUpNumber } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

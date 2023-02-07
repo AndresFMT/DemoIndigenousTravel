@@ -41,6 +41,5 @@ export default function ThemeColorPresets({ children }) {
   const theme = createTheme(themeOptions);
   theme.components = componentsOverride(theme);
 
-  console.log(theme);
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

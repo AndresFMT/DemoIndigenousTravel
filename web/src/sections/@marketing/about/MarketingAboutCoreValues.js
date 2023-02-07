@@ -2,7 +2,7 @@
 import { styled } from '@mui/material/styles';
 import { Typography, Container, Box } from '@mui/material';
 // components
-import { SvgIconStyle } from '../../../components';
+import { SvgIconStyle } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

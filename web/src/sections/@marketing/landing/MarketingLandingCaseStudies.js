@@ -8,12 +8,12 @@ import NextLink from 'next/link';
 import { styled } from '@mui/material/styles';
 import { Box, Grid, Stack, Paper, Button, Container, Typography } from '@mui/material';
 // routes
-import Routes from '../../../routes';
+import Routes from 'src/routes';
 // hooks
-import { useResponsive } from '../../../hooks';
+import { useResponsive } from 'src/hooks';
 // components
-import { Image, Iconify, BgOverlay } from '../../../components';
-import { varHover, varTranHover } from '../../../components/animate';
+import { Image, Iconify, BgOverlay } from 'src/core/components';
+import { varHover, varTranHover } from 'src/core/components/animate';
 
 // ----------------------------------------------------------------------
 

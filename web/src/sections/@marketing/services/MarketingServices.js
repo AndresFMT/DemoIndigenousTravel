@@ -6,9 +6,9 @@ import directionStraightRight from '@iconify/icons-carbon/direction-straight-rig
 import { styled } from '@mui/material/styles';
 import { Grid, Box, Container, Typography, Button, Stack } from '@mui/material';
 // routes
-import Routes from '../../../routes';
+import Routes from 'src/routes';
 // components
-import { Iconify, Image } from '../../../components';
+import { Iconify, Image } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

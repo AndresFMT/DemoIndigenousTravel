@@ -14,9 +14,9 @@ import {
   InputAdornment,
 } from '@mui/material';
 // utils
-import cssStyles from '../../../utils/cssStyles';
+import cssStyles from 'src/utils/cssStyles';
 // components
-import { Image, BgOverlay, Iconify } from '../../../components';
+import { Image, BgOverlay, Iconify } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

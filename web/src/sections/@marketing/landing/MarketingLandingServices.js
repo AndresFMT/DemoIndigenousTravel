@@ -7,10 +7,10 @@ import NextLink from 'next/link';
 import { styled } from '@mui/material/styles';
 import { Stack, Container, Typography, Card, Box } from '@mui/material';
 // routes
-import Routes from '../../../routes';
+import Routes from 'src/routes';
 // components
-import { Iconify, TextMaxLine, SvgIconStyle } from '../../../components';
-import { IconButtonAnimate } from '../../../components/animate';
+import { Iconify, TextMaxLine, SvgIconStyle } from 'src/core/components';
+import { IconButtonAnimate } from 'src/core/components/animate';
 
 // ----------------------------------------------------------------------
 

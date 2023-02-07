@@ -31,7 +31,6 @@ export default function ThemeProvider({ children }) {
   const theme = createTheme(themeOptions);
   theme.components = componentsOverride(theme);
 
-  console.log(theme);
   return (
     <MUIThemeProvider theme={theme}>
       <CssBaseline />

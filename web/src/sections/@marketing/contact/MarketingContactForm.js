@@ -12,7 +12,7 @@ import {
   Slider as MUISlider,
 } from '@mui/material';
 // utils
-import { fCurrency } from '../../../utils/formatNumber';
+import { fCurrency } from 'src/utils/formatNumber';
 
 // ----------------------------------------------------------------------
 

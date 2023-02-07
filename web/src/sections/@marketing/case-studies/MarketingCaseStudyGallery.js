@@ -6,8 +6,8 @@ import Slider from 'react-slick';
 import { useTheme } from '@mui/material/styles';
 import { Typography, Box, Stack } from '@mui/material';
 // components
-import { Image, CarouselArrows, LightboxModal } from '../../../components';
-import { varHover, varTranHover } from '../../../components/animate';
+import { Image, CarouselArrows, LightboxModal } from 'src/core/components';
+import { varHover, varTranHover } from 'src/core/components/animate';
 
 // ----------------------------------------------------------------------
 

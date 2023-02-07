@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { ErrorComponent } from "@blitzjs/next"
 
+import Layout from "src/core/layouts/Layout"
 // ------------------------------------------------------
 // This page is rendered if a route match is not found
 // ------------------------------------------------------
@@ -18,3 +19,7 @@ export default function Page404() {
     </>
   )
 }
+
+Page404.getLayout = function getLayout(page) {
+  return <Layout simpleHeader disabledFooter>{page}</Layout>;
+};

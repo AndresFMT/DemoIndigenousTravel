@@ -4,9 +4,9 @@ import NextLink from 'next/link';
 // @mui
 import { Stack, Typography } from '@mui/material';
 // routes
-import Routes from '../../../routes';
+import Routes from 'src/routes';
 // components
-import { Image, TextMaxLine } from '../../../components';
+import { Image, TextMaxLine } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

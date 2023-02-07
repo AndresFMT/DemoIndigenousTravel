@@ -5,9 +5,9 @@ import locationIcon from '@iconify/icons-carbon/location';
 import { styled, alpha } from '@mui/material/styles';
 import { Grid, Link, Stack, Button, Container, TextField, Typography } from '@mui/material';
 // utils
-import cssStyles from '../../utils/cssStyles';
+import cssStyles from 'src/utils/cssStyles';
 // components
-import { Iconify } from '../../components';
+import { Iconify } from 'src/core/components';
 
 // ----------------------------------------------------------------------
 

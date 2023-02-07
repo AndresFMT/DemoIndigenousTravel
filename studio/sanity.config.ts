@@ -32,7 +32,6 @@ export default defineConfig([{
 
   schema: {
     types: (prev, context) => {
-        console.log(context);
         return [...schemaTypesAdmin, ...prev];
     },
   },

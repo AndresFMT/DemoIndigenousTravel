@@ -7,9 +7,9 @@ import NextLink from 'next/link';
 import { styled } from '@mui/material/styles';
 import { Container, Stack, Button, Typography, Box } from '@mui/material';
 // routes
-import Routes from '../../../routes';
+import Routes from 'src/routes';
 // components
-import { Iconify } from '../../../components';
+import { Iconify } from 'src/core/components';
 //
 import MarketingCaseStudyItem from './MarketingCaseStudyItem';
 
