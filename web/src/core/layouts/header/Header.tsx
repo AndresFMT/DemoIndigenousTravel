@@ -68,7 +68,7 @@ const Header = ({transparent}) => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'flex-start'
+            justifyContent: 'center'
           }}
         >
           <Box sx={{ lineHeight: 0, position: 'relative' }}>
@@ -85,8 +85,6 @@ const Header = ({transparent}) => {
               navConfig={navConfig}
             />
           )}
-
-          <Box sx={{ flexGrow: 1 }} />
 
           <Stack spacing={2} direction="row" alignItems="center">
             <Searchbar
