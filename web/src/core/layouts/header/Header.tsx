@@ -95,14 +95,6 @@ const Header = ({transparent}) => {
               }}
             />
 
-            {/* <LanguagePopover
-              sx={{
-                ...(isScrolling && { color: 'text.primary' }),
-              }}
-            /> */}
-
-            {/* <Divider orientation="vertical" sx={{ height: 24 }} /> */}
-
           </Stack>
 
           {!isDesktop && (
