@@ -2,26 +2,51 @@
 import accessibleImage from './objects/accessibleImage'
 
 /** documents */
+import author from './author'
 import blockContent from './blockContent'
 import category from './category'
 import post from './post'
-import author from './author'
 import operator from './operator'
 import navItem from './navItem'
 import navItemGroup from './navItemGroup'
 import siteSettings from './siteSettings'
 
-export const schemaTypes = [ 
+/** homepage */
+import {homepageDocuments} from './homepage'
+
+export const schemaObjects = [
   accessibleImage,
+]
+
+export const schemaDocuments = [ 
+  author, 
+  blockContent, 
+  category, 
   post,
   operator,
-  blockContent, 
-  author, 
-  category, 
+  navItem,
+  navItemGroup,
+  siteSettings,
 ];
 
+export const schemaAdmin = [
+  blockContent,
+  navItem,
+  navItemGroup,
+  siteSettings,
+];
+
+export const schemaHomePage = [
+  ...homepageDocuments,
+];
+
+export const schemaAbout = [
+
+];
+
+
 export const schemaTypesAdmin = [
-  ...schemaTypes,
+  ...schemaObjects,
   navItem,
   navItemGroup,
   siteSettings,

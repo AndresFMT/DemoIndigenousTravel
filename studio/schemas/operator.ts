@@ -11,12 +11,17 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'asset',
+      title: 'Business Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
         name: 'image',
         title: 'Photo',
         type: 'accessibleImage',
-        options: {
-            hostpot: true,
-        },
         description: 'add image or logo for business',
     }),
     defineField({
