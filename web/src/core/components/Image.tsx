@@ -1,18 +1,27 @@
-import PropTypes from 'prop-types';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage, LazyLoadImageProps } from 'react-lazy-load-image-component';
 // @mui
-import { Box } from '@mui/material';
+import { Theme } from '@mui/material/styles';
+import { Box, BoxProps, SxProps } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-Image.propTypes = {
-  disabledEffect: PropTypes.bool,
-  effect: PropTypes.string,
-  ratio: PropTypes.oneOf(['4/3', '3/4', '6/4', '4/6', '16/9', '9/16', '21/9', '9/21', '1/1']),
-  sx: PropTypes.object,
-};
+export type ImageRatio = '4/3' | '3/4' | '6/4' | '4/6' | '16/9' | '9/16' | '21/9' | '9/21' | '1/1';
 
-export default function Image({ ratio, disabledEffect = false, effect = 'blur', sx, ...other }) {
+type IProps = BoxProps & LazyLoadImageProps;
+
+interface Props extends IProps {
+  sx?: SxProps<Theme>;
+  ratio?: ImageRatio;
+  disabledEffect?: boolean;
+}
+
+export default function Image({
+  ratio,
+  disabledEffect = false,
+  effect = 'blur',
+  sx,
+  ...other
+}:Props) {
   if (ratio) {
     return (
       <Box

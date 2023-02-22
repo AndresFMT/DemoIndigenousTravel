@@ -1,7 +1,7 @@
 import {alpha, styled } from '@mui/material/styles';
 import { Toolbar } from '@mui/material';
 
-import cssStyles from 'src/utils/cssStyles'; 
+import cssStyles from 'src/utils/cssStyles';
 
 import { HEADER_MOBILE_HEIGHT, HEADER_DESKTOP_HEIGHT } from 'src/config';
 

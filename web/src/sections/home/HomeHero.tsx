@@ -23,15 +23,25 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function HomeHero() {
-  const containerRef = useRef(null);
+export default function HomeHero(props:any) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const container = useBoundingClientRect(containerRef);
 
   const offsetLeft = container?.left;
 
+  const {heading, kicker, imageUrl} = props;
+
   return (
-    <RootStyle>
-      <Container sx={{ height: 1 }}>
+    <RootStyle sx={{
+      height: 1,
+      background: `linear-gradient(0deg,rgba(56,52,45,0.7), rgba(237,167,61,0.7)), url("${imageUrl}")`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      }}
+    >
+      <Container sx={{height: 1,}}
+      >
         <Grid container columnSpacing={3} alignItems="center" sx={{ height: 1 }}>
           <Grid item xs={12} md={5}>
             <Stack
@@ -44,15 +54,14 @@ export default function HomeHero() {
               }}
             >
               <Typography variant="h1">
-                Create Your <br /> Website Today with
+              { heading }
                 <Box component="span" sx={{ color: 'primary.main' }}>
                   {''} ZONE
                 </Box>
               </Typography>
 
               <Typography sx={{ color: 'text.secondary' }}>
-                The ZONE is built on top of MUI, a powerful library that provides flexible,
-                customizable, and easy-to-use components.
+                { kicker }
               </Typography>
 
               <Button
@@ -64,19 +73,9 @@ export default function HomeHero() {
                 rel="noopener"
                 href={Routes.figmaPreview}
               >
-                figma workspace
+                Experience
               </Button>
 
-              <Stack direction="row" spacing={2.5}>
-                {['figma', 'javascript', 'typescript', 'material', 'react'].map((icon) => (
-                  <Image
-                    key={icon}
-                    alt={icon}
-                    src={`https://zone-assets-api.vercel.app/assets/icons/platform/ic_platform_${icon}.svg`}
-                    sx={{ width: 32, height: 32 }}
-                  />
-                ))}
-              </Stack>
             </Stack>
           </Grid>
 
@@ -86,21 +85,7 @@ export default function HomeHero() {
         </Grid>
       </Container>
 
-      <Box
-        sx={{
-          maxWidth: 1280,
-          position: 'absolute',
-          bottom: { md: '20%', lg: 40 },
-          right: { md: -110, xl: 0 },
-          display: { xs: 'none', md: 'block' },
-          width: { md: `calc(100% - ${offsetLeft}px)` },
-        }}
-      >
-        <Image
-          alt="home-hero"
-          src="https://zone-assets-api.vercel.app/assets/images/home/home_hero.png"
-        />
-      </Box>
     </RootStyle>
   );
 }
+

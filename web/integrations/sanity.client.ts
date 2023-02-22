@@ -17,4 +17,3 @@ const client = sanityClient({
 
 export default client;
 
-// const data = await client.fetch(groq`*[]`);

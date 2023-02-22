@@ -62,7 +62,6 @@ const RootLinkStyle = styled(Link, {
 
 // ----------------------------------------------------------------------
 
-
 export default function NavDesktop({ isScrolling, isTransparent, navConfig }) {
   return (
     <Stack
@@ -70,6 +69,7 @@ export default function NavDesktop({ isScrolling, isTransparent, navConfig }) {
       spacing={6}
       sx={{
         ml: 6,
+        mr: 6,
         color: 'text.secondary',
         ...(isTransparent && {
           color: 'inherit',
