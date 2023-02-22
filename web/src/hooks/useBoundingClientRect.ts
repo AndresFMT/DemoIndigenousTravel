@@ -1,9 +1,20 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, RefObject } from 'react';
 
 // ----------------------------------------------------------------------
 
-export default function useBoundingClientRect(containerRef) {
-  const [container, setContainer] = useState(null);
+type ContainerProps = {
+  bottom: number;
+  height: number;
+  left: number;
+  right: number;
+  top: number;
+  width: number;
+  x: number;
+  y: number;
+};
+
+export default function useBoundingClientRect(containerRef: RefObject<HTMLDivElement>) {
+  const [container, setContainer] = useState<ContainerProps | null>(null);
 
   const handleResize = useCallback(() => {
     if (containerRef.current) {
