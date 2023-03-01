@@ -37,9 +37,9 @@ const RootLinkStyle = styled(ListItemButton, {
   textTransform: 'capitalize',
   paddingLeft: theme.spacing(2.5),
   paddingRight: theme.spacing(2.5),
-  color: theme.palette.text.secondary,
+  color: theme.palette.primary.burgundy,
   ...(active && {
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.burgundy,
     fontWeight: theme.typography.fontWeightMedium,
     backgroundColor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
   }),

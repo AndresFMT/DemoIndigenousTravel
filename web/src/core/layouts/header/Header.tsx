@@ -36,7 +36,7 @@ const Header = ({transparent}) => {
         >
           <Box sx={{ lineHeight: 0, position: 'relative' }}>
             <NextLink href="/" >
-              <Logo onDark={transparent && !isScrolling} sx={{}}/>
+              <Logo onDark={transparent && !isScrolling} isScrolling={isScrolling} sx={{}}/>
 
             </NextLink>
           </Box>
@@ -47,19 +47,8 @@ const Header = ({transparent}) => {
               isTransparent={transparent}
               navConfig={navConfig}
             />
+
           )}
-
-          <Stack spacing={2} direction="row" alignItems="center">
-
-            <Divider orientation="vertical" sx={{ height: 24 }} />
-
-            <Searchbar
-              sx={{
-                ...(isScrolling && { color: 'text.primary' }),
-              }}
-            />
-
-          </Stack>
 
           {!isDesktop && (
             <NavMobile

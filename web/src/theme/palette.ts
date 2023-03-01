@@ -12,14 +12,22 @@ export const contrastText = {
 };
 
 const PRIMARY = {
+  yellow: '#e0ac0f',
+  green: '#605e43',
+  burgundy: '#610000',
+  tan: '#ab9f89',
   lighter: '#FEE9D1',
   light: '#FDAB76',
-  main: '#FA541C',
+  main: '#E0AC0F',
   dark: '#B3200E',
   darker: '#770508',
   contrastText: contrastText.white,
 };
 const SECONDARY = {
+  blue: '#456d90',
+  darkBrown: '#321d00',
+  brown: '#503b11',
+  orange: '#da5225',
   lighter: '#D2FCF4',
   light: '#77F0ED',
   main: '#22B8CF',

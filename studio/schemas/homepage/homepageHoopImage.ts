@@ -1,13 +1,13 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'homepage',
-  title: 'Homepage',
+  name: 'homepageHoopImage',
+  title: 'Homepage Hoop Image Section',
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'heading',
+      title: 'Heading',
       type: 'string',
     }),
     defineField({
@@ -16,17 +16,14 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'content',
-      title: 'BlockContent',
+      name: 'images',
+      title: 'Hoop Images',
       type: 'array',
       of: [
         {
           type: 'reference',
           to: [
-            {type: 'homepageHero'},
-            {type: 'homepageSpacer'},
-            {type: 'imageBreak'},
-            {type: 'homepageHoopImage'},
+            { type: 'hoopImage' },
           ],
         },
       ],
@@ -35,11 +32,10 @@ export default defineType({
 
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'description',
+      title: 'heading',
     },
     prepare(selection) {
-      return {...selection }
+      return { ...selection }
     },
   },
 });

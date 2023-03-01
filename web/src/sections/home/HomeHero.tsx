@@ -1,89 +1,104 @@
-import { useRef } from 'react';
-// icons
-import launchIcon from '@iconify/icons-carbon/launch';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Stack, Button, Container, Typography, Grid } from '@mui/material';
+import { Box, Stack, Typography, Grid } from '@mui/material';
 // hooks
-import { useBoundingClientRect } from 'src/hooks';
 // routes
 import Routes from 'src/routes';
 // components
-import { Image, Iconify } from 'src/core/components';
+import { SanityImage, HoopButton } from 'src/core/components';
+
+import { urlFor } from 'integrations/sanityImage';
+
+import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
 
 // ----------------------------------------------------------------------
 
-const RootStyle = styled('div')(({ theme }) => ({
+const RootStyle = styled('section')(({ theme }) => ({
   overflow: 'hidden',
   position: 'relative',
+  marginTop: HEADER_MOBILE_HEIGHT,
   [theme.breakpoints.up('md')]: {
-    height: '100vh',
+    width: '100%',
+    marginTop: HEADER_DESKTOP_HEIGHT,
   },
+}));
+
+const SectionContainer = styled('div')(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
+  width: '100%',
 }));
 
 // ----------------------------------------------------------------------
 
-export default function HomeHero(props:any) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const container = useBoundingClientRect(containerRef);
+export default function HomeHero(props: any) {
 
-  const offsetLeft = container?.left;
+  console.log('HomeHero props', props);
+  const { heading, kicker, image } = props;
 
-  const {heading, kicker, imageUrl} = props;
+  const imageBuilder = urlFor(image);
+
+  const masterImage = imageBuilder.width(1920).height(900).url();
+  const desktopImage = imageBuilder.width(768).height(632).url();
+  const tabletImage = imageBuilder.width(600).height(600).url();
+  const mobileImage = imageBuilder.width(320).height(427).url();
 
   return (
-    <RootStyle sx={{
-      height: 1,
-      background: `linear-gradient(0deg,rgba(56,52,45,0.7), rgba(237,167,61,0.7)), url("${imageUrl}")`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      }}
-    >
-      <Container sx={{height: 1,}}
-      >
-        <Grid container columnSpacing={3} alignItems="center" sx={{ height: 1 }}>
-          <Grid item xs={12} md={5}>
+    <RootStyle>
+      <SectionContainer>
+          <Grid container spacing={3} sx={{ zIndex: 22, position: 'absolute', marginBottom: { xs: 'unset', md:'50%'} }}>
             <Stack
-              spacing={5}
-              alignItems={{ xs: 'center', md: 'flex-start' }}
+              spacing={3}
+              alignItems={{ xs: 'flex-start', md: 'flex-start' }}
               justifyContent="center"
               sx={{
-                py: 15,
-                textAlign: { xs: 'center', md: 'left' },
+                py: { xs: 5, md: 15 },
+                px: { xs: 5, md: 30 },
+                textAlign: { xs: 'left', md: 'left' },
               }}
             >
-              <Typography variant="h1">
-              { heading }
+              <Typography variant="h2" sx={{ typography: 'hero' }}>
                 <Box component="span" sx={{ color: 'primary.main' }}>
-                  {''} ZONE
+                  {heading}
                 </Box>
               </Typography>
 
               <Typography sx={{ color: 'text.secondary' }}>
-                { kicker }
+                {kicker ? kicker : ' '}
               </Typography>
 
-              <Button
+              <HoopButton
                 color="inherit"
-                size="large"
                 variant="contained"
-                endIcon={<Iconify icon={launchIcon} />}
-                target="_blank"
-                rel="noopener"
-                href={Routes.figmaPreview}
+                sx={{ background: 'primary.darker', transform: { xs: 'scale(0.8)', md: 'scale(0.9)' } }}
+                href={Routes.reconcilliation}
               >
                 Experience
-              </Button>
-
+              </HoopButton>
             </Stack>
           </Grid>
 
-          <Grid item xs={12} md={7}>
-            <Box ref={containerRef} />
-          </Grid>
-        </Grid>
-      </Container>
+
+          {/* Background */}
+          <Box
+            component="div"
+            sx={{
+              top: 0,
+              left: 0,
+              zIndex: 11,
+              width: '100%',
+              height: '100%',
+              position: 'relative',
+            }}
+          >
+            {masterImage ?
+              <SanityImage
+                srcset={[`${mobileImage} 320w`, `${tabletImage} 680w`, `${desktopImage} 768w`, `${masterImage} 1080w`]}
+                src={mobileImage}
+              /> : null
+            }
+          </Box>
+      </SectionContainer>
 
     </RootStyle>
   );

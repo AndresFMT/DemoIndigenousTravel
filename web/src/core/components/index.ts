@@ -4,14 +4,17 @@ export * from './animate';
 export * from './carousel';
 export * from './skeleton';
 
+export { default as Hoop} from './Hoop';
 export { default as Logo } from './Logo';
 export { default as Page } from './Page';
 export { default as Image } from './Image';
+export { default as SanityImage} from './SanityImage';
 export { default as Label } from './Label';
 export { default as Iconify } from './Iconify';
 export { default as BgOverlay } from './BgOverlay';
 export { default as Scrollbar } from './Scrollbar';
 export { default as NavSection } from './NavSection';
+export { default as HoopButton } from './HoopButton';
 export { default as ErrorScreen } from './ErrorScreen';
 export { default as RatingLabel } from './RatingLabel';
 export { default as SearchInput } from './SearchInput';

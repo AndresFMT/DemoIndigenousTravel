@@ -11,8 +11,8 @@ export const GOOGLE_API = process.env.GOOGLE_API;
 // LAYOUT
 // ----------------------------------------------------------------------
 
-export const HEADER_MOBILE_HEIGHT = 64;
-export const HEADER_DESKTOP_HEIGHT = 96;
+export const HEADER_MOBILE_HEIGHT = 92;
+export const HEADER_DESKTOP_HEIGHT = 112;
 export const DRAWER_WIDTH = 280;
 
 // DEFAULT LOCALE

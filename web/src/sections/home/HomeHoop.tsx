@@ -1,7 +1,5 @@
-
 import { styled } from '@mui/material/styles';
 
-import Hoop from 'src/core/components/Hoop';
 import HoopButton from 'src/core/components/HoopButton';
 
 import { Container, Grid, Button } from '@mui/material';
@@ -14,8 +12,12 @@ const RootStye = styled('div')(({ theme }) => ({
   },
 }));
 
-export default function HomeHoop(props: any) {
-  const { heading, kicker, imageUrl } = props;
+type HomeHoopProps = {
+  kicker: string;
+  redirectUrl: string;
+};
+
+export default function HomeHoop({kicker, redirectUrl} : HomeHoopProps) {
 
   return (
     <RootStye sx={{
@@ -28,7 +30,7 @@ export default function HomeHoop(props: any) {
       <Container sx={{ height: 1, }} >
         <Grid container columnSpacing={3} alignItems="center" sx={{ height: 1 }}>
           <HoopButton>
-            Explore
+            {kicker ? kicker: 'Explore'}
           </HoopButton>
         </Grid>
       </Container>

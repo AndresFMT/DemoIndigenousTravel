@@ -1,16 +1,27 @@
+import { SyntheticEvent } from 'react';
 import { m } from 'framer-motion';
 import { Button } from '@mui/material';
+import { useRouter } from 'next/router';
 
 import Hoop from 'src/core/components/Hoop';
 
-const HoopButton = ({ children }: any) => {
+const HoopButton = ({ children, sx, href}: any) => {
+
+  const router = useRouter();
+
+  const handleClick = (e:SyntheticEvent) => {
+    e.preventDefault();
+    router.push(href);
+  };
 
   return (
     <Button
       variant="contained"
       size="large"
       color="primary"
+      onClick={handleClick}
       sx={{
+        ...sx,
         borderRadius: '50%',
         aspectRatio: '1/1',
         minWidth: '150px',
@@ -38,3 +49,4 @@ const HoopButton = ({ children }: any) => {
 };
 
 export default HoopButton;
+

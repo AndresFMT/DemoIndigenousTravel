@@ -1,6 +1,7 @@
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
+import { colorInput } from '@sanity/color-input'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import {
   dashboardTool,
@@ -26,6 +27,7 @@ export default defineConfig([
     dataset: 'production',
 
     plugins: [
+      colorInput(),
       deskTool({
         structure: myStructure,
         defaultDocumentNode: defaultDocumentNodeResolver,
@@ -56,6 +58,7 @@ export default defineConfig([
     dataset: 'production',
 
     plugins: [
+      colorInput(),
       deskTool({
         defaultDocumentNode: defaultDocumentNodeResolver,
       }),
@@ -85,6 +88,7 @@ export default defineConfig([
     dataset: 'production',
 
     plugins: [
+      colorInput(),
       deskTool(), 
       visionTool(),
       unsplashImageAsset(),
@@ -106,7 +110,7 @@ export default defineConfig([
     projectId: 'uimvg3pl',
     dataset: 'production',
 
-    plugins: [deskTool(), visionTool(), unsplashImageAsset(),],
+    plugins: [colorInput(), deskTool(), visionTool(), unsplashImageAsset(),],
     schema: {
       types: () => {
         return [...schemaObjects, ...schemaDocuments];
@@ -121,7 +125,7 @@ export default defineConfig([
     projectId: 'uimvg3pl',
     dataset: 'production',
 
-    plugins: [deskTool(), visionTool(), unsplashImageAsset(),],
+    plugins: [colorInput(), deskTool(), visionTool(), unsplashImageAsset(),],
 
     schema: {
       types: schemaAbout,

@@ -96,14 +96,11 @@ export const PageLinks = [
 ];
 
 export const navConfig = [
-  { title: 'Home', path: '/' },
-  { title: 'Experience', path: '/experience'},
-  { title: 'Explore', path: '/explore'},
-  {
-    title: 'Our Stories',
-    path: Routes.pages,
-    children: [PageLinks[0], PageLinks[4], PageLinks[1], PageLinks[3], PageLinks[2], PageLinks[5]],
-  },
+  { title: 'Who We Are', path: '/who-we-are' },
+  { title: 'What We Do', path: '/what-we-do'},
+  { title: 'About Us', path: '/about-us'},
   { title: 'Membership', path: '/membership'},
+  { title: 'Reconcilliation', path: '/reconcilliation'},
+  { title: 'Contact Us', path: '/contact-us'},
 ];
 

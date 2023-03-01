@@ -1,25 +1,10 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'homepageHero',
-  title: 'Homepage Hero',
+  name: 'imageBreak',
+  title: 'Image Break',
   type: 'document',
   fields: [
-    defineField({
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
-    }),
-    defineField({
-      name: 'kicker',
-      title: 'Kicker',
-      type: 'string',
-    }),
-    defineField({
-      name: 'subhead',
-      title: 'Subhead',
-      type: 'string',
-    }),
     defineField({
       name: 'image',
       title: 'Main image',
@@ -29,15 +14,24 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'text',
-      title: 'Text',
+      name: 'title',
+      title: 'Title Text',
       type: 'string',
     }),
+    defineField({
+      name: 'description',
+      title: 'Description Text',
+      type: 'string',
+    }),
+    defineField({
+      name: 'background',
+      title: 'Background Color',
+      type: 'color',
+    }),
   ],
-
   preview: {
     select: {
-      title: 'heading',
+      title: 'title',
       media: 'image',
     },
     prepare(selection) {

@@ -3,8 +3,6 @@ import dynamic from 'next/dynamic';
 import React, {ReactNode} from "react"
 
 import { BlitzLayout } from "@blitzjs/next"
-import { useTheme } from '@mui/material/styles';
-import { CacheProvider } from "@emotion/react";
 
 const Header = dynamic(() => import('./header/Header'), { ssr: false });
 const HeaderSimple = dynamic(() => import('./header/HeaderSimple'), { ssr: false });
@@ -52,4 +50,5 @@ const Layout: BlitzLayout<LayoutProps> = ({
   )
 }
 
-export default Layout
+export default Layout;
+

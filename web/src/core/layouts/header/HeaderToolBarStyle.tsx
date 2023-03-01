@@ -5,9 +5,14 @@ import cssStyles from 'src/utils/cssStyles';
 
 import { HEADER_MOBILE_HEIGHT, HEADER_DESKTOP_HEIGHT } from 'src/config';
 
+type ToolbarStyleProps = {
+  transparent?: boolean;
+  scrolling?: boolean;
+};
+
 export const ToolbarStyle = styled(Toolbar, {
   shouldForwardProp: (prop) => prop !== 'transparent' && prop !== 'scrolling',
-})(({ transparent, scrolling, theme }) => ({
+})<ToolbarStyleProps>(({ transparent, scrolling, theme }) => ({
   height: HEADER_MOBILE_HEIGHT,
   color: theme.palette.text.primary,
   backgroundColor: theme.palette.background.default,
@@ -23,9 +28,9 @@ export const ToolbarStyle = styled(Toolbar, {
     backgroundColor: 'transparent',
   }),
   ...(scrolling && {
-    ...cssStyles(theme).bgBlur(),
+    ...cssStyles(theme).bgBlur({}),
     [theme.breakpoints.up('md')]: {
-      height: HEADER_DESKTOP_HEIGHT - 20,
+      height: HEADER_DESKTOP_HEIGHT - 40,
     },
   }),
 }));

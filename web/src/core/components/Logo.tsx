@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { m } from 'framer-motion';
 
 import NextLink from 'next/link';
 
@@ -7,7 +8,7 @@ import { Box } from '@mui/material';
 
 import { IndigenousTourismLogo } from 'src/assets'
 
-function Logo({ onDark = false, isSimple = false, sx}) {
+function Logo({ onDark = false, isSimple = false, isScrolling, sx}) {
 
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
@@ -20,10 +21,11 @@ function Logo({ onDark = false, isSimple = false, sx}) {
     <NextLink href="/" passHref>
       <Box
         sx={{
-          width: isSimple ? 75: 140,
+          width: isScrolling ? 120: 200,
           lineHeight: 0,
           cursor: 'pointer',
           display: 'inline-flex',
+          transition: 'width 0.3s ease-in-out',
           ...sx,
         }}
       >

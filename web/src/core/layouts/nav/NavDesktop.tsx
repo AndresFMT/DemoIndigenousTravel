@@ -50,7 +50,7 @@ const RootLinkStyle = styled(Link, {
     },
     ...(active && {
       ...dotActiveStyle,
-      color: theme.palette.text.primary,
+      color: theme.palette.primary.burgundy,
       ...(transparent && { color: theme.palette.common.white }),
       ...(scrolling && { color: theme.palette.text.primary }),
     }),
@@ -70,12 +70,12 @@ export default function NavDesktop({ isScrolling, isTransparent, navConfig }) {
       sx={{
         ml: 6,
         mr: 6,
-        color: 'text.secondary',
+        color: 'primary.burgundy',
         ...(isTransparent && {
           color: 'inherit',
         }),
         ...(isScrolling && {
-          color: 'text.secondary',
+          color: 'primary.burgundy',
         }),
       }}
     >

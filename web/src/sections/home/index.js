@@ -7,3 +7,6 @@ export { default as homepageForDesigner } from './HomeForDesigner';
 export { default as homepageAdvertisement } from './HomeAdvertisement';
 export { default as homepageFeatureHighlights } from './HomeFeatureHighlights';
 export { default as homepageFlexibleComponents } from './HomeFlexibleComponents';
+export { default as homepageSpacer } from './HomeSpacer';
+export { default as imageBreak } from './ImageBreak';
+export { default as homepageHoopImage } from './HomeHoopImage';
