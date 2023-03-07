@@ -9,12 +9,15 @@ import {
   projectUsersWidget,
   projectInfoWidget,
 } from "@sanity/dashboard"
+import {media} from 'sanity-plugin-media'
 import {
   schemaHomePage,
   schemaAbout,
-  schemaObjects,
-  schemaDocuments
+  schemaDocuments,
+  schemaPages,
+  accessibleImage,
 } from './schemas'
+
 import { myStructure, defaultDocumentNodeResolver } from './structure/deskStructure'
 
 export default defineConfig([
@@ -41,13 +44,18 @@ export default defineConfig([
         ]
       }),
       unsplashImageAsset(),
+      media(),
     ],
 
     schema: {
       types: (prev) => {
-        return [...schemaHomePage, ...prev];
+        return [
+          accessibleImage,
+          ...schemaHomePage, 
+          ...prev];
       },
     },
+
   },
   {
     name: 'home-workspace',
@@ -71,11 +79,12 @@ export default defineConfig([
         ]
       }),
       unsplashImageAsset(),
+      media(),
     ],
 
     schema: {
       types: (prev) => {
-        return [...schemaHomePage, ...prev];
+        return [accessibleImage, ...schemaHomePage, ...prev];
       },
     },
   },
@@ -89,9 +98,10 @@ export default defineConfig([
 
     plugins: [
       colorInput(),
-      deskTool(), 
+      deskTool(),
       visionTool(),
       unsplashImageAsset(),
+      media(),
     ],
 
     schema: {
@@ -110,25 +120,37 @@ export default defineConfig([
     projectId: 'uimvg3pl',
     dataset: 'production',
 
-    plugins: [colorInput(), deskTool(), visionTool(), unsplashImageAsset(),],
+    plugins: [
+      colorInput(), 
+      deskTool(), 
+      visionTool(), 
+      unsplashImageAsset(),
+      media(),
+    ],
     schema: {
       types: () => {
-        return [...schemaObjects, ...schemaDocuments];
+        return [accessibleImage, ...schemaDocuments];
       },
     },
   },
   {
     name: 'content-workspace',
     basePath: '/content-workspace',
-    title: 'content',
+    title: 'Content',
 
     projectId: 'uimvg3pl',
     dataset: 'production',
 
-    plugins: [colorInput(), deskTool(), visionTool(), unsplashImageAsset(),],
+    plugins: [
+      colorInput(), 
+      deskTool(), 
+      visionTool(), 
+      unsplashImageAsset(),
+      media(),
+    ],
 
     schema: {
-      types: schemaAbout,
+      types: [accessibleImage, ...schemaPages]
     },
   },
 ])

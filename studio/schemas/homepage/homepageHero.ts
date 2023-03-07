@@ -21,12 +21,22 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'videoUrl',
+      title: 'Video URL',
+      type: 'string',
+    }),
+    defineField({
       name: 'image',
       title: 'Main image',
       type: 'image',
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: 'enableCTA',
+      title: 'Enable CTA',
+      type: 'boolean',
     }),
     defineField({
       name: 'text',

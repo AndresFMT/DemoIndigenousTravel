@@ -23,8 +23,32 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'alt',
+      title: 'Alt',
+      type: 'accessibleImage',
+    }),
+    defineField({
+      name: 'headingOverlay',
+      title: 'Heading Overlay',
+      type: 'string',
+    }),
+    defineField({
+      name: 'textOverlay',
+      title: 'Text Overlay',
+      type: 'string',
+    }),
+    defineField({
+      name: 'overlayBackground',
+      title: 'Overlay Background',
+      type: 'color',
+    }),
+    defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'string',
+    }),
   ],
-
   preview: {
     select: {
       media: 'image',

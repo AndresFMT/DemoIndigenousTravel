@@ -1,5 +1,5 @@
 /** objects */
-import accessibleImage from './objects/accessibleImage'
+export {default as accessibleImage} from './objects/accessibleImage'
 
 /** documents */
 import author from './author'
@@ -13,10 +13,8 @@ import siteSettings from './siteSettings'
 
 /** homepage */
 import {homepageDocuments} from './homepage'
+import {pageDocuments} from './page'
 
-export const schemaObjects = [
-  accessibleImage,
-]
 
 export const schemaDocuments = [ 
   author, 
@@ -27,6 +25,12 @@ export const schemaDocuments = [
   navItem,
   navItemGroup,
   siteSettings,
+];
+
+export const schemaPages = [
+  ...schemaDocuments,
+  ...pageDocuments,
+
 ];
 
 export const schemaAdmin = [
@@ -46,9 +50,22 @@ export const schemaAbout = [
 
 
 export const schemaTypesAdmin = [
-  ...schemaObjects,
   navItem,
   navItemGroup,
   siteSettings,
 ];
 
+
+/** nextjs integration object*/
+export const schemaTypes = [
+  author,
+  blockContent,
+  category,
+  post,
+  operator,
+  navItem,
+  navItemGroup,
+  siteSettings,
+  ...pageDocuments,
+  ...homepageDocuments,
+];
