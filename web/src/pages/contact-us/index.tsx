@@ -1,8 +1,13 @@
-import { Suspense } from 'react';
+import { ReactElement, Suspense } from 'react';
 import { styled } from '@mui/material/styles';
 
 import { Page } from 'src/core/components';
 import Layout from 'src/core/layouts/Layout';
+import client from 'integrations/sanity.client';
+import { groqPageQuery } from 'src/utils/pageQuery';
+import { HeroImage, SectionText, BlankSpace } from 'src/sections/basic';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { BlitzPage } from '@blitzjs/auth';
 
 const RootStyles = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -14,22 +19,66 @@ const RootStyles = styled('div')(({ theme }) => ({
   },
 }));
 
-const ContactUsPage = (props) => {
+type Props = {
+  title: string;
+  description: string;
+  sections: Array<Section>;
+};
+
+type Section = {
+  type: string;
+  content: Array<Content>;
+};
+
+type Content = {
+  type: string;
+  image?: SanityImageSource;
+  title?: string;
+  heading?: string;
+  text?: string;
+}
+
+const ContactUsPage: BlitzPage<Props> = (props) => {
   return (
     <Suspense fallback="Loading...">
       <RootStyles>
-        <Page>
-          <h1>ContactUsPage</h1>
-          <p>Find me in ./web/pages/ContactUsPage.tsx</p>
+        <Page title={props.title}>
+          { props.sections.length > 0 &&
+            props.sections.map((section, index) => {
+              const content = section.content.reduce((acc, cur) => {
+                acc = {...acc,...cur};
+                return acc;
+              }, {});
+              switch (section.type) {
+                case 'heroImage':
+                  return <HeroImage {...content} key={index} />;
+                case 'sectionText':
+                  return <SectionText {...content} key={index} />;
+                default:
+                  return <BlankSpace key={index} />
+              }
+            })
+          }
         </Page>
       </RootStyles>
     </Suspense>
   );
 };
 
-ContactUsPage.getLayout = function getLayout(page) {
+ContactUsPage.getLayout = function getLayout(page:ReactElement) {
   return <Layout>{page}</Layout>;
 };
+
+export async function getStaticProps() {
+
+  const params = { slug: 'contact-us' };
+  const data = await client.fetch(groqPageQuery, params)
+  return {
+    props: {
+      ...data
+    }
+  }
+}
 
 export default ContactUsPage;
 

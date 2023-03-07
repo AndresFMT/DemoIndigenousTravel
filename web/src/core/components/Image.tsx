@@ -3,9 +3,6 @@ import { LazyLoadImage, LazyLoadImageProps } from 'react-lazy-load-image-compone
 import { Theme } from '@mui/material/styles';
 import { Box, BoxProps, SxProps } from '@mui/material';
 
-import { urlFor } from 'integrations/sanityImage';
-import { ImageUrlBuilder } from 'sanity';
-
 // ----------------------------------------------------------------------
 
 export type ImageRatio = '4/3' | '3/4' | '6/4' | '4/6' | '16/9' | '9/16' | '21/9' | '9/21' | '1/1';
@@ -16,7 +13,6 @@ interface Props extends IProps {
   sx?: SxProps<Theme>;
   ratio?: ImageRatio;
   disabledEffect?: boolean;
-  imageBuilder: ImageUrlBuilder;
 }
 
 export default function Image({
@@ -24,7 +20,6 @@ export default function Image({
   disabledEffect = false,
   effect = 'blur',
   sx,
-  imageBuilder,
   ...other
 }:Props) {
   if (ratio) {

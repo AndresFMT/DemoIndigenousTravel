@@ -4,6 +4,65 @@ import createGradient from 'src/utils/createGradient';
 
 // ----------------------------------------------------------------------
 
+export type ColorSchema = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
+
+interface GradientsPaletteOptions {
+  primary: string;
+  secondary: string;
+  info: string;
+  success: string;
+  warning: string;
+  error: string;
+}
+
+declare module '@mui/material/styles/createPalette' {
+  interface TypeBackground {
+    neutral: string;
+    dark: string;
+    light: string;
+  }
+  interface SimplePaletteColorOptions {
+    lighter: string;
+    darker: string;
+  }
+  interface PaletteColor {
+    lighter: string;
+    darker: string;
+  }
+  interface Palette {
+    gradients: GradientsPaletteOptions;
+    background: TypeBackground;
+    footer: {
+      background: string;
+      text: string;
+    };
+  }
+
+  interface TypeText {
+    footer: {
+      primary: string;
+      secondary: string;
+    };
+  }
+  interface PaletteOptions {
+    gradients: GradientsPaletteOptions;
+  }
+}
+
+declare module '@mui/material' {
+  interface Color {
+    0: string;
+    500_8: string;
+    500_12: string;
+    500_16: string;
+    500_24: string;
+    500_32: string;
+    500_48: string;
+    500_56: string;
+    500_80: string;
+  }
+}
+
 // SETUP COLORS
 
 export const contrastText = {
@@ -124,16 +183,18 @@ const palette = {
   light: {
     ...COMMON,
     mode: 'light' as const,
-    text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
-    background: { paper: '#fff', default: '#fff', neutral: GREY[100] },
+    text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500], footer: {primary: GREY[200],secondary: GREY[100]}},
+    background: { paper: '#fff', default: '#fff', neutral: GREY[100], footer: '#000'},
     action: { active: GREY[600], ...COMMON.action },
+    footer: { background: '#000', text: GREY[600] },
   },
   dark: {
     ...COMMON,
     mode: 'dark' as const,
-    text: { primary: '#fff', secondary: GREY[500], disabled: GREY[600] },
-    background: { paper: GREY[800], default: GREY[900], neutral: GREY[500_12] },
+    text: { primary: '#fff', secondary: GREY[500], disabled: GREY[600] , footer: GREY[600]},
+    background: { paper: GREY[800], default: GREY[900], neutral: GREY[500_12], footer: '#fff'},
     action: { active: GREY[500], ...COMMON.action },
+    footer: { background: '#fff', text: GREY[600] },
   },
 };
 

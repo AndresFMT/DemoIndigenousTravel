@@ -1,12 +1,13 @@
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
+import { IconifyIcon } from '@iconify/react';
 // icons
 import directionStraightRight from '@iconify/icons-carbon/direction-straight-right';
 // @mui
 import { useTheme, styled } from '@mui/material/styles';
-import { Box, Stack } from '@mui/material';
+import { Box, BoxProps, Stack, StackProps } from '@mui/material';
 //
-import Iconify from '../Iconify';
-import { IconButtonAnimate } from '../animate';
+import Iconify from 'src/core/components/Iconify';
+import { IconButtonAnimate } from 'src/core/components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -27,12 +28,14 @@ const ArrowStyle = styled(IconButtonAnimate)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-CarouselArrows.propTypes = {
-  children: PropTypes.node,
-  customIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  onNext: PropTypes.func,
-  onPrevious: PropTypes.func,
-};
+type IProps = BoxProps & StackProps;
+
+interface Props extends IProps {
+  children?: ReactNode;
+  customIcon?: IconifyIcon;
+  onNext?: VoidFunction;
+  onPrevious?: VoidFunction;
+}
 
 export default function CarouselArrows({
   customIcon, // Set icon right
@@ -40,7 +43,7 @@ export default function CarouselArrows({
   onPrevious,
   children,
   ...other
-}) {
+}: Props) {
   const theme = useTheme();
   const isRTL = theme.direction === 'rtl';
 
@@ -49,7 +52,7 @@ export default function CarouselArrows({
     mt: -2.5,
     top: '50%',
     zIndex: 9,
-  };
+  } as const;
 
   if (children) {
     return (
@@ -77,7 +80,7 @@ export default function CarouselArrows({
 
 // ----------------------------------------------------------------------
 
-const leftIcon = (customIcon, isRTL) => (
+const leftIcon = (customIcon?: IconifyIcon, isRTL?: boolean) => (
   <Iconify
     icon={customIcon ? customIcon : directionStraightRight}
     sx={{
@@ -89,7 +92,7 @@ const leftIcon = (customIcon, isRTL) => (
   />
 );
 
-const rightIcon = (customIcon, isRTL) => (
+const rightIcon = (customIcon?: IconifyIcon, isRTL?: boolean) => (
   <Iconify
     icon={customIcon ? customIcon : directionStraightRight}
     sx={{
@@ -99,3 +102,4 @@ const rightIcon = (customIcon, isRTL) => (
     }}
   />
 );
+

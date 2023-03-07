@@ -1,9 +1,8 @@
-import { LazyLoadImage, LazyLoadImageProps } from 'react-lazy-load-image-component';
+import {  LazyLoadImageProps } from 'react-lazy-load-image-component';
 // @mui
 import { Theme } from '@mui/material/styles';
 import { Box, BoxProps, SxProps } from '@mui/material';
 
-import { urlFor } from 'integrations/sanityImage';
 // TODO: implement urlFor to handle imageBuilder and take optional values to change ratio
 // ----------------------------------------------------------------------
 
@@ -15,7 +14,7 @@ interface Props extends IProps {
   sx?: SxProps<Theme>;
   ratio?: ImageRatio;
   disabledEffect?: boolean;
-  srcset: string[];
+  imageBuilder: any;
 }
 
 export default function SanityImage({
@@ -23,10 +22,16 @@ export default function SanityImage({
   disabledEffect = false,
   effect = 'blur',
   sx,
-  srcset,
+  imageBuilder,
   ...other
 }: Props) {
 
+  const masterImage = imageBuilder.width(1920).height(900).url();
+  const desktopImage = imageBuilder.width(768).height(632).url();
+  const tabletImage = imageBuilder.width(600).height(600).url();
+  const mobileImage = imageBuilder.width(320).height(427).url();
+
+  const srcset = [`${mobileImage} 320w`, `${tabletImage} 680w`, `${desktopImage} 768w`, `${masterImage} 1080w`]
 
   if (ratio) {
     return (
@@ -67,6 +72,8 @@ export default function SanityImage({
           })}
           <img
             srcSet={srcset.join(', ')}
+            src={mobileImage}
+            alt={other.alt || 'unbranded image'}
             {...other}
           />
         </picture>
@@ -90,18 +97,20 @@ export default function SanityImage({
 
       <picture
         style={{ width: '100%' }}>
-          {srcset.map((src, index) => {
-            const [url, media] = src.split(' ');
-            return (
-              <source
-                key={`${media}-${index}`}
-                media={`(min-width: ${media})`}
-                srcSet={url}
-              />
-            )
-          })}
+        {srcset.map((src, index) => {
+          const [url, media] = src.split(' ');
+          return (
+            <source
+              key={`${media}-${index}`}
+              media={`(min-width: ${media})`}
+              srcSet={url}
+            />
+          )
+        })}
         <img
           srcSet={srcset.join(', ')}
+          src={mobileImage}
+          alt={other.alt || 'unbranded image'}
           {...other}
         />
       </picture>

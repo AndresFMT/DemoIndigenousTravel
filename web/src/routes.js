@@ -68,7 +68,12 @@ const Routes = {
   license: '#',
   minimalDashboard: '#',
   buyNow: '#',
+  whoweare: '/',
+  whatWeDo: '/what-we-do',
+  aboutUs: '/about-us',
+  membership: '/membership',
   reconcilliation: '/reconcilliation',
+  contactUs: '/contact-us',
 };
 
 export default Routes;

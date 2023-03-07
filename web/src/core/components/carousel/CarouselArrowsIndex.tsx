@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 // icons
+import { IconifyIcon } from '@iconify/react';
 import caretRight from '@iconify/icons-carbon/caret-right';
 // @mui
 import { alpha, useTheme, styled } from '@mui/material/styles';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, BoxProps} from '@mui/material';
 //
 import Iconify from '../Iconify';
 import { IconButtonAnimate } from '../animate';
@@ -31,13 +31,13 @@ const ArrowStyle = styled(IconButtonAnimate)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-CarouselArrowsIndex.propTypes = {
-  customIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  index: PropTypes.number,
-  onNext: PropTypes.func,
-  onPrevious: PropTypes.func,
-  total: PropTypes.number,
-};
+export interface Props extends BoxProps {
+  customIcon?: IconifyIcon;
+  index: number;
+  total: number;
+  onNext?: VoidFunction;
+  onPrevious?: VoidFunction;
+}
 
 export default function CarouselArrowsIndex({
   customIcon, // Set icon right
@@ -46,7 +46,7 @@ export default function CarouselArrowsIndex({
   onNext,
   onPrevious,
   ...other
-}) {
+}: Props) {
   const theme = useTheme();
   const isRTL = theme.direction === 'rtl';
 

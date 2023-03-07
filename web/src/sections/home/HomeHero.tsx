@@ -31,17 +31,22 @@ const SectionContainer = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function HomeHero(props: any) {
+type Props = {
+  heading?: string;
+  kicker?: string;
+  image: string;
+  enableCTA: boolean;
+  text: string;
+  videoUrl: string;
+};
 
-  console.log('HomeHero props', props);
-  const { heading, kicker, image } = props;
+export default function HomeHero({heading, kicker, image, enableCTA, text, videoUrl, ...other}: Props) {
 
-  const imageBuilder = urlFor(image);
+  const imageBuilder = image ? urlFor(image): null;
 
-  const masterImage = imageBuilder.width(1920).height(900).url();
-  const desktopImage = imageBuilder.width(768).height(632).url();
-  const tabletImage = imageBuilder.width(600).height(600).url();
-  const mobileImage = imageBuilder.width(320).height(427).url();
+  const Video = videoUrl ? (<video autoPlay muted loop src={videoUrl} id="myVideo">
+              <source src={videoUrl} type="video/mp4" />
+            </video>) : null;
 
   return (
     <RootStyle>
@@ -67,14 +72,15 @@ export default function HomeHero(props: any) {
                 {kicker ? kicker : ' '}
               </Typography>
 
-              <HoopButton
+              { enableCTA && <HoopButton
                 color="inherit"
                 variant="contained"
                 sx={{ background: 'primary.darker', transform: { xs: 'scale(0.8)', md: 'scale(0.9)' } }}
                 href={Routes.reconcilliation}
               >
-                Experience
+                {text}
               </HoopButton>
+              }
             </Stack>
           </Grid>
 
@@ -91,12 +97,13 @@ export default function HomeHero(props: any) {
               position: 'relative',
             }}
           >
-            {masterImage ?
+            {imageBuilder ?
               <SanityImage
-                srcset={[`${mobileImage} 320w`, `${tabletImage} 680w`, `${desktopImage} 768w`, `${masterImage} 1080w`]}
-                src={mobileImage}
+                imageBuilder={imageBuilder}
               /> : null
             }
+
+            {Video}
           </Box>
       </SectionContainer>
 

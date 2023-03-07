@@ -1,12 +1,16 @@
+import { ReactNode  } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { Box, BoxProps } from '@mui/material';
 
 // ----------------------------------------------------------------------
+type RootStyleProps = {
+  rounded: boolean;
+};
 
 const RootStyle = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'rounded',
-})(({ rounded }) => ({
+})<RootStyleProps>(({ rounded }) => ({
   display: 'flex',
   listStyle: 'none',
   alignItems: 'center',
@@ -47,13 +51,17 @@ const DotStyle = styled('span')(({ theme }) => ({
 }));
 
 // ----------------------------------------------------------------------
+export interface Props extends BoxProps {
+  color?: string;
+  rounded?: boolean;
+}
 
-export default function CarouselDots(props) {
+export default function CarouselDots(props?: Props) {
   const color = props?.color;
   const rounded = props?.rounded || false;
 
   return {
-    appendDots: (dots) => (
+    appendDots: (dots: ReactNode) => (
       <>
         <RootStyle rounded={rounded} component="ul" {...props}>
           {dots}

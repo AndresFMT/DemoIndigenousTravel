@@ -11,16 +11,19 @@ import Fallback from 'src/sections/fallback'
 import * as HomepageContent from 'src/sections/home'
 
 type Props = {
-  content: any
+  content: {
+    _type: string
+    [key: string]: any
+  }[]
 }
 
-const HomePage: BlitzPage = ({content}:Props) => {
+const HomePage: BlitzPage<Props> = ({content}) => {
   return (
     <Suspense fallback="Loading...">
-      <Page>
+      <Page title={'Who We Are'}>
         {
           content.map((item, index:number) => {
-            const Component = HomepageContent[item._type] || Fallback
+            const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback
             return <Component key={index} {...item} />
           })
         }
@@ -29,15 +32,16 @@ const HomePage: BlitzPage = ({content}:Props) => {
   )
 }
 
-HomePage.getLayout = function getLayout(page) {
+HomePage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout >{page}</Layout>;
 };
+
 
 export default HomePage;
 
 export async function getStaticProps() {
     const data = await client.fetch(groq`
-      *[ _type == "homepage" && _id == "f28ba9e5-2eae-4a9f-a10f-0799c003f0b7"][0]{
+      *[ _type == "homepage" && !(_id in path('drafts.**'))][0]{
         title,
         description,
         content[]->{

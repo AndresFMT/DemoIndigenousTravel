@@ -11,7 +11,7 @@ const HoopButton = ({ children, sx, href}: any) => {
 
   const handleClick = (e:SyntheticEvent) => {
     e.preventDefault();
-    router.push(href);
+    router.push(href).catch((err) => console.log(err));
   };
 
   return (

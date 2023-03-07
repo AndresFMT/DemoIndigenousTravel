@@ -10,9 +10,9 @@ import { default as AnimatedHoop } from 'src/core/components/AnimatedHoop';
 import { urlFor } from 'integrations/sanityImage';
 
 const RootStyle = styled('section')(({ theme }) => ({
-  paddingTop: theme.spacing(5),
+  paddingTop: theme.spacing(4),
   [theme.breakpoints.up('md')]: {
-    paddingTop: theme.spacing(5),
+    paddingTop: theme.spacing(4),
   },
 }));
 
@@ -69,9 +69,8 @@ const HomeHoopImage = (props) => {
 
   const { images, heading, description, kicker, redirectUrl } = props;
   return (
-    <MotionViewport>
-      <RootStyle>
-
+    <RootStyle>
+      <MotionViewport>
         <Container maxWidth="lg">
           <m.div variants={varFade().inUp}>
             <Box sx={{ my: 3, mx: 'auto', maxWidth: 750 }}>
@@ -93,8 +92,8 @@ const HomeHoopImage = (props) => {
             })}
           </Stack>
         </Container>
-      </RootStyle>
-    </MotionViewport>
+      </MotionViewport>
+    </RootStyle>
   )
 };
 

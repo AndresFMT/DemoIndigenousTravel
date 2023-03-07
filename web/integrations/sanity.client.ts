@@ -1,5 +1,3 @@
-import {createClient, groq} from 'next-sanity';
-
 import sanityClient from '@sanity/client';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;

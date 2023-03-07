@@ -3,7 +3,7 @@ import { m } from 'framer-motion';
       // </g>
 const draw = {
   hidden: { pathLength: 0, opacity: 0, rotate: 0 },
-  visible: (i) => {
+  visible: (i:number) => {
     const delay = 1 + i * 0.02;
     return {
       pathLength: 1,

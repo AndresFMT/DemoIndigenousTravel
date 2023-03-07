@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // icon
 import rotate360 from '@iconify/icons-carbon/rotate-360';
 // next
@@ -23,12 +22,12 @@ const RootStyle = styled('div')(() => ({
 
 // ----------------------------------------------------------------------
 
-ErrorScreen.propTypes = {
-  description: PropTypes.string,
-  title: PropTypes.string,
+type Props = {
+  title?: string;
+  description?: string;
 };
 
-export default function ErrorScreen({ title, description, ...other }) {
+export default function ErrorScreen({ title, description, ...other }: Props) {
   const router = useRouter();
 
   const handleReload = () => {

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import { ReactElement } from 'react';
 // icons
 import logoLinkedin from '@iconify/icons-carbon/logo-linkedin';
 import logoFacebook from '@iconify/icons-carbon/logo-facebook';
@@ -6,26 +6,28 @@ import logoTwitter from '@iconify/icons-carbon/logo-twitter';
 import logoInstagram from '@iconify/icons-carbon/logo-instagram';
 // @mui
 import { alpha } from '@mui/material/styles';
-import { Stack, IconButton, Button, Link } from '@mui/material';
+import { Stack, IconButton, Button, Link, IconButtonProps, ButtonProps} from '@mui/material';
 //
 import Iconify from './Iconify';
+import { SocialLinks } from 'src/@types/socials';
 
 // ----------------------------------------------------------------------
+type Props = IconButtonProps & ButtonProps;
 
-SocialsButton.propTypes = {
-  initialColor: PropTypes.bool,
-  links: PropTypes.objectOf(PropTypes.string),
-  simple: PropTypes.bool,
-  sx: PropTypes.object,
-};
+interface SocialsButtonProps extends Props {
+  simple?: boolean;
+  initialColor?: boolean;
+  links?: SocialLinks;
+}
 
-export default function SocialsButton({
+
+export default function SocialsButton ({
   initialColor = false,
   simple = true,
   links = {},
   sx,
   ...other
-}) {
+}):ReactElement<SocialsButtonProps> {
   const SOCIALS = [
     {
       name: 'FaceBook',
@@ -54,7 +56,7 @@ export default function SocialsButton({
   ];
 
   return (
-    <Stack direction="row" flexWrap="wrap" alignItems="center">
+    <Stack direction="row" flexWrap="wrap" alignItems="center" spacing={2}>
       {SOCIALS.map((social) => {
         const { name, icon, path, socialColor } = social;
         return simple ? (

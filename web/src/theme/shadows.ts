@@ -5,6 +5,31 @@ import palette from './palette';
 
 // ----------------------------------------------------------------------
 
+interface CustomShadowOptions {
+  z1: string;
+  z4: string;
+  z8: string;
+  z12: string;
+  z16: string;
+  z20: string;
+  z24: string;
+  primary: string;
+  secondary: string;
+  info: string;
+  success: string;
+  warning: string;
+  error: string;
+}
+
+declare module '@mui/material/styles' {
+  interface Theme {
+    customShadows: CustomShadowOptions;
+  }
+  interface ThemeOptions {
+    customShadows?: CustomShadowOptions;
+  }
+}
+
 const LIGHT_MODE = palette.light.grey[500];
 const DARK_MODE = palette.light.common.black;
 

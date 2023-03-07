@@ -1,24 +1,21 @@
-import PropTypes from 'prop-types';
 import { m } from 'framer-motion';
-import { forwardRef } from 'react';
+import { forwardRef, ReactNode} from 'react';
 // @mui
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, SxProps, IconButtonProps} from '@mui/material';
 
 // ----------------------------------------------------------------------
+interface Props extends IconButtonProps {
+  sxWrap?: SxProps;
+  size?: 'small' | 'medium' | 'large';
+}
 
-const IconButtonAnimate = forwardRef(({ children, size = 'medium', sxWrap, ...other }, ref) => (
+const IconButtonAnimate = forwardRef<HTMLButtonElement,Props> (({ children, size = 'medium', sxWrap, ...other }, ref) => (
   <AnimateWrap size={size} sxWrap={sxWrap}>
     <IconButton size={size} ref={ref} {...other}>
       {children}
     </IconButton>
   </AnimateWrap>
 ));
-
-IconButtonAnimate.propTypes = {
-  children: PropTypes.node.isRequired,
-  sxWrap: PropTypes.object,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-};
 
 export default IconButtonAnimate;
 
@@ -39,13 +36,13 @@ const varLarge = {
   tap: { scale: 0.99 },
 };
 
-AnimateWrap.propTypes = {
-  children: PropTypes.node.isRequired,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  sxWrap: PropTypes.object,
+type AnimateWrapProps = {
+  children: ReactNode;
+  size?: 'small' | 'medium' | 'large';
+  sxWrap?: SxProps;
 };
 
-function AnimateWrap({ size, children, sxWrap }) {
+function AnimateWrap({ size, children, sxWrap }: AnimateWrapProps ) {
   const isSmall = size === 'small';
   const isLarge = size === 'large';
 

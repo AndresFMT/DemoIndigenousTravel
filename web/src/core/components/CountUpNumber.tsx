@@ -1,17 +1,16 @@
-import PropTypes from 'prop-types';
-import CountUp from 'react-countup';
+import CountUp, { CountUpProps } from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 // @mui
-import { Box } from '@mui/material';
+import { Box, SxProps } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-CountUpNumber.propTypes = {
-  threshold: PropTypes.number,
-  sx: PropTypes.object,
-};
+interface Props extends CountUpProps {
+  threshold?: number | number[];
+  sx?: SxProps;
+}
 
-export default function CountUpNumber({ threshold = 1, sx, ...other }) {
+export default function CountUpNumber({ threshold = 1, sx, ...other }: Props) {
   const [ref, inView] = useInView({
     threshold,
     triggerOnce: true,

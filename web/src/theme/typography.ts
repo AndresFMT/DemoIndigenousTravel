@@ -1,6 +1,43 @@
 import { pxToRem, responsiveFontSizes } from 'src/utils/getFontValue';
 
 // ----------------------------------------------------------------------
+export type TypographyVariant =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'subtitle1'
+  | 'subtitle2'
+  | 'subtitle3'
+  | 'body1'
+  | 'body2'
+  | 'body3'
+  | 'caption'
+  | 'button'
+  | 'overline';
+
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    subtitle3: React.CSSProperties;
+    body3: React.CSSProperties;
+  }
+
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    subtitle3?: React.CSSProperties;
+    body3?: React.CSSProperties;
+  }
+}
+
+// Update the Typography's variant prop options
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    subtitle3: true;
+    body3: true;
+  }
+}
 
 const FONT_PRIMARY = 'Nunito Sans, sans-serif';
 const FONT_SECONDARY = 'Ubuntu, sans-serif';

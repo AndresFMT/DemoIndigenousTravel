@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 // icons
 import chevronRight from '@iconify/icons-carbon/chevron-right';
@@ -16,13 +15,20 @@ import {
   ListItemIcon,
   ListSubheader,
   ListItemButton,
+  ListItemButtonProps,
+  ListSubheaderProps,
+  BoxProps,
 } from '@mui/material';
 // components
 import { Iconify } from '.';
 
 // ----------------------------------------------------------------------
 
-const ListSubheaderStyle = styled((props) => (
+interface ListSubheaderStyleProps extends ListSubheaderProps {
+  children?: React.ReactNode;
+}
+
+const ListSubheaderStyle = styled((props:ListSubheaderStyleProps) => (
   <ListSubheader disableSticky disableGutters {...props} />
 ))(({ theme }) => ({
   ...theme.typography.overline,
@@ -32,9 +38,14 @@ const ListSubheaderStyle = styled((props) => (
   color: theme.palette.text.primary,
 }));
 
+interface  ListItemStyleProps extends ListItemButtonProps {
+  activeRoot?: boolean;
+  activeSub?: boolean;
+}
+
 const ListItemStyle = styled(ListItemButton, {
   shouldForwardProp: (prop) => prop !== 'activeRoot' && prop !== 'activeSub',
-})(({ activeRoot, activeSub, theme }) => ({
+})<ListItemStyleProps>(({ activeRoot, activeSub, theme }) => ({
   ...theme.typography.body2,
   height: 48,
   position: 'relative',
@@ -77,9 +88,13 @@ const ListItemIconStyle = styled(ListItemIcon)({
   },
 });
 
+interface ListSubItemIconStyleProps extends BoxProps {
+  active?: boolean;
+}
+
 const ListSubItemIconStyle = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'active',
-})(({ active, theme }) => ({
+})<ListSubItemIconStyleProps>(({ active, theme }) => ({
   width: 4,
   height: 4,
   display: 'flex',
@@ -96,11 +111,26 @@ const ListSubItemIconStyle = styled(Box, {
 
 // ----------------------------------------------------------------------
 
-NavSection.propTypes = {
-  navConfig: PropTypes.array.isRequired,
+type NavItemProps = {
+  title: string;
+  path: string;
+  icon?: JSX.Element;
+  info?: JSX.Element;
+  children?: {
+    title: string;
+    path: string;
+  }[];
 };
 
-export default function NavSection({ navConfig, ...other }) {
+interface NavSectionProps extends BoxProps {
+  navConfig: {
+    subheader: string;
+    items: NavItemProps[];
+  }[];
+}
+
+
+export default function NavSection({ navConfig, ...other }: NavSectionProps) {
   return (
     <Box {...other}>
       {navConfig.map((list) => (
@@ -117,17 +147,11 @@ export default function NavSection({ navConfig, ...other }) {
 
 // ----------------------------------------------------------------------
 
-NavSectionItem.propTypes = {
-  item: PropTypes.shape({
-    icon: PropTypes.any,
-    info: PropTypes.any,
-    path: PropTypes.string,
-    title: PropTypes.string,
-    children: PropTypes.array,
-  }),
+type NavSectionItemProps = {
+  item: NavItemProps;
 };
 
-function NavSectionItem({ item }) {
+function NavSectionItem({ item }: NavSectionItemProps) {
   const { pathname, asPath } = useRouter();
 
   const { title, path, icon, info, children } = item;

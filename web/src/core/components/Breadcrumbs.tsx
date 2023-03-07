@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // icons
 import chevronRight from '@iconify/icons-carbon/chevron-right';
 // next
@@ -10,14 +9,15 @@ import Iconify from './Iconify';
 
 // ----------------------------------------------------------------------
 
-Breadcrumbs.propTypes = {
-  activeLast: PropTypes.bool,
-  links: PropTypes.array.isRequired,
-  onDark: PropTypes.bool,
+type BreadCrumbsProps = {
+  activeLast?: boolean;
+  links: Array<{ name: string; href: string; icon: any; }>;
+  onDark?: boolean;
 };
 
-export default function Breadcrumbs({ links, activeLast = false, onDark = false, ...other }) {
-  const currentLink = links[links.length - 1].name;
+
+export default function Breadcrumbs({ links, activeLast = false, onDark = false, ...other }: BreadCrumbsProps ){
+  const currentLink = links[links.length - 1]?.name;
 
   const listDefault = links.map((link) => <LinkItem key={link.name} link={link} onDark={onDark} />);
 
@@ -67,16 +67,12 @@ export default function Breadcrumbs({ links, activeLast = false, onDark = false,
 
 // ----------------------------------------------------------------------
 
-LinkItem.propTypes = {
-  link: PropTypes.shape({
-    href: PropTypes.string,
-    icon: PropTypes.any,
-    name: PropTypes.string,
-  }),
-  onDark: PropTypes.bool,
+type LinkItemProps = {
+  link: { href: string; icon: any; name: string };
+  onDark?: boolean;
 };
 
-function LinkItem({ link, onDark }) {
+function LinkItem({ link, onDark }: LinkItemProps) {
   const { href = '', name, icon } = link;
   return (
     <NextLink key={name} href={href} passHref>

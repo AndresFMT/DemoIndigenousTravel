@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import Lightbox from 'react-image-lightbox';
+import Lightbox, { ILightBoxProps } from 'react-image-lightbox';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Typography, GlobalStyles } from '@mui/material';
@@ -14,10 +13,10 @@ function LightboxModalStyles() {
   const ICON_SIZE = 32;
   const ICON_COLOR = theme.palette.primary.main.replace('#', '');
 
-  const getIcon = (icon) =>
+  const getIcon = (icon: string) =>
     `url(https://api.iconify.design/carbon/${icon}.svg?color=%23${ICON_COLOR}&width=${ICON_SIZE}&height=${ICON_SIZE})`;
 
-  const Icon = (icon) => ({
+  const Icon = (icon: string) => ({
     opacity: 1,
     alignItems: 'center',
     display: 'inline-flex',
@@ -102,14 +101,20 @@ function LightboxModalStyles() {
 
 // ----------------------------------------------------------------------
 
-LightboxModal.propTypes = {
-  images: PropTypes.array.isRequired,
-  photoIndex: PropTypes.number,
-  setPhotoIndex: PropTypes.func,
-  isOpen: PropTypes.bool,
-};
+interface Props extends ILightBoxProps {
+  images: string[];
+  photoIndex: number;
+  setPhotoIndex: (index: number) => void;
+  isOpen: boolean;
+}
 
-export default function LightboxModal({ images, photoIndex, setPhotoIndex, isOpen, ...other }) {
+export default function LightboxModal({
+  images,
+  photoIndex,
+  setPhotoIndex,
+  isOpen,
+  ...other
+}: Props) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -149,3 +154,4 @@ export default function LightboxModal({ images, photoIndex, setPhotoIndex, isOpe
     </>
   );
 }
+

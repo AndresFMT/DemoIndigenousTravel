@@ -1,28 +1,27 @@
-import {styled } from '@mui/material/styles';
-import type {ReactNode} from 'react';
-import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
-import Layout from 'src/core/layouts/Layout'
-import {Page} from 'src/core/components'
-import {MarketingServicesHero} from 'src/sections/@marketing'
-import client from 'integrations/sanity.client';
+import { Suspense } from 'react';
+import { styled } from '@mui/material/styles';
 
-import { HeroImage, SectionText, BlankSpace } from 'src/sections/basic';
+import { Page } from 'src/core/components';
+import Layout from 'src/core/layouts/Layout';
+import client from 'integrations/sanity.client';
+import {HeroImage, SectionText, BlankSpace} from 'src/sections/basic';
 import { groqPageQuery } from 'src/utils/pageQuery';
 
-
-
-const RootStyle = styled('div')(({theme}) => ({
-  paddingTop: HEADER_MOBILE_HEIGHT,
+const RootStyles = styled('div')(({ theme }) => ({
+  overflow: 'hidden',
+  position: 'relative',
+  paddingTop: theme.spacing(15),
   [theme.breakpoints.up('md')]: {
-    paddingTop: HEADER_DESKTOP_HEIGHT,
-  }
-}))
+    height: '100vh',
+    paddingTop: theme.spacing(15),
+  },
+}));
 
-
-const MemberServicesPage = (props) => {
+const ReconcilliationPage = (props) => {
   return (
-    <Page title={props.title}>
-      <RootStyle>
+    <Suspense fallback="Loading...">
+      <RootStyles>
+        <Page title={props.title}>
           { props.sections.length > 0 &&
             props.sections.map((section, index) => {
               const content = section.content.reduce((acc, cur) => {
@@ -39,21 +38,19 @@ const MemberServicesPage = (props) => {
               }
             })
           }
-        <MarketingServicesHero/>
-      </RootStyle>
-    </Page>
-  )
-}
+        </Page>
+      </RootStyles>
+    </Suspense>
+  );
+};
 
-MemberServicesPage.getLayout = (page:ReactNode) => {
+ReconcilliationPage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
 
-export default MemberServicesPage;
-
 export async function getStaticProps() {
 
-  const params = { slug: 'membership' };
+  const params = { slug: 'reconciliation' };
   const data = await client.fetch(groqPageQuery, params)
   return {
     props: {
@@ -62,4 +59,5 @@ export async function getStaticProps() {
   }
 }
 
+export default ReconcilliationPage;
 

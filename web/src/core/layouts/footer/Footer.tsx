@@ -4,37 +4,40 @@ import { useState } from 'react';
 import chevronDown from '@iconify/icons-carbon/chevron-down';
 import chevronRight from '@iconify/icons-carbon/chevron-right';
 // @mui
-import { styled } from '@mui/material/styles';
+import { styled, alpha } from '@mui/material/styles';
 import Masonry from '@mui/lab/Masonry';
 import {
   Box,
   Grid,
   Link,
   Stack,
-  Button,
   Divider,
   Collapse,
   Container,
   Typography,
-  FilledInput,
-  InputAdornment,
+  LinkProps,
 } from '@mui/material';
 // hooks
 import { useResponsive } from 'src/hooks';
 // components
-import { Logo, Iconify, SocialsButton, AppStoreButton } from 'src/core/components';
+import { Logo, Iconify, SocialsButton } from 'src/core/components';
 //
 import { PageLinks } from 'src/core/layouts/nav/NavConfig';
 
 // ----------------------------------------------------------------------
 
-const LinkStyle = styled((props) => <Link target="_blank" rel="noopener" {...props} />)(
+const RootStyle = styled('div')(({ theme }) => ({
+  background: theme.palette.footer.background,
+  color: theme.palette.footer.text,
+}));
+
+const LinkStyle = styled((props: LinkProps) => <Link target="_blank" rel="noopener" {...props} />)(
   ({ theme }) => ({
-    ...theme.typography.body3,
+    ...theme.typography.body1,
     marginTop: theme.spacing(1),
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.footer.secondary,
     '&:hover': {
-      color: theme.palette.text.primary,
+      color: theme.palette.text.footer.primary,
     },
   })
 );
@@ -51,65 +54,35 @@ export default function Footer() {
     : lists.sort((listA, listB) => Number(listA.order) - Number(listB.order));
 
   return (
-    <>
+    <RootStyle>
       <Divider />
       <Container sx={{ py: { xs: 8, md: 10 } }}>
         <Grid container spacing={3} justifyContent={{ md: 'space-between' }}>
           <Grid item xs={12} md={4}>
             <Stack spacing={{ xs: 3, md: 5 }}>
               <Stack alignItems="flex-start" spacing={3}>
-                <Logo />
-                <Typography variant="body3" sx={{ color: 'text.secondary' }}>
-                  The starting point for your next project based on easy-to-customize Material-UI ©
-                  helps you build apps faster and better.
+                <Logo textColor={'#fff'} />
+                <Typography variant="h6" sx={{ color: 'text.footer.secondary' }}>
+                  Adventure To Understanding
                 </Typography>
               </Stack>
 
               <Stack spacing={2}>
-                <Typography variant="h6">Social</Typography>
-                <SocialsButton />
+                <SocialsButton sx={{
+                  color: 'footer.background',
+                  bgcolor: 'text.footer.secondary',
+                  '&:hover': {
+                    bgcolor: alpha('#fff', 0.8),
+                  },
+                }} />
               </Stack>
 
-              <Stack alignItems="flex-start">
-                <Typography variant="h6">Documentation</Typography>
-                <LinkStyle href="#">Documentation</LinkStyle>
-                <LinkStyle href="#">Changelog</LinkStyle>
-                <LinkStyle href="#">Contributing</LinkStyle>
-              </Stack>
-
-              <Stack spacing={2}>
-                <Stack spacing={1}>
-                  <Typography variant="h6">Let’s stay in touch</Typography>
-                  <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    Subscribe to our newsletter to receive latest articles to your inbox weekly.
-                  </Typography>
-                </Stack>
-                <FilledInput
-                  placeholder="Email address"
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <Button variant="contained" size="small" sx={{ py: '9px' }}>
-                        Subscribe
-                      </Button>
-                    </InputAdornment>
-                  }
-                  sx={{
-                    pr: 0.5,
-                    '& .MuiFilledInput-input': { py: '14px' },
-                  }}
-                />
-              </Stack>
-
-              <Stack spacing={2}>
-                <Typography variant="h6">Apps</Typography>
-                <AppStoreButton />
-              </Stack>
             </Stack>
           </Grid>
 
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8}>
             {isDesktop ? (
-              <Masonry columns={3} spacing={3}>
+              <Masonry columns={2} spacing={4}>
                 {renderLists.map((list) => (
                   <ListDesktop key={list.subheader} list={list} />
                 ))}
@@ -135,11 +108,11 @@ export default function Footer() {
           sx={{ py: 3, textAlign: 'center' }}
         >
           <Typography variant="body3" sx={{ color: 'text.secondary' }}>
-            © 2021. All rights reserved
+            © 2023. All rights reserved
           </Typography>
           <Stack direction="row" spacing={3} justifyContent="center">
             <Link variant="body3" sx={{ color: 'text.secondary' }}>
-              Help Center
+              Privacy Policy
             </Link>
             <Link variant="body3" sx={{ color: 'text.secondary' }}>
               Terms of Service
@@ -147,7 +120,7 @@ export default function Footer() {
           </Stack>
         </Stack>
       </Container>
-    </>
+    </RootStyle>
   );
 }
 
@@ -160,12 +133,13 @@ ListDesktop.propTypes = {
   }),
 };
 
+
 function ListDesktop({ list }) {
   const { subheader, items } = list;
 
   return (
     <Stack alignItems="flex-start" sx={{ pb: { md: 1 } }}>
-      <Typography variant="h6">{subheader}</Typography>
+      <Typography variant="h6" sx={{color: 'text.footer.secondary'}}>{subheader}</Typography>
       {items?.map((link) => (
         <LinkStyle key={link.title} href={link.path}>
           {link.title}

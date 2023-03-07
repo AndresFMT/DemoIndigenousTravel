@@ -1,21 +1,21 @@
-import { memo } from 'react';
-import { m } from 'framer-motion';
-
 import NextLink from 'next/link';
 
-import { useTheme } from '@mui/material/styles';
+import { SxProps, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 import { IndigenousTourismLogo } from 'src/assets'
 
-function Logo({ onDark = false, isSimple = false, isScrolling, sx}) {
+type Props = {
+  isSimple?: boolean;
+  isScrolling?: boolean;
+  textColor?: string;
+  sx?: SxProps;
+};
+
+function Logo({  isSimple = false, isScrolling, textColor, sx}: Props) {
 
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
-
-  const PRIMARY_MAIN = theme.palette.primary.main;
-  const LIGHT_COLOR = theme.palette.common.white;
-  const DARK_COLOR = theme.palette.grey[800];
 
   return (
     <NextLink href="/" passHref>
@@ -32,7 +32,7 @@ function Logo({ onDark = false, isSimple = false, isScrolling, sx}) {
         {isSimple ? (
           <IndigenousTourismLogo/>
         ) : (
-          <IndigenousTourismLogo withText={true} isWhite={!isLight}/>
+          <IndigenousTourismLogo withText={true} isWhite={!isLight} textColor={textColor}/>
         )}
       </Box>
     </NextLink>

@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 // @mui
 import { styled } from '@mui/material/styles';
-import { LinearProgress, Box } from '@mui/material';
+import { LinearProgress, Box, SxProps } from '@mui/material';
 //
 import cssStyles from 'src/utils/cssStyles';
 
@@ -24,11 +23,11 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-LoadingScreen.propTypes = {
-  sx: PropTypes.object,
+type Props = {
+  sx?: SxProps;
 };
 
-export default function LoadingScreen({ sx }) {
+export default function LoadingScreen({ sx }: Props) {
   return (
     <>
       <RootStyle sx={sx}>
@@ -39,3 +38,4 @@ export default function LoadingScreen({ sx }) {
     </>
   );
 }
+

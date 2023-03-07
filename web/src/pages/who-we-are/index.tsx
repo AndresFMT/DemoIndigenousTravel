@@ -20,6 +20,7 @@ const WhoWeArePage = (props) => {
     <Suspense fallback="Loading...">
       <RootStyles>
         <Page>
+
           <h1>WhoWeArePage</h1>
           <p>Find me in ./web/pages/WhoWeArePage.tsx</p>
         </Page>
