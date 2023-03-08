@@ -31,7 +31,6 @@ const ImageBreak = ({ title, description, image, backgroundColor, ...other }: Pr
   const masterImage = imageBuilder.width(1920).height(800).url();
 
 
-
   return (
     <RootStyle>
       <MotionViewport>

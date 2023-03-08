@@ -28,6 +28,7 @@ export default defineType({
       options: {  
         list: [
           {title: 'Hero', value: 'heroImage'},
+          {title: 'Text Content Image Background', value: 'sectionTextImage'},
           {title: 'Text Content', value: 'sectionText'},
           {title: 'Blank Space', value: 'blankSpace'},
         ],
@@ -45,6 +46,7 @@ export default defineType({
             {type: 'sectionHeading'},
             {type: 'sectionText'},
             {type: 'sectionVideo'},
+            {type: 'hoopImage'},
           ],
         },
       ],

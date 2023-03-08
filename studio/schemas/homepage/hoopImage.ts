@@ -39,7 +39,7 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'overlayBackground',
+      name: 'backgroundColor',
       title: 'Overlay Background',
       type: 'color',
     }),

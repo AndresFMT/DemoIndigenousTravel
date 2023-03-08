@@ -1,7 +1,19 @@
+type Props = {
+  backgroundColor?: {
+    hex: string;
+  }
+}
 
-const BlankSpace = () => {
+const BlankSpace = ({backgroundColor}: Props) => {
+
+  const sectionBackground = backgroundColor ? backgroundColor.hex : 'primary.main';
+  const sectionSX = {
+    backgroundColor: sectionBackground,
+    height: '100px',
+  };
+
   return (
-    <div style={{ height: '100px' }}></div>
+    <div style={sectionSX}></div>
   )
 }
 

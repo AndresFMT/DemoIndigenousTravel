@@ -28,6 +28,14 @@ export const groqPageQuery = groq`
             title,
             text,
             textColor
+          },
+          _type == 'hoopImage' => {
+            'type': _type,
+            title,
+            headingOverlay,
+            textOverlay,
+            image,
+            backgroundColor
           }
         }
       }

@@ -4,8 +4,13 @@ import { forwardRef } from 'react';
 import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
+type PageProps = {
+  children: React.ReactNode;
+  meta?: React.ReactNode;
+  title: string;
+};
 
-const Page = forwardRef(({ children, meta, title }:any, ref) => (
+const Page = forwardRef<HTMLDivElement, PageProps>(({ children, meta, title }, ref) => (
   <>
     <Head>
       <title>{`${title} | ITM`}</title>

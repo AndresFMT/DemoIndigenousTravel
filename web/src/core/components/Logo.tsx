@@ -1,4 +1,4 @@
-import NextLink from 'next/link';
+import Link from 'next/link';
 
 import { SxProps, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
@@ -12,13 +12,13 @@ type Props = {
   sx?: SxProps;
 };
 
-function Logo({  isSimple = false, isScrolling, textColor, sx}: Props) {
+function Logo({ isSimple = false, isScrolling, textColor, sx}: Props) {
 
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
 
   return (
-    <NextLink href="/" passHref>
+    <Link href="/" passHref>
       <Box
         sx={{
           width: isScrolling ? 120: 200,
@@ -30,12 +30,12 @@ function Logo({  isSimple = false, isScrolling, textColor, sx}: Props) {
         }}
       >
         {isSimple ? (
-          <IndigenousTourismLogo/>
+          <IndigenousTourismLogo />
         ) : (
           <IndigenousTourismLogo withText={true} isWhite={!isLight} textColor={textColor}/>
         )}
       </Box>
-    </NextLink>
+    </Link>
   );
 
 }

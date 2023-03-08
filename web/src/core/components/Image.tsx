@@ -13,6 +13,8 @@ interface Props extends IProps {
   sx?: SxProps<Theme>;
   ratio?: ImageRatio;
   disabledEffect?: boolean;
+  children?: React.ReactNode;
+  backgroundColor?: string;
 }
 
 export default function Image({
@@ -20,6 +22,8 @@ export default function Image({
   disabledEffect = false,
   effect = 'blur',
   sx,
+  children,
+  backgroundColor,
   ...other
 }:Props) {
   if (ratio) {
@@ -45,6 +49,11 @@ export default function Image({
           ...sx,
         }}
       >
+        <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingLeft: '10px', paddingRight: '5px', height: '100%', width: '100%', backgroundColor: backgroundColor}}>
+          {children}
+          </div>
+        </div>
         <Box
           component={LazyLoadImage}
           wrapperClassName="wrapper"
@@ -64,11 +73,11 @@ export default function Image({
         lineHeight: 0,
         display: 'block',
         overflow: 'hidden',
+        position: 'relative',
         '& .wrapper': { width: 1, height: 1, backgroundSize: 'cover !important' },
         ...sx,
       }}
     >
-
         <Box
           component={LazyLoadImage}
           wrapperClassName="wrapper"
@@ -77,6 +86,11 @@ export default function Image({
           sx={{ width: 1, height: 1, objectFit: 'cover' }}
           {...other}
         />
+        <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingLeft: '10px', paddingRight: '5px', height: '100%', width: '100%', backgroundColor: backgroundColor, textAlign: 'center'}}>
+          {children}
+          </div>
+        </div>
     </Box>
   );
 }

@@ -3,9 +3,6 @@ import { styled } from '@mui/material/styles';
 import { Box, Container, Typography } from '@mui/material';
 
 import { MotionViewport, varFade } from 'src/core/components/animate';
-import { urlFor } from 'integrations/sanityImage';
-
-import { Section, ReducedContent } from 'src/@types/sanity';
 
 const RootStyle = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -17,18 +14,17 @@ const RootStyle = styled('div')(({ theme }) => ({
   },
 }));
 
+type Props = {
+  heading?: string;
+  headingColor?: string;
+  text?: string;
+  textColor?: string;
+  backgroundColor?: { hex: string };
+};
 
-const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
+const MissionStatement: React.FC<Props> = ({ heading, headingColor, text, textColor, backgroundColor, showRibbon}) => {
 
-  const reducedContent: ReducedContent = content.reduce((acc, cur) => {
-    acc = { ...acc, ...cur };
-    return acc;
-  }, {} as ReducedContent);
-
-  const image = reducedContent.image;
-  const imageBuilder = image ? urlFor(image).auto('format').fit('max') : null;
-
-  const sectionBackground = backgroundColor ? backgroundColor.hex : '#fff';
+  const sectionBackground = backgroundColor ? backgroundColor.hex : 'primary.main';
   const sectionColor = backgroundColor ? 'primary.contrastText' : 'primary.burgundy';
 
   const sectionSX = {
@@ -36,13 +32,6 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
     color: sectionColor,
   };
 
-
-  const {
-    heading,
-    headingColor,
-    text,
-    textColor,
-  } = reducedContent;
 
   return (
     <RootStyle sx = { sectionSX } >
@@ -54,11 +43,11 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
               <img src="/bead_graphic.svg" alt="ribbon" />
               </Box>
             </Box>
-            <Box sx={{ my: 3, mx: 'auto', maxWidth: 750, color: 'text.primary'}}>
-              <Typography variant="h2" sx={{ py: 2, color: headingColor?.hex }}>
+            <Box sx={{ my: 3, mx: 'auto', maxWidth: 750 }}>
+              <Typography variant="h2" sx={{ py: 2, color: headingColor }}>
                 {heading}
               </Typography>
-              <Typography variant="body1" sx={{ fontWeight: '800', color: textColor?.hex}} >
+              <Typography variant="body1" sx={{ fontWeight: '800'}} >
                 {text}
               </Typography>
             </Box>
@@ -69,4 +58,5 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
   );
 };
 
-export default SectionText;
+export default MissionStatement;
+

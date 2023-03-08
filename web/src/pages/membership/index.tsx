@@ -3,10 +3,9 @@ import type {ReactNode} from 'react';
 import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
 import Layout from 'src/core/layouts/Layout'
 import {Page} from 'src/core/components'
-import {MarketingServicesHero} from 'src/sections/@marketing'
 import client from 'integrations/sanity.client';
 
-import { HeroImage, SectionText, BlankSpace } from 'src/sections/basic';
+import { DynamicGenericSections } from 'src/sections/basic';
 import { groqPageQuery } from 'src/utils/pageQuery';
 
 
@@ -23,23 +22,7 @@ const MemberServicesPage = (props) => {
   return (
     <Page title={props.title}>
       <RootStyle>
-          { props.sections.length > 0 &&
-            props.sections.map((section, index) => {
-              const content = section.content.reduce((acc, cur) => {
-                acc = {...acc,...cur};
-                return acc;
-              }, {});
-              switch (section.type) {
-                case 'heroImage':
-                  return <HeroImage {...content} key={index} />;
-                case 'sectionText':
-                  return <SectionText {...content} key={index} />;
-                default:
-                  return <BlankSpace key={index} />
-              }
-            })
-          }
-        <MarketingServicesHero/>
+          <DynamicGenericSections {...props} />
       </RootStyle>
     </Page>
   )
