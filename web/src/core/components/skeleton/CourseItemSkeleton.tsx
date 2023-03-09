@@ -1,16 +1,15 @@
-import PropTypes from 'prop-types';
 // @mui
-import { Skeleton, Stack, Card } from '@mui/material';
+import { Skeleton, Stack, Card, CardProps } from '@mui/material';
 // hooks
 import { useResponsive } from 'src/hooks';
 
 // ----------------------------------------------------------------------
 
-CourseItemSkeleton.propTypes = {
-  vertical: PropTypes.bool,
-};
+interface Props extends CardProps {
+  vertical?: boolean;
+}
 
-export default function CourseItemSkeleton({ vertical, ...other }) {
+export default function CourseItemSkeleton({ vertical, ...other }: Props) {
   const isDesktop = useResponsive('up', 'sm');
 
   const verticalStyle = vertical || !isDesktop;

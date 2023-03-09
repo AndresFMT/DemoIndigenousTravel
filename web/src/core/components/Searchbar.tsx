@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 //icon
 import searchIcon from '@iconify/icons-carbon/search';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
-import { Input, Slide, Button, InputAdornment, ClickAwayListener } from '@mui/material';
+import { Input, Slide, Button, InputAdornment, ClickAwayListener, SxProps } from '@mui/material';
 // config
 import { HEADER_MOBILE_HEIGHT, HEADER_DESKTOP_HEIGHT } from 'src/config';
 // components
@@ -35,11 +34,11 @@ const SearchbarStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-Searchbar.propTypes = {
-  sx: PropTypes.object,
+type SearchbarProps = {
+  sx?: SxProps;
 };
 
-export default function Searchbar({ sx }) {
+export default function Searchbar({ sx }: SearchbarProps) {
   const [isOpen, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -83,3 +82,4 @@ export default function Searchbar({ sx }) {
     </ClickAwayListener>
   );
 }
+

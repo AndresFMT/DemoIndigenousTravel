@@ -126,15 +126,17 @@ export default function Footer() {
 
 // ----------------------------------------------------------------------
 
-ListDesktop.propTypes = {
-  list: PropTypes.shape({
-    items: PropTypes.array,
-    subheader: PropTypes.string,
-  }),
+type ListProps = {
+  list: {
+    subheader: string;
+    items?: {
+      title: string;
+      path: string;
+    }[];
+  };
 };
 
-
-function ListDesktop({ list }) {
+function ListDesktop({ list }: ListProps) {
   const { subheader, items } = list;
 
   return (
@@ -151,14 +153,8 @@ function ListDesktop({ list }) {
 
 // ----------------------------------------------------------------------
 
-ListMobile.propTypes = {
-  list: PropTypes.shape({
-    items: PropTypes.array,
-    subheader: PropTypes.string,
-  }),
-};
 
-function ListMobile({ list }) {
+function ListMobile({ list }: ListProps) {
   const { subheader, items } = list;
 
   const [expand, setExpand] = useState(false);

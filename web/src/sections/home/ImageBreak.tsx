@@ -6,12 +6,13 @@ import { Image } from 'src/core/components';
 
 import { urlFor } from 'integrations/sanityImage';
 import { MotionViewport, varFade } from 'src/core/components/animate';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 type Props = {
   sx?: any;
   title?: string;
   description?: string;
-  image: any;
+  image: SanityImageSource;
   backgroundColor?: { hex: string };
 };
 
@@ -25,18 +26,17 @@ const RootStyle = styled('section')(({ theme }) => ({
 const ImageBreak = ({ title, description, image, backgroundColor, ...other }: Props) => {
 
   const { hex } = backgroundColor || { hex: '#A69D88' };
-  const { hotspot } = image;
-  const imageBuilder = urlFor(image).withOptions(image.crop).focalPoint(hotspot?.x, hotspot?.y).fit('crop').crop('focalpoint');
+  const imageBuilder = urlFor(image);
 
   const masterImage = imageBuilder.width(1920).height(800).url();
-
 
   return (
     <RootStyle>
       <MotionViewport>
         <Stack sx={{ background: hex }}>
           <m.div variants={varFade().inUp}>
-            <Image imageBuilder={imageBuilder} src={masterImage}
+            <Image src={masterImage}
+              alt={''}
               {...other} />
           </m.div>
           <Grid item xs={12} sm={6} sx={{
@@ -45,7 +45,7 @@ const ImageBreak = ({ title, description, image, backgroundColor, ...other }: Pr
 
           }}>
             <Box sx={{ my: 3, mx: 'auto', maxWidth: 750 }}>
-              <Typography variant="h2Ubuntu" component="h2" sx={{ py: 2, color: 'primary.contrastText' }}>
+              <Typography variant="h2" component="h2" sx={{ py: 2, color: 'primary.contrastText' }}>
                 <Box component={'span'}>
                   {title}
                 </Box>

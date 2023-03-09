@@ -1,12 +1,4 @@
 export { default as homepageHero } from './HomeHero';
-export { default as homepageFAQs } from './HomeFAQs';
-export { default as homepageNewStart } from './HomeNewStart';
-export { default as homepageDemoPages } from './HomeDemoPages';
-export { default as homepageCombination } from './HomeCombination';
-export { default as homepageForDesigner } from './HomeForDesigner';
-export { default as homepageAdvertisement } from './HomeAdvertisement';
-export { default as homepageFeatureHighlights } from './HomeFeatureHighlights';
-export { default as homepageFlexibleComponents } from './HomeFlexibleComponents';
 export { default as homepageSpacer } from './HomeSpacer';
 export { default as imageBreak } from './ImageBreak';
 export { default as homepageHoopImage } from './HomeHoopImage';

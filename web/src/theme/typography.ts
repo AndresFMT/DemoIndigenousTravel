@@ -41,7 +41,6 @@ declare module '@mui/material/Typography' {
 
 const FONT_PRIMARY = 'Nunito Sans, sans-serif';
 const FONT_SECONDARY = 'Ubuntu, sans-serif';
-const FONT_HERO = 'Ubuntu, sans-serif';
 
 const typography = {
   fontFamily: FONT_PRIMARY,
@@ -131,20 +130,6 @@ const typography = {
     fontSize: pxToRem(14),
     textTransform: 'capitalize',
   },
-  hero: {
-    fontFamily: FONT_HERO,
-    fontWeight: 700,
-    lineHeight: 28 / 18,
-    fontSize: pxToRem(32),
-    ...responsiveFontSizes({ sm: 52, md: 68, lg: 84 }),
-  },
-  h2Ubuntu: {
-    fontFamily: FONT_HERO,
-    fontWeight: 500,
-    lineHeight: 64 / 48,
-    fontSize: pxToRem(32),
-    ...responsiveFontSizes({ sm: 40, md: 44, lg: 48 }),
-  },
-};
+} as const;
 
 export default typography;

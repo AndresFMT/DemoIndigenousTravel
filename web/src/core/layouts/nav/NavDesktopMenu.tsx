@@ -14,10 +14,27 @@ import { Image, CarouselDots, CarouselArrows } from 'src/core/components';
 import { DialogAnimate, MotionContainer, varFade } from 'src/core/components/animate';
 
 // ----------------------------------------------------------------------
+import {
+  BoxProps,
+  ListItemProps,
+  ListSubheaderProps,
+} from '@mui/material';
+// config
+// @types
+import { NavDesktopMenuProps } from 'src/@types/layout';
+//
+
+interface SubLinkStyleProps extends ListItemProps {
+  active?: boolean;
+}
+
+interface IconBulletStyleProps extends BoxProps {
+  active?: boolean;
+}
 
 const SubLinkStyle = styled(ListItem, {
   shouldForwardProp: (prop) => prop !== 'active',
-})(({ active, theme }) => ({
+})<SubLinkStyleProps>(({ active, theme }) => ({
   ...theme.typography.body3,
   padding: 0,
   width: 'auto',
@@ -35,7 +52,7 @@ const SubLinkStyle = styled(ListItem, {
 
 const IconBulletStyle = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'active',
-})(({ active, theme }) => ({
+})<IconBulletStyleProps>(({ active, theme }) => ({
   width: 12,
   height: 24,
   display: 'flex',
@@ -62,7 +79,7 @@ const IconBulletStyle = styled(Box, {
   }),
 }));
 
-const ListSubheaderStyled = styled((props) => (
+const ListSubheaderStyled = styled((props: ListSubheaderProps) => (
   <ListSubheader disableSticky disableGutters {...props} />
 ))(({ theme }) => ({
   ...theme.typography.h5,
@@ -72,13 +89,17 @@ const ListSubheaderStyled = styled((props) => (
 
 // ----------------------------------------------------------------------
 
-
-export default function NavDesktopMenu({ lists, isOpen, onClose, isScrolling }) {
+export default function NavDesktopMenu({
+  lists,
+  isOpen,
+  onClose,
+  isScrolling,
+}: NavDesktopMenuProps) {
   const router = useRouter();
 
   const theme = useTheme();
 
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<Slider | null>(null);
 
   const carouselList = lists.filter((list) => list.subheader !== 'Common');
 
@@ -110,6 +131,7 @@ export default function NavDesktopMenu({ lists, isOpen, onClose, isScrolling }) 
       maxWidth={false}
       open={isOpen}
       onClose={onClose}
+      sx={{}}
       variants={
         varFade({
           distance: 80,
@@ -139,8 +161,9 @@ export default function NavDesktopMenu({ lists, isOpen, onClose, isScrolling }) 
             <Slider ref={carouselRef} {...carouselSettings}>
               {carouselList.map((list) => {
                 const { subheader, items, cover } = list;
+                if (typeof items === 'undefined') return null;
 
-                const path = items.length > 0 ? items[0].path : '';
+                const path = items.length > 0 ? items[0]?.path : '';
 
                 return (
                   <List key={subheader} disablePadding sx={{ px: 2 }} component={MotionContainer}>
@@ -149,7 +172,7 @@ export default function NavDesktopMenu({ lists, isOpen, onClose, isScrolling }) 
                     </m.div>
 
                     {cover ? (
-                      <NextLink href={path} passHref>
+                      <NextLink href={path|| '#'} passHref>
                         <Box
                           component={m.a}
                           variants={varFade({ distance: 80 }).inLeft}
@@ -225,9 +248,9 @@ export default function NavDesktopMenu({ lists, isOpen, onClose, isScrolling }) 
           }}
         >
           <List disablePadding sx={{ py: 6 }} component={MotionContainer}>
-            <ListSubheaderStyled>{commonList.subheader}</ListSubheaderStyled>
+            <ListSubheaderStyled>{commonList?.subheader}</ListSubheaderStyled>
             <Stack spacing={1.5} alignItems="flex-start">
-              {commonList.items.map((item) => {
+              {commonList?.items.map((item) => {
                 const { title, path } = item;
                 const active = router.pathname === path;
 
@@ -243,8 +266,13 @@ export default function NavDesktopMenu({ lists, isOpen, onClose, isScrolling }) 
 
 // ----------------------------------------------------------------------
 
+type LinkItemProps = {
+  title: string;
+  href: string;
+  active: boolean;
+};
 
-function LinkItem({ title, href, active }) {
+function LinkItem({ title, href, active }: LinkItemProps) {
   return (
     <NextLink key={title} href={href} passHref>
       <Link

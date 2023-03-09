@@ -2,6 +2,7 @@ import {  LazyLoadImageProps } from 'react-lazy-load-image-component';
 // @mui
 import { Theme } from '@mui/material/styles';
 import { Box, BoxProps, SxProps } from '@mui/material';
+import Image from 'next/image';
 
 // TODO: implement urlFor to handle imageBuilder and take optional values to change ratio
 // ----------------------------------------------------------------------
@@ -70,11 +71,9 @@ export default function SanityImage({
               />
             )
           })}
-          <img
-            srcSet={srcset.join(', ')}
+          <Image
             src={mobileImage}
             alt={other.alt || 'unbranded image'}
-            {...other}
           />
         </picture>
       </Box>
@@ -107,11 +106,9 @@ export default function SanityImage({
             />
           )
         })}
-        <img
-          srcSet={srcset.join(', ')}
+        <Image
           src={mobileImage}
           alt={other.alt || 'unbranded image'}
-          {...other}
         />
       </picture>
     </Box>

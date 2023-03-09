@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import { Box, Container, Typography } from '@mui/material';
 
 import { MotionViewport, varFade } from 'src/core/components/animate';
+import Image from 'next/image';
 
 const RootStyle = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -20,6 +21,7 @@ type Props = {
   text?: string;
   textColor?: string;
   backgroundColor?: { hex: string };
+  showRibbon?: boolean;
 };
 
 const MissionStatement: React.FC<Props> = ({ heading, headingColor, text, textColor, backgroundColor, showRibbon}) => {
@@ -40,7 +42,7 @@ const MissionStatement: React.FC<Props> = ({ heading, headingColor, text, textCo
           <m.div variants={varFade().inUp}>
             <Box sx={{ my: 10, mx: 'auto', maxWidth: 750 , position: 'relative'}}>
               <Box sx={{ width: '160px', height: '200px', position: 'absolute', display: 'inline-block', top: 0, right: '50%', transform: 'translateY(-100%)' }}>
-              <img src="/bead_graphic.svg" alt="ribbon" />
+                <Image src="/bead_graphic.svg" alt="ribbon" />
               </Box>
             </Box>
             <Box sx={{ my: 3, mx: 'auto', maxWidth: 750 }}>

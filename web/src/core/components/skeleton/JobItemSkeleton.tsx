@@ -1,9 +1,9 @@
 // @mui
-import { Skeleton, Stack, Card, Divider, Box } from '@mui/material';
+import { Skeleton, Stack, Card, Divider, Box, CardProps } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-export default function JobItemSkeleton({ ...other }) {
+export default function JobItemSkeleton({ ...other }: CardProps) {
   return (
     <Card {...other}>
       <Stack spacing={2} sx={{ p: 3 }}>

@@ -18,6 +18,7 @@ import {
   Collapse,
   ListItemText,
   ListItemButton,
+  ListItemButtonProps,
 } from '@mui/material';
 // routes
 import Routes from 'src/routes';
@@ -26,12 +27,17 @@ import { DRAWER_WIDTH } from 'src/config';
 // components
 import { Logo, Scrollbar, Iconify, NavSection } from 'src/core/components';
 import { IconButtonAnimate } from 'src/core/components/animate';
+import { NavItemMobileProps, NavProps } from 'src/@types/layout';
 
 // ----------------------------------------------------------------------
 
+interface RootLinkStyleProps extends ListItemButtonProps {
+  active?: boolean;
+}
+
 const RootLinkStyle = styled(ListItemButton, {
   shouldForwardProp: (prop) => prop !== 'active',
-})(({ active, theme }) => ({
+})<RootLinkStyleProps>(({ active, theme }) => ({
   ...theme.typography.body2,
   height: 48,
   textTransform: 'capitalize',
@@ -48,7 +54,7 @@ const RootLinkStyle = styled(ListItemButton, {
 // ----------------------------------------------------------------------
 
 
-export default function NavMobile({ navConfig, sx }) {
+export default function NavMobile({ navConfig, sx }: NavProps) {
   const { pathname } = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -114,7 +120,7 @@ export default function NavMobile({ navConfig, sx }) {
 // ----------------------------------------------------------------------
 
 
-function NavItemMobile({ item }) {
+function NavItemMobile({ item }: NavItemMobileProps) {
   const { pathname } = useRouter();
 
   const { title, path, children } = item;

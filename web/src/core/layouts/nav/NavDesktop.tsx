@@ -7,18 +7,27 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Link, Stack } from '@mui/material';
+import { Link, Stack, LinkProps } from '@mui/material';
 // components
 import { Iconify } from 'src/core/components';
+import { NavProps, NavItemDesktopProps } from 'src/@types/layout';
+
 //
 import NavDesktopMenu from './NavDesktopMenu';
 
 // ----------------------------------------------------------------------
 
+ interface RootLinkStyleProps extends LinkProps {
+  open?: boolean;
+  active?: boolean;
+  scrolling?: boolean;
+  transparent?: boolean;
+}
+
 const RootLinkStyle = styled(Link, {
   shouldForwardProp: (prop) =>
     prop !== 'active' && prop !== 'scrolling' && prop !== 'transparent' && prop !== 'open',
-})(({ active, scrolling, transparent, open, theme }) => {
+})<RootLinkStyleProps>(({ active, scrolling, transparent, open, theme }) => {
   const dotActiveStyle = {
     '&:before': {
       top: 0,
@@ -62,7 +71,7 @@ const RootLinkStyle = styled(Link, {
 
 // ----------------------------------------------------------------------
 
-export default function NavDesktop({ isScrolling, isTransparent, navConfig }) {
+export default function NavDesktop({ isScrolling, isTransparent, navConfig }:NavProps) {
   return (
     <Stack
       direction="row"
@@ -94,7 +103,7 @@ export default function NavDesktop({ isScrolling, isTransparent, navConfig }) {
 // ----------------------------------------------------------------------
 
 
-function NavItemDesktop({ item, isScrolling, isTransparent }) {
+function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProps) {
   const { title, path, children } = item;
 
   const { pathname, asPath } = useRouter();

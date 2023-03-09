@@ -10,11 +10,12 @@ import { Page } from "src/core/components"
 import Fallback from 'src/sections/fallback'
 import * as HomepageContent from 'src/sections/home'
 
+import { HomepageContent as HomepageContentType } from "src/@types/sanity";
+
 type Props = {
-  content: {
-    _type: string
-    [key: string]: any
-  }[]
+  description?: string;
+  title?: string;
+  content: HomepageContentType[];
 }
 
 const HomePage: BlitzPage<Props> = ({content}) => {

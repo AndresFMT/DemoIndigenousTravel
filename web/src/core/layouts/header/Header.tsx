@@ -11,9 +11,12 @@ import { HEADER_DESKTOP_HEIGHT } from 'src/config';
 import { ToolbarStyle, ToolbarShadowStyle } from './HeaderToolbarStyle';
 import { Logo, Label } from 'src/core/components';
 import { NavDesktop,  NavMobile, navConfig} from 'src/core/layouts/nav';
-import Searchbar from 'src/core/components/Searchbar';
 
-const Header = ({transparent}) => {
+type ListProps = {
+  transparent?: boolean;
+};
+
+const Header = ({transparent}: ListProps) => {
 
   const theme = useTheme();
 
@@ -36,7 +39,7 @@ const Header = ({transparent}) => {
         >
           <Box sx={{ lineHeight: 0, position: 'relative' }}>
             <NextLink href="/" >
-              <Logo onDark={transparent && !isScrolling} isScrolling={isScrolling} sx={{}}/>
+              <Logo  isScrolling={isScrolling} sx={{}}/>
 
             </NextLink>
           </Box>

@@ -12,7 +12,11 @@ import shadows, { customShadows } from './shadows';
 
 // ----------------------------------------------------------------------
 
-export default function ThemeProvider({ children }) {
+type ThemeProviderProps = {
+  children: React.ReactNode;
+};
+
+export default function ThemeProvider({ children }: ThemeProviderProps) {
   const { themeMode, themeDirection } = useSettings();
   const isLight = themeMode === 'light';
 

@@ -10,6 +10,7 @@ import { SanityImage, HoopButton } from 'src/core/components';
 import { urlFor } from 'integrations/sanityImage';
 
 import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +24,7 @@ const RootStyle = styled('section')(({ theme }) => ({
   },
 }));
 
-const SectionContainer = styled('div')(({ theme }) => ({
+const SectionContainer = styled('div')(() => ({
   position: 'relative',
   zIndex: 1,
   width: '100%',
@@ -34,13 +35,13 @@ const SectionContainer = styled('div')(({ theme }) => ({
 type Props = {
   heading?: string;
   kicker?: string;
-  image: string;
-  enableCTA: boolean;
-  text: string;
-  videoUrl: string;
+  image?: string|SanityImageSource;
+  enableCTA?: boolean;
+  text?: string;
+  videoUrl?: string;
 };
 
-export default function HomeHero({heading, kicker, image, enableCTA, text, videoUrl, ...other}: Props) {
+export default function HomeHero({heading, kicker, image, enableCTA, text, videoUrl}: Props) {
 
   const imageBuilder = image ? urlFor(image): null;
 

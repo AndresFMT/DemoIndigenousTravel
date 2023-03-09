@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // icons
 import closeIcon from '@iconify/icons-carbon/close';
 import settingsAdjust from '@iconify/icons-carbon/settings-adjust';
@@ -43,13 +42,13 @@ const BadgeStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-ToggleButtonSetting.propTypes = {
-  isOpen: PropTypes.bool,
-  notDefault: PropTypes.bool,
-  onToggle: PropTypes.func,
+type Props = {
+  notDefault: boolean;
+  isOpen: boolean;
+  onToggle: VoidFunction;
 };
 
-export default function ToggleButtonSetting({ isOpen, onToggle, notDefault }) {
+export default function ToggleButtonSetting({ isOpen, onToggle, notDefault }: Props) {
   return (
     <ToggleButtonStyle>
       {notDefault && !isOpen && <BadgeStyle />}
@@ -71,3 +70,4 @@ export default function ToggleButtonSetting({ isOpen, onToggle, notDefault }) {
     </ToggleButtonStyle>
   );
 }
+

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // icons
 import closeIcon from '@iconify/icons-carbon/close';
 import resetIcon from '@iconify/icons-carbon/reset';
@@ -10,13 +9,13 @@ import { IconButtonAnimate } from '../animate';
 
 // ----------------------------------------------------------------------
 
-HeaderSetting.propTypes = {
-  notDefault: PropTypes.bool,
-  onReset: PropTypes.func,
-  onToggle: PropTypes.func,
+type Props = {
+  notDefault: boolean;
+  onReset: VoidFunction;
+  onToggle: VoidFunction;
 };
 
-export default function HeaderSetting({ notDefault, onReset, onToggle }) {
+export default function HeaderSetting({ notDefault, onReset, onToggle }: Props) {
   return (
     <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ py: 2, px: 3 }}>
       <Typography variant="h6">Settings</Typography>
@@ -33,3 +32,4 @@ export default function HeaderSetting({ notDefault, onReset, onToggle }) {
     </Stack>
   );
 }
+

@@ -9,8 +9,11 @@ import createGradient from 'src/utils/createGradient';
 import componentsOverride from 'src/theme/overrides';
 
 // ----------------------------------------------------------------------
+type Props = {
+  children: React.ReactNode;
+};
 
-export default function ThemeColorPresets({ children }) {
+export default function ThemeColorPresets({ children }: Props) {
   const defaultTheme = useTheme();
   const { setColor } = useSettings();
 

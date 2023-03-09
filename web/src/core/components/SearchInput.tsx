@@ -1,17 +1,12 @@
-import PropTypes from 'prop-types';
 import searchIcon from '@iconify/icons-carbon/search';
 // @mui
-import { InputAdornment, FilledInput } from '@mui/material';
+import { InputAdornment, FilledInput, FilledInputProps } from '@mui/material';
 //
 import Iconify from './Iconify';
 
 // ----------------------------------------------------------------------
 
-SearchInput.propTypes = {
-  sx: PropTypes.object,
-};
-
-export default function SearchInput({ sx, ...other }) {
+export default function SearchInput({ sx, ...other }: FilledInputProps) {
   return (
     <FilledInput
       fullWidth
@@ -29,3 +24,4 @@ export default function SearchInput({ sx, ...other }) {
     />
   );
 }
+

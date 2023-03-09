@@ -1,8 +1,8 @@
-import { Skeleton, Stack, Card, Divider } from '@mui/material';
+import { Skeleton, Stack, Card, Divider, CardProps } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-export default function TourItemSkeleton({ ...other }) {
+export default function TourItemSkeleton({ ...other }: CardProps) {
   return (
     <Card {...other}>
       <Skeleton variant="rectangular" sx={{ width: 1, height: 240 }} />

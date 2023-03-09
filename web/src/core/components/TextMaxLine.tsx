@@ -1,13 +1,25 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+import { ReactNode } from 'react';
 // @mui
-import { Typography, Link } from '@mui/material';
+import { Typography, TypographyProps, LinkProps, Link } from '@mui/material';
 // utils
 import GetFontValue from 'src/utils/getFontValue';
+// theme
+import { TypographyVariant } from 'src/theme/typography';
 
 // ----------------------------------------------------------------------
 
-const TextMaxLine = forwardRef(
+type IProps = TypographyProps & LinkProps;
+
+interface Props extends IProps {
+  line?: number;
+  asLink?: boolean;
+  persistent?: boolean;
+  children: ReactNode;
+  variant?: TypographyVariant;
+}
+
+const TextMaxLine = forwardRef<HTMLAnchorElement, Props>(
   ({ asLink, variant = 'body1', line = 2, persistent = false, children, sx, ...other }, ref) => {
     const { lineHeight } = GetFontValue(variant);
 
@@ -21,7 +33,7 @@ const TextMaxLine = forwardRef(
         height: lineHeight * line,
       }),
       ...sx,
-    };
+    } as const;
 
     if (asLink) {
       return (
@@ -39,28 +51,5 @@ const TextMaxLine = forwardRef(
   }
 );
 
-TextMaxLine.propTypes = {
-  asLink: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  line: PropTypes.number,
-  persistent: PropTypes.bool,
-  sx: PropTypes.object,
-  variant: PropTypes.oneOf([
-    'body1',
-    'body2',
-    'button',
-    'caption',
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-    'h6',
-    'inherit',
-    'overline',
-    'subtitle1',
-    'subtitle2',
-  ]),
-};
-
 export default TextMaxLine;
+

@@ -7,8 +7,8 @@ import client from 'integrations/sanity.client';
 
 import { DynamicGenericSections } from 'src/sections/basic';
 import { groqPageQuery } from 'src/utils/pageQuery';
-
-
+import { BlitzPage } from '@blitzjs/next';
+import { SanityPageProps } from 'src/@types/sanity';
 
 const RootStyle = styled('div')(({theme}) => ({
   paddingTop: HEADER_MOBILE_HEIGHT,
@@ -17,8 +17,7 @@ const RootStyle = styled('div')(({theme}) => ({
   }
 }))
 
-
-const MemberServicesPage = (props) => {
+const MemberServicesPage:BlitzPage<SanityPageProps> = (props) => {
   return (
     <Page title={props.title}>
       <RootStyle>

@@ -33,7 +33,7 @@ declare module '@mui/material/styles' {
 const LIGHT_MODE = palette.light.grey[500];
 const DARK_MODE = palette.light.common.black;
 
-const createShadow = (color) => {
+const createShadow = (color: string) => {
   const transparent1 = alpha(color, 0.2);
   const transparent2 = alpha(color, 0.14);
   const transparent3 = alpha(color, 0.12);
@@ -67,7 +67,7 @@ const createShadow = (color) => {
   return shadows;
 };
 
-const createCustomShadow = (color) => ({
+const createCustomShadow = (color: string) => ({
   z1: `0 1px 2px 0 ${alpha(color, 0.24)}`,
   z4: `-4px 4px 24px 0 ${alpha(color, 0.08)}`,
   z8: `-8px 8px 24px -4px ${alpha(color, 0.1)}`,

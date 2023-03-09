@@ -15,7 +15,11 @@ import { ToolbarStyle, ToolbarShadowStyle } from './HeaderToolbarStyle';
 
 // ----------------------------------------------------------------------
 
-export default function HeaderSimple({ transparent }) {
+type ListProps = {
+  transparent?: boolean;
+};
+
+export default function HeaderSimple({ transparent }: ListProps) {
   const isScrolling = useOffSetTop(HEADER_DESKTOP_HEIGHT);
 
   return (
@@ -29,7 +33,7 @@ export default function HeaderSimple({ transparent }) {
             justifyContent: 'space-between',
           }}
         >
-          <Logo onDark={transparent && !isScrolling} />
+          <Logo />
 
           <Stack
             direction="row"

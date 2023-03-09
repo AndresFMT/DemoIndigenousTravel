@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, NoSsr, BoxProps } from '@mui/material';
@@ -6,6 +5,7 @@ import { Box, NoSsr, BoxProps } from '@mui/material';
 import cssStyles from 'src/utils/cssStyles';
 
 // ----------------------------------------------------------------------
+
 interface BackgroundOverlayProps extends BoxProps {
   direction?: string;
   startColor?: string;
@@ -26,16 +26,16 @@ const RootStyle = styled(Box, {
 
 // ----------------------------------------------------------------------
 
-BgOverlay.propTypes = {
-  direction: PropTypes.string,
-  endColor: PropTypes.string,
-  startColor: PropTypes.string,
-};
-
-export default function BgOverlay({ direction, startColor, endColor, ...other }: BackgroundOverlayProps ) {
+export default function BgOverlay({
+  direction,
+  startColor,
+  endColor,
+  ...other
+}: BackgroundOverlayProps) {
   return (
     <NoSsr>
       <RootStyle direction={direction} startColor={startColor} endColor={endColor} {...other} />
     </NoSsr>
   );
 }
+

@@ -28,6 +28,7 @@ declare module '@mui/material/styles/createPalette' {
   interface PaletteColor {
     lighter: string;
     darker: string;
+    burgundy?: string;
   }
   interface Palette {
     gradients: GradientsPaletteOptions;
@@ -46,6 +47,10 @@ declare module '@mui/material/styles/createPalette' {
   }
   interface PaletteOptions {
     gradients: GradientsPaletteOptions;
+    footer: {
+      background: string;
+      text: string;
+    };
   }
 }
 
@@ -191,7 +196,7 @@ const palette = {
   dark: {
     ...COMMON,
     mode: 'dark' as const,
-    text: { primary: '#fff', secondary: GREY[500], disabled: GREY[600] , footer: GREY[600]},
+    text: { primary: '#fff', secondary: GREY[500], disabled: GREY[600] , footer: {primary: GREY[600], secondary: GREY[500]}},
     background: { paper: GREY[800], default: GREY[900], neutral: GREY[500_12], footer: '#fff'},
     action: { active: GREY[500], ...COMMON.action },
     footer: { background: '#fff', text: GREY[600] },

@@ -6,6 +6,7 @@ import { MotionViewport, varFade } from 'src/core/components/animate';
 import { urlFor } from 'integrations/sanityImage';
 
 import { Section, ReducedContent } from 'src/@types/sanity';
+import Image from 'next/image';
 
 const RootStyle = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -51,7 +52,7 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
           <m.div variants={varFade().inUp}>
             <Box sx={{ my: 10, mx: 'auto', maxWidth: 750 , position: 'relative'}}>
               <Box sx={{ width: '160px', height: '200px', position: 'absolute', display: 'inline-block', top: 0, right: '50%', transform: 'translateY(-100%)' }}>
-              <img src="/bead_graphic.svg" alt="ribbon" />
+                <Image src="/bead_graphic.svg" alt="ribbon" />
               </Box>
             </Box>
             <Box sx={{ my: 3, mx: 'auto', maxWidth: 750, color: 'text.primary'}}>

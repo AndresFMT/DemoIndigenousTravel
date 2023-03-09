@@ -1,6 +1,8 @@
 // API
 // ----------------------------------------------------------------------
 
+import { SettingsValueProps } from "./@types/settings";
+
 export const HOST_API = {
   dev: process.env.DEV_API,
   production: process.env.PRODUCTION_API,
@@ -31,5 +33,5 @@ export const defaultSettings = {
   themeDirection: 'ltr',
   //  default | blueOrange | greenOrange | purpleTeal | cyanYellow | pinkCyan
   themeColorPresets: 'default',
-};
+} as SettingsValueProps;
 

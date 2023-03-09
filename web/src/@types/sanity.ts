@@ -9,14 +9,40 @@ export type Section = {
 };
 
 export type Content = {
-  type: string;
+  type?: string;
   image?: SanityImageSource;
+  images?: Array<{
+    image: SanityImageSource;
+    flip: boolean;
+  }>;
   title?: string;
   heading?: string;
   text?: string;
+  description?: string;
   messages?: Array<string>;
+  _type?: string;
+  _key?: string;
+
 }
 
+export type HomepageContent = {
+  type?: string;
+  image: SanityImageSource;
+  images?: Array<{
+    image: SanityImageSource;
+    flip: boolean;
+  }>;
+  title?: string;
+  heading?: string;
+  text?: string;
+  description?: string;
+  messages?: Array<string>;
+  _type?: string;
+  _key?: string;
+  videoUrl?: string;
+  enableCTA?: boolean;
+  kicker?: string;
+}
 
 
 export type HoopImage = {

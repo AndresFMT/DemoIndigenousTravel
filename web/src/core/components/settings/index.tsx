@@ -1,8 +1,8 @@
-import { m, useCycle, AnimatePresence } from 'framer-motion';
-import React,{ ReactFragment, useEffect } from 'react';
+import { m, useCycle, MotionProps, AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Backdrop, Divider, Typography } from '@mui/material';
+import { Box, Backdrop, Divider, Typography, BoxProps } from '@mui/material';
 // hooks
 import { useSettings } from 'src/hooks';
 // config
@@ -39,8 +39,7 @@ const varSidebar = {
   },
 };
 
-
-const SidebarStyle:React.FC = styled( Box )(({ theme }) => ({
+const SidebarStyle = styled((props: BoxProps & MotionProps) => <Box {...props} />)(({ theme }) => ({
   top: 0,
   right: 0,
   bottom: 0,
@@ -72,7 +71,7 @@ export default function Settings() {
   }, [toggleOpen]);
 
   return (
-    <React.Fragment>
+    <>
       <ToggleButtonSetting
         notDefault={notDefault}
         isOpen={toggleOpen}
@@ -119,6 +118,7 @@ export default function Settings() {
           </>
         )}
       </AnimatePresence>
-    </React.Fragment>
+    </>
   );
 }
+

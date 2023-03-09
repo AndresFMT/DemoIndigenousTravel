@@ -15,6 +15,7 @@ interface Props extends IProps {
   disabledEffect?: boolean;
   children?: React.ReactNode;
   backgroundColor?: string;
+  alt?: string;
 }
 
 export default function Image({
@@ -24,6 +25,7 @@ export default function Image({
   sx,
   children,
   backgroundColor,
+  alt,
   ...other
 }:Props) {
   if (ratio) {
@@ -60,6 +62,7 @@ export default function Image({
           effect={disabledEffect ? undefined : effect}
           placeholderSrc="https://zone-assets-api.vercel.app/assets/img_placeholder.svg"
           sx={{ width: 1, height: 1, objectFit: 'cover' }}
+          alt={alt}
           {...other}
         />
       </Box>
@@ -84,6 +87,7 @@ export default function Image({
           effect={disabledEffect ? undefined : effect}
           placeholderSrc="https://zone-assets-api.vercel.app/assets/img_placeholder.svg"
           sx={{ width: 1, height: 1, objectFit: 'cover' }}
+          alt={alt}
           {...other}
         />
         <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0}}>

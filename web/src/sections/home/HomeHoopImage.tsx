@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 
 import { HoopImage } from 'src/core/components';
 import { MotionViewport, varFade } from 'src/core/components/animate';
+import { HomepageContent } from 'src/@types/sanity';
 
 const RootStyle = styled('section')(({ theme }) => ({
   paddingTop: theme.spacing(4),
@@ -12,10 +13,9 @@ const RootStyle = styled('section')(({ theme }) => ({
   },
 }));
 
-const HomeHoopImage = (props) => {
+const HomeHoopImage = (props: HomepageContent ) => {
 
-  const { images, heading, description, kicker, redirectUrl } = props;
-  console.log('HomeHoopImage', props);
+  const { images, heading, description } = props;
   return (
     <RootStyle>
       <MotionViewport>
@@ -33,7 +33,7 @@ const HomeHoopImage = (props) => {
 
           <Stack direction="row" spacing={12} sx={{ my: 5,justifyContent: 'center' }}>
 
-            {images.map((imageData, index) => {
+            {images?.length && images.map((imageData, index) => {
             const {image} = imageData;
               return (
                 <HoopImage key={`hi${index}`} image={image} />

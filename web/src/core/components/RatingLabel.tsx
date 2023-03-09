@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 // icons
 import starFilled from '@iconify/icons-carbon/star-filled';
 // @mui
-import { Typography, Stack, Link } from '@mui/material';
+import { Typography, Stack, Link, StackProps } from '@mui/material';
 // utils
 import { fShortenNumber } from 'src/utils/formatNumber';
 //
@@ -10,12 +9,12 @@ import Iconify from './Iconify';
 
 // ----------------------------------------------------------------------
 
-RatingLabel.propTypes = {
-  ratings: PropTypes.number.isRequired,
-  reviews: PropTypes.number,
-};
+interface Props extends StackProps {
+  ratings: number;
+  reviews?: number;
+}
 
-export default function RatingLabel({ reviews, ratings, ...other }) {
+export default function RatingLabel({ reviews, ratings, ...other }: Props) {
   return (
     <Stack spacing={0.5} direction="row" alignItems="center" {...other}>
       <Iconify icon={starFilled} sx={{ width: 20, height: 20, color: 'warning.main' }} />
@@ -29,3 +28,4 @@ export default function RatingLabel({ reviews, ratings, ...other }) {
     </Stack>
   );
 }
+

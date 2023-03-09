@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 //icon
 import shareIcon from '@iconify/icons-carbon/share';
@@ -7,21 +6,21 @@ import logoFacebook from '@iconify/icons-carbon/logo-facebook';
 import logoTwitter from '@iconify/icons-carbon/logo-twitter';
 import logoInstagram from '@iconify/icons-carbon/logo-instagram';
 // @mui
-import { MenuItem, Popover } from '@mui/material';
+import { MenuItem, SxProps, Popover } from '@mui/material';
 // components
-import { Iconify } from '.';
-import { IconButtonAnimate } from './animate';
+import { Iconify } from 'src/core/components';
+import { IconButtonAnimate } from 'src/core/components/animate';
 
 // ----------------------------------------------------------------------
 
-ShareButton.propTypes = {
-  sx: PropTypes.object,
+type LanguagePopoverProps = {
+  sx?: SxProps;
 };
 
-export default function ShareButton({ sx }) {
-  const [open, setOpen] = useState(null);
+export default function ShareButton({ sx }: LanguagePopoverProps) {
+  const [open, setOpen] = useState<HTMLElement | null>(null);
 
-  const handleOpen = (event) => {
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     setOpen(event.currentTarget);
   };
 

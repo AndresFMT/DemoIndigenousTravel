@@ -5,7 +5,7 @@ import logoFacebook from '@iconify/icons-carbon/logo-facebook';
 import logoTwitter from '@iconify/icons-carbon/logo-twitter';
 import logoInstagram from '@iconify/icons-carbon/logo-instagram';
 // @mui
-import { alpha } from '@mui/material/styles';
+import { alpha, SxProps } from '@mui/material/styles';
 import { Stack, IconButton, Button, Link, IconButtonProps, ButtonProps} from '@mui/material';
 //
 import Iconify from './Iconify';
@@ -18,6 +18,7 @@ interface SocialsButtonProps extends Props {
   simple?: boolean;
   initialColor?: boolean;
   links?: SocialLinks;
+  sx?: SxProps
 }
 
 
@@ -27,7 +28,7 @@ export default function SocialsButton ({
   links = {},
   sx,
   ...other
-}):ReactElement<SocialsButtonProps> {
+}: SocialsButtonProps):ReactElement<SocialsButtonProps> {
   const SOCIALS = [
     {
       name: 'FaceBook',

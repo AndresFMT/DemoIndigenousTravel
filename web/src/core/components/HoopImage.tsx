@@ -59,7 +59,7 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay}: Props
       }}
     >
       <Box component={'span'} sx={{  '& svg, & svg *': { width: '100%' } }}>
-        <Image src={imageUrl} backgroundColor={backgroundColorString} sx={{ clipPath: 'circle(50%)' }} >
+        <Image src={imageUrl} alt={''} backgroundColor={backgroundColorString} sx={{ clipPath: 'circle(50%)' }} >
           <Typography variant="h3">{headingOverlay}</Typography>
           <Typography variant="body1">{textOverlay}</Typography>
         </Image>

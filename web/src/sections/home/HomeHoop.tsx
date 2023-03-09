@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 
 import HoopButton from 'src/core/components/HoopButton';
 
-import { Container, Grid, Button } from '@mui/material';
+import { Container, Grid} from '@mui/material';
 
 const RootStye = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -13,8 +13,8 @@ const RootStye = styled('div')(({ theme }) => ({
 }));
 
 type HomeHoopProps = {
-  kicker: string;
-  redirectUrl: string;
+  kicker?: string;
+  redirectUrl?: string;
 };
 
 export default function HomeHoop({kicker, redirectUrl} : HomeHoopProps) {
@@ -29,7 +29,7 @@ export default function HomeHoop({kicker, redirectUrl} : HomeHoopProps) {
     >
       <Container sx={{ height: 1, }} >
         <Grid container columnSpacing={3} alignItems="center" sx={{ height: 1 }}>
-          <HoopButton>
+          <HoopButton href={redirectUrl}>
             {kicker ? kicker: 'Explore'}
           </HoopButton>
         </Grid>
