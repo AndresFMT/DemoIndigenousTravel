@@ -1,0 +1,15 @@
+{
+  "projectId": "prj_L9hw9OeXeUFLUlUcPB1XYKZmrMKA",
+  "orgId": "team_Z1Fvwj5X4EfFMUtAsywStdbl",
+  "settings": {
+    "createdAt": 1677096132944,
+    "framework": "blitzjs",
+    "devCommand": "npm start",
+    "installCommand": null,
+    "buildCommand": "npm run build",
+    "outputDirectory": null,
+    "rootDirectory": "web",
+    "directoryListing": false,
+    "nodeVersion": "18.x"
+  }
+}

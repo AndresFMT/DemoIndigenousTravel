@@ -1,17 +1,28 @@
-// @ts-check
-const { withBlitz } = require("@blitzjs/next")
+// @ts-nocheck
+module.exports = function(...args) {
+  let original = require('./next.config.__vercel_builder_backup__.js');
 
-/**
- * @type {import('@blitzjs/next').BlitzConfig}
- **/
-const config = {
-  env: {
-    DEV_API: 'http://localhost:3000',
-    PRODUCTION_API: 'http://your-production',
-  },
-  eslint: {
-    dirs: ['app', 'config', 'db', 'lib', 'public', 'utils', 'src'],
-  },
+  const finalConfig = {};
+  const target = { target: 'experimental-serverless-trace' };
+
+  if (typeof original === 'function' && original.constructor.name === 'AsyncFunction') {
+    // AsyncFunctions will become promises
+    original = original(...args);
+  }
+
+  if (original instanceof Promise) {
+    // Special case for promises, as it's currently not supported
+    // and will just error later on
+    return original
+      .then((orignalConfig) => Object.assign(finalConfig, orignalConfig))
+      .then((config) => Object.assign(config, target));
+  } else if (typeof original === 'function') {
+    Object.assign(finalConfig, original(...args));
+  } else if (typeof original === 'object') {
+    Object.assign(finalConfig, original);
+  }
+
+  Object.assign(finalConfig, target);
+
+  return finalConfig;
 }
-
-module.exports = withBlitz(config)
