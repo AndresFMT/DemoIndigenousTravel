@@ -2,7 +2,12 @@
 module.exports = function(...args) {
   let original = require('./next.config.__vercel_builder_backup__.js');
 
-  const finalConfig = {};
+  const finalConfig = {
+    images: {
+      domains: ['cdn.sanity.io'],
+      loader: 'custom'
+    }
+  };
   const target = { target: 'experimental-serverless-trace' };
 
   if (typeof original === 'function' && original.constructor.name === 'AsyncFunction') {
@@ -23,6 +28,5 @@ module.exports = function(...args) {
   }
 
   Object.assign(finalConfig, target);
-
   return finalConfig;
 }

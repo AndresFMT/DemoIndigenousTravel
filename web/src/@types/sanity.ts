@@ -1,4 +1,4 @@
-import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import { SanityImageObject } from '@sanity/image-url/lib/types/types'
 
 export type Section = {
   type: string;
@@ -10,9 +10,9 @@ export type Section = {
 
 export type Content = {
   type?: string;
-  image?: SanityImageSource;
+  image?: SanityMetaDataObject;
   images?: Array<{
-    image: SanityImageSource;
+    image: SanityMetaDataObject;
     flip: boolean;
   }>;
   title?: string;
@@ -25,11 +25,19 @@ export type Content = {
 
 }
 
+export interface SanityMetaDataObject extends SanityImageObject{
+  asset: {
+    metadata: {
+    lqip: string;
+    };
+  };
+}
+
 export type HomepageContent = {
   type?: string;
-  image: SanityImageSource;
+  image: SanityMetaDataObject;
   images?: Array<{
-    image: SanityImageSource;
+    image: SanityMetaDataObject;
     flip: boolean;
   }>;
   title?: string;
@@ -46,7 +54,7 @@ export type HomepageContent = {
 
 
 export type HoopImage = {
-  image: SanityImageSource;
+  image: SanityMetaDataObject;
   title?: string;
   headingOverlay?: string;
   textOverlay?: string;
@@ -70,7 +78,7 @@ export type SanityPageProps = {
 };
 
 export type ReducedContent = {
-  image?: SanityImageSource;
+  image?: SanityMetaDataObject;
   title?: string;
   type?: string;
   heading?: string;

@@ -3,10 +3,10 @@ import { styled } from '@mui/material/styles';
 import { Box, Container, Typography } from '@mui/material';
 
 import { MotionViewport, varFade } from 'src/core/components/animate';
-import { urlFor } from 'integrations/sanityImage';
 
 import { Section, ReducedContent } from 'src/@types/sanity';
 import Image from 'next/image';
+import beadGraphic from 'public/bead_graphic.svg';
 
 const RootStyle = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -26,8 +26,6 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
     return acc;
   }, {} as ReducedContent);
 
-  const image = reducedContent.image;
-  const imageBuilder = image ? urlFor(image).auto('format').fit('max') : null;
 
   const sectionBackground = backgroundColor ? backgroundColor.hex : '#fff';
   const sectionColor = backgroundColor ? 'primary.contrastText' : 'primary.burgundy';
@@ -52,7 +50,7 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
           <m.div variants={varFade().inUp}>
             <Box sx={{ my: 10, mx: 'auto', maxWidth: 750 , position: 'relative'}}>
               <Box sx={{ width: '160px', height: '200px', position: 'absolute', display: 'inline-block', top: 0, right: '50%', transform: 'translateY(-100%)' }}>
-                <Image src="/bead_graphic.svg" alt="ribbon" />
+                <Image src={beadGraphic} alt="ribbon" layout="fill" loader={({src}) =>  `${src}`}/>
               </Box>
             </Box>
             <Box sx={{ my: 3, mx: 'auto', maxWidth: 750, color: 'text.primary'}}>

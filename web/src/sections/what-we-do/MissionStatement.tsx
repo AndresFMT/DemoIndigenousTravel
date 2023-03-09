@@ -42,7 +42,7 @@ const MissionStatement: React.FC<Props> = ({ heading, headingColor, text, textCo
           <m.div variants={varFade().inUp}>
             <Box sx={{ my: 10, mx: 'auto', maxWidth: 750 , position: 'relative'}}>
               <Box sx={{ width: '160px', height: '200px', position: 'absolute', display: 'inline-block', top: 0, right: '50%', transform: 'translateY(-100%)' }}>
-                <Image src="/bead_graphic.svg" alt="ribbon" />
+                <Image src="/bead_graphic.svg" alt="ribbon" layout="fill"/>
               </Box>
             </Box>
             <Box sx={{ my: 3, mx: 'auto', maxWidth: 750 }}>

@@ -7,10 +7,9 @@ import Routes from 'src/routes';
 // components
 import { SanityImage, HoopButton } from 'src/core/components';
 
-import { urlFor } from 'integrations/sanityImage';
 
 import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { SanityMetaDataObject } from 'src/@types/sanity';
 
 // ----------------------------------------------------------------------
 
@@ -35,7 +34,7 @@ const SectionContainer = styled('div')(() => ({
 type Props = {
   heading?: string;
   kicker?: string;
-  image?: string|SanityImageSource;
+  image?: SanityMetaDataObject;
   enableCTA?: boolean;
   text?: string;
   videoUrl?: string;
@@ -43,7 +42,6 @@ type Props = {
 
 export default function HomeHero({heading, kicker, image, enableCTA, text, videoUrl}: Props) {
 
-  const imageBuilder = image ? urlFor(image): null;
 
   const Video = videoUrl ? (<video autoPlay muted loop src={videoUrl} id="myVideo">
               <source src={videoUrl} type="video/mp4" />
@@ -98,9 +96,9 @@ export default function HomeHero({heading, kicker, image, enableCTA, text, video
               position: 'relative',
             }}
           >
-            {imageBuilder ?
+            {image ?
               <SanityImage
-                imageBuilder={imageBuilder}
+                image={image}
               /> : null
             }
 

@@ -3,11 +3,20 @@ import {  LazyLoadImageProps } from 'react-lazy-load-image-component';
 import { Theme } from '@mui/material/styles';
 import { Box, BoxProps, SxProps } from '@mui/material';
 import Image from 'next/image';
+import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
-// TODO: implement urlFor to handle imageBuilder and take optional values to change ratio
+import { sanityImageProp } from 'integrations/sanityImage';
 // ----------------------------------------------------------------------
 
 export type ImageRatio = '4/3' | '3/4' | '6/4' | '4/6' | '16/9' | '9/16' | '21/9' | '9/21' | '1/1';
+
+interface SanityMetaDataObject extends SanityImageObject {
+  asset: {
+    metadata: {
+    lqip: string;
+    };
+  };
+}
 
 type IProps = BoxProps & LazyLoadImageProps;
 
@@ -15,7 +24,7 @@ interface Props extends IProps {
   sx?: SxProps<Theme>;
   ratio?: ImageRatio;
   disabledEffect?: boolean;
-  imageBuilder: any;
+  image: SanityMetaDataObject;
 }
 
 export default function SanityImage({
@@ -23,25 +32,21 @@ export default function SanityImage({
   disabledEffect = false,
   effect = 'blur',
   sx,
-  imageBuilder,
+  image,
   ...other
 }: Props) {
 
-  const masterImage = imageBuilder.width(1920).height(900).url();
-  const desktopImage = imageBuilder.width(768).height(632).url();
-  const tabletImage = imageBuilder.width(600).height(600).url();
-  const mobileImage = imageBuilder.width(320).height(427).url();
+  const imageProps = sanityImageProp(image);
 
-  const srcset = [`${mobileImage} 320w`, `${tabletImage} 680w`, `${desktopImage} 768w`, `${masterImage} 1080w`]
 
   if (ratio) {
     return (
       <Box
         component="span"
         sx={{
-          width: 1,
-          height: 1,
           lineHeight: 1,
+      width: '100%',
+      height: '100%',
           display: 'block',
           overflow: 'hidden',
           position: 'relative',
@@ -54,28 +59,19 @@ export default function SanityImage({
             right: 0,
             bottom: 0,
             lineHeight: 0,
-            position: 'absolute',
             backgroundSize: 'cover !important',
           },
           ...sx,
         }}
       >
-        <picture>
-          {srcset.map((src, index) => {
-            const [url, media] = src.split(' ');
-            return (
-              <source
-                key={`${media}-${index}`}
-                media={`(min-width: ${media})`}
-                srcSet={url}
-              />
-            )
-          })}
           <Image
-            src={mobileImage}
+            {...imageProps}
+            style={{ width: '100%', height: 'auto' }} // layout="responsive" prior to Next 13.0.0
+            sizes="(max-width: 800px) 100vw, 800px"
             alt={other.alt || 'unbranded image'}
+            placeholder="blur"
+            blurDataURL={image.asset.metadata.lqip}
           />
-        </picture>
       </Box>
     );
   }
@@ -84,8 +80,8 @@ export default function SanityImage({
     <Box
       component="span"
       sx={{
-        width: 1,
-        height: 1,
+      width: '100%',
+      height: '100%',
         lineHeight: 0,
         display: 'block',
         overflow: 'hidden',
@@ -93,24 +89,14 @@ export default function SanityImage({
         ...sx,
       }}
     >
-
-      <picture
-        style={{ width: '100%' }}>
-        {srcset.map((src, index) => {
-          const [url, media] = src.split(' ');
-          return (
-            <source
-              key={`${media}-${index}`}
-              media={`(min-width: ${media})`}
-              srcSet={url}
-            />
-          )
-        })}
         <Image
-          src={mobileImage}
-          alt={other.alt || 'unbranded image'}
+          {...imageProps}
+          style={{ width: '100%', height: 'auto' }} // layout="responsive" prior to Next 13.0.0
+			sizes="(max-width: 800px) 100vw, 800px"
+          alt={other.alt || 'hero section image'}
+          placeholder="blur"
+			blurDataURL={image.asset.metadata.lqip}
         />
-      </picture>
     </Box>
   );
 }

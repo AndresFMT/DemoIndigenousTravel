@@ -15,7 +15,13 @@ export const groqPageQuery = groq`
           _type == 'sectionImage' => {
             'type': _type,
             title,
-            image
+            image{
+              ...,
+              asset->{
+                ...,
+                metadata,
+                }
+              }
           },
           _type == 'sectionHeading' => {
             'type': _type,
