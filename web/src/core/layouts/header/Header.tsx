@@ -1,15 +1,13 @@
 import React from 'react';
-import { Routes } from '@blitzjs/next';
 
 import NextLink from 'next/link';
-import { useTheme } from '@mui/material/styles';
-import { AppBar, Button, Container, Box, Link, Stack, Divider} from '@mui/material';
+import { AppBar, Container, Box } from '@mui/material';
 
 import { useOffSetTop, useResponsive } from 'src/hooks';
 
 import { HEADER_DESKTOP_HEIGHT } from 'src/config';
-import { ToolbarStyle, ToolbarShadowStyle } from './HeaderToolbarStyle';
-import { Logo, Label } from 'src/core/components';
+import { ToolbarStyle, ToolbarShadowStyle } from 'src/core/layouts/header/HeaderToolbarStyle';
+import { Logo } from 'src/core/components';
 import { NavDesktop,  NavMobile, navConfig} from 'src/core/layouts/nav';
 
 type ListProps = {
@@ -18,11 +16,8 @@ type ListProps = {
 
 const Header = ({transparent}: ListProps) => {
 
-  const theme = useTheme();
-
   const isDesktop = useResponsive('up', 'md');
 
-  const isLight = theme.palette.mode === 'light';
 
   const isScrolling = useOffSetTop(HEADER_DESKTOP_HEIGHT);
 
