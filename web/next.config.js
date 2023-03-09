@@ -1,15 +1,18 @@
-// @ts-nocheck
-module.exports = function(...args) {
+const { withBlitz } = require("@blitzjs/next")
+/**
+* @type {import('@blitzjs/next').BlitzConfig}
+**/
+module.exports = withBlitz(function(...args) {
 
- const finalConfig = {
+  const finalConfig = {
     images: {
       domains: ['cdn.sanity.io'],
       loader: 'custom'
-    }
+    },
+    eslint: {
+      dirs: ['app', 'config', 'db', 'lib', 'public', 'utils', 'src'],
+    },
   };
-  const target = { target: 'experimental-serverless-trace' };
 
-  Object.assign(finalConfig, target);
-
-  return finalConfig;
-}
+  return withBlitz(finalConfig);
+});
