@@ -1,36 +1,149 @@
-import {visionTool} from '@sanity/vision'
-import {defineConfig, createAuthStore} from 'sanity'
-import {deskTool} from 'sanity/desk'
+import { defineConfig} from 'sanity'
+import { visionTool } from '@sanity/vision'
+import { deskTool } from 'sanity/desk'
+import { colorInput } from '@sanity/color-input'
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 
-import {schemaTypes} from './schemas'
+import {
+  dashboardTool,
+  sanityTutorialsWidget,
+  projectUsersWidget,
+  projectInfoWidget,
+} from '@sanity/dashboard'
+import {media} from 'sanity-plugin-media'
+
+import { schemaTypes } from './schemas'
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
+
+import { myStructure, defaultDocumentNodeResolver } from './structure/deskStructure'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
 // const apiKey = process.env.SANITY_API_DEPLOY_STUDIO;
-const apiKey = process.env.SANITY_API_EDITOR;
 
-export default defineConfig({
-  basePath: '/studio', // <-- important that `basePath` matches the route you're mounting your studio from, it applies to both `/pages` and `/app`
-  projectId,
-  dataset,
-  plugins: [deskTool(), visionTool()],
-  token: apiKey,
-  schema: {
-    types: schemaTypes,
-  },
-  auth: createAuthStore({
+export default defineConfig([
+  {
+    name: 'default',
+    basePath: '/studio', // <-- important that `basePath` matches the route you're mounting your studio from, it applies to both `/pages` and `/app`
+    title: 'Studio',
     projectId,
     dataset,
-    mode: 'replace',
-    loginMethod: 'cookie', // "dual" | "cookie" | undefined 
-    redirectOnSingle: false,
-    providers: [
-      {
-        name: 'enterprise-sso',
-        title: 'My Enterprise SSO',
-        url: 'http://localhost:3000/api/login',
-      },
+    plugins: [
+      deskTool({
+        structure: myStructure,
+      }),
+      colorInput(),
+      visionTool(),
+      vercelDeployTool(),
+
     ],
-  })
-})
+    schema: {
+      types: (prev) => {
+        return [
+          ...schemaTypes,
+          ...prev,
+        ];
+      },
+    },
+  },
+  {
+    name: 'home-workspace',
+    basePath: '/home-workspace',
+    title: 'Home',
+
+    projectId: 'uimvg3pl',
+    dataset: 'production',
+
+    plugins: [
+      colorInput(),
+      deskTool({
+        defaultDocumentNode: defaultDocumentNodeResolver,
+      }),
+      visionTool(),
+      dashboardTool({
+        widgets: [
+          sanityTutorialsWidget(),
+          projectUsersWidget(),
+          projectInfoWidget(),
+        ]
+      }),
+      unsplashImageAsset(),
+      media(),
+      vercelDeployTool(),
+    ],
+
+    schema: {
+      types: (prev) => {
+        return [ ...prev];
+      },
+    },
+  },
+  {
+    name: 'about-workspace',
+    basePath: '/about-workspace',
+    title: 'about',
+
+    projectId: 'uimvg3pl',
+    dataset: 'production',
+
+    plugins: [
+      colorInput(),
+      deskTool(),
+      visionTool(),
+      unsplashImageAsset(),
+      media(),
+      vercelDeployTool(),
+    ],
+
+    schema: {
+      types: (prev) => {
+        return [ ...prev];
+      }
+
+
+    },
+  },
+  {
+    name: 'operator-workspace',
+    basePath: '/operator-workspace',
+    title: 'operators',
+
+    projectId: 'uimvg3pl',
+    dataset: 'production',
+
+    plugins: [
+      colorInput(),
+      deskTool(),
+      visionTool(),
+      unsplashImageAsset(),
+      media(),
+      vercelDeployTool(),
+    ],
+    schema: {
+      types: (prev) => {
+        return [...prev];
+      },
+    },
+  },
+  {
+    name: 'content-workspace',
+    basePath: '/content-workspace',
+    title: 'All Content',
+    projectId: 'uimvg3pl',
+    dataset: 'production',
+    plugins: [
+      colorInput(),
+      deskTool(),
+      visionTool(),
+      unsplashImageAsset(),
+      media(),
+      vercelDeployTool(),
+    ],
+    schema: {
+      types: (prev) => {
+        return [...prev];
+      },
+    },
+  },
+])
 

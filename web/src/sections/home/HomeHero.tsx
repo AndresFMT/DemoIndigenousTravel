@@ -43,7 +43,7 @@ type Props = {
 export default function HomeHero({heading, kicker, image, enableCTA, text, videoUrl}: Props) {
 
 
-  const Video = videoUrl ? (<video autoPlay muted loop src={videoUrl} id="myVideo">
+  const Video = videoUrl ? (<video autoPlay muted loop style={{width: '100%'}} src={videoUrl} id="myVideo">
               <source src={videoUrl} type="video/mp4" />
             </video>) : null;
 

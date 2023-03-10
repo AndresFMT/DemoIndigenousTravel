@@ -52,6 +52,8 @@ function RootErrorFallback({ error }: ErrorFallbackProps) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  console.log('pageProps', pageProps)
+  console.log('Component', Component)
   const getLayout = Component.getLayout || ((page) => page)
   return (
     <>

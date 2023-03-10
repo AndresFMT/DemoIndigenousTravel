@@ -13,12 +13,12 @@ const HeroImage: React.FC<Section> = ({ content, backgroundColor }) => {
   const image = reducedContent.image;
 
   return (
-    <div className="hero-image">
       <Box
         component="div"
         sx={{
           position: 'relative',
           backgroundColor: backgroundColor,
+          maxHeight: '100vh',
         }}
       >
         {image ?
@@ -28,7 +28,6 @@ const HeroImage: React.FC<Section> = ({ content, backgroundColor }) => {
         }
 
       </Box>
-    </div>
 
   )
 }
