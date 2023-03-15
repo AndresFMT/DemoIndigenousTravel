@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 
-import { SanityImage } from 'src/core/components';
+import { SanityHeroImage } from 'src/core/components';
 
 import { Section, ReducedContent } from 'src/@types/sanity';
 
@@ -10,7 +10,6 @@ const HeroImage: React.FC<Section> = ({ content, backgroundColor }) => {
     acc = { ...acc, ...cur };
     return acc;
   }, {} as ReducedContent);
-  const image = reducedContent.image;
 
   return (
       <Box
@@ -18,12 +17,11 @@ const HeroImage: React.FC<Section> = ({ content, backgroundColor }) => {
         sx={{
           position: 'relative',
           backgroundColor: backgroundColor,
-          maxHeight: '100vh',
         }}
       >
-        {image ?
-          <SanityImage
-            image={image}
+        {reducedContent.image ?
+          <SanityHeroImage
+            image={reducedContent.image}
           /> : null
         }
 

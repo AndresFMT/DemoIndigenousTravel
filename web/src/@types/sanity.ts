@@ -10,9 +10,9 @@ export type Section = {
 
 export type Content = {
   type?: string;
-  image?: SanityMetaDataObject;
+  image?: SanityEnrichedImageObject;
   images?: Array<{
-    image: SanityMetaDataObject;
+    image: SanityEnrichedImageObject;
     flip: boolean;
   }>;
   title?: string;
@@ -25,6 +25,18 @@ export type Content = {
 
 }
 
+export interface SanityEnrichedImageObject extends SanityMetaDataObject {
+  asset: {
+    metadata: SanityMetaDataObject & {
+      dimensions: {
+        width: number;
+        height: number;
+      }
+      lqip: string;
+    }
+  }
+}
+
 export interface SanityMetaDataObject extends SanityImageObject{
   asset: {
     metadata: {
@@ -35,9 +47,9 @@ export interface SanityMetaDataObject extends SanityImageObject{
 
 export type HomepageContent = {
   type?: string;
-  image: SanityMetaDataObject;
+  image: SanityEnrichedImageObject;
   images?: Array<{
-    image: SanityMetaDataObject;
+    image: SanityEnrichedImageObject;
     flip: boolean;
   }>;
   title?: string;
@@ -54,7 +66,7 @@ export type HomepageContent = {
 
 
 export type HoopImage = {
-  image: SanityMetaDataObject;
+  image: SanityEnrichedImageObject;
   title?: string;
   headingOverlay?: string;
   textOverlay?: string;
@@ -78,7 +90,7 @@ export type SanityPageProps = {
 };
 
 export type ReducedContent = {
-  image?: SanityMetaDataObject;
+  image?: SanityEnrichedImageObject;
   title?: string;
   type?: string;
   heading?: string;

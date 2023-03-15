@@ -5,11 +5,11 @@ import { Box, Stack, Typography, Grid } from '@mui/material';
 // routes
 import Routes from 'src/routes';
 // components
-import { SanityImage, HoopButton } from 'src/core/components';
+import { SanityHeroImage, HoopButton } from 'src/core/components';
 
 
 import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
-import { SanityMetaDataObject } from 'src/@types/sanity';
+import { SanityEnrichedImageObject } from 'src/@types/sanity';
 
 // ----------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ const SectionContainer = styled('div')(() => ({
 type Props = {
   heading?: string;
   kicker?: string;
-  image?: SanityMetaDataObject;
+  image?: SanityEnrichedImageObject;
   enableCTA?: boolean;
   text?: string;
   videoUrl?: string;
@@ -97,7 +97,7 @@ export default function HomeHero({heading, kicker, image, enableCTA, text, video
             }}
           >
             {image ?
-              <SanityImage
+              <SanityHeroImage
                 image={image}
               /> : null
             }

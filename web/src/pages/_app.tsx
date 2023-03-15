@@ -31,6 +31,8 @@ import Settings from 'src/core/components/settings';
 import ProgressBar from 'src/core/components/ProgressBar';
 import RtlLayout from "src/core/components/RtlLayout";
 
+import { BlitzPage } from '@blitzjs/next'
+
 function RootErrorFallback({ error }: ErrorFallbackProps) {
   if (error instanceof AuthenticationError) {
     return <div>Error: You are not authenticated</div>
@@ -51,10 +53,17 @@ function RootErrorFallback({ error }: ErrorFallbackProps) {
   }
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
-  console.log('pageProps', pageProps)
-  console.log('Component', Component)
+function MyAppWrapper({ Component, pageProps }: AppProps){
+
   const getLayout = Component.getLayout || ((page) => page)
+  if (Component.hasOwnProperty('isStudio') === true) {
+    return (
+      <>
+        {getLayout(<Component {...pageProps} />)}
+      </>
+    )
+  }
+
   return (
     <>
       <ErrorBoundary FallbackComponent={RootErrorFallback}>
@@ -65,8 +74,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <MotionLazyContainer>
                   <RtlLayout>
                     <>
-                      <Settings/>
-                      <ProgressBar/>
+                      <Settings />
+                      <ProgressBar />
                       {getLayout(<Component {...pageProps} />)}
                     </>
                   </RtlLayout>
@@ -80,4 +89,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default withBlitz(MyApp)
+export default withBlitz(MyAppWrapper)
