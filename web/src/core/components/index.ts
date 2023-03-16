@@ -10,6 +10,7 @@ export { default as Page } from './Page';
 export { default as Image } from './Image';
 export { default as HoopImage } from './HoopImage';
 export { default as SanityHeroImage} from './SanityHeroImage';
+export { default as MembershipForm } from './MembershipForm';
 export { default as Label } from './Label';
 export { default as Iconify } from './Iconify';
 export { default as BgOverlay } from './BgOverlay';

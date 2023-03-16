@@ -2,7 +2,7 @@ import {styled } from '@mui/material/styles';
 import type {ReactNode} from 'react';
 import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
 import Layout from 'src/core/layouts/Layout'
-import {Page} from 'src/core/components'
+import { Page, MembershipForm } from 'src/core/components'
 import client from 'integrations/sanity.client';
 
 import { DynamicGenericSections } from 'src/sections/basic';
@@ -22,6 +22,7 @@ const MemberServicesPage:BlitzPage<SanityPageProps> = (props) => {
     <Page title={props.title}>
       <RootStyle>
           <DynamicGenericSections {...props} />
+            <MembershipForm />
       </RootStyle>
     </Page>
   )
