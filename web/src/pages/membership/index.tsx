@@ -24,6 +24,7 @@ const MemberServicesPage:BlitzPage<SanityPageProps> = (props) => {
           <DynamicGenericSections {...props} />
             <MembershipForm />
       </RootStyle>
+      <div className="min-h-10 w-full" />
     </Page>
   )
 }
@@ -41,7 +42,8 @@ export async function getStaticProps() {
   return {
     props: {
       ...data
-    }
+    },
+    revalidate: 300
   }
 }
 
