@@ -72,7 +72,7 @@ const Routes = {
   whatWeDo: '/what-we-do',
   aboutUs: '/about-us',
   membership: '/membership',
-  reconcilliation: '/reconcilliation',
+  reconciliation: '/reconciliation',
   contactUs: '/contact-us',
 };
 

@@ -75,7 +75,7 @@ export default function HomeHero({heading, kicker, image, enableCTA, text, video
                 color="inherit"
                 variant="contained"
                 sx={{ background: 'primary.darker', transform: { xs: 'scale(0.8)', md: 'scale(0.9)' } }}
-                href={Routes.reconcilliation}
+                href={Routes.reconciliation}
               >
                 {text}
               </HoopButton>

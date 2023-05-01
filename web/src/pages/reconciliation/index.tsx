@@ -18,7 +18,7 @@ const RootStyles = styled('div')(({ theme }) => ({
   },
 }));
 
-const ReconcilliationPage: BlitzPage<SanityPageProps>= (props) => {
+const ReconciliationPage: BlitzPage<SanityPageProps>= (props) => {
   return (
     <Suspense fallback="Loading...">
       <RootStyles>
@@ -30,7 +30,7 @@ const ReconcilliationPage: BlitzPage<SanityPageProps>= (props) => {
   );
 };
 
-ReconcilliationPage.getLayout = function getLayout(page: ReactElement) {
+ReconciliationPage.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
@@ -46,5 +46,5 @@ export async function getStaticProps() {
   }
 }
 
-export default ReconcilliationPage;
+export default ReconciliationPage;
 
