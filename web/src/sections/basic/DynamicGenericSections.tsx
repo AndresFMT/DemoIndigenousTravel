@@ -1,5 +1,11 @@
 import { Section } from 'src/@types/sanity';
-import { HeroImage, SectionText, BlankSpace, SectionTextImage } from 'src/sections/basic';
+import {
+  HeroImage,
+  SectionText,
+  BlankSpace,
+  SectionTextImage,
+  SectionCards
+} from 'src/sections/basic';
 
 type Props = {
   title: string;
@@ -8,6 +14,9 @@ type Props = {
 };
 
 const DynamicGenericSections = (props: Props) => {
+
+  console.log( "dyn section: ", props );
+
   return (
     <>
 
@@ -22,6 +31,8 @@ const DynamicGenericSections = (props: Props) => {
               return <SectionText {...section} key={index} />;
             case 'sectionTextImage':
               return <SectionTextImage {...section} key={index} />;
+            case 'sectionCards':
+              return <SectionCards {...section} key={index} />;
             default:
               return <BlankSpace {...section} key={index} />
           }

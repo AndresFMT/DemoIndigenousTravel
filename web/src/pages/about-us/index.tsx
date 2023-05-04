@@ -19,7 +19,6 @@ const RootStyle = styled('div')(({theme}) => ({
   },
 }))
 
-
 const AboutUsPage:BlitzPage<SanityPageProps>= (props) => {
   return (
     <Page title="About Us">

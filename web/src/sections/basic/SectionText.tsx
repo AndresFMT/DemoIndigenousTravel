@@ -21,6 +21,8 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
 
+  console.log( "content", content );
+
   const reducedContent: ReducedContent = content.reduce((acc, cur) => {
     acc = { ...acc, ...cur };
     return acc;
@@ -35,7 +37,6 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
     color: sectionColor,
   };
 
-
   const {
     heading,
     headingColor,
@@ -49,7 +50,7 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
         <Container maxWidth="lg">
           <m.div variants={varFade().inUp}>
             <Box sx={{ my: 10, mx: 'auto', maxWidth: 750 , position: 'relative'}}>
-              <Box sx={{ width: '160px', height: '200px', position: 'absolute', display: 'inline-block', top: 0, right: '50%', transform: 'translateY(-100%)' }}>
+              <Box sx={{ width: '160px', height: '200px', position: 'absolute', display: 'inline-block', top: 0, right: '50%', transform: 'translateY(-100%) translateX(50%)' }}>
                 <Image src={beadGraphic} alt="ribbon" layout="fill" loader={({src}) =>  `${src}`}/>
               </Box>
             </Box>
