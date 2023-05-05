@@ -1,9 +1,18 @@
 import { m } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import { MotionViewport, varFade } from 'src/core/components/animate';
-import { Box, Container, Typography } from '@mui/material';
+import {
+  Container,
+  Card,
+  Typography,
+  CardContent,
+  Grid,
+  CardActions,
+  Button
+} from '@mui/material';
 import { Section } from 'src/@types/sanity';
 import Image from 'next/image';
+import { Box } from '@mui/system';
 
 const RootStyle = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -22,7 +31,7 @@ const SectionCards: React.FC<Section> = ( { content, backgroundColor } ) => {
   const sectionColor = backgroundColor ? 'primary.contrastText' : 'primary.burgundy';
   const sectionSX = {
     backgroundColor: sectionBackground,
-    color: sectionColor,
+    color: sectionColor
   };
 
   return (
@@ -31,9 +40,40 @@ const SectionCards: React.FC<Section> = ( { content, backgroundColor } ) => {
         <Container maxWidth="lg">
           <m.div variants={varFade().inUp}>
 
-            <Typography variant="body1" sx={{ fontWeight: '800', color: '000'}} >
-              {content[0].text}
-            </Typography>
+            {content.map( ( card, index ) => {
+              const {
+                title,
+                text
+              } = card;
+
+              // @TODO: split into large card and small
+              return (
+                <Card sx={{ minWidth: 275, maxWidth: 650, margin: '0 auto' }} key={index}>
+                  <CardContent>
+                    <Grid container spacing={0}>
+                      <Grid item>
+                        <Image src="https://placekitten.com/200" width={200} height={200} />
+                      </Grid>
+                      <Grid item>
+                        <Box sx={{marginLeft: 5}}>
+                          <Typography variant='h3' color="text.primary" gutterBottom>
+                            {title}
+                          </Typography>
+
+                          <Typography variant='body1' color="text.primary" gutterBottom>
+                            {text}
+                          </Typography>
+
+                          <CardActions sx={{paddingX: 0}}>
+                            <Button size='small'>Read More &gt;</Button>
+                          </CardActions>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                </Card>
+              );
+            })}
 
           </m.div>
         </Container>

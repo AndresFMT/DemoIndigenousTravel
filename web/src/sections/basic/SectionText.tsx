@@ -20,9 +20,6 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 
 const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
-
-  console.log( "content", content );
-
   const reducedContent: ReducedContent = content.reduce((acc, cur) => {
     acc = { ...acc, ...cur };
     return acc;
