@@ -14,9 +14,6 @@ type Props = {
 };
 
 const DynamicGenericSections = (props: Props) => {
-
-  console.log( "dyn section: ", props );
-
   return (
     <>
 

@@ -44,6 +44,9 @@ export default defineType({
       name: 'image',
       title: 'Image',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
       validation: Rule => [
         Rule.required(),
       ]
@@ -52,6 +55,7 @@ export default defineType({
 
   preview: {
     select: {
+      media: 'image',
       title: 'title',
     },
     prepare(selection) {

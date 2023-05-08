@@ -49,8 +49,6 @@ type CardsSection = {
 };
 
 const SectionCards: React.FC<CardsSection> = ( { content, backgroundColor } ) => {
-  console.log( "cards content", content );
-
   const sectionBackground = backgroundColor ? backgroundColor.hex : '#fff';
   const sectionColor = backgroundColor ? 'primary.contrastText' : 'primary.burgundy';
   const sectionSX = {
@@ -84,18 +82,17 @@ const SectionCards: React.FC<CardsSection> = ( { content, backgroundColor } ) =>
                   image,
                   size
                 } = card;
-                const imageSource = urlFor( image ).url();
 
                 switch ( size ) {
                   case 'lg':
 
                     return (
-                      <Box sx={{ display: 'flex', m: 1, flexGrow: 1 }} key={index}>
+                      <Box sx={{ display: 'flex', marginBottom: 1, flexGrow: 1 }} key={index}>
                         <Card sx={{width: "100%"}}>
                           <CardContent>
                             <Grid container spacing={0} columns={{ xs: 2, sm: 2, md: 2 }}>
                               <Grid item xs={1}>
-                                <HoopImage image={imageSource} imageSize={180} />
+                                <HoopImage image={image} imageSize={180} />
                               </Grid>
                               <Grid item xs={1}>
                                 <Box sx={{marginLeft: 8}}>
@@ -130,7 +127,7 @@ const SectionCards: React.FC<CardsSection> = ( { content, backgroundColor } ) =>
                         <CardContent>
                           <Grid container direction='column' spacing={0}>
                             <Grid item sx={{ margin: '0 auto' }}>
-                              <HoopImage image={imageSource} imageSize={160} />
+                              <HoopImage image={image} imageSize={160} />
                             </Grid>
                             <Grid item>
                               <Box sx={{ marginTop: 2 }}>
