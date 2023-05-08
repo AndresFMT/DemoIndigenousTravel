@@ -10,9 +10,13 @@ import {
   CardActions,
   Button
 } from '@mui/material';
-import { Section } from 'src/@types/sanity';
-import Image from 'next/image';
+import { SanityEnrichedImageObject } from 'src/@types/sanity';
 import { Box } from '@mui/system';
+
+import { HoopImage } from 'src/core/components';
+import { urlFor } from 'integrations/sanityImage';
+import CardModal from './CardModal';
+import { useState } from 'react';
 
 const RootStyle = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -24,7 +28,27 @@ const RootStyle = styled('div')(({ theme }) => ({
   },
 }));
 
-const SectionCards: React.FC<Section> = ( { content, backgroundColor } ) => {
+type ContentItem = {
+  title: string;
+  text: string;
+  image: SanityEnrichedImageObject;
+  size: string;
+};
+
+type ModalContent = {
+  title: string;
+  text: string;
+}
+
+type CardsSection = {
+  type: string;
+  content: Array<ContentItem>;
+  backgroundColor?: {
+    hex: string;
+  }
+};
+
+const SectionCards: React.FC<CardsSection> = ( { content, backgroundColor } ) => {
   console.log( "cards content", content );
 
   const sectionBackground = backgroundColor ? backgroundColor.hex : '#fff';
@@ -34,50 +58,104 @@ const SectionCards: React.FC<Section> = ( { content, backgroundColor } ) => {
     color: sectionColor
   };
 
+  const [ modalState, setModalState ] = useState( { open: false, content: {title: '', text: ''} } );
+  const showCardModal = ( modalContent: ModalContent ) => {
+    setModalState( {
+      open: true,
+      content: modalContent
+    } );
+  };
+
+  const closeCardModal = () => {
+    setModalState( { ...modalState, open: false } );
+  };
+
   return (
     <RootStyle sx={sectionSX}>
       <MotionViewport>
-        <Container maxWidth="lg">
+        <Container maxWidth="sm">
           <m.div variants={varFade().inUp}>
+            <Grid container columns={{ xs: 1, sm: 1, md: 2 }} spacing={{sm: 2, md:4}} justifyContent='space-between'>
 
-            {content.map( ( card, index ) => {
-              const {
-                title,
-                text
-              } = card;
+              {content.map( ( card, index ) => {
+                const {
+                  title,
+                  text,
+                  image,
+                  size
+                } = card;
+                const imageSource = urlFor( image ).url();
 
-              // @TODO: split into large card and small
-              return (
-                <Card sx={{ minWidth: 275, maxWidth: 650, margin: '0 auto' }} key={index}>
-                  <CardContent>
-                    <Grid container spacing={0}>
-                      <Grid item>
-                        <Image src="https://placekitten.com/200" width={200} height={200} />
-                      </Grid>
-                      <Grid item>
-                        <Box sx={{marginLeft: 5}}>
-                          <Typography variant='h3' color="text.primary" gutterBottom>
-                            {title}
-                          </Typography>
+                switch ( size ) {
+                  case 'lg':
 
-                          <Typography variant='body1' color="text.primary" gutterBottom>
-                            {text}
-                          </Typography>
+                    return (
+                      <Box sx={{ display: 'flex', m: 1, flexGrow: 1 }} key={index}>
+                        <Card sx={{width: "100%"}}>
+                          <CardContent>
+                            <Grid container spacing={0} columns={{ xs: 2, sm: 2, md: 2 }}>
+                              <Grid item xs={1}>
+                                <HoopImage image={imageSource} imageSize={180} />
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Box sx={{marginLeft: 8}}>
+                                  <Typography variant='h5' color="text.primary" gutterBottom>
+                                    {title}
+                                  </Typography>
 
-                          <CardActions sx={{paddingX: 0}}>
-                            <Button size='small'>Read More &gt;</Button>
-                          </CardActions>
-                        </Box>
-                      </Grid>
-                    </Grid>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                                  <Typography sx={{
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: 6,
+                                    WebkitBoxOrient: 'vertical',
+                                    overflow: 'hidden'
+                                  }} variant='body1' color="text.primary" gutterBottom>
+                                    {text}
+                                  </Typography>
 
+                                  <CardActions sx={{paddingX: 0}}>
+                                    <Button size='small' onClick={() => showCardModal({ title, text })} >Read More &gt;</Button>
+                                  </CardActions>
+                                </Box>
+                              </Grid>
+                            </Grid>
+                          </CardContent>
+                        </Card>
+                      </Box>
+                    );
+
+                  case 'sm':
+
+                    return (
+                      <Card sx={{ minWidth: 275, maxWidth: 325, margin: '10px 0px' }} key={index} raised>
+                        <CardContent>
+                          <Grid container direction='column' spacing={0}>
+                            <Grid item sx={{ margin: '0 auto' }}>
+                              <HoopImage image={imageSource} imageSize={160} />
+                            </Grid>
+                            <Grid item>
+                              <Box sx={{ marginTop: 2 }}>
+                                <Typography variant='subtitle1' color="text.primary" gutterBottom>
+                                  {title}
+                                </Typography>
+
+                                <CardActions sx={{padding: 0}}>
+                                  <Button size='small' onClick={() => showCardModal({ title, text })}>Read More &gt;</Button>
+                                </CardActions>
+                              </Box>
+                            </Grid>
+                          </Grid>
+                        </CardContent>
+                      </Card>
+                    );
+                }
+              })}
+
+            </Grid>
           </m.div>
         </Container>
       </MotionViewport>
+
+      <CardModal { ...modalState } handleClose={closeCardModal} />
     </RootStyle>
   );
 };

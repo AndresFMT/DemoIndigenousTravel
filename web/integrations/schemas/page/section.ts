@@ -48,6 +48,7 @@ export default defineType({
             {type: 'sectionText'},
             {type: 'sectionVideo'},
             {type: 'hoopImage'},
+            {type: 'sectionCard'},
           ],
         },
       ],

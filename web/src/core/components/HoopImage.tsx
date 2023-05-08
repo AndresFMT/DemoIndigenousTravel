@@ -14,7 +14,7 @@ type Props = {
   };
   headingOverlay?: string;
   textOverlay?: string;
-
+  imageSize?: number;
 }
 
 type Color =  {
@@ -32,11 +32,11 @@ const createColorString = ({r,g,b,a}: Color) => {
   return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 }
 
-const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay}: Props) => {
-  const imageSize = 290;
-  const hoopSize = imageSize + 200;
+const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageSize}: Props) => {
+  const size = imageSize ? imageSize : 290;
+  const hoopSize = size + 200;
   const imageUrlBuilder = urlFor(image);
-  const imageUrl = imageUrlBuilder.width(imageSize).height(imageSize).url();
+  const imageUrl = imageUrlBuilder.width(size).height(size).url();
 
   const whileHover = {
     rotate: [0, 15, 0],

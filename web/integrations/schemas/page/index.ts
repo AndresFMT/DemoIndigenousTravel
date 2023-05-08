@@ -5,12 +5,14 @@ import { default as sectionImage } from './sectionImage';
 import { default as sectionText } from './sectionText';
 import { default as sectionCards } from './sectionCards';
 import { default as sectionVideo } from './sectionVideo';
+import { default as sectionCard } from './sectionCard';
 
 export const pageDocuments = [
   sectionHeading,
   sectionImage,
   sectionText,
   sectionCards,
+  sectionCard,
   sectionVideo,
   section,
   page,
