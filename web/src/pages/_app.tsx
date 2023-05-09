@@ -27,9 +27,7 @@ import Settings from 'src/core/components/settings';
 import ProgressBar from 'src/core/components/ProgressBar';
 import RtlLayout from "src/core/components/RtlLayout";
 
-// @TODO set type
-function MyAppWrapper({ Component, pageProps }: any){
-
+function MyAppWrapper({ Component, pageProps }: any) {
   const getLayout = Component.getLayout || ((page: any) => page)
   if (Component.hasOwnProperty('isStudio') === true) {
     return (
