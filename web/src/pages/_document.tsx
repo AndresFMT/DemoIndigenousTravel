@@ -7,16 +7,50 @@ import createEmotionServer from '@emotion/server/create-instance';
 // theme
 import palette from 'src/theme/palette';
 
-function createEmotionCache() {
-  return createCache({ key: 'css' });
-}
+import { default as SanityClient } from 'integrations/sanity.client';
 
 class MyDocument extends Document {
-  // Only uncomment if you need to customize this behaviour
-  // static async getInitialProps(ctx: DocumentContext) {
-  //   const initialProps = await Document.getInitialProps(ctx)
-  //   return {...initialProps}
-  // }
+
+  static async getInitialProps (ctx:any) {
+    const originalRenderPage = ctx.renderPage;
+
+    const cache = createCache({ key: 'css' });
+    const { extractCriticalToChunks } = createEmotionServer(cache);
+
+    const settingsQuery = "*[_type == \"siteSettings\" && !(_id in path(\"drafts.**\")) ][ 0 ] { title, description, facebookLink, instagramLink, linkedinLink, twitterLink }";
+    const settings = await SanityClient.fetch( settingsQuery, {} );
+
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (App:any) => (props:any) => {
+          props.pageProps.siteSettings = settings;
+
+          return (
+              <CacheProvider value={cache}>
+                <App {...props} />
+              </CacheProvider>
+            );
+        },
+      });
+
+    const initialProps = await Document.getInitialProps(ctx);
+
+    const emotionStyles = extractCriticalToChunks(initialProps.html);
+    const emotionStyleTags = emotionStyles.styles.map((style) => (
+      <style
+        data-emotion={`${style.key} ${style.ids.join(' ')}`}
+        key={style.key}
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: style.css }}
+      />
+    ));
+
+    return {
+      ...initialProps,
+      styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
+    };
+  }
+
   render() {
     return (
       <Html lang="en">
@@ -35,39 +69,4 @@ class MyDocument extends Document {
 }
 
 export default MyDocument
-
-MyDocument.getInitialProps = async (ctx) => {
-  const originalRenderPage = ctx.renderPage;
-
-  const cache = createEmotionCache();
-  const { extractCriticalToChunks } = createEmotionServer(cache);
-
-  ctx.renderPage = () =>
-    originalRenderPage({
-      enhanceApp: (App) => (props) =>
-      (
-        <CacheProvider value={cache}>
-          <App {...props} />
-        </CacheProvider>
-      ),
-    });
-
-  const initialProps = await Document.getInitialProps(ctx);
-
-  const emotionStyles = extractCriticalToChunks(initialProps.html);
-  const emotionStyleTags = emotionStyles.styles.map((style) => (
-    <style
-      data-emotion={`${style.key} ${style.ids.join(' ')}`}
-      key={style.key}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: style.css }}
-    />
-  ));
-
-  return {
-    ...initialProps,
-    styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
-  };
-};
-
 

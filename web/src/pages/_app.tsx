@@ -27,8 +27,35 @@ import Settings from 'src/core/components/settings';
 import ProgressBar from 'src/core/components/ProgressBar';
 import RtlLayout from "src/core/components/RtlLayout";
 
-function MyAppWrapper({ Component, pageProps }: any) {
-  const getLayout = Component.getLayout || ((page: any) => page)
+
+import { SiteSettingsProvider } from 'src/contexts/SiteSettingsContext';
+
+import { BlitzPage } from '@blitzjs/next'
+
+function RootErrorFallback({ error }: ErrorFallbackProps) {
+  if (error instanceof AuthenticationError) {
+    return <div>Error: You are not authenticated</div>
+  } else if (error instanceof AuthorizationError) {
+    return (
+      <ErrorComponent
+        statusCode={error.statusCode}
+        title="Sorry, you are not authorized to access this"
+      />
+    )
+  } else {
+    return (
+      <ErrorComponent
+        statusCode={(error as any)?.statusCode || 400}
+        title={error.message || error.name}
+      />
+    )
+  }
+}
+
+function MyAppWrapper({ Component, pageProps }: AppProps){
+  const { siteSettings } = pageProps;
+
+  const getLayout = Component.getLayout || ((page) => page)
   if (Component.hasOwnProperty('isStudio') === true) {
     return (
       <>
@@ -39,23 +66,27 @@ function MyAppWrapper({ Component, pageProps }: any) {
 
   return (
     <>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <SettingsProvider>
-          <ThemeProvider>
-            <ThemeColorPresets>
-              <MotionLazyContainer>
-                <RtlLayout>
-                  <>
-                    <Settings />
-                    <ProgressBar />
-                    {getLayout(<Component {...pageProps} />)}
-                  </>
-                </RtlLayout>
-              </MotionLazyContainer>
-            </ThemeColorPresets>
-          </ThemeProvider>
-        </SettingsProvider>
-      </LocalizationProvider>
+      <SiteSettingsProvider value={siteSettings} >
+        <ErrorBoundary FallbackComponent={RootErrorFallback}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <SettingsProvider>
+              <ThemeProvider>
+                <ThemeColorPresets>
+                  <MotionLazyContainer>
+                    <RtlLayout>
+                      <>
+                        <Settings />
+                        <ProgressBar />
+                        {getLayout(<Component {...pageProps} />)}
+                      </>
+                    </RtlLayout>
+                  </MotionLazyContainer>
+                </ThemeColorPresets>
+              </ThemeProvider>
+            </SettingsProvider>
+          </LocalizationProvider>
+        </ErrorBoundary>
+      </SiteSettingsProvider>
     </>
   )
 }

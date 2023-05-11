@@ -1,8 +1,8 @@
 // ----------------------------------------------------------------------
 
 export type SocialLinks = {
-  facebook?: string;
-  instagram?: string;
-  linkedin?: string;
-  twitter?: string;
+  facebookLink?: string;
+  instagramLink?: string;
+  linkedinLink?: string;
+  twitterLink?: string;
 };
