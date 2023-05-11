@@ -30,27 +30,6 @@ import RtlLayout from "src/core/components/RtlLayout";
 
 import { SiteSettingsProvider } from 'src/contexts/SiteSettingsContext';
 
-import { BlitzPage } from '@blitzjs/next'
-
-function RootErrorFallback({ error }: ErrorFallbackProps) {
-  if (error instanceof AuthenticationError) {
-    return <div>Error: You are not authenticated</div>
-  } else if (error instanceof AuthorizationError) {
-    return (
-      <ErrorComponent
-        statusCode={error.statusCode}
-        title="Sorry, you are not authorized to access this"
-      />
-    )
-  } else {
-    return (
-      <ErrorComponent
-        statusCode={(error as any)?.statusCode || 400}
-        title={error.message || error.name}
-      />
-    )
-  }
-}
 
 function MyAppWrapper({ Component, pageProps }: AppProps){
   const { siteSettings } = pageProps;
@@ -67,7 +46,6 @@ function MyAppWrapper({ Component, pageProps }: AppProps){
   return (
     <>
       <SiteSettingsProvider value={siteSettings} >
-        <ErrorBoundary FallbackComponent={RootErrorFallback}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <SettingsProvider>
               <ThemeProvider>
@@ -85,7 +63,6 @@ function MyAppWrapper({ Component, pageProps }: AppProps){
               </ThemeProvider>
             </SettingsProvider>
           </LocalizationProvider>
-        </ErrorBoundary>
       </SiteSettingsProvider>
     </>
   )
