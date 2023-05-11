@@ -4,10 +4,10 @@ import { Box, Typography } from '@mui/material';
 import { Image } from 'src/core/components';
 import { default as AnimatedHoop } from 'src/core/components/AnimatedHoop';
 import { urlFor } from 'integrations/sanityImage';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { SanityEnrichedImageObject } from 'src/@types/sanity';
 
 type Props = {
-  image: SanityImageSource;
+  image: SanityEnrichedImageObject;
   backgroundColor?: {
     hex: string;
     rgb: Color;

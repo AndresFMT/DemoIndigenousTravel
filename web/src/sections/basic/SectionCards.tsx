@@ -17,6 +17,7 @@ import { HoopImage } from 'src/core/components';
 import { urlFor } from 'integrations/sanityImage';
 import CardModal from './CardModal';
 import { useState } from 'react';
+import { Content } from 'src/@types/sanity';
 
 const RootStyle = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -28,27 +29,20 @@ const RootStyle = styled('div')(({ theme }) => ({
   },
 }));
 
-type ContentItem = {
-  title: string;
-  text: string;
-  image: SanityEnrichedImageObject;
-  size: string;
-};
-
 type ModalContent = {
   title: string;
   text: string;
 }
 
-type CardsSection = {
+type SectionCardProps = {
   type: string;
-  content: Array<ContentItem>;
+  content: Array<Content>;
   backgroundColor?: {
     hex: string;
   }
 };
 
-const SectionCards: React.FC<CardsSection> = ( { content, backgroundColor } ) => {
+const SectionCards: React.FC<SectionCardProps> = ( { content, backgroundColor } ) => {
   const sectionBackground = backgroundColor ? backgroundColor.hex : '#fff';
   const sectionColor = backgroundColor ? 'primary.contrastText' : 'primary.burgundy';
   const sectionSX = {
@@ -82,6 +76,16 @@ const SectionCards: React.FC<CardsSection> = ( { content, backgroundColor } ) =>
                   image,
                   size
                 } = card;
+
+                if (!image) {
+                  console.warn('Section Cards: No image provided, skipping card')
+                  return null;
+                }
+
+                if (!title || !text) {
+                  console.warn('Section Cards: Missing title or text data, skipping card')
+                  return null;
+                }
 
                 switch ( size ) {
                   case 'lg':

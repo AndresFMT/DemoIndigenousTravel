@@ -18,6 +18,7 @@ export type Content = {
   title?: string;
   heading?: string;
   text?: string;
+  size?: string;
   description?: string;
   messages?: Array<string>;
   _type?: string;
