@@ -15,5 +15,25 @@ export default defineType({
       title: 'Site Description',
       type: 'text'
     }),
+    defineField({
+      name: 'facebookLink',
+      title: 'Facebook Social Link',
+      type: 'url'
+    }),
+    defineField({
+      name: 'instagramLink',
+      title: 'Instagram Social Link',
+      type: 'url'
+    }),
+    defineField({
+      name: 'linkedinLink',
+      title: 'LinkedIn Social Link',
+      type: 'url'
+    }),
+    defineField({
+      name: 'twitterLink',
+      title: 'Twitter Social Link',
+      type: 'url'
+    })
   ]
 })

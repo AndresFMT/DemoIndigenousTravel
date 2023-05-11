@@ -29,32 +29,33 @@ export default function SocialsButton ({
   sx,
   ...other
 }: SocialsButtonProps):ReactElement<SocialsButtonProps> {
-  const SOCIALS = [
+  const socialDefaults = [
     {
       name: 'FaceBook',
       icon: logoFacebook,
       socialColor: '#1877F2',
-      path: links.facebook || '#facebook-link',
+      path: links.facebookLink || '#',
     },
     {
       name: 'Instagram',
       icon: logoInstagram,
       socialColor: '#E02D69',
-      path: links.instagram || '#instagram-link',
+      path: links.instagramLink || '#',
     },
     {
       name: 'Linkedin',
       icon: logoLinkedin,
       socialColor: '#007EBB',
-      path: links.linkedin || '#linkedin-link',
+      path: links.linkedinLink || '#',
     },
     {
       name: 'Twitter',
       icon: logoTwitter,
       socialColor: '#00AAEC',
-      path: links.twitter || '#twitter-link',
+      path: links.twitterLink || '#',
     },
   ];
+  const SOCIALS = socialDefaults.filter( l => l.path !== '#' );
 
   return (
     <Stack direction="row" flexWrap="wrap" alignItems="center" spacing={2}>

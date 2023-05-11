@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 // icons
 import chevronDown from '@iconify/icons-carbon/chevron-down';
 import chevronRight from '@iconify/icons-carbon/chevron-right';
@@ -24,6 +24,8 @@ import { Logo, Iconify, SocialsButton } from 'src/core/components';
 //
 import { PageLinks } from 'src/core/layouts/nav/NavConfig';
 
+import { SiteSettingsContext } from 'src/contexts/SiteSettingsContext';
+
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -45,10 +47,15 @@ const LinkStyle = styled((props: LinkProps) => <Link target="_blank" rel="noopen
 // ----------------------------------------------------------------------
 
 export default function Footer() {
+  const {
+    facebookLink,
+    twitterLink,
+    linkedinLink,
+    instagramLink
+  } = useContext( SiteSettingsContext );
+
   const isDesktop = useResponsive('up', 'md');
-
   const lists = PageLinks.filter((list) => list.subheader !== 'Coming Soon');
-
   const renderLists = isDesktop
     ? lists
     : lists.sort((listA, listB) => Number(listA.order) - Number(listB.order));
@@ -69,12 +76,19 @@ export default function Footer() {
 
               <Stack spacing={2}>
                 <SocialsButton sx={{
-                  color: 'footer.background',
-                  bgcolor: 'text.footer.secondary',
-                  '&:hover': {
-                    bgcolor: alpha('#fff', 0.8),
-                  },
-                }} />
+                    color: 'footer.background',
+                    bgcolor: 'text.footer.secondary',
+                    '&:hover': {
+                      bgcolor: alpha('#fff', 0.8),
+                    },
+                  }}
+                  links={{
+                    facebookLink,
+                    twitterLink,
+                    instagramLink,
+                    linkedinLink
+                  }}
+                />
               </Stack>
 
             </Stack>
