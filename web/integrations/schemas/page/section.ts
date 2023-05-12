@@ -25,11 +25,12 @@ export default defineType({
       title: 'Section Type',
       type: 'string',
       initialValue: 'blankSpace',
-      options: {  
+      options: {
         list: [
           {title: 'Hero', value: 'heroImage'},
           {title: 'Text Content Image Background', value: 'sectionTextImage'},
           {title: 'Text Content', value: 'sectionText'},
+          {title: 'Cards Content', value: 'sectionCards'},
           {title: 'Blank Space', value: 'blankSpace'},
         ],
       },
@@ -47,6 +48,7 @@ export default defineType({
             {type: 'sectionText'},
             {type: 'sectionVideo'},
             {type: 'hoopImage'},
+            {type: 'sectionCard'},
           ],
         },
       ],

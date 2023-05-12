@@ -42,6 +42,13 @@ export const groqPageQuery = groq`
             textOverlay,
             image,
             backgroundColor
+          },
+          _type == 'sectionCard' => {
+            'type': _type,
+            title,
+            text,
+            image,
+            size
           }
         }
       }
