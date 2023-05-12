@@ -31,10 +31,10 @@ import RtlLayout from "src/core/components/RtlLayout";
 import { SiteSettingsProvider } from 'src/contexts/SiteSettingsContext';
 
 
-function MyAppWrapper({ Component, pageProps }: AppProps){
+function MyAppWrapper( { Component, pageProps }: any ) {
   const { siteSettings } = pageProps;
 
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ( ( page: any ) => page )
   if (Component.hasOwnProperty('isStudio') === true) {
     return (
       <>
