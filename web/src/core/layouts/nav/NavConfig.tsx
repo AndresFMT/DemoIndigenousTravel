@@ -23,7 +23,6 @@ export const PageLinks = [
     items: [
       { title: 'About Us', path: Routes.aboutUs},
       { title: 'Membership', path: Routes.membership},
-      { title: 'Contact Us', path: Routes.contactUs},
     ],
   },
 ];
