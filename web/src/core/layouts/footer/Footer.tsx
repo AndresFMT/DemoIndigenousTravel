@@ -125,7 +125,7 @@ export default function Footer() {
             © 2023. All rights reserved
           </Typography>
           <Stack direction="row" spacing={3} justifyContent="center">
-            <Link variant="body3" sx={{ color: 'text.secondary' }}>
+            <Link href="/privacy-policy" variant="body3" sx={{ color: 'text.secondary' }}>
               Privacy Policy
             </Link>
             <Link variant="body3" sx={{ color: 'text.secondary' }}>

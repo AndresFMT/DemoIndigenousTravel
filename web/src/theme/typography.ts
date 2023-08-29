@@ -50,7 +50,7 @@ const typography = {
     fontWeight: 700,
     lineHeight: 80 / 64,
     fontSize: pxToRem(40),
-    ...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
+    ...responsiveFontSizes({ sm: 42, md: 48, lg: 54 }),
   },
   h2: {
     fontFamily: FONT_SECONDARY,
