@@ -11,25 +11,25 @@ import { default as SanityClient } from 'integrations/sanity.client';
 
 class MyDocument extends Document {
 
-  static async getInitialProps (ctx:any) {
+  static async getInitialProps(ctx: any) {
     const originalRenderPage = ctx.renderPage;
 
     const cache = createCache({ key: 'css' });
     const { extractCriticalToChunks } = createEmotionServer(cache);
 
     const settingsQuery = "*[_type == \"siteSettings\" && !(_id in path(\"drafts.**\")) ][ 0 ] { title, description, facebookLink, instagramLink, linkedinLink, twitterLink }";
-    const settings = await SanityClient.fetch( settingsQuery, {} );
+    const settings = await SanityClient.fetch(settingsQuery, {});
 
     ctx.renderPage = () =>
       originalRenderPage({
-        enhanceApp: (App:any) => (props:any) => {
+        enhanceApp: (App: any) => (props: any) => {
           props.pageProps.siteSettings = settings;
 
           return (
-              <CacheProvider value={cache}>
-                <App {...props} />
-              </CacheProvider>
-            );
+            <CacheProvider value={cache}>
+              <App {...props} />
+            </CacheProvider>
+          );
         },
       });
 

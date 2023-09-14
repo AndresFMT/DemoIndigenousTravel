@@ -1,8 +1,9 @@
 import { Suspense } from "react"
 import Layout from "src/core/layouts/Layout"
 import { BlitzPage } from "@blitzjs/next"
+
 // @next/sanity
-import {groq} from 'next-sanity'
+import { groq } from 'next-sanity'
 import client from 'integrations/sanity.client';
 
 import { Page } from "src/core/components"
@@ -18,12 +19,12 @@ type Props = {
   content: HomepageContentType[];
 }
 
-const HomePage: BlitzPage<Props> = ({content}) => {
+const HomePage: BlitzPage<Props> = ({ content }) => {
   return (
     <Suspense fallback="Loading...">
       <Page title={'Who We Are'}>
         {
-          content.map((item, index:number) => {
+          content.map((item, index: number) => {
             const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback
             return <Component key={index} {...item} />
           })
@@ -41,7 +42,7 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 export default HomePage;
 
 export async function getStaticProps() {
-    const data = await client.fetch(groq`
+  const data = await client.fetch(groq`
       *[ _type == "homepage" && !(_id in path('drafts.**'))][0]{
         title,
         description,

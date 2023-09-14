@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { SxProps, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
@@ -18,26 +16,25 @@ function Logo({ isSimple = false, isScrolling, textColor, sx}: Props) {
   const isLight = theme.palette.mode === 'light';
 
   return (
-    <Link href="/" passHref>
-      <Box
-        sx={{
-          width: isScrolling ? 120: 200,
-          lineHeight: 0,
-          cursor: 'pointer',
-          display: 'inline-flex',
-          transition: 'width 0.3s ease-in-out',
-          ...sx,
-        }}
-      >
-        {isSimple ? (
-          <IndigenousTourismLogo />
-        ) : (
-          <IndigenousTourismLogo withText={true} isWhite={!isLight} textColor={textColor}/>
-        )}
-      </Box>
-    </Link>
+    <Box
+      sx={{
+        width: isScrolling ? 120: 200,
+        lineHeight: 0,
+        cursor: 'pointer',
+        display: 'inline-flex',
+        transition: 'width 0.3s ease-in-out',
+        ...sx,
+      }}
+    >
+      {isSimple ? (
+        <IndigenousTourismLogo />
+      ) : (
+        <IndigenousTourismLogo withText={true} isWhite={!isLight} textColor={textColor}/>
+      )}
+    </Box>
   );
 
 }
 
 export default Logo;
+

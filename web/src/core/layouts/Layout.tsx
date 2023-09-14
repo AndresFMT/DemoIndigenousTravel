@@ -33,7 +33,7 @@ const Layout: BlitzLayout<LayoutProps> = ({
     <>
       <Head>
         <title>{title || "web"}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       {disabledHeader ? null : (
         <>

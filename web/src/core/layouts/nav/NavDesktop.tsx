@@ -24,7 +24,7 @@ import NavDesktopMenu from './NavDesktopMenu';
   transparent?: boolean;
 }
 
-const RootLinkStyle = styled(Link, {
+const RootLinkStyle = styled(NextLink, {
   shouldForwardProp: (prop) =>
     prop !== 'active' && prop !== 'scrolling' && prop !== 'transparent' && prop !== 'open',
 })<RootLinkStyleProps>(({ active, scrolling, transparent, open, theme }) => {
@@ -173,11 +173,9 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
   }
 
   return (
-    <NextLink key={title} href={path} passHref>
-      <RootLinkStyle active={isActiveRoot} scrolling={isScrolling} transparent={isTransparent}>
-        {title}
-      </RootLinkStyle>
-    </NextLink>
+    <RootLinkStyle key={title} href={path} passHref active={isActiveRoot} scrolling={isScrolling} transparent={isTransparent}>
+      {title}
+    </RootLinkStyle>
   );
 }
 
