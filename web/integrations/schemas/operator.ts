@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity';
+import { EarthAmericasIcon } from '@sanity/icons';
 
 export default defineType({
   name: 'operator',
   title: 'Operator',
   type: 'document',
+  icon: EarthAmericasIcon,
   fields: [
     defineField({
       name: 'name',
