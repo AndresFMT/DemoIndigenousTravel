@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useContext, useState, useCallback } from 'react';
 
 import { useLocalStorage } from 'src/hooks';
 
@@ -6,9 +6,31 @@ import { LatLngExpression } from 'leaflet';
 
 const InteractiveMapContext = createContext<any>(null);
 
+const useInteractiveMapContext = () => {
+
+  const context = useContext(InteractiveMapContext);
+  if (!context) {
+    throw new Error(
+      'useInteractiveMapContext must be used within a InteractiveMapProvider'
+    );
+  }
+  return context;
+}
+
 const InteractiveMapProvider = ({ children }: { children: ReactNode }) => {
   const [isMapVisible, setIsMapVisible] = useLocalStorage('isMapVisible', false);
   const [selectedOperator, setSelectedOperator] = useState<LatLngExpression | null>(null);
+
+  const openMap = useCallback(() => {
+    console.log('open map');
+    setIsMapVisible(true);
+  }, [setIsMapVisible]);
+
+  const closeMap = useCallback(() => {
+    console.log('close map');
+    setIsMapVisible(false);
+  }, [setIsMapVisible]);
+
   const operators =
     [
       [
@@ -77,15 +99,16 @@ const InteractiveMapProvider = ({ children }: { children: ReactNode }) => {
     <InteractiveMapContext.Provider
       value={{
         isMapVisible,
-        setIsMapVisible,
         operators,
         selectedOperator,
-        setSelectedOperator
+        setSelectedOperator,
+        openMap,
+        closeMap
       }}>
       {children}
     </InteractiveMapContext.Provider>
   );
 }
 
-export { InteractiveMapContext, InteractiveMapProvider };
+export { useInteractiveMapContext, InteractiveMapProvider };
 
