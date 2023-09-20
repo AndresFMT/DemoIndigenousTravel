@@ -27,15 +27,7 @@ export default defineType({
     defineField({
       name: 'sections',
       title: 'Sections List',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {type: 'section'},
-          ],
-        },
-      ],
+      type: 'sections',
     }),
   ],
 

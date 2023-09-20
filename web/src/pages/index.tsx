@@ -1,13 +1,11 @@
 import { Suspense } from "react"
-import Layout from "src/core/layouts/Layout"
-import { BlitzPage } from "@blitzjs/next"
-
-// @next/sanity
+import { GetStaticProps } from "next";
 import { groq } from 'next-sanity'
+
 import client from 'integrations/sanity.client';
+import Layout from "src/core/layouts/Layout"
 
 import { Page } from "src/core/components"
-
 import Fallback from 'src/sections/fallback'
 import * as HomepageContent from 'src/sections/home'
 
@@ -19,16 +17,20 @@ type Props = {
   content: HomepageContentType[];
 }
 
-const HomePage: BlitzPage<Props> = ({ content }) => {
+const HomePage = (props: Props) => {
+  const { content, title, description } = props
+  const metadescription = (<meta name="description" content={description} />)
+
   return (
     <Suspense fallback="Loading...">
-      <Page title={'Who We Are'}>
+      <Page title={title || "ITM"} meta={metadescription}>
         {
-          content.map((item, index: number) => {
+          content && content.map((item, index: number) => {
             const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback
             return <Component key={index} {...item} />
           })
         }
+
       </Page>
     </Suspense>
   )
@@ -41,23 +43,32 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export default HomePage;
 
-export async function getStaticProps() {
+export const getStaticProps = (async (context) => {
   const data = await client.fetch(groq`
-      *[ _type == "homepage" && !(_id in path('drafts.**'))][0]{
-        title,
-        description,
-        content[]->{
-          ...,
-          images[] -> {
-          ...
-          }
-        }
-      }
-    `)
-    return {
-      props: {
-        ...data
+*[ _type == "homepage" && _id == "homepage"][0]{
+  title,
+  description,
+  content[]-> {
+    _type,
+    heading,
+    kicker,
+    text,
+    enableCTA,
+    videoUrl,
+    richText,
+    image {
+      ...,
+      asset -> {
+        ...,
+        metadata
       }
     }
+  }
 }
-
+    `)
+  return {
+    props: {
+      ...data
+    },
+  }
+}) satisfies GetStaticProps<Props>

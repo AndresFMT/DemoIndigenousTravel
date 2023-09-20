@@ -103,14 +103,17 @@ const typography = {
     fontSize: pxToRem(13),
   },
   body1: {
+    fontWeight: 'inherit',
     lineHeight: 28 / 16,
     fontSize: pxToRem(16),
   },
   body2: {
+    fontWeight: 'inherit',
     lineHeight: 26 / 14,
     fontSize: pxToRem(14),
   },
   body3: {
+    fontWeight: 'inherit',
     lineHeight: 24 / 13,
     fontSize: pxToRem(13),
   },

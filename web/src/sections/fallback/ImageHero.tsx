@@ -6,9 +6,6 @@ import { Box, Stack, Typography, Grid } from '@mui/material';
 import Routes from 'src/routes';
 // components
 import { SanityHeroImage, HoopButton } from 'src/core/components';
-
-
-import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
 import { SanityEnrichedImageObject } from 'src/@types/sanity';
 
 // ----------------------------------------------------------------------
@@ -16,10 +13,8 @@ import { SanityEnrichedImageObject } from 'src/@types/sanity';
 const RootStyle = styled('section')(({ theme }) => ({
   overflow: 'hidden',
   position: 'relative',
-  marginTop: HEADER_MOBILE_HEIGHT,
   [theme.breakpoints.up('md')]: {
     width: '100%',
-    marginTop: HEADER_DESKTOP_HEIGHT,
   },
 }));
 
@@ -40,36 +35,32 @@ type Props = {
   videoUrl?: string;
 };
 
-export default function HomeHero({heading, kicker, image, enableCTA, text, videoUrl}: Props) {
-
-
-  const Video = videoUrl ? (<video autoPlay muted loop style={{width: '100%'}} src={videoUrl} id="myVideo">
-              <source src={videoUrl} type="video/mp4" />
-            </video>) : null;
+export default function ImageHero(props: Props) {
+  const {heading, kicker, image, enableCTA, text } = props;
+  console.log('FallbackImageHero', props);
 
   return (
     <RootStyle>
       <SectionContainer>
-          <Grid container spacing={3} sx={{ zIndex: 22, position: 'absolute', marginBottom: { xs: 'unset', md:'50%'} }}>
+          <Grid container sx={{ zIndex: 22, position: 'relative' }}>
             <Stack
-              spacing={3}
-              alignItems={{ xs: 'flex-start', md: 'flex-start' }}
+              spacing={5}
+              alignItems={{ xs: 'flex-start', md: 'center' }}
               justifyContent="center"
               sx={{
+                width: '100%',
                 py: { xs: 5, md: 15 },
                 px: { xs: 5, md: 30 },
-                textAlign: { xs: 'left', md: 'left' },
+                textAlign: { xs: 'left', md: 'center' },
               }}
             >
-              <Typography variant="h2" sx={{ typography: 'hero' }}>
-                <Box component="span" sx={{ color: 'primary.main' }}>
-                  {heading}
+              <Typography variant="h1" sx={{fontWeight: 500, color: 'grey.0', textShadow: '1px 1px 2px #1e1e1e'}}>
+                  {heading}{<br/>}
+                <Box component="span" sx={{ fontWeight: '900' }}>
+                  {kicker ? kicker : ' '}
                 </Box>
               </Typography>
 
-              <Typography sx={{ color: 'text.secondary' }}>
-                {kicker ? kicker : ' '}
-              </Typography>
 
               { enableCTA && <HoopButton
                 color="inherit"
@@ -93,7 +84,7 @@ export default function HomeHero({heading, kicker, image, enableCTA, text, video
               zIndex: 11,
               width: '100%',
               height: '100%',
-              position: 'relative',
+              position: 'absolute',
             }}
           >
             {image ?
@@ -101,8 +92,6 @@ export default function HomeHero({heading, kicker, image, enableCTA, text, video
                 image={image}
               /> : null
             }
-
-            {Video}
           </Box>
       </SectionContainer>
 

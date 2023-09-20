@@ -1,0 +1,15 @@
+import { defineType} from 'sanity'
+
+export default defineType({
+  name: 'section',
+  title: 'Section',
+  type: 'reference',
+  to: [
+    {type: 'homepageHoopImage'},
+    {type: 'videoHero'},
+    {type: 'textSection'},
+    {type: 'imageHero'},
+    {type: 'videoSection'},
+  ],
+})
+

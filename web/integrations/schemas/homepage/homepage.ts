@@ -17,19 +17,8 @@ export default defineType({
     }),
     defineField({
       name: 'content',
-      title: 'BlockContent',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {type: 'homepageHero'},
-            {type: 'homepageSpacer'},
-            {type: 'imageBreak'},
-            {type: 'homepageHoopImage'},
-          ],
-        },
-      ],
+      title: 'Content',
+      type: 'sections'
     }),
   ],
 

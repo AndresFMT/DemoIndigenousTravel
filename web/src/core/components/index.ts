@@ -32,3 +32,5 @@ export { default as TextIconLabel } from './TextIconLabel';
 export { default as CountUpNumber } from './CountUpNumber';
 export { default as FavoriteButton } from './FavoriteButton';
 export { default as SearchNotFound } from './SearchNotFound';
+export { default as SanityImage } from './SanityImage';
+export { default as VideoPlayer } from './VideoPlayer';

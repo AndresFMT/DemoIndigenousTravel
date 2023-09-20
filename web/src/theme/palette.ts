@@ -86,6 +86,7 @@ const PRIMARY = {
   dark: '#B3200E',
   darker: '#770508',
   contrastText: contrastText.white,
+  text: contrastText.black,
 };
 const SECONDARY = {
   blue: '#456d90',

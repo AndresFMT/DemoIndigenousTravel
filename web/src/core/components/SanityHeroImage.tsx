@@ -1,11 +1,14 @@
 import { LazyLoadImageProps } from 'react-lazy-load-image-component';
+import Img from 'next/image';
+
 import { SanityEnrichedImageObject } from 'src/@types/sanity';
 // @mui
 import { Theme } from '@mui/material/styles';
 import { Box, BoxProps, SxProps } from '@mui/material';
-import Img from 'next/image';
 
 import { urlFor } from 'integrations/sanityImage';
+
+import imageLoader from 'integrations/sanity.image';
 
 // ----------------------------------------------------------------------
 
@@ -28,6 +31,10 @@ export default function SanityHeroImage({
   image,
   ...other
 }: Props) {
+
+  if (image === null || image.asset === null) {
+    return null;
+  }
 
   const imageWidth = Math.round(image.asset.metadata.dimensions.width * (image.hotspot?.width || 1));
   const imageHeight = Math.round(imageWidth * 9 / 16);

@@ -2,8 +2,10 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { forwardRef } from 'react';
 // @mui
+import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
+import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
 // ----------------------------------------------------------------------
 type PageProps = {
   children: React.ReactNode;
@@ -11,10 +13,17 @@ type PageProps = {
   title: string;
 };
 
+const BoxStyle = styled(Box)(({ theme }) => ({
+  paddingTop: HEADER_MOBILE_HEIGHT,
+  [theme.breakpoints.up('md')]: {
+    paddingTop: HEADER_DESKTOP_HEIGHT,
+  },
+}));
+
 const Page = forwardRef<HTMLDivElement, PageProps>(({ children, meta, title }, ref) => (
   <>
     <Head>
-      <title>{`${title} | ITM`}</title>
+      <title>{title}</title>
       {meta}
     </Head>
 
@@ -29,9 +38,9 @@ const Page = forwardRef<HTMLDivElement, PageProps>(({ children, meta, title }, r
         gtag('config', 'G-Q51RT4RSMW');
       `}
       </Script>
-    <Box ref={ref} >
+    <BoxStyle ref={ref} >
       {children}
-    </Box>
+    </BoxStyle>
   </>
 ));
 

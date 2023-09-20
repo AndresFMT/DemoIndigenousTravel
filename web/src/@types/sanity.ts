@@ -26,8 +26,34 @@ export type Content = {
 
 }
 
+export type SanityColorProps = {
+  _type: string;
+  hex: string;
+  alpha: number;
+  hsl: {
+    h: number;
+    s: number;
+    l: number;
+    a: number;
+  };
+  hsv: {
+    h: number;
+    s: number;
+    v: number;
+    a: number;
+  };
+  rgb: {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+  };
+}
+
 export interface SanityEnrichedImageObject extends SanityMetaDataObject {
   asset: {
+    url: string;
+    alt: string;
     metadata: SanityMetaDataObject & {
       dimensions: {
         width: number;
@@ -35,7 +61,8 @@ export interface SanityEnrichedImageObject extends SanityMetaDataObject {
       }
       lqip: string;
     }
-  }
+  },
+  imageOverlay?: SanityColorProps;
 }
 
 export interface SanityMetaDataObject extends SanityImageObject{

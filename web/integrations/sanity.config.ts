@@ -10,15 +10,15 @@ import {
   projectUsersWidget,
   projectInfoWidget,
 } from '@sanity/dashboard'
+
 import {media} from 'sanity-plugin-media'
 
-import { schemaTypes } from './schemas'
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
+import { schemaTypes } from './schemas'
+import { sanityProjectId, sanityDataset } from './environment'
 import { myStructure, defaultDocumentNodeResolver } from './structure/deskStructure'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID! || 'uimvg3pl'
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET! || 'production'
 // const apiKey = process.env.SANITY_API_DEPLOY_STUDIO;
 
 export default defineConfig([
@@ -26,8 +26,8 @@ export default defineConfig([
     name: 'default',
     basePath: '/studio', // <-- important that `basePath` matches the route you're mounting your studio from, it applies to both `/pages` and `/app`
     title: 'Studio',
-    projectId,
-    dataset,
+    projectId: sanityProjectId,
+    dataset: sanityDataset,
     plugins: [
       deskTool({
         structure: myStructure,
@@ -35,7 +35,6 @@ export default defineConfig([
       colorInput(),
       visionTool(),
       vercelDeployTool(),
-
     ],
     schema: {
       types: (prev) => {
