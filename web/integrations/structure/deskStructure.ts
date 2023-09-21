@@ -1,6 +1,5 @@
 import { StructureBuilder } from 'sanity/desk';
 import { JsonPreview } from '../components/jsonView'
-import {CogIcon} from '@sanity/icons'
 
 export const myStructure = (S: StructureBuilder) => {
   return S.list()
@@ -41,7 +40,6 @@ export const myStructure = (S: StructureBuilder) => {
 
       S.listItem()
         .title('Site Settings')
-        .icon(CogIcon)
         .child(
           S.document()
             .title('Site Settings')

@@ -60,6 +60,7 @@ function MyAppWrapper( { Component, pageProps }: any ) {
                     <RtlLayout>
                       <InteractiveMapProvider>
                       <>
+                        <Settings />
                         <ProgressBar />
                         <InteractiveMap />
                         {getLayout(<Component {...pageProps} />)}

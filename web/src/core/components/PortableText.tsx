@@ -1,4 +1,5 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react';
+import {PortableTextBlock} from '@portabletext/types';
 import { Typography } from '@mui/material';
 
 import SanityImage from 'src/core/components/SanityImage';
@@ -10,7 +11,7 @@ type PortableBlockProps = {
 };
 
 type PortableTextProps = {
-  richText?: PortableBlockProps[];
+  richText?: (PortableTextBlock | PortableBlockProps)[];
 }
 
 const PortableTextRender = (props: PortableTextProps) => {
@@ -18,7 +19,7 @@ const PortableTextRender = (props: PortableTextProps) => {
   if (richText == undefined) {
     return null;
   }
-  return (<PortableText value={props.richText} components={components} onMissingComponent={warnMissingComponent} />)
+  return (<PortableText value={richText} components={components} onMissingComponent={warnMissingComponent} />)
 }
 
 /**
@@ -33,14 +34,14 @@ const components: PortableTextComponents = {
       return (
         <pre>
           <code>
-            {props.node?.code}
+            {props.value}
           </code>
         </pre>
       )
     },
     normal: (props) => {
       return (
-        <Typography variant="body1">{props.children}</Typography>
+        <Typography variant="body1">{props.value}</Typography>
       )
     },
 
@@ -53,7 +54,7 @@ const components: PortableTextComponents = {
     link: ({ value, children }) => {
       const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
       return (
-        <a href={value?.href} target={target} rel={target === '_blank' && 'noindex nofollow'}>
+        <a href={value?.href} target={target} rel={target === '_blank'? '_blank': 'noindex nofollow'}>
           {children}
         </a>
       )
