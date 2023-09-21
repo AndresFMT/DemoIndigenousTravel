@@ -89,9 +89,9 @@ const OperatorMarker = ({ center, content, openPopup }: OperatorMarkerProps) => 
   const markerRef = useRef(null);
 
   useEffect(() => {
-    if (openPopup) {
-      map.flyToBounds([...center], { maxZoom: 10 });
-      markerRef.current?.openPopup();
+    if (openPopup && markerRef.current != null && map) {
+      map.flyTo(center, 10);
+      // markerRef.current.openPopup();
     }
   }, [map, center, openPopup]);
 
