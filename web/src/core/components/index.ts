@@ -1,4 +1,3 @@
-export * from './map';
 export * from './player';
 export * from './animate';
 export * from './carousel';
