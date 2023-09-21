@@ -5,7 +5,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster'
 import { MarkerLayer } from 'react-leaflet-marker';
 import { MapContainer, TileLayer, CircleMarker, Marker, ZoomControl, useMap } from 'react-leaflet'
 
-import { LatLngExpression, Icon } from 'leaflet';
+import { LatLngExpression, Icon, LatLngTuple} from 'leaflet';
 
 import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 import MapModal from './MapModal';
@@ -46,25 +46,31 @@ const OperatorList = ({ operators, onItemClick }: OperatorListProps) => {
 }
 
 
+type Operator = {
+  title: string;
+  position: LatLngExpression;
+}
 
 type OperatorMarkersProps = {
-  operators: LatLngExpression[];
+  operators: Array<Operator>;
   selectedIndex: Number;
 }
+
+
 
 const OperatorMarkers = ({ operators, selectedIndex }: OperatorMarkersProps) => {
   return (
     <>
       {
-        operators.map((pos: LatLngExpression, index: Number) => {
+        operators.map((operator: Operator, index: Number) => {
+          const pos = operator.position;
           return (
             <OperatorMarker
-              key={`${pos[0]}, ${pos[1]}-${index}`}
+              key={`${pos.toString()}-${index}`}
               center={pos}
-              content={operators.title}
+              content={operator.title}
               openPopup={selectedIndex === index}
-            >
-            </OperatorMarker>
+            />
           )
         })
       }
@@ -72,13 +78,19 @@ const OperatorMarkers = ({ operators, selectedIndex }: OperatorMarkersProps) => 
   )
 }
 
-const OperatorMarker = ({ center, content, openPopup }) => {
+type OperatorMarkerProps = {
+  center: LatLngExpression;
+  content: string;
+  openPopup: boolean;
+}
+
+const OperatorMarker = ({ center, content, openPopup }: OperatorMarkerProps) => {
   const map = useMap();
   const markerRef = useRef(null);
 
   useEffect(() => {
     if (openPopup) {
-      map.flyToBounds([center], { maxZoom: 10 });
+      map.flyToBounds([...center], { maxZoom: 10 });
       markerRef.current?.openPopup();
     }
   }, [map, center, openPopup]);
