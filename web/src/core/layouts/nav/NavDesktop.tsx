@@ -136,6 +136,7 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
           open={open}
           scrolling={isScrolling}
           transparent={isTransparent}
+          href="#"
         >
           {title}
           <Iconify

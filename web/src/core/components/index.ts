@@ -32,3 +32,4 @@ export { default as CountUpNumber } from './CountUpNumber';
 export { default as FavoriteButton } from './FavoriteButton';
 export { default as SearchNotFound } from './SearchNotFound';
 export { default as SanityImage } from './SanityImage';
+export { default as ImageBackground } from './ImageBackground';

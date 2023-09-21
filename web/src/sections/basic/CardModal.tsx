@@ -36,7 +36,7 @@ const CardModal: React.FC<CardModalProps> = ( { open, content, handleClose } ) =
     <Modal
       open={open}
       onClose={() => handleClose()}
-      aria-labeledby={title}
+      aria-labelledby={title}
       aria-describedby={text}
     >
       <Box sx={style}>

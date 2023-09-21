@@ -43,29 +43,30 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export default HomePage;
 
-export const getStaticProps = (async (context) => {
+export const getStaticProps = (async () => {
   const data = await client.fetch(groq`
-*[ _type == "homepage" && _id == "homepage"][0]{
-  title,
-  description,
-  content[]-> {
-    _type,
-    heading,
-    kicker,
-    text,
-    enableCTA,
-    videoUrl,
-    richText,
-    image {
-      ...,
-      asset -> {
-        ...,
-        metadata
+    *[ _type == "homepage" && _id == "homepage"][0]{
+      title,
+      description,
+      content[]-> {
+        _type,
+        heading,
+        kicker,
+        text,
+        enableCTA,
+        cta,
+        videoUrl,
+        richText,
+        image {
+          ...,
+          asset -> {
+            ...,
+            metadata
+          }
+        }
       }
     }
-  }
-}
-    `)
+  `)
   return {
     props: {
       ...data

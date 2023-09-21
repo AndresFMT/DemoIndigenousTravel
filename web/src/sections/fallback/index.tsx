@@ -1,7 +1,7 @@
 import React from 'react';
 
 type Props = {
-  __type: string;
+  _type: string;
 };
 
 const Fallback = ({_type}:Props) => {

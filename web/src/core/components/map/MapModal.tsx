@@ -20,16 +20,17 @@ const MapModal = ({children}: MapModalProps) => {
   const {isMapVisible, closeMap} = useInteractiveMapContext();
 
   const escape = useCallback((e:KeyboardEvent) => {
+    console.log('intercepted')
     if (e.key === 'Escape') {
       closeMap();
     }
-  }, []);
+  }, [closeMap]);
 
   useEffect(() => {
     document.addEventListener('keydown', escape);
     console.log('added event listener')
     return () => document.removeEventListener('keydown', escape);
-  }, []);
+  }, [escape]);
 
   return (
       <StyledMapModal
