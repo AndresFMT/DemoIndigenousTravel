@@ -24,7 +24,7 @@ const OperatorList = ({ operators, onItemClick }: OperatorListProps) => {
           operators.map((pos: LatLngExpression, index: Number) => {
             return (
               <ListItem
-                key={`${pos[0]}, ${pos[1]}-${index}`}
+                key={`${pos.toString()}-${index}`}
               >
                 <ListItemButton
                   component={'div'}
@@ -34,7 +34,7 @@ const OperatorList = ({ operators, onItemClick }: OperatorListProps) => {
                     onItemClick(index);
                   }}
                 >
-                  <ListItemText primary={`${pos[0]}, ${pos[1]}`} />
+                  <ListItemText primary={`${pos.toString()}`} />
                 </ListItemButton>
               </ListItem>
             )
