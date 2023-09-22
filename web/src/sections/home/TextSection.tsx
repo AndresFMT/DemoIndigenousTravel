@@ -67,7 +67,7 @@ const PortableBlock = (props: Props): JSX.Element => {
           <Typography variant="h3" sx={{ fontWeight: 900 }}>
             {heading}
           </Typography>
-          <PortableTextRender richText={richText} />
+          <PortableTextRender body={richText} />
           {
             cta &&
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', py: 5 }}>

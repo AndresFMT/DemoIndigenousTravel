@@ -52,10 +52,10 @@ export default defineType({
   preview: {
     select: {
       media: 'image',
-      title: 'image',
+      title: 'title',
     },
     prepare(selection) {
-      return { ...selection, title: 'Hoop Image' }
+      return { ...selection}
     },
   },
 });

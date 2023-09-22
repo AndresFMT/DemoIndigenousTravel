@@ -9,7 +9,7 @@ import { SanityEnrichedImageObject } from 'src/@types/sanity';
 import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 
 type Props = {
-  image: SanityEnrichedImageObject;
+  image?: SanityEnrichedImageObject;
   backgroundColor?: {
     hex: string;
     rgb: Color;
@@ -61,15 +61,33 @@ const variants = {
   }
 }
 
+const calculateBackgroundLuminance = (color?: SanityColorProps) => {
+  if (color == undefined) {
+    return 1;
+  }
+  return (0.299 * color.rgb.r + 0.587 * color.rgb.g + 0.114 * color.rgb.b) / 255;
+}
+
 const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageSize }: Props) => {
 
+  // TODO: remove direct call to open map, create a router listener so we can show the operator on the map with direct links.
   const { openMap } = useInteractiveMapContext();
   const size = imageSize ? imageSize : 290;
   const hoopSize = size + 200;
-  const imageUrlBuilder = urlFor(image);
-  const imageUrl = imageUrlBuilder.width(size).height(size).url();
+
+  let imageUrl;
+  if (!image) {
+    imageUrl = 'http://placekitten.com/g/300/300';
+  } else {
+    const imageUrlBuilder = urlFor(image);
+    imageUrl = imageUrlBuilder.width(size).height(size).url();
+  }
 
   const backgroundColorString = backgroundColor ? createColorString(backgroundColor.rgb) : undefined;
+
+  const isBackgroundLight = calculateBackgroundLuminance(backgroundColor) < 0.5;
+  const fontColor = isBackgroundLight ? 'primary.contrastText' : 'primary.text';
+  const fontWeight = isBackgroundLight ? '700' : '500';
 
   const handleClick = () => {
     console.log('clicked opening map')
@@ -87,7 +105,7 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
         position: 'relative',
       }}
     >
-      <Box component={'span'} sx={{ '& svg, & svg *': { width: '100%' } }}>
+      <Box component={'span'} sx={{ '& svg, & svg *': { width: '100%' }, color: fontColor, fontWeight: fontWeight }}>
         <Image src={imageUrl} alt={''} backgroundColor={backgroundColorString} sx={{ clipPath: 'circle(50%)' }} >
           <Typography variant="h3">{headingOverlay}</Typography>
           <Typography variant="body1">{textOverlay}</Typography>
@@ -110,10 +128,8 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
       >
         <AnimatedHoop size={hoopSize} sx={{ height: '100%', width: '100%' }} />
       </m.div>
-
     </Box>
   )
-
 }
 
 export default HoopImage;

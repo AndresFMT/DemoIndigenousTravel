@@ -5,6 +5,10 @@ import { default as videoHero } from './videoHero';
 import { default as textSection } from './textSection';
 import { default as imageHero } from './imageHero';
 import { default as videoSection} from './videoSection';
+import { default as flexSection } from './flexSection';
+import { default as flexContent } from './flexContent';
+import { default as richTextContent } from './richText';
+import { default as imageContent } from './imageContent';
 
 export const sections = [
   section,
@@ -13,4 +17,8 @@ export const sections = [
   textSection,
   imageHero,
   videoSection,
+  flexSection,
+  flexContent,
+  richTextContent,
+  imageContent,
 ];

@@ -1,6 +1,9 @@
-import { m } from 'framer-motion';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
+
+import { m } from 'framer-motion';
 import { MotionViewport, varFade } from 'src/core/components/animate';
+
 import {
   Container,
   Card,
@@ -10,13 +13,10 @@ import {
   CardActions,
   Button
 } from '@mui/material';
-import { SanityEnrichedImageObject } from 'src/@types/sanity';
 import { Box } from '@mui/system';
 
 import { HoopImage } from 'src/core/components';
-import { urlFor } from 'integrations/sanityImage';
 import CardModal from './CardModal';
-import { useState } from 'react';
 import { Content } from 'src/@types/sanity';
 
 const RootStyle = styled('div')(({ theme }) => ({

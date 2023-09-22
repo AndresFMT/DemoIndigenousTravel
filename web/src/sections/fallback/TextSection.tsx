@@ -55,7 +55,7 @@ const PortableBlock = (props: Props): JSX.Element => {
           <Typography variant="h3" sx={{ fontWeight: 900 }}>
             {heading}
           </Typography>
-          <PortableText richText={richText} />
+          <PortableText body={richText} />
         </Stack>
       </Container>
     </RootStyle>

@@ -5,21 +5,21 @@ import { Typography } from '@mui/material';
 import SanityImage from 'src/core/components/SanityImage';
 
 type PortableBlockProps = {
-  id: string;
+  id?: string;
   _type: string;
   name: string;
 };
 
 type PortableTextProps = {
-  richText?: (PortableTextBlock | PortableBlockProps)[];
+  body?: (PortableTextBlock | PortableBlockProps)[];
 }
 
 const PortableTextRender = (props: PortableTextProps) => {
-  const { richText } = props;
-  if (richText == undefined) {
+  const { body } = props;
+  if (body == undefined) {
     return null;
   }
-  return (<PortableText value={richText} components={components} onMissingComponent={warnMissingComponent} />)
+  return (<PortableText value={body} components={components} onMissingComponent={warnMissingComponent} />)
 }
 
 /**

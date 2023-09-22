@@ -1,12 +1,5 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types'
 
-export type Section = {
-  type: string;
-  content: Array<Content>;
-  backgroundColor?: {
-    hex: string;
-  }
-};
 
 export type Content = {
   type?: string;
@@ -21,10 +14,16 @@ export type Content = {
   size?: string;
   description?: string;
   messages?: Array<string>;
+  backgroundColor?: string;
+  headingOverlay?: string;
+  kicker?: string;
+  textOverlay?: string;
   _type?: string;
   _key?: string;
 
 }
+
+export type Section = Content;
 
 export type SanityColorProps = {
   _type: string;
@@ -74,19 +73,22 @@ export interface SanityMetaDataObject extends SanityImageObject{
 }
 
 export type HomepageContent = {
+  _type?: string;
+  _key?: string;
+  _id?: string;
   type?: string;
-  image: SanityEnrichedImageObject;
+  image?: SanityEnrichedImageObject;
   images?: Array<{
     image: SanityEnrichedImageObject;
     flip: boolean;
   }>;
+  content?: Array<Content>;
+  sections?: Array<Section>;
   title?: string;
   heading?: string;
   text?: string;
   description?: string;
   messages?: Array<string>;
-  _type?: string;
-  _key?: string;
   videoUrl?: string;
   enableCTA?: boolean;
   kicker?: string;
@@ -114,6 +116,7 @@ export type HoopImage = {
 export type SanityPageProps = {
   title: string;
   description: string;
+
   sections: Array<Section>;
 };
 

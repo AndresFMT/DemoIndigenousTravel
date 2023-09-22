@@ -7,48 +7,23 @@ export const groqPageQuery = groq`
       title,
       description,
       sections[]->{
-        'type': sectionType,
-        title,
-        description,
-        backgroundColor,
+        ...,
+        _type,
+        heading,
+        kicker,
+        text,
+        enableCTA,
+        cta,
+        videoUrl,
+        richText,
         content[] -> {
-          _type == 'sectionImage' => {
-            'type': _type,
-            title,
-            image{
-              ...,
-              asset->{
-                ...,
-                metadata,
-                }
-              }
-          },
-          _type == 'sectionHeading' => {
-            'type': _type,
-            title,
-            heading,
-            headingColor
-          },
-          _type == 'sectionText' => {
-            'type': _type,
-            title,
-            text,
-            textColor
-          },
-          _type == 'hoopImage' => {
-            'type': _type,
-            title,
-            headingOverlay,
-            textOverlay,
-            image,
-            backgroundColor
-          },
-          _type == 'sectionCard' => {
-            'type': _type,
-            title,
-            text,
-            image,
-            size
+          ...,
+        },
+        image {
+          ...,
+          asset -> {
+            ...,
+            metadata
           }
         }
       }

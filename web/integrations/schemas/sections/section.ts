@@ -10,6 +10,7 @@ export default defineType({
     {type: 'textSection'},
     {type: 'imageHero'},
     {type: 'videoSection'},
+    {type: 'flexSection'},
   ],
 })
 

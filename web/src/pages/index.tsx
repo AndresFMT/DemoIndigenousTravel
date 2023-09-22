@@ -4,7 +4,6 @@ import { groq } from 'next-sanity'
 
 import client from 'integrations/sanity.client';
 import Layout from "src/core/layouts/Layout"
-
 import { Page } from "src/core/components"
 import Fallback from 'src/sections/fallback'
 import * as HomepageContent from 'src/sections/home'
@@ -30,7 +29,6 @@ const HomePage = (props: Props) => {
             return <Component key={index} {...item} />
           })
         }
-
       </Page>
     </Suspense>
   )
@@ -40,7 +38,6 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-
 export default HomePage;
 
 export const getStaticProps = (async () => {
@@ -49,6 +46,7 @@ export const getStaticProps = (async () => {
       title,
       description,
       content[]-> {
+        ...,
         _type,
         heading,
         kicker,
@@ -57,6 +55,9 @@ export const getStaticProps = (async () => {
         cta,
         videoUrl,
         richText,
+        content[] -> {
+          ...,
+        },
         image {
           ...,
           asset -> {
@@ -73,3 +74,4 @@ export const getStaticProps = (async () => {
     },
   }
 }) satisfies GetStaticProps<Props>
+

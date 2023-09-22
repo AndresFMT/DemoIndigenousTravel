@@ -5,18 +5,12 @@ import { Box, BoxProps} from '@mui/material';
 
 import imageLoader, { urlFor } from 'integrations/sanity.image';
 
-// ----------------------------------------------------------------------
-
 type IProps = BoxProps & LazyLoadImageProps;
-
 
 interface Props extends IProps {
   image?: any;
 }
 
-/**
- * The properties of a hero image should stay relatively the same whenver used. Don't use this component for anything else.
- */
 export default function SanityImage({ image }: Props) {
   if (image == undefined) {
     return null;
