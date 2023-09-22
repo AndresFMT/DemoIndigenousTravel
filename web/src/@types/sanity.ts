@@ -14,11 +14,11 @@ export type Content = {
   size?: string;
   description?: string;
   messages?: Array<string>;
-  backgroundColor?: string;
+  backgroundColor?: SanityColorProps;
   headingOverlay?: string;
   kicker?: string;
   textOverlay?: string;
-  _type?: string;
+  _type: string;
   _key?: string;
 
 }
@@ -73,7 +73,7 @@ export interface SanityMetaDataObject extends SanityImageObject{
 }
 
 export type HomepageContent = {
-  _type?: string;
+  _type: string;
   _key?: string;
   _id?: string;
   type?: string;

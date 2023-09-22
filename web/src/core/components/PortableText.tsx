@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 import SanityImage from 'src/core/components/SanityImage';
 
 type PortableBlockProps = {
-  id?: string;
+  id: string;
   _type: string;
   name: string;
 };

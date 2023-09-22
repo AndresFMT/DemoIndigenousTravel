@@ -19,7 +19,7 @@ const RootStyle = styled('section')(({ theme }) => ({
 type Props = {
   content?: Content[];
   _id?: string;
-  _type?: string;
+  _type: string;
   title?: string;
 }
 
@@ -35,8 +35,8 @@ const getContentElement = (type: string| undefined) => {
 }
 
 const FlexSection = (props: Props) => {
-  const { content } = props;
-  if (!content) {
+  const { content, _type} = props;
+  if (!content || !_type) {
     return null;
   }
 

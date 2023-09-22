@@ -18,13 +18,19 @@ const RootStyle = styled('div')(({ theme }) => ({
   },
 }));
 
+interface Props extends Section, ReducedContent {
+}
 
-const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
-  const reducedContent: ReducedContent = content.reduce((acc, cur) => {
-    acc = { ...acc, ...cur };
-    return acc;
-  }, {} as ReducedContent);
 
+const SectionText = (props: Props) => {
+
+  const {
+    heading,
+    headingColor,
+    text,
+    textColor,
+    backgroundColor
+  } = props;
 
   const sectionBackground = backgroundColor ? backgroundColor.hex : '#fff';
   const sectionColor = backgroundColor ? 'primary.contrastText' : 'primary.burgundy';
@@ -34,15 +40,8 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
     color: sectionColor,
   };
 
-  const {
-    heading,
-    headingColor,
-    text,
-    textColor,
-  } = reducedContent;
-
   return (
-    <RootStyle sx = { sectionSX } >
+    <RootStyle sx= { sectionSX } >
       <MotionViewport>
         <Container maxWidth="lg">
           <m.div variants={varFade().inUp}>
@@ -67,3 +66,4 @@ const SectionText: React.FC<Section> = ({content, backgroundColor}) => {
 };
 
 export default SectionText;
+
