@@ -4,16 +4,13 @@ import { Box, Typography } from '@mui/material';
 import { Image } from 'src/core/components';
 import { default as AnimatedHoop } from 'src/core/components/AnimatedHoop';
 import { urlFor } from 'integrations/sanityImage';
-import { SanityEnrichedImageObject } from 'src/@types/sanity';
+import { SanityEnrichedImageObject, SanityColorProps} from 'src/@types/sanity';
 
 import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 
 type Props = {
   image?: SanityEnrichedImageObject;
-  backgroundColor?: {
-    hex: string;
-    rgb: Color;
-  };
+  backgroundColor?: SanityColorProps;
   headingOverlay?: string;
   textOverlay?: string;
   imageSize?: number;
