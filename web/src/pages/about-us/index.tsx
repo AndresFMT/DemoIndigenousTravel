@@ -5,14 +5,28 @@ import client from 'integrations/sanity.client';
 import Layout from 'src/core/layouts/Layout'
 import { Page } from 'src/core/components'
 import { groqPageQuery } from 'src/utils/pageQuery'
-import { DynamicGenericSections } from 'src/sections/basic'
+import Fallback from 'src/sections/fallback';
+import * as HomepageContent from 'src/sections/home'
 
-import { SanityPageProps } from 'src/@types/sanity';
+import { HomepageContent as HomepageContentType } from "src/@types/sanity";
 
-const AboutUsPage = (props: SanityPageProps) => {
+type Props = {
+  title?: string;
+  description?: string;
+  sections: HomepageContentType[];
+};
+
+const AboutUsPage = (props: Props) => {
+  const { sections, title, description } = props
+  const metadescription = (<meta name="description" content={description} />)
   return (
-    <Page title="About Us">
-      <DynamicGenericSections {...props} />
+        <Page title={title|| "ITM"} meta={metadescription}>
+        {
+          sections && sections.map((item, index: number) => {
+            const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback
+            return <Component key={index} {...item} />
+          })
+        }
     </Page>
   )
 }

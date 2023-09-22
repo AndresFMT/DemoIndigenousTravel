@@ -1,32 +1,35 @@
 import { ReactElement } from 'react';
 import { Suspense } from 'react';
-import { styled } from '@mui/material/styles';
 
 import { Page } from 'src/core/components';
 import Layout from 'src/core/layouts/Layout';
 
 import client from 'integrations/sanity.client';
-import { DynamicGenericSections } from 'src/sections/basic';
 import { groqPageQuery } from 'src/utils/pageQuery';
+import Fallback from 'src/sections/fallback';
+import * as HomepageContent from 'src/sections/home'
 
-import { SanityPageProps } from 'src/@types/sanity';
+import { HomepageContent as HomepageContentType } from "src/@types/sanity";
 
-const RootStyles = styled('div')(({ theme }) => ({
-  overflow: 'hidden',
-  paddingTop: theme.spacing(15),
-  [theme.breakpoints.up('md')]: {
-    paddingTop: theme.spacing(15),
-  },
-}));
+type Props = {
+  title?: string;
+  description?: string;
+  sections: HomepageContentType[];
+};
 
-const WhatWeDoPage = (props:SanityPageProps) => {
+const WhatWeDoPage = (props:Props) => {
+  const { sections, title, description } = props
+  const metadescription = (<meta name="description" content={description} />)
   return (
     <Suspense fallback="Loading...">
-      <RootStyles>
-        <Page title={props.title}>
-          <DynamicGenericSections {...props} />
+        <Page title={title|| "ITM"} meta={metadescription}>
+        {
+          sections && sections.map((item, index: number) => {
+            const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback
+            return <Component key={index} {...item} />
+          })
+        }
         </Page>
-      </RootStyles>
     </Suspense>
   );
 };
