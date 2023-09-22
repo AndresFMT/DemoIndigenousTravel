@@ -1,4 +1,3 @@
-import { BlitzPage } from "@blitzjs/next"
 import { ReactElement } from 'react';
 import { Suspense } from 'react';
 import { styled } from '@mui/material/styles';
@@ -20,7 +19,7 @@ const RootStyles = styled('div')(({ theme }) => ({
   },
 }));
 
-const WhatWeDoPage: BlitzPage<SanityPageProps> = (props) => {
+const WhatWeDoPage = (props:SanityPageProps) => {
   return (
     <Suspense fallback="Loading...">
       <RootStyles>

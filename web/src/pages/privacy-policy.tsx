@@ -1,6 +1,5 @@
-import { Suspense } from 'react';
+import { ReactElement, Suspense } from 'react';
 import Layout from 'src/core/layouts/Layout';
-import { BlitzPage } from '@blitzjs/next';
 
 import { Page } from "src/core/components"
 
@@ -29,7 +28,7 @@ type Props = {
   content: HomepageContentType[];
 }
 
-const PrivacyPolicyPage: BlitzPage<Props> = () => {
+const PrivacyPolicyPage = (props: Props) => {
   return (
     <Suspense fallback="Loading...">
       <Page title={'Privacy Policy'}>
@@ -100,7 +99,7 @@ const PrivacyPolicyPage: BlitzPage<Props> = () => {
   )
 }
 
-PrivacyPolicyPage.getLayout = function getLayout(page) {
+PrivacyPolicyPage.getLayout = function getLayout(page:ReactElement) {
   return <Layout>{page}</Layout>
 }
 

@@ -40,7 +40,6 @@ const calculateBackgroundLuminance = (color?: SanityColorProps) => {
   return (0.299 * color.rgb.r + 0.587 * color.rgb.g + 0.114 * color.rgb.b) / 255;
 }
 
-
 const PortableBlock = (props: Props): JSX.Element => {
   const { heading, richText, image} = props;
 

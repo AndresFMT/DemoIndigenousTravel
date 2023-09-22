@@ -1,6 +1,4 @@
-import { BlitzPage } from '@blitzjs/next';
 import { Suspense, ReactElement } from 'react';
-import { styled } from '@mui/material/styles';
 
 import { Page } from 'src/core/components';
 import Layout from 'src/core/layouts/Layout';
@@ -10,22 +8,12 @@ import { DynamicGenericSections } from 'src/sections/basic';
 
 import { SanityPageProps } from 'src/@types/sanity';
 
-const RootStyles = styled('div')(({ theme }) => ({
-  overflow: 'hidden',
-  paddingTop: theme.spacing(15),
-  [theme.breakpoints.up('md')]: {
-    paddingTop: theme.spacing(15),
-  },
-}));
-
-const ReconciliationPage: BlitzPage<SanityPageProps>= (props) => {
+const ReconciliationPage = (props:SanityPageProps) => {
   return (
     <Suspense fallback="Loading...">
-      <RootStyles>
         <Page title={props.title}>
           <DynamicGenericSections {...props} />
         </Page>
-      </RootStyles>
     </Suspense>
   );
 };

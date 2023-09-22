@@ -53,7 +53,6 @@ const calculateBackgroundLuminance = (color?: SanityColorProps) => {
 
 const PortableBlock = (props: Props): JSX.Element => {
   const { heading, richText, image, cta } = props;
-  console.log('Portable Block: ', props);
 
   const isBackgroundLight = calculateBackgroundLuminance(image?.imageOverlay) < 0.5;
   const fontColor = isBackgroundLight ? 'primary.contrastText' : 'primary.text';

@@ -1,29 +1,18 @@
-import {styled } from '@mui/material/styles';
-import type {ReactNode} from 'react';
-import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
+import type { ReactNode } from 'react';
+
 import Layout from 'src/core/layouts/Layout'
 import { Page, MembershipForm } from 'src/core/components'
 import client from 'integrations/sanity.client';
 
 import { DynamicGenericSections } from 'src/sections/basic';
 import { groqPageQuery } from 'src/utils/pageQuery';
-import { BlitzPage } from '@blitzjs/next';
 import { SanityPageProps } from 'src/@types/sanity';
 
-const RootStyle = styled('div')(({theme}) => ({
-  paddingTop: HEADER_MOBILE_HEIGHT,
-  [theme.breakpoints.up('md')]: {
-    paddingTop: HEADER_DESKTOP_HEIGHT,
-  }
-}))
-
-const MemberServicesPage:BlitzPage<SanityPageProps> = (props) => {
+const MemberServicesPage = (props:SanityPageProps) => {
   return (
     <Page title={props.title}>
-      <RootStyle>
           <DynamicGenericSections {...props} />
             <MembershipForm />
-      </RootStyle>
       <div className="min-h-10 w-full" />
     </Page>
   )

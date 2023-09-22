@@ -37,7 +37,6 @@ type Props = {
 
 export default function ImageHero(props: Props) {
   const {heading, kicker, image, enableCTA, text } = props;
-  console.log('FallbackImageHero', props);
 
   return (
     <RootStyle>

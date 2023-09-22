@@ -1,35 +1,23 @@
-import {styled} from '@mui/material/styles'
-import Layout from 'src/core/layouts/Layout'
-
-import {HEADER_MOBILE_HEIGHT, HEADER_DESKTOP_HEIGHT} from 'src/config'
-import {Page} from 'src/core/components'
+import { ReactElement } from 'react'
 
 import client from 'integrations/sanity.client';
+
+import Layout from 'src/core/layouts/Layout'
+import { Page } from 'src/core/components'
 import { groqPageQuery } from 'src/utils/pageQuery'
-import {DynamicGenericSections} from 'src/sections/basic'
-import { ReactElement } from 'react'
-import { BlitzPage } from '@blitzjs/auth'
+import { DynamicGenericSections } from 'src/sections/basic'
 
 import { SanityPageProps } from 'src/@types/sanity';
 
-const RootStyle = styled('div')(({theme}) => ({
-    paddingTop: HEADER_MOBILE_HEIGHT,
-  [theme.breakpoints.up('md')]: {
-    paddingTop: HEADER_DESKTOP_HEIGHT,
-  },
-}))
-
-const AboutUsPage:BlitzPage<SanityPageProps>= (props) => {
+const AboutUsPage = (props: SanityPageProps) => {
   return (
     <Page title="About Us">
-      <RootStyle>
-        <DynamicGenericSections {...props} />
-      </RootStyle>
+      <DynamicGenericSections {...props} />
     </Page>
   )
 }
 
-AboutUsPage.getLayout = function getLayout(page:ReactElement) {
+AboutUsPage.getLayout = function getLayout(page: ReactElement) {
   return <Layout >{page}</Layout>;
 }
 

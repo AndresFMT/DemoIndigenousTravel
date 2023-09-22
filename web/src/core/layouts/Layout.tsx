@@ -2,8 +2,6 @@ import Head from "next/head"
 import dynamic from 'next/dynamic';
 import React, {ReactNode} from "react"
 
-import { BlitzLayout } from "@blitzjs/next"
-
 const Header = dynamic(() => import('./header/Header'), { ssr: false });
 const HeaderSimple = dynamic(() => import('./header/HeaderSimple'), { ssr: false });
 const Footer = dynamic(() => import('./footer/Footer'), { ssr: false });
@@ -19,7 +17,7 @@ type LayoutProps = {
   simpleFooter?: boolean;
 }
 
-const Layout: BlitzLayout<LayoutProps> = ({
+const Layout = ({
   title,
   children,
   transparentHeader,
@@ -27,7 +25,7 @@ const Layout: BlitzLayout<LayoutProps> = ({
   disabledFooter,
   simpleHeader,
   simpleFooter,
-}) => {
+}:LayoutProps ) => {
 
   return (
     <>

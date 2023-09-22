@@ -28,7 +28,6 @@ const MapModal = ({children}: MapModalProps) => {
 
   useEffect(() => {
     document.addEventListener('keydown', escape);
-    console.log('added event listener')
     return () => document.removeEventListener('keydown', escape);
   }, [escape]);
 
