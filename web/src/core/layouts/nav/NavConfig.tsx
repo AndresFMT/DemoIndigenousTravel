@@ -8,30 +8,72 @@ import { _tours, _jobs, _courses } from '_data/mock';
 export const PageLinks = [
   {
     order: '1',
-    subheader: 'Indigenous Tourism Manitoba',
-    cover: 'https://zone-assets-api.vercel.app/assets/images/menu/menu_marketing.jpg',
+    subheader: 'About ITM',
+    cover: 'https://placekitten.com/g/900/500',
     items: [
-      { title: 'Who We Are', path: Routes.whoweare},
+      { title: 'Who We Are', path: Routes.whoWeAre},
       { title: 'What We Do', path: Routes.whatWeDo},
       { title: 'Reconciliation', path: Routes.reconciliation},
+      { title: 'Meet Our Team', path: Routes.ourTeam },
     ],
   },
   {
     order: '2',
-    subheader: 'Members',
-    cover: 'https://zone-assets-api.vercel.app/assets/images/menu/menu_marketing.jpg',
+    subheader: 'Membership',
+    cover: 'https://placekitten.com/900/500',
     items: [
-      { title: 'About Us', path: Routes.aboutUs},
-      { title: 'Membership', path: Routes.membership},
+      { title: 'What We Do', path: Routes.discover.whatWeDo },
+      { title: 'Become A Member', path: Routes.discover.membership },
+      { title: 'Reconcilliation', path: Routes.discover.reconciliation },
+    ],
+  },
+  {
+    order: '3',
+    subheader: 'News & Events',
+    cover: 'https://placekitten.com/1000/600',
+    items: [
+      { title: 'News', path: Routes.discover.news },
+      { title: 'Events', path: Routes.discover.events },
+      { title: 'Contact Us', path: Routes.discover.contactUs },
+    ],
+  },
+];
+
+export const ExplorePageLinks = [
+  {
+    order: '1',
+    subheader: 'Indigenous Tourism',
+    cover: 'https://placekitten.com/g/1600/900',
+    items: [
+      { title: 'Explore Indigenous Tourism', path: Routes.explore.landing},
+      { title: 'Things To Do', path: Routes.explore.thingsToDo },
+      { title: 'Cultural Authenticity', path: Routes.explore.culturalAuthenticity },
+    ],
+  },
+  {
+    order: '2',
+    subheader: 'Explore Manitoba',
+    cover: 'https://placekitten.com/1600/900',
+    items: [
+      { title: 'Tundra', path: Routes.explore.tundra },
+      { title: 'Urban', path: Routes.explore.urban },
+      { title: 'Prairie', path: Routes.explore.praire },
+      { title: 'Shield', path: Routes.explore.events },
+
     ],
   },
 ];
 
 export const navConfig = [
-  { title: 'Who We Are', path: '/' },
-  { title: 'What We Do', path: '/what-we-do'},
-  { title: 'About Us', path: '/about-us'},
-  { title: 'Membership', path: '/membership'},
-  { title: 'Reconciliation', path: '/reconciliation'},
+  { title: 'Home', path: '/' },
+  {
+    title: 'Explore',
+    path: '/explore',
+    children: [
+        PageLinks[0], ExplorePageLinks[0], ExplorePageLinks[1], PageLinks[2]
+    ]
+  },
+  { title: 'Members', path: '/membership' },
+  { title: 'Map', path: '?open_map=true',query: {open_map: true} },
 ];
 

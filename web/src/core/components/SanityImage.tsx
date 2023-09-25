@@ -25,8 +25,7 @@ export default function SanityImage({ image }: Props) {
         loader={imageLoader}
         alt={image.asset.alt || 'hero section image'}
         fill
-        placeholder="blur"
-        blurDataURL={`url(${image.asset.metadata.lqip})`}
+        placeholder={image.asset.metadata.lqip}
         style={{ objectFit: 'cover' }}
       />
     </Box>

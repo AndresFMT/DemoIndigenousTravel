@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 import { LazyMotion } from 'framer-motion';
 
 // ----------------------------------------------------------------------
 
 const loadFeatures = () => import('./features.js').then((res) => res.default);
 
-MotionLazyContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+type Props = {
+  children: ReactNode;
 };
 
-export default function MotionLazyContainer({ children }) {
+export default function MotionLazyContainer({ children }: Props) {
   return (
     <LazyMotion strict features={loadFeatures}>
       {children}

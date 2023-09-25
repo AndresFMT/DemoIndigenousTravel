@@ -10,11 +10,13 @@ import Fallback from 'src/sections/fallback';
 import * as HomepageContent from 'src/sections/home'
 
 import { HomepageContent as HomepageContentType } from "src/@types/sanity";
+
 type Props = {
   title?: string;
   description?: string;
   sections: HomepageContentType[];
 };
+
 const MemberServicesPage = (props:Props) => {
   const { sections, title, description } = props
   const metadescription = (<meta name="description" content={description} />)
@@ -27,7 +29,7 @@ const MemberServicesPage = (props:Props) => {
           })
         }
             <MembershipForm />
-      <div className="min-h-10 w-full" />
+        <div className="min-h-10 w-full" />
     </Page>
   )
 }
@@ -40,7 +42,7 @@ export default MemberServicesPage;
 
 export async function getStaticProps() {
 
-  const params = { slug: 'membership' };
+  const params = { slug: 'members' };
   const data = await client.fetch(groqPageQuery, params)
   return {
     props: {

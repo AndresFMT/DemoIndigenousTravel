@@ -15,69 +15,52 @@ import { DialogAnimate, MotionContainer, varFade } from 'src/core/components/ani
 
 // ----------------------------------------------------------------------
 import {
-  BoxProps,
   ListItemProps,
   ListSubheaderProps,
 } from '@mui/material';
 // config
 // @types
 import { NavDesktopMenuProps } from 'src/@types/layout';
-//
 
 interface SubLinkStyleProps extends ListItemProps {
   active?: boolean;
 }
 
-interface IconBulletStyleProps extends BoxProps {
-  active?: boolean;
-}
-
 const SubLinkStyle = styled(ListItem, {
   shouldForwardProp: (prop) => prop !== 'active',
-})<SubLinkStyleProps>(({ active, theme }) => ({
-  ...theme.typography.body3,
-  padding: 0,
-  width: 'auto',
-  cursor: 'pointer',
-  color: theme.palette.text.secondary,
-  transition: theme.transitions.create('color'),
-  '&:hover': {
-    color: theme.palette.text.primary,
-  },
-  ...(active && {
-    ...theme.typography.subtitle3,
-    color: theme.palette.text.primary,
-  }),
-}));
+})<SubLinkStyleProps>(({ active, theme }) => {
 
-const IconBulletStyle = styled(Box, {
-  shouldForwardProp: (prop) => prop !== 'active',
-})<IconBulletStyleProps>(({ active, theme }) => ({
-  width: 12,
-  height: 24,
-  display: 'flex',
-  alignItems: 'center',
-  '&:before': {
+  const activeBullet = {
     content: '""',
     display: 'block',
-    width: 4,
-    height: 4,
+    position: 'absolute',
+    left: -12,
+    width: 6,
+    height: 6,
     borderRadius: '50%',
-    backgroundColor: theme.palette.text.disabled,
-  },
-  ...(active && {
-    '&:before': {
-      content: '""',
-      width: 6,
-      height: 6,
-      borderRadius: '50%',
-      backgroundColor: theme.palette.primary.main,
-      transition: theme.transitions.create('all', {
-        duration: theme.transitions.duration.shortest,
-      }),
+    backgroundColor: theme.palette.primary.main,
+  };
+
+  return ({
+    ...theme.typography.body3,
+    padding: 0,
+    width: 'auto',
+    cursor: 'pointer',
+    color: theme.palette.text.secondary,
+    transition: theme.transitions.create('color'),
+    '&:hover': {
+      color: theme.palette.text.primary,
+      opacity: 0.8,
+      backgroundColor: 'transparent',
+      '&::before': activeBullet
     },
-  }),
-}));
+    ...(active && {
+      ...theme.typography.subtitle3,
+      color: theme.palette.text.primary,
+      '&::before': activeBullet
+    }),
+  })
+});
 
 const ListSubheaderStyled = styled((props: ListSubheaderProps) => (
   <ListSubheader disableSticky disableGutters {...props} />
@@ -172,7 +155,7 @@ export default function NavDesktopMenu({
                     </m.div>
 
                     {cover ? (
-                      <NextLink href={path|| '#'} passHref>
+                      <NextLink href={path || '#'} passHref>
                         <Box
                           component={m.a}
                           variants={varFade({ distance: 80 }).inLeft}
@@ -289,7 +272,6 @@ function LinkItem({ title, href, active }: LinkItemProps) {
         }
       >
         <SubLinkStyle active={active}>
-          <IconBulletStyle active={active} />
           {title}
         </SubLinkStyle>
       </Link>

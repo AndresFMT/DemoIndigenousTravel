@@ -11,13 +11,13 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'heading',
-      title: 'Heading',
+      name: 'kicker',
+      title: 'Kicker',
       type: 'string',
     }),
     defineField({
-      name: 'kicker',
-      title: 'Kicker',
+      name: 'heading',
+      title: 'Heading',
       type: 'string',
     }),
     defineField({
@@ -27,21 +27,16 @@ export default defineType({
     }),
     defineField({
       name: 'image',
-      title: 'Mobile image',
-      type: 'image',
+      title: 'image',
+      type: 'accessibleImage',
       options: {
         hotspot: true,
       },
     }),
     defineField({
-      name: 'enableCTA',
-      title: 'Enable CTA',
-      type: 'boolean',
-    }),
-    defineField({
-      name: 'text',
-      title: 'Text',
-      type: 'string',
+      name: 'cta',
+      title: 'CTA',
+      type: 'cta',
     }),
   ],
 

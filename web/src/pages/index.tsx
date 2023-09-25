@@ -13,18 +13,18 @@ import { HomepageContent as HomepageContentType } from "src/@types/sanity";
 type Props = {
   description?: string;
   title?: string;
-  content: HomepageContentType[];
+  sections: HomepageContentType[];
 }
 
 const HomePage = (props: Props) => {
-  const { content, title, description } = props
+  const { sections, title, description } = props
   const metadescription = (<meta name="description" content={description} />)
 
   return (
     <Suspense fallback="Loading...">
       <Page title={title || "ITM"} meta={metadescription}>
         {
-          content && content.map((item, index: number) => {
+          sections && sections.map((item, index: number) => {
             const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback
             return <Component key={index} {...item} />
           })
@@ -45,7 +45,7 @@ export const getStaticProps = (async () => {
     *[ _type == "homepage" && _id == "homepage"][0]{
       title,
       description,
-      content[]-> {
+      sections[]-> {
         ...,
         _type,
         heading,

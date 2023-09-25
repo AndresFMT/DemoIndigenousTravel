@@ -1,21 +1,17 @@
-import PropTypes from 'prop-types';
 import { m, AnimatePresence } from 'framer-motion';
 // @mui
-import { Dialog, Box, Paper } from '@mui/material';
+import { Dialog, Box, Paper, DialogProps} from '@mui/material';
 //
 import { varFade } from './variants';
 
 // ----------------------------------------------------------------------
 
-DialogAnimate.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClose: PropTypes.func,
-  open: PropTypes.bool,
-  sx: PropTypes.object,
-  variants: PropTypes.object,
-};
+export interface Props extends DialogProps {
+  variants?: Record<string, unknown>;
+  onClose?: VoidFunction;
+}
 
-export default function DialogAnimate({ open = false, variants, onClose, children, sx, ...other }) {
+export default function DialogAnimate({ open = false, variants, onClose, children, sx, ...other }: Props) {
   return (
     <AnimatePresence>
       {open && (

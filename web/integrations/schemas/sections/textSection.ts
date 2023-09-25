@@ -11,6 +11,12 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'documentTitle',
+      title: 'Document Title',
+      type: 'string',
+      description: 'Document Title, used for CMS only',
+    }),
+    defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',
@@ -44,7 +50,7 @@ export default defineType({
 
   preview: {
     select: {
-      title: 'heading',
+      title: 'documentTitle',
       media: 'image',
     },
     prepare(selection) {

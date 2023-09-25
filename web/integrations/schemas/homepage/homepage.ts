@@ -16,8 +16,8 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
+      name: 'sections',
+      title: 'Sections',
       type: 'sections'
     }),
   ],

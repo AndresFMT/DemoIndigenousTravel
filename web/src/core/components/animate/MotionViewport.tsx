@@ -1,21 +1,23 @@
-import PropTypes from 'prop-types';
-import { m } from 'framer-motion';
-import {} from 'react';
+import { m, MotionProps } from 'framer-motion';
+import {ReactNode} from 'react';
 // @mui
-import { Box } from '@mui/material';
+import { Box, BoxProps} from '@mui/material';
 // hooks
 import useResponsive from 'src/hooks/useResponsive';
 //
 import { varContainer } from '.';
 
 // ----------------------------------------------------------------------
+type IProps = BoxProps & MotionProps;
 
-MotionViewport.propTypes = {
-  children: PropTypes.node.isRequired,
-  disableAnimatedMobile: PropTypes.bool,
-};
+interface Props extends IProps {
+  children: ReactNode;
+  disableAnimatedMobile?: boolean;
+}
 
-export default function MotionViewport({ children, disableAnimatedMobile = true, ...other }) {
+
+
+export default function MotionViewport({ children, disableAnimatedMobile = true, ...other }: Props) {
   const isDesktop = useResponsive('up', 'sm');
 
   if (!isDesktop && disableAnimatedMobile) {

@@ -26,7 +26,7 @@ export default defineType({
     }),
     defineField({
       name: 'sections',
-      title: 'Sections List',
+      title: 'Section List',
       type: 'sections',
     }),
   ],

@@ -1,21 +1,18 @@
 import React from 'react';
-import { PortableText, PortableTextComponents } from '@portabletext/react';
-import Img from 'next/image';
 import Link from 'next/link';
-
+import { m } from 'framer-motion';
 import {
   Typography,
   Container,
   Stack,
   Box,
   Button,
-  Link as MuiLink,
 } from '@mui/material'
 import { styled } from '@mui/material/styles';
-import SanityImage from 'src/core/components/SanityImage';
 import { SanityEnrichedImageObject, SanityColorProps } from 'src/@types/sanity';
 import ImageBackground from 'src/core/components/ImageBackground';
 import PortableTextRender from 'src/core/components/PortableText';
+import { MotionViewport, varSlide } from 'src/core/components';
 
 export interface PortableBlockProps {
   id: string;
@@ -35,7 +32,6 @@ interface Props {
 };
 
 const RootStyle = styled('section')(({ theme }) => ({
-  overflow: 'hidden',
   position: 'relative',
   [theme.breakpoints.up('md')]: {
     position: 'relative',
@@ -60,10 +56,17 @@ const PortableBlock = (props: Props): JSX.Element => {
 
   return (
     <RootStyle>
+      <MotionViewport sx={{ width: '100%', height: '100%' }} >
       <ImageBackground image={image} />
 
       <Container maxWidth="lg">
-        <Stack spacing={5} alignItems={{ xs: 'flex-start', md: 'center' }} justifyContent="flex-start" sx={{ color: fontColor, fontWeight: fontWeight, width: '100%', py: { xs: 5, md: 5 }, px: { xs: 5, md: 15, lg: 20 } }}>
+        <Stack
+          component={m.div}
+          variants={varSlide().inUp}
+          spacing={5}
+          alignItems={{ xs: 'flex-start', md: 'center' }}
+          justifyContent="flex-start"
+          sx={{ color: fontColor, fontWeight: fontWeight, width: '100%', py: { xs: 5, md: 5 }, px: { xs: 5, md: 15, lg: 20 } }}>
           <Typography variant="h3" sx={{ fontWeight: 900 }}>
             {heading}
           </Typography>
@@ -76,6 +79,7 @@ const PortableBlock = (props: Props): JSX.Element => {
           }
         </Stack>
       </Container>
+      </MotionViewport>
     </RootStyle>
   );
 };
