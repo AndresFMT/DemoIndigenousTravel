@@ -7,7 +7,6 @@ import { _tours, _jobs, _courses } from '_data/mock';
 
 export const PageLinks = [
   {
-    order: '1',
     subheader: 'About ITM',
     cover: 'https://placekitten.com/g/900/500',
     items: [
@@ -18,30 +17,6 @@ export const PageLinks = [
     ],
   },
   {
-    order: '2',
-    subheader: 'Membership',
-    cover: 'https://placekitten.com/900/500',
-    items: [
-      { title: 'What We Do', path: Routes.discover.whatWeDo },
-      { title: 'Become A Member', path: Routes.discover.membership },
-      { title: 'Reconcilliation', path: Routes.discover.reconciliation },
-    ],
-  },
-  {
-    order: '3',
-    subheader: 'News & Events',
-    cover: 'https://placekitten.com/1000/600',
-    items: [
-      { title: 'News', path: Routes.discover.news },
-      { title: 'Events', path: Routes.discover.events },
-      { title: 'Contact Us', path: Routes.discover.contactUs },
-    ],
-  },
-];
-
-export const ExplorePageLinks = [
-  {
-    order: '1',
     subheader: 'Indigenous Tourism',
     cover: 'https://placekitten.com/g/1600/900',
     items: [
@@ -51,7 +26,6 @@ export const ExplorePageLinks = [
     ],
   },
   {
-    order: '2',
     subheader: 'Explore Manitoba',
     cover: 'https://placekitten.com/1600/900',
     items: [
@@ -62,18 +36,26 @@ export const ExplorePageLinks = [
 
     ],
   },
+  {
+    subheader: 'News & Events',
+    cover: 'https://placekitten.com/1000/600',
+    items: [
+      { title: 'News', path: Routes.discover.news },
+      { title: 'Events', path: Routes.discover.events },
+      { title: 'Contact Us', path: Routes.discover.contactUs },
+    ],
+  },
 ];
+
 
 export const navConfig = [
   { title: 'Home', path: '/' },
   {
     title: 'Explore',
     path: '/explore',
-    children: [
-        PageLinks[0], ExplorePageLinks[0], ExplorePageLinks[1], PageLinks[2]
-    ]
+    children: PageLinks
   },
   { title: 'Members', path: '/membership' },
-  { title: 'Map', path: '?open_map=true',query: {open_map: true} },
+  { title: 'Map', path: '?open_map=true' },
 ];
 

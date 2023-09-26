@@ -8,7 +8,7 @@ import { useOffSetTop, useResponsive } from 'src/hooks';
 import { HEADER_DESKTOP_HEIGHT } from 'src/config';
 import { ToolbarStyle, ToolbarShadowStyle } from 'src/core/layouts/header/HeaderToolbarStyle';
 import { Logo } from 'src/core/components';
-import { NavDesktop,  NavMobile, navConfig} from 'src/core/layouts/nav';
+import { NavDesktop, NavMobile, navConfig } from 'src/core/layouts/nav';
 
 type ListProps = {
   transparent?: boolean;

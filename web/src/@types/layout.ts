@@ -18,7 +18,7 @@ export type NavItemChildProps = {
   }[];
 };
 
-type NavItemProps = {
+export type NavItemProps = {
   title: string;
   path: string;
   children?: NavItemChildProps[];
@@ -35,7 +35,7 @@ export type NavItemMobileProps = {
 };
 
 export type NavDesktopMenuProps = {
-  lists: NavItemChildProps[];
+  lists?: NavItemChildProps[];
   isOpen: boolean;
   isScrolling: boolean | undefined;
   onClose: VoidFunction;
