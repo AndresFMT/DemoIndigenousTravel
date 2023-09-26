@@ -142,7 +142,7 @@ export default function NavDesktopMenu({
         <Grid item xs={12}>
           <Box sx={{ position: 'relative', px: 2, py: 6 }}>
             <Slider ref={carouselRef} {...carouselSettings}>
-              {carouselList.map((list) => {
+              {carouselList && carouselList.map((list) => {
                 const { subheader, items, cover } = list;
                 if (typeof items === 'undefined') return null;
 
