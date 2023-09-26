@@ -7,6 +7,7 @@ import { _tours, _jobs, _courses } from '_data/mock';
 
 export const PageLinks = [
   {
+    order: '1',
     subheader: 'About ITM',
     cover: 'https://placekitten.com/g/900/500',
     items: [
@@ -17,6 +18,7 @@ export const PageLinks = [
     ],
   },
   {
+    order: '2',
     subheader: 'Indigenous Tourism',
     cover: 'https://placekitten.com/g/1600/900',
     items: [
@@ -26,6 +28,7 @@ export const PageLinks = [
     ],
   },
   {
+    order: '3',
     subheader: 'Explore Manitoba',
     cover: 'https://placekitten.com/1600/900',
     items: [
@@ -37,6 +40,7 @@ export const PageLinks = [
     ],
   },
   {
+    order: '4',
     subheader: 'News & Events',
     cover: 'https://placekitten.com/1000/600',
     items: [
