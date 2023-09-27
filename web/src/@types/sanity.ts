@@ -8,7 +8,21 @@ export type Content = {
     image: SanityEnrichedImageObject;
     flip: boolean;
   }>;
+  bio?: Array<{
+    _type: string;
+    _key?: string;
+    children?: Array<{
+      _type: string;
+      _key?: string;
+      text?: string;
+      marks?: Array<string>;
+    }>;
+    markDefs?: Array<string>;
+    style?: string;
+  }>;
   title?: string;
+  name?: string;
+  jobTitle?: string;
   heading?: string;
   text?: string;
   size?: string;
@@ -58,7 +72,7 @@ export interface SanityEnrichedImageObject extends SanityMetaDataObject {
         width: number;
         height: number;
       }
-      lqip: string;
+      lqip:`data:image/${string}` ;
     }
   },
   imageOverlay?: SanityColorProps;

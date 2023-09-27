@@ -9,6 +9,7 @@ import Fallback from 'src/sections/fallback';
 import * as HomepageContent from 'src/sections/home'
 
 import { HomepageContent as HomepageContentType } from "src/@types/sanity";
+import { SectionCards } from 'src/sections/basic';
 
 type Props = {
   title?: string;

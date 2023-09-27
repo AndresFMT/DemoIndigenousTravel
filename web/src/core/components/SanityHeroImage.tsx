@@ -6,9 +6,7 @@ import { SanityEnrichedImageObject } from 'src/@types/sanity';
 import { Theme } from '@mui/material/styles';
 import { Box, BoxProps, SxProps } from '@mui/material';
 
-import { urlFor } from 'integrations/sanityImage';
-
-import imageLoader from 'integrations/sanity.image';
+import imageLoader, {urlFor} from 'integrations/sanity.image';
 
 // ----------------------------------------------------------------------
 
@@ -36,9 +34,8 @@ export default function SanityHeroImage({
     return null;
   }
 
-  const imageWidth = Math.round(image.asset.metadata.dimensions.width * (image.hotspot?.width || 1));
-  const imageHeight = Math.round(imageWidth * 9 / 16);
-  const sanityImageUrl = urlFor(image).height(imageHeight).url();
+  const { x: fpx, y: fpy } = image.hotspot || { x: 0.5, y: 0.5 };
+  const sanityImageUrl = urlFor(image).focalPoint(fpx, fpy)
 
   return (
     <Box
@@ -54,15 +51,12 @@ export default function SanityHeroImage({
       }}
     >
       <Img
-        src={sanityImageUrl}
-        style={{ width: '100%', height: 'auto' }}
-        width={imageWidth}
-        height={imageHeight}
-        sizes="(max-width: 800px) 100vw, 800px"
+        src={sanityImageUrl.url()}
+        fill={true}
+        loader={imageLoader}
         alt={other.alt || 'hero section image'}
-        placeholder="blur"
-        blurDataURL={`url(${image.asset.metadata.lqip})`}
-        unoptimized
+        placeholder={image.asset.metadata.lqip}
+        style={{objectFit: 'cover'}}
       />
     </Box>
   );

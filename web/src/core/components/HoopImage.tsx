@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 
 import { Image } from 'src/core/components';
 import { default as AnimatedHoop } from 'src/core/components/AnimatedHoop';
-import { urlFor } from 'integrations/sanityImage';
+import { urlFor } from 'integrations/sanity.image';
 import { SanityEnrichedImageObject, SanityColorProps} from 'src/@types/sanity';
 
 import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
@@ -66,6 +66,7 @@ const calculateBackgroundLuminance = (color?: SanityColorProps) => {
 }
 
 const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageSize }: Props) => {
+
 
   // TODO: remove direct call to open map, create a router listener so we can show the operator on the map with direct links.
   const { openMap } = useInteractiveMapContext();

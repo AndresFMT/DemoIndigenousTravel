@@ -23,8 +23,8 @@ export const PageLinks = [
     cover: 'https://placekitten.com/g/1600/900',
     items: [
       { title: 'Explore Indigenous Tourism', path: Routes.explore.landing},
-      { title: 'Things To Do', path: Routes.explore.thingsToDo },
-      { title: 'Cultural Authenticity', path: Routes.explore.culturalAuthenticity },
+      { title: 'Things To Do', path: Routes.thingsToDo },
+      { title: 'Cultural Authenticity', path: Routes.culturalAuthenticity },
     ],
   },
   {

@@ -114,6 +114,8 @@ const Routes = {
   membership: '/membership',
   reconciliation: '/reconciliation',
   contactUs: '/contact-us',
+  culturalAuthenticity: '/cultural-authenticity',
+  thingsToDo: '/things-to-do',
 };
 
 export default Routes;

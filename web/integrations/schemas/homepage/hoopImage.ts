@@ -17,16 +17,11 @@ export default defineType({
     }),
     defineField({
       name: 'image',
-      title: 'Image',
-      type: 'image',
+      title: 'Hoop Image',
+      type: 'accessibleImage',
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: 'alt',
-      title: 'Alt',
-      type: 'accessibleImage',
     }),
     defineField({
       name: 'headingOverlay',

@@ -6,7 +6,7 @@ import { m } from 'framer-motion';
 // routes
 import Routes from 'src/routes';
 // components
-import { SanityHeroImage, HoopButton, MotionContainer, TextAnimate, varFade} from 'src/core/components';
+import { SanityImage, HoopButton, MotionContainer, TextAnimate, varFade } from 'src/core/components';
 import { SanityEnrichedImageObject } from 'src/@types/sanity';
 
 // ----------------------------------------------------------------------
@@ -41,7 +41,7 @@ export default function ImageHero(props: Props) {
 
   return (
     <RootStyle>
-      <MotionContainer sx={{width: '100%', height: '100%'}}>
+      <MotionContainer sx={{ width: '100%', height: '100%' }}>
         <Grid container sx={{ zIndex: 22, position: 'relative', height: '100%' }}>
           <Stack
             spacing={5}
@@ -56,12 +56,23 @@ export default function ImageHero(props: Props) {
             }}
           >
 
-              <Typography variant="h1" sx={{ fontWeight: 900, color: 'primary.contrastText', textShadow: '1px 1px 2px #1e1e1e' }}>
-                <Box component={m.div} variants={varFade().in} sx={{ color: '' }}>
-                  {kicker}
-                </Box>
-                {heading && <TextAnimate text={heading}/>}
-              </Typography>
+            <Typography variant="h1" sx={{ fontWeight: 900, color: 'primary.contrastText', textShadow: '1px 1px 2px #1e1e1e' }}>
+              {kicker && kicker.split(' ').map((word, index, kicker) => {
+                const colors = ['secondary.orange', 'primary.main', 'secondary.blue', 'secondary.blue'];
+
+                const wordColor = colors[index % colors.length];
+                return (
+                  <>
+                    <Box component={m.div} variants={varFade().in} sx={{ display: 'inline-block', color: wordColor }}>
+                      {word }&nbsp;
+                    </Box>
+                    {(index == kicker.length-1) && (<br />)}
+                  </>
+                )
+              })}
+
+              {heading && <TextAnimate text={heading} sx={{ color: 'primary.tan'}}/>}
+            </Typography>
 
 
             {enableCTA && <HoopButton
@@ -91,14 +102,15 @@ export default function ImageHero(props: Props) {
           }}
         >
           {image ?
-            <SanityHeroImage
+            <SanityImage
               image={image}
+              fullWidth
             /> : null
           }
 
         </Box>
 
-        </MotionContainer>
+      </MotionContainer>
     </RootStyle>
   );
 }

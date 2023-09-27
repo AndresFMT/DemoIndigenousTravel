@@ -6,6 +6,7 @@ import Layout from "src/core/layouts/Layout"
 import { Box } from '@mui/system';
 // Path: theme-development.tsx
 // ----------------------------------------------------------------------
+import {useTheme }from '@mui/material/styles';
 
 const RootStyle = styled('section')(({ theme }) => ({
   overflow: 'hidden',
@@ -24,6 +25,8 @@ const SectionContainer = styled('div')(() => ({
 
 
 export default function ThemeDevelopment() {
+
+  const theme = useTheme();
 
   return (
     <RootStyle>
@@ -103,11 +106,22 @@ export default function ThemeDevelopment() {
               px: { xs: 5, md: 30 },
               textAlign: { xs: 'left', md: 'end' },
             }}
+            direction='column'
             >
-            <Box sx={{ bgcolor: 'grey.300', height: 100, width: 100 }} />
-            <Box sx={{ bgcolor: 'primary.main', height: 100, width: 100 }} />
-            <Box sx={{ bgcolor: 'primary.main', height: 100, width: 100 }} />
-            <Box sx={{ bgcolor: 'primary.main', height: 100, width: 100 }} />
+            { Object.entries(theme.palette).map( ([key, value]) => {
+              return (
+              <Box sx={{ display: 'flex', flexDirection:"row"}} >
+                <Typography variant="h2" sx={{ color: 'primary.main' }}>
+                  {key}
+                </Typography>
+                  {Object.entries(value).map( ([key, value]) => {
+                    return (
+                      <ColorDisplay color={value} name={key} />
+                    )
+                  })}
+              </Box>
+              )
+            })}
           </Stack>
         </Grid>
       </SectionContainer>
@@ -115,6 +129,16 @@ export default function ThemeDevelopment() {
   );
 }
 
+const ColorDisplay = (props) => {
+  const { color, name } = props;
+  return (
+    <Box sx={{ bgcolor: color, height: 100, width: 100 }} >
+      <Typography variant="h5" sx={{ color: 'primary.yellow' }}>
+        {name}
+      </Typography>
+    </Box>
+  )
+}
 ThemeDevelopment.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 }

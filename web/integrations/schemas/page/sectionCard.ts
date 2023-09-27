@@ -33,6 +33,14 @@ export default defineType({
       ]
     }),
     defineField({
+      name: 'role',
+      title: 'Role',
+      type: 'string',
+      validation: Rule => [
+        Rule.required(),
+      ]
+    }),
+    defineField({
       name: 'text',
       title: 'Card Text',
       type: 'text',

@@ -5,13 +5,20 @@ export default defineType( {
   title: 'Section Cards',
   type: 'document',
   fields: [
-    defineField( {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string'
-    } )
+    }),
+    defineField({
+      name: 'content',
+      title: 'Cards',
+      type: 'array',
+      of: [
+        {type: 'reference', to: [{type: 'author'}]},
+      ]
+    }),
   ],
-
   preview: {
     select: {
       title: 'title',

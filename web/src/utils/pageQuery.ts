@@ -18,6 +18,13 @@ export const groqPageQuery = groq`
         richText,
         content[] -> {
           ...,
+          image {
+            ...,
+            asset -> {
+              ...,
+              metadata
+            }
+          }
         },
         image {
           ...,

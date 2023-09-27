@@ -1,8 +1,10 @@
+import { m } from 'framer-motion';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import {PortableTextBlock} from '@portabletext/types';
-import { Typography } from '@mui/material';
+import { Typography, Stack } from '@mui/material';
 
 import SanityImage from 'src/core/components/SanityImage';
+import { MotionViewport, varFade } from 'src/core/components';
 
 type PortableBlockProps = {
   id: string;
@@ -19,7 +21,13 @@ const PortableTextRender = (props: PortableTextProps) => {
   if (body == undefined) {
     return null;
   }
-  return (<PortableText value={body} components={components} onMissingComponent={warnMissingComponent} />)
+  return (
+    <MotionViewport variants={varFade().in}>
+      <Stack spacing={2}>
+        <PortableText value={body} components={components} onMissingComponent={warnMissingComponent} />
+      </Stack>
+    </MotionViewport>
+  )
 }
 
 /**
@@ -41,7 +49,7 @@ const components: PortableTextComponents = {
     },
     normal: (props) => {
       return (
-        <Typography variant="body1">{props.value}</Typography>
+        <Typography className='nomrla' variant="body1" component={m.p} variants={varFade().inUp}>{props.value}</Typography>
       )
     },
 
@@ -63,11 +71,11 @@ const components: PortableTextComponents = {
   },
   block: {
     // Ex. 1: customizing common block types
-    normal: ({ children }) => <Typography variant='body1'>{children}</Typography>,
-    h1: ({ children }) => <Typography variant='h1' component='h2'>{children}</Typography>,
-    h2: ({ children }) => <Typography variant='h2' component='h2'>{children}</Typography>,
-    h3: ({ children }) => <Typography variant='h3' component='h3'>{children}</Typography>,
-    h4: ({ children }) => <Typography variant='h4' component='h4'>{children}</Typography>,
+    normal: ({ children }) => <Typography variant='body1' component={m.p} variants={varFade().inUp}>{children}</Typography>,
+    h1: ({ children }) => <Typography variant='h1' component={m.h2} variants={varFade().inUp}>{children}</Typography>,
+    h2: ({ children }) => <Typography variant='h2' component={m.h2} variants={varFade().inUp}>{children}</Typography>,
+    h3: ({ children }) => <Typography variant='h3' component={m.h3} variants={varFade().inUp}>{children}</Typography>,
+    h4: ({ children }) => <Typography variant='h4' component={m.h4} variants={varFade().inUp}>{children}</Typography>,
     blockquote: ({ children }) => <blockquote className="border-l-purple-500">{children}</blockquote>,
 
     // Ex. 2: rendering custom styles

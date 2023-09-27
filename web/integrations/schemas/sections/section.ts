@@ -1,4 +1,4 @@
-import { defineType} from 'sanity'
+import {defineType} from 'sanity'
 
 export default defineType({
   name: 'section',
@@ -11,6 +11,7 @@ export default defineType({
     {type: 'imageHero'},
     {type: 'videoSection'},
     {type: 'flexSection'},
+    {type: 'sectionCards'},
   ],
 })
 

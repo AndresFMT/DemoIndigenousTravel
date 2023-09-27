@@ -13,8 +13,7 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'array',
-      of: [{type: 'flexContent' }],
+      type: 'flexContent',
     }),
   ],
 });
