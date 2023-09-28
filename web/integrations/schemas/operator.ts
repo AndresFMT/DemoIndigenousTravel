@@ -13,20 +13,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'asset',
-      title: 'Business Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-        name: 'image',
-        title: 'Photo',
-        type: 'accessibleImage',
-        description: 'add image or logo for business',
-    }),
-    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -34,6 +20,28 @@ export default defineType({
         source: 'name',
         maxLength: 96,
       },
+    }),
+    defineField({
+        name: 'images',
+        title: 'Photos',
+        type: 'array',
+        of: [{type: 'accessibleImage'}],
+        description: 'Priority is from top to bottom',
+    }),
+    defineField({
+      name: 'phoneNumber',
+      title: 'Phone Number',
+      type: 'number',
+    }),
+    defineField({
+      name: 'email',
+      title: 'Business Email',
+      type: 'email',
+    }),
+    defineField({
+      name: 'website',
+      title: 'Business Website',
+      type: 'url',
     }),
     defineField({
       name: 'location',
@@ -46,9 +54,9 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'phoneNumber',
-      title: 'Phone Number',
-      type: 'number',
+        name: 'coordinates',
+        title: 'Coordinates',
+        type: 'geopoint',
     }),
     defineField({
       name: 'region',
@@ -64,20 +72,24 @@ export default defineType({
       },
     }),
     defineField({
-        name: 'coordinates',
-        title: 'Coordinates',
-        type: 'geopoint',
-    }),
-    defineField({
-      name: 'website',
-      title: 'Website URL',
-      type: 'url',
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      initialValue: 'accommodation',
+      options: {
+          list: [
+            { title: 'Accommodation', value: 'accommodation' },
+            { title: 'Attractions', value: 'attractions' },
+            { title: 'Food & Drink', value: 'food-and-drink' },
+            { title: 'Tours', value: 'tours' },
+            { title: 'Transport', value: 'transport' },
+          ],
+      },
     }),
     defineField({
       name: 'description',
-      title: 'description',
-      type: 'array',
-      of: [{type: 'block'}],
+      title: 'Description',
+      type: 'blockContent',
     }),
   ],
 })
