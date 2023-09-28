@@ -23,13 +23,11 @@ type Props = {
 const Fallback = (props:Props) => {
   const { _type } = props;
   const Component = sections[_type as keyof typeof sections];
-  console.log('fallback: ' , _type );
 
   if (Component) {
-    console.log('fallback component found: ', Component);
     return <Component {...props}/>;
   }
-  console.log('type not found: ' , _type );
+  console.log('Fallback Component not found.\ntype: ' , _type );
 
   return (
     <div>

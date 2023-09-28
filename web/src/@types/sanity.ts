@@ -1,4 +1,5 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types'
+import { PortableTextBlock } from '@portabletext/types';
 
 
 export type Content = {
@@ -8,18 +9,7 @@ export type Content = {
     image: SanityEnrichedImageObject;
     flip: boolean;
   }>;
-  bio?: Array<{
-    _type: string;
-    _key?: string;
-    children?: Array<{
-      _type: string;
-      _key?: string;
-      text?: string;
-      marks?: Array<string>;
-    }>;
-    markDefs?: Array<string>;
-    style?: string;
-  }>;
+  bio?: PortableTextBlock[];
   title?: string;
   name?: string;
   jobTitle?: string;
@@ -86,6 +76,27 @@ export interface SanityMetaDataObject extends SanityImageObject{
   };
 }
 
+export type SanityPageProps = {
+  _type: string;
+  _key: string;
+  _id: string;
+  image?: SanityEnrichedImageObject;
+  images?: Array<{
+    image: SanityEnrichedImageObject;
+    flip: boolean;
+  }>;
+  content?: Array<Content>;
+  sections?: Array<Section>;
+  title?: string;
+  heading?: string;
+  text?: string;
+  description?: string;
+  messages?: Array<string>;
+  videoUrl?: string;
+  enableCTA?: boolean;
+  kicker?: string;
+}
+
 export type HomepageContent = {
   _type: string;
   _key?: string;
@@ -127,12 +138,6 @@ export type HoopImage = {
 }
 
 
-export type SanityPageProps = {
-  title: string;
-  description: string;
-
-  sections: Array<Section>;
-};
 
 export type ReducedContent = {
   image?: SanityEnrichedImageObject;

@@ -17,7 +17,10 @@ import 'react-lazy-load-image-component/src/effects/black-and-white.css'
 import 'leaflet/dist/leaflet.css'
 
 import React from "react"
+import type { ReactNode } from "react"
 import dynamic from 'next/dynamic'
+import type { AppProps } from 'next/app'
+import { Page } from "src/@types/app"
 
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
@@ -36,11 +39,14 @@ import { InteractiveMapProvider } from "src/contexts/InteractiveMapContext";
 import { SiteSettingsProvider } from 'src/contexts/SiteSettingsContext';
 const InteractiveMap = dynamic(() => import('src/core/components/map/InteractiveMap'), { ssr: false });
 
+type Props = AppProps & {
+  Component: Page;
+}
 
-function MyAppWrapper( { Component, pageProps }: any ) {
+function MyAppWrapper( { Component, pageProps }: Props) {
   const { siteSettings } = pageProps;
 
-  const getLayout = Component.getLayout || ( ( page: any ) => page )
+  const getLayout = Component.getLayout || ( ( page: ReactNode ) => page )
   if (Component.hasOwnProperty('isStudio') === true) {
     return (
       <>

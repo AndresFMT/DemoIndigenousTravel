@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import {
   Modal,
   Typography
@@ -8,8 +8,9 @@ import { Box } from "@mui/system";
 type CardModalProps = {
   open: boolean;
   content: {
-    title: string;
-    text: string;
+    name: string;
+    jobTitle?: string;
+    bioText: ReactElement | string;
   },
   handleClose: Function
 };
@@ -26,9 +27,10 @@ const style = {
   p: 4,
 };
 
-const CardModal = ({ open, content, handleClose }) => {
+const CardModal = ({ open, content, handleClose }:CardModalProps) => {
   const {
-    title,
+    name,
+    jobTitle,
     bioText
   } = content;
 
@@ -36,16 +38,17 @@ const CardModal = ({ open, content, handleClose }) => {
     <Modal
       open={open}
       onClose={() => handleClose()}
-      aria-labelledby={title}
+      aria-labelledby={name}
       aria-describedby={''}
     >
       <Box sx={style}>
         <Typography variant='h6'>
-          {title}
+          {name}
         </Typography>
         <Typography variant='body1'>
-          {bioText}
+          {jobTitle}
         </Typography>
+          {bioText}
       </Box>
     </Modal>
   );

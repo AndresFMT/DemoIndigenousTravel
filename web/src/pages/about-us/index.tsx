@@ -1,5 +1,3 @@
-import { ReactElement } from 'react'
-
 import client from 'integrations/sanity.client';
 
 import Layout from 'src/core/layouts/Layout'
@@ -8,15 +6,10 @@ import { groqPageQuery } from 'src/utils/pageQuery'
 import Fallback from 'src/sections/fallback';
 import * as HomepageContent from 'src/sections/home'
 
-import { HomepageContent as HomepageContentType } from "src/@types/sanity";
+import { SanityPageProps } from "src/@types/sanity";
+import { Page as AppPage } from "src/@types/app";
 
-type Props = {
-  title?: string;
-  description?: string;
-  sections: HomepageContentType[];
-};
-
-const AboutUsPage = (props: Props) => {
+const AboutUsPage:AppPage<SanityPageProps> = (props) => {
   const { sections, title, description } = props
   const metadescription = (<meta name="description" content={description} />)
   return (
@@ -31,7 +24,7 @@ const AboutUsPage = (props: Props) => {
   )
 }
 
-AboutUsPage.getLayout = function getLayout(page: ReactElement) {
+AboutUsPage.getLayout = function getLayout(page) {
   return <Layout >{page}</Layout>;
 }
 

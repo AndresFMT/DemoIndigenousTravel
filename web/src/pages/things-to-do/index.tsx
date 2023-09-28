@@ -1,4 +1,3 @@
-import { ReactElement } from 'react';
 import { GetStaticProps } from 'next';
 
 import { groqPageQuery } from 'src/utils/pageQuery';
@@ -10,14 +9,17 @@ import { Page } from 'src/core/components';
 import * as Sections from 'src/sections/things-to-do';
 import Fallback from 'src/sections/fallback';
 
-const ThingsToDoPage = (props) => {
+import { SanityPageProps } from "src/@types/sanity";
+import { Page as AppPage } from "src/@types/app";
+
+const ThingsToDoPage: AppPage<SanityPageProps> = (props) => {
   const { title, description, sections } = props;
   const metadescription = (<meta name="description" content={description} />)
 
   return (
     <Page title={`${title} | ITM`} meta={metadescription}>
 
-      {sections && sections.map((section, index, array) => {
+      {sections && sections.map((section, index) => {
         const Component = Sections[section._type as keyof typeof Sections] || Fallback
         return <Component key={index} {...section} />
 
@@ -29,7 +31,7 @@ const ThingsToDoPage = (props) => {
 
 export default ThingsToDoPage;
 
-ThingsToDoPage.getLayout = (page: ReactElement) => {
+ThingsToDoPage.getLayout = (page) => {
   return (<Layout>{page}</Layout>)
 };
 

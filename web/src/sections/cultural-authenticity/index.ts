@@ -7,4 +7,5 @@
 // export { default as flexSection } from './FlexSection';
 // export { default as sectionCards } from './SectionCards';
 
+export { default as Fallback } from '../fallback';
 export {}

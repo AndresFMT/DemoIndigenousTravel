@@ -1,4 +1,3 @@
-import { ReactElement } from 'react';
 import { GetStaticProps } from 'next';
 
 import { groqPageQuery } from 'src/utils/pageQuery';
@@ -10,13 +9,16 @@ import { Page } from 'src/core/components';
 import * as Sections from 'src/sections/who-we-are';
 import Fallback from 'src/sections/fallback';
 
-const WhoWeArePage = (props) => {
+import { SanityPageProps } from "src/@types/sanity";
+import { Page as AppPage } from "src/@types/app";
+
+const WhoWeArePage: AppPage<SanityPageProps>  = (props) => {
   const { title, description, sections } = props;
   const metadescription = (<meta name="description" content={description} />)
 
   return (
     <Page title={`${title} | ITM`} meta={metadescription}>
-      {sections && sections.map((section, index, array) => {
+      {sections && sections.map((section, index) => {
         const Component = Sections[section._type as keyof typeof Sections] || Fallback
         return <Component key={index} {...section} />
       })
@@ -27,7 +29,7 @@ const WhoWeArePage = (props) => {
 
 export default WhoWeArePage;
 
-WhoWeArePage.getLayout = (page: ReactElement) => {
+WhoWeArePage.getLayout = (page) => {
   return (<Layout>{page}</Layout>)
 };
 

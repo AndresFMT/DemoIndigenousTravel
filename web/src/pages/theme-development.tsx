@@ -27,7 +27,6 @@ const SectionContainer = styled('div')(() => ({
 export default function ThemeDevelopment() {
 
   const theme = useTheme();
-  console.log(theme)
 
   const [testText, setTestText] = useState('The quick brown fox jumps over the lazy dog');
 

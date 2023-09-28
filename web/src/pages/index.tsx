@@ -8,15 +8,10 @@ import { Page } from "src/core/components"
 import Fallback from 'src/sections/fallback'
 import * as HomepageContent from 'src/sections/home'
 
-import { HomepageContent as HomepageContentType } from "src/@types/sanity";
+import { SanityPageProps } from "src/@types/sanity";
+import { Page as AppPage } from "src/@types/app";
 
-type Props = {
-  description?: string;
-  title?: string;
-  sections: HomepageContentType[];
-}
-
-const HomePage = (props: Props) => {
+const HomePage: AppPage<SanityPageProps> = (props) => {
   const { sections, title, description } = props
   const metadescription = (<meta name="description" content={description} />)
 
@@ -34,7 +29,7 @@ const HomePage = (props: Props) => {
   )
 }
 
-HomePage.getLayout = function getLayout(page: React.ReactElement) {
+HomePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
 

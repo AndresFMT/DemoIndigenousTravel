@@ -22,11 +22,9 @@ const PortableTextRender = (props: PortableTextProps) => {
     return null;
   }
   return (
-    <MotionViewport>
       <Stack spacing={2}>
         <PortableText value={body} components={components} onMissingComponent={warnMissingComponent} />
       </Stack>
-    </MotionViewport>
   )
 }
 
