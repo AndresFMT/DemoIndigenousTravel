@@ -1,11 +1,12 @@
 import { m } from 'framer-motion';
-import { Container } from '@mui/material';
+import { Container, BoxProps} from '@mui/material';
+import { LazyLoadImageProps } from 'react-lazy-load-image-component';
 import Grid from '@mui/material/Unstable_Grid2';
 import { styled } from '@mui/material/styles';
 
 import { HoopImage, MotionViewport, PortableText, SanityImage, varFade } from 'src/core/components';
 import Fallback from '../fallback';
-import { Content } from 'src/@types/sanity';
+import { Section as SectionProps } from 'src/@types/sanity';
 import { getBackgroundLuminance } from 'src/utils/getBackgroundLuminance';
 
 const RootStyle = styled('section')(({ theme }) => ({
@@ -18,14 +19,16 @@ const RootStyle = styled('section')(({ theme }) => ({
   },
 }));
 
-type Props = {
-  content?: Content[];
-  _id?: string;
-  _type: string;
-  title?: string;
+type IProps = BoxProps & LazyLoadImageProps;
+
+interface ImageOverrideProps extends IProps {
+  image?: any;
+  sx?: any;
+  imageObjectFit?: any;
+  fullWidth?: boolean;
 }
 
-const ImageOverride = (props) => {
+const ImageOverride = (props:ImageOverrideProps ) => {
   return (
     <SanityImage {...props} sx={{top: 0, bottom: 0, height: '100%'}}/>
   )
@@ -42,8 +45,8 @@ const getContentElement = (type: string | undefined) => {
   }[type] || Fallback;
 }
 
-const FlexSection = (props: Props) => {
-  const { content, _type } = props;
+const FlexSection = (props: SectionProps) => {
+  const { content, _type, image } = props;
   if (!content || !_type) {
     return null;
   }

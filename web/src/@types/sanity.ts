@@ -27,7 +27,31 @@ export type Content = {
 
 }
 
-export type Section = Content;
+export type Section = {
+  type?: string;
+  image?: SanityEnrichedImageObject;
+  images?: Array<{
+    image: SanityEnrichedImageObject;
+    flip: boolean;
+  }>;
+  content?: Array<Content>;
+  bio?: PortableTextBlock[];
+  title?: string;
+  name?: string;
+  jobTitle?: string;
+  heading?: string;
+  text?: string;
+  size?: string;
+  description?: string;
+  messages?: Array<string>;
+  backgroundColor?: SanityColorProps;
+  headingOverlay?: string;
+  kicker?: string;
+  textOverlay?: string;
+  _type: string;
+  _key?: string;
+
+};
 
 export type SanityColorProps = {
   _type: string;
