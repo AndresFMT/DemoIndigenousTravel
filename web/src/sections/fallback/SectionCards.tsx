@@ -15,8 +15,7 @@ import {
   Box,
 } from '@mui/material';
 
-import { HoopImage, PortableText } from 'src/core/components';
-import CardModal from './CardModal';
+import { HoopImage, PortableText, CardModal } from 'src/core/components';
 import { Content } from 'src/@types/sanity';
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -49,7 +48,7 @@ const SectionBioCards = ({ content }: SectionCardProps) => {
     return null;
   }
 
-  const [modalState, setModalState] = useState<{ open: Boolean, content: ModalContent }>({ open: false, content: { name: '', bioText: '', jobTitle: '' } });
+  const [modalState, setModalState] = useState<{ open: boolean, content: ModalContent }>({ open: false, content: { name: '', bioText: '', jobTitle: '' } });
   const showCardModal = (modalContent: ModalContent) => {
     setModalState({
       open: true,
