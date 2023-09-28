@@ -68,5 +68,5 @@ export const getStaticProps = (async () => {
       ...data
     },
   }
-}) satisfies GetStaticProps<Props>
+}) satisfies GetStaticProps<SanityPageProps>
 
