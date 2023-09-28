@@ -31,32 +31,32 @@ const getContentElement = (type: string | undefined) => {
   if (!type) {
     return Fallback;
   }
-    const Component = {
-      'hoopImage': HoopImage,
-      'richTextContent': PortableText,
-      'imageContent': SanityImage,
-    }[type] || Fallback;
+  const Component = {
+    'hoopImage': HoopImage,
+    'richTextContent': PortableText,
+    'imageContent': SanityImage,
+  }[type] || Fallback;
   return Component
-  }
+}
 
 const FlexSection = (props: Props) => {
-  const { content, _type, image} = props;
+  const { content, _type, image } = props;
   if (!content || !_type) {
     return null;
   }
 
-  const isBackgroundDark = getBackgroundLuminance( image?.imageOverlay) < 0.5;
+  const isBackgroundDark = getBackgroundLuminance(image?.imageOverlay) < 0.5;
   const textColor = isBackgroundDark ? 'primary.contrastText' : 'primary.text';
-  const fontWeight = isBackgroundDark ? 'fontWeightBold': 'fontWeightRegular';
+  const fontWeight = isBackgroundDark ? 'fontWeightBold' : 'fontWeightRegular';
 
   return (
     <RootStyle>
       <MotionViewport>
-        <ImageBackground image={image}/>
+        <ImageBackground image={image} />
         <Container maxWidth="md" sx={{ py: 5 }}>
-          <Grid container spacing={3} sx={{ mt: 2, color: textColor, fontWeight: fontWeight}}>
+          <Grid container spacing={3} sx={{ mt: 2, color: textColor, fontWeight: fontWeight }}>
             {content.map((item, index, array) => {
-              let variants:any = varFade().inUp;
+              let variants: any = varFade().inUp;
               if (index === 0) {
                 variants = varFade().inLeft;
               } else if (index === array.length - 1) {
@@ -64,12 +64,12 @@ const FlexSection = (props: Props) => {
               }
 
               const layout = Math.round(12 / array.length);
-              const Content = getContentElement(item._type );
+              const Content = getContentElement(item._type);
               return (
                 <Grid display="flex" justifyContent="center" alignItems="center" xs={layout} key={index}>
                   <m.div variants={variants}>
-                  <Content {...item} />
-    </m.div>
+                    <Content {...item} />
+                  </m.div>
                 </Grid>
               )
             })}
