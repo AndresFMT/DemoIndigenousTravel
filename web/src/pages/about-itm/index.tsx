@@ -10,7 +10,7 @@ import * as HomepageContent from 'src/sections/home'
 
 import { HomepageContent as HomepageContentType } from "src/@types/sanity";
 
-type Props = {
+interface Props  {
   title?: string;
   description?: string;
   sections: HomepageContentType[];

@@ -22,7 +22,7 @@ const PortableTextRender = (props: PortableTextProps) => {
     return null;
   }
   return (
-    <MotionViewport variants={varFade().in}>
+    <MotionViewport>
       <Stack spacing={2}>
         <PortableText value={body} components={components} onMissingComponent={warnMissingComponent} />
       </Stack>
@@ -49,7 +49,7 @@ const components: PortableTextComponents = {
     },
     normal: (props) => {
       return (
-        <Typography className='nomrla' variant="body1" component={m.p} variants={varFade().inUp}>{props.value}</Typography>
+        <Typography variant="body1" component={m.p} variants={varFade().inUp}>{props.value}</Typography>
       )
     },
 

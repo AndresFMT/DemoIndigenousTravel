@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'image',
+      title: 'Background Image',
+      type: 'accessibleImage',
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
       type: 'flexContent',

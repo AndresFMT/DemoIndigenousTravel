@@ -44,7 +44,6 @@ type SectionCardProps = {
 };
 
 const SectionCards = ( { content, backgroundColor }:SectionCardProps ) => {
-  console.log('SectionCards: ', content)
   const sectionBackground = backgroundColor ? backgroundColor.hex : '#fff';
   const sectionColor = backgroundColor ? 'primary.contrastText' : 'primary.burgundy';
   const sectionSX = {
@@ -72,7 +71,6 @@ const SectionCards = ( { content, backgroundColor }:SectionCardProps ) => {
             <Grid container columns={{ xs: 1, sm: 1, md: 2 }} spacing={{sm: 2, md:4}} justifyContent='space-between'>
 
               {content.map( ( card, index ) => {
-                console.log('card: ', card)
                 const {
                   name,
                   jobTitle,

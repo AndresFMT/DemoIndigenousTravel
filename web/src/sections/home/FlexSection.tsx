@@ -2,9 +2,11 @@ import { Container } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { styled } from '@mui/material/styles';
 
-import { HoopImage, PortableText, SanityImage } from 'src/core/components';
+import { HoopImage, PortableText, SanityImage, ImageBackground} from 'src/core/components';
 import Fallback from '../fallback';
 import { Content } from 'src/@types/sanity';
+
+import { getBackgroundLuminance } from 'src/utils/getBackgroundLuminance';
 
 const RootStyle = styled('section')(({ theme }) => ({
   overflow: 'hidden',
@@ -21,6 +23,7 @@ type Props = {
   _id?: string;
   _type: string;
   title?: string;
+  image?: any;
 }
 
 const getContentElement = (type: string| undefined) => {
@@ -35,15 +38,20 @@ const getContentElement = (type: string| undefined) => {
 }
 
 const FlexSection = (props: Props) => {
-  const { content, _type} = props;
+  const { content, _type, image} = props;
   if (!content || !_type) {
     return null;
   }
 
+  const isBackgroundDark = getBackgroundLuminance( image?.imageOverlay) < 0.5;
+  const textColor = isBackgroundDark ? 'primary.contrastText' : 'primary.text';
+  const fontWeight = isBackgroundDark ? 'fontWeightBold': 'fontWeightRegular';
+
   return (
-    <RootStyle>
+    <RootStyle >
+      <ImageBackground image={image}/>
       <Container maxWidth="md" sx={{ py: 5 }}>
-        <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid container spacing={3} sx={{ mt: 2, color: textColor, fontWeight: fontWeight}}>
           {content.map((item, index, array) => {
             const layout = Math.round(12 / array.length);
             const Content = getContentElement(item._type);

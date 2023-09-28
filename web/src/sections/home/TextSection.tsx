@@ -57,28 +57,28 @@ const PortableBlock = (props: Props): JSX.Element => {
   return (
     <RootStyle>
       <MotionViewport sx={{ width: '100%', height: '100%' }} >
-      <ImageBackground image={image} />
+        <ImageBackground image={image} />
 
-      <Container maxWidth="lg">
-        <Stack
-          component={m.div}
-          variants={varSlide().inUp}
-          spacing={5}
-          alignItems={{ xs: 'flex-start', md: 'center' }}
-          justifyContent="flex-start"
-          sx={{ color: fontColor, fontWeight: fontWeight, width: '100%', py: { xs: 5, md: 5 }, px: { xs: 5, md: 15, lg: 20 } }}>
-          <Typography variant="h3" sx={{ fontWeight: 900 }}>
-            {heading}
-          </Typography>
-          <PortableTextRender body={richText} />
-          {
-            cta &&
-            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', py: 5 }}>
-              <Button href={cta.link} passHref={true} component={Link} variant="contained" color="primary" size="large">{cta.text}</Button>
-            </Box>
-          }
-        </Stack>
-      </Container>
+        <Container maxWidth="lg">
+          <Stack
+            component={m.div}
+            variants={varSlide().inUp}
+            spacing={5}
+            alignItems={{ xs: 'flex-start', md: 'center' }}
+            justifyContent="flex-start"
+            sx={{ color: fontColor, fontWeight: fontWeight, width: '100%', py: { xs: 5, md: 5 }, px: { xs: 5, md: 15, lg: 20 } }}>
+            <Typography variant="h3" sx={{ fontWeight: 900 }}>
+              {heading}
+            </Typography>
+            <PortableTextRender body={richText} />
+            {
+              cta &&
+              <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', py: 5 }}>
+                <Button href={cta.link} passHref={true} component={Link} variant="contained" color="primary" size="large">{cta.text}</Button>
+              </Box>
+            }
+          </Stack>
+        </Container>
       </MotionViewport>
     </RootStyle>
   );

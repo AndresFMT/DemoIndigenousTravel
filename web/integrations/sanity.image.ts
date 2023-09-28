@@ -13,7 +13,6 @@ export function urlFor(source:SanityImageSource) {
 }
 
 export function noFormatImageLoader({ src, width, quality=100 }:{src:string, width:number, quality?:number}) {
-  console.log('noFormatImageLoader', src, width, quality)
   const url = new URL(src)
   url.searchParams.set('auto', 'format')
   url.searchParams.set('fit', 'fill')

@@ -25,7 +25,7 @@ const ImageBackground = (props: Props) => {
   return (
     <Box sx={{ position: 'absolute', height: '100%', width: '100%', zIndex: '-1' }}>
       <Box sx={{ position: 'absolute', height: '100%', width: '100%', zIndex: 1, backgroundColor: backgroundColor }} />
-      <SanityImage image={image} />
+      {image.asset && <SanityImage image={image} fullWidth/>}
     </Box>
   );
 }

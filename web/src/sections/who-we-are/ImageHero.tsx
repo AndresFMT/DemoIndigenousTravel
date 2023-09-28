@@ -6,7 +6,7 @@ import { m } from 'framer-motion';
 // routes
 import Routes from 'src/routes';
 // components
-import { SanityImage, HoopButton, MotionContainer, TextAnimate, varFade } from 'src/core/components';
+import { SanityHeroImage, HoopButton, MotionContainer, TextAnimate, varFade } from 'src/core/components';
 import { SanityEnrichedImageObject } from 'src/@types/sanity';
 
 // ----------------------------------------------------------------------
@@ -102,9 +102,8 @@ export default function ImageHero(props: Props) {
           }}
         >
           {image ?
-            <SanityImage
+            <SanityHeroImage
               image={image}
-              fullWidth
             /> : null
           }
 

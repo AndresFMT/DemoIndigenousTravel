@@ -33,7 +33,7 @@ export default function SanityImage({ image, sx, fullWidth}: Props) {
   }
 
   const loader = !!fullWidth ? imageLoader : noFormatImageLoader;
-  const objectFit = !fullWidth ? 'cover' : 'contain';
+  const objectFit = !!fullWidth ? 'cover' : 'contain';
 
   return (
     <ImageContainer component={"div"} sx={sx}>
@@ -43,7 +43,7 @@ export default function SanityImage({ image, sx, fullWidth}: Props) {
         alt={image.asset.alt || 'hero section image'}
         fill
         placeholder={image.asset.metadata.lqip}
-        style={{ objectFit: objectFit}}
+        style={{ objectFit: objectFit }}
       />
     </ImageContainer>
 

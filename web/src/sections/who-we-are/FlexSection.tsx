@@ -1,10 +1,12 @@
+import { m } from 'framer-motion';
 import { Container } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { styled } from '@mui/material/styles';
 
-import { HoopImage, PortableText, SanityImage } from 'src/core/components';
+import { HoopImage, MotionViewport, PortableText, SanityImage, varFade } from 'src/core/components';
 import Fallback from '../fallback';
 import { Content } from 'src/@types/sanity';
+import { getBackgroundLuminance } from 'src/utils/getBackgroundLuminance';
 
 const RootStyle = styled('section')(({ theme }) => ({
   overflow: 'hidden',
@@ -23,38 +25,56 @@ type Props = {
   title?: string;
 }
 
-const getContentElement = (type: string| undefined) => {
+const ImageOverride = (props) => {
+  return (
+    <SanityImage {...props} sx={{top: 0, bottom: 0, height: '100%'}}/>
+  )
+}
+
+const getContentElement = (type: string | undefined) => {
   if (!type) {
     return Fallback;
   }
   return {
     'hoopImage': HoopImage,
     'richTextContent': PortableText,
-    'imageContent': SanityImage,
+    'imageContent': ImageOverride,
   }[type] || Fallback;
 }
 
 const FlexSection = (props: Props) => {
-  const { content, _type} = props;
+  const { content, _type } = props;
   if (!content || !_type) {
     return null;
   }
 
+  const isBackgroundDark = getBackgroundLuminance( image?.imageOverlay);
+  const textColor = isBackgroundDark ? 'primary.contrastText' : 'primary.text';
+  const fontWeight = isBackgroundDark ? 'fontWeightBold': 'fontWeightRegular';
+
   return (
     <RootStyle>
-      <Container maxWidth="md" sx={{ py: 5 }}>
-        <Grid container spacing={3} sx={{ mt: 2 }}>
-          {content.map((item, index, array) => {
-            const layout = Math.round(12 / array.length);
-            const Content = getContentElement(item._type);
-            return (
-              <Grid display="flex" justifyContent="center" alignItems="center" xs={layout} key={index}>
-                <Content {...item} />
-              </Grid>
-            )
-          })}
-        </Grid>
-      </Container>
+      <MotionViewport>
+        <Container maxWidth="md" sx={{ py: 5 }}>
+          <Grid container spacing={3} sx={{ mt: 2, color: textColor, fontWeight: fontWeight }}>
+            {content.map((item, index, array) => {
+              let variants: any = varFade().inUp;
+              if (index === 0) {
+                variants = varFade().inLeft;
+              } else if (index === array.length - 1) {
+                variants = varFade().inRight;
+              }
+              const layout = Math.round(12 / array.length);
+              const Content = getContentElement(item._type);
+              return (
+                <Grid component={m.div} variants={variants} display="flex" justifyContent="center" alignItems="center" xs={layout} key={index}>
+                  <Content {...item} />
+                </Grid>
+              )
+            })}
+          </Grid>
+        </Container>
+      </MotionViewport>
     </RootStyle>
   )
 }

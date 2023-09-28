@@ -1,12 +1,12 @@
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
-import { Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack, Typography, Box, TextField } from '@mui/material';
 // display a page that displays all components of our design system
 
 import Layout from "src/core/layouts/Layout"
-import { Box } from '@mui/system';
 // Path: theme-development.tsx
 // ----------------------------------------------------------------------
-import {useTheme }from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 
 const RootStyle = styled('section')(({ theme }) => ({
   overflow: 'hidden',
@@ -27,77 +27,16 @@ const SectionContainer = styled('div')(() => ({
 export default function ThemeDevelopment() {
 
   const theme = useTheme();
+  console.log(theme)
+
+  const [testText, setTestText] = useState('The quick brown fox jumps over the lazy dog');
 
   return (
     <RootStyle>
       <SectionContainer>
-          <Grid container sx={{ zIndex: 22, position: 'relative' }}>
-            <Stack
-              spacing={5}
-              alignItems={{ xs: 'flex-start', md: 'flex-start' }}
-              justifyContent="center"
-              sx={{
-                border: 'red',
-                py: { xs: 5, md: 15 },
-                px: { xs: 5, md: 30 },
-                textAlign: { xs: 'left', md: 'end' },
-              }}
-            >
-              <Typography variant="h1" sx={{ color: 'primary.yellow' }}>
-                Theme Development
-              </Typography>
-              <Typography variant="h2" sx={{ color: 'primary.green' }}>
-               H2 Heading Theme Development
-              </Typography>
-              <Typography variant="h3" sx={{ color: 'primary.burgundy' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="h4" sx={{ color: 'primary.tan' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="h5" sx={{ color: 'primary.lighter' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="h6" sx={{ color: 'primary.light' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="body1" sx={{ color: 'primary.main' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="body1" sx={{ color: 'primary.dark' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="body1" sx={{ color: 'primary.darker' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="body1" sx={{ color: 'primary.text' }}>
-                displays all components of our design system some plain text
-              </Typography>
-              <Typography variant="button" sx={{ color: 'primary.contrastText' }}>
-                This is some contrast text
-              </Typography>
-              <Typography variant="caption" sx={{ color: 'secondary.blue' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="overline" sx={{ color: 'secondary.darkBrown' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="subtitle1" sx={{ color: 'secondary.brown' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="subtitle2" sx={{ color: 'secondary.orange' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-              <Typography variant="subtitle3" sx={{ color: 'secondary.lighter' }}>
-                Display a page that displays all components of our design system
-              </Typography>
-            </Stack>
-          </Grid>
-      </SectionContainer>
-      <SectionContainer>
         <Grid container sx={{ zIndex: 22, position: 'relative' }}>
           <Stack
-            spacing={5}
+            spacing={2}
             alignItems={{ xs: 'flex-start', md: 'flex-start' }}
             justifyContent="center"
             sx={{
@@ -107,19 +46,79 @@ export default function ThemeDevelopment() {
               textAlign: { xs: 'left', md: 'end' },
             }}
             direction='column'
-            >
-            { Object.entries(theme.palette).map( ([key, value]) => {
+          >
+            <TextField
+              value={testText}
+              onChange={(e) => setTestText(e.target.value)}
+              label="Primary"
+              variant="outlined"
+              multiline
+              maxRows={2}
+              sx={{ color: 'primary.main', width: '80%'}} />
+
+            {Object.entries(theme.typography).map(([key, value], index) => {
+              if (key === 'pxToRem' || key === 'fontFamily' || typeof value !== 'object') {
+                return null;
+              }
+              if (key === 'fontFamily') {
+                return (
+                  <>
+                    <Typography variant="body1" sx={{ color: 'primary.text'  }}>
+                      {key}{value}
+                    </Typography>
+                      <pre><code>{JSON.stringify(value, null, 2)}</code></pre>
+                  </>
+
+                )
+              }
               return (
-              <Box sx={{ display: 'flex', flexDirection:"row"}} >
-                <Typography variant="h2" sx={{ color: 'primary.main' }}>
-                  {key}
-                </Typography>
-                  {Object.entries(value).map( ([key, value]) => {
-                    return (
-                      <ColorDisplay color={value} name={key} />
-                    )
-                  })}
-              </Box>
+                <Box key={`${index}-${key}`} sx={{ display: 'flex', flexDirection: "column", alignItems: 'start' }} >
+                  <Typography variant="h3" sx={{ color: 'primary.text', textTransform: 'uppercase' }}>
+                    {key}
+                  </Typography>
+                  <Stack direction={"row"} spacing={2}>
+                    <Typography variant={key} {...value} >
+                      {testText}
+                    </Typography>
+                  </Stack>
+                </Box>
+              )
+            })}
+          </Stack>
+        </Grid>
+      </SectionContainer>
+      <SectionContainer>
+        <Grid container sx={{ zIndex: 22, position: 'relative' }}>
+          <Stack
+            spacing={2}
+            alignItems={{ xs: 'flex-start', md: 'flex-start' }}
+            justifyContent="center"
+            sx={{
+              border: 'red',
+              py: { xs: 5, md: 15 },
+              px: { xs: 5, md: 30 },
+              textAlign: { xs: 'left', md: 'end' },
+            }}
+            direction='column'
+          >
+            {Object.entries(theme.palette).map(([key, value], index) => {
+              if (typeof value !== 'object') {
+                return null;
+              }
+              return (
+                <Box key={`${index}-${key}`} sx={{ display: 'flex', flexDirection: "column", alignItems: 'start' }} >
+                  <Typography variant="h3" sx={{ color: 'primary.text', textTransform: 'uppercase' }}>
+                    {key}
+                  </Typography>
+                  <Stack direction={"row"} sx={{ border: '1px solid' ,borderColor: 'rgba(129,135,204,1)', borderRadius:'8px', padding: theme.spacing(2)}}>
+                    {Object.entries(value).map(([key, value], index) => {
+
+                      return (
+                        <ColorDisplay key={`${index}-${key}`} color={value} name={key} />
+                      )
+                    })}
+                  </Stack>
+                </Box>
               )
             })}
           </Stack>
@@ -129,11 +128,13 @@ export default function ThemeDevelopment() {
   );
 }
 
-const ColorDisplay = (props) => {
+const ColorDisplay = (props: any) => {
   const { color, name } = props;
   return (
-    <Box sx={{ bgcolor: color, height: 100, width: 100 }} >
-      <Typography variant="h5" sx={{ color: 'primary.yellow' }}>
+    <Box >
+      <Box sx={{ background: color, height: 100, width: 100, border: '1px solid', borderColor: 'grey.50' }} >
+      </Box>
+      <Typography variant="body1" sx={{ color: color }}>
         {name}
       </Typography>
     </Box>
