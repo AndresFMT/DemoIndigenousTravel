@@ -1,116 +1,118 @@
-import { LazyLoadImage, LazyLoadImageProps } from 'react-lazy-load-image-component';
-// @mui
-import { Theme } from '@mui/material/styles';
-import { Box, BoxProps, SxProps } from '@mui/material';
+import { forwardRef } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+import Box from '@mui/material/Box';
+import { alpha, useTheme } from '@mui/material/styles';
+
+import { getRatio } from 'src/utils/getRatio';
+import { ImageProps } from 'src/@types/image';
 
 // ----------------------------------------------------------------------
 
-export type ImageRatio = '4/3' | '3/4' | '6/4' | '4/6' | '16/9' | '9/16' | '21/9' | '9/21' | '1/1';
+const Image = forwardRef<HTMLSpanElement, ImageProps>(
+  (
+    {
+      ratio,
+      overlay,
+      disabledEffect = false,
+      alt,
+      src,
+      afterLoad,
+      delayTime,
+      threshold,
+      beforeLoad,
+      delayMethod,
+      placeholder,
+      wrapperProps,
+      scrollPosition,
+      effect = 'blur',
+      visibleByDefault,
+      wrapperClassName,
+      useIntersectionObserver,
+      sx,
+      children,
+      ...other
+    },
+    ref
+  ) => {
+    const theme = useTheme();
 
-type IProps = BoxProps & LazyLoadImageProps;
+    const overlayStyles = !!overlay && {
+      '&:before': {
+        content: "''",
+        top: 0,
+        left: 0,
+        width: 1,
+        height: 1,
+        zIndex: 1,
+        position: 'absolute',
+        background: overlay || alpha(theme.palette.grey[900], 0.48),
+      },
+    };
 
-interface Props extends IProps {
-  sx?: SxProps<Theme>;
-  ratio?: ImageRatio;
-  disabledEffect?: boolean;
-  children?: React.ReactNode;
-  backgroundColor?: string;
-  alt?: string;
-}
-
-export default function Image({
-  ratio,
-  disabledEffect = false,
-  effect = 'blur',
-  sx,
-  children,
-  backgroundColor,
-  alt,
-  ...other
-}:Props) {
-  if (ratio) {
-    return (
+    const content = (
       <Box
-        component="span"
+        component={LazyLoadImage}
+        alt={alt}
+        src={src}
+        afterLoad={afterLoad}
+        delayTime={delayTime}
+        threshold={threshold}
+        beforeLoad={beforeLoad}
+        delayMethod={delayMethod}
+        placeholder={placeholder}
+        wrapperProps={wrapperProps}
+        scrollPosition={scrollPosition}
+        visibleByDefault={visibleByDefault}
+        effect={disabledEffect ? undefined : effect}
+        useIntersectionObserver={useIntersectionObserver}
+        wrapperClassName={wrapperClassName || 'component-image-wrapper'}
+        placeholderSrc={disabledEffect ? '/assets/transparent.png' : '/assets/placeholder.svg'}
         sx={{
           width: 1,
-          lineHeight: 1,
-          display: 'block',
-          overflow: 'hidden',
-          position: 'relative',
-          pt: getRatio(ratio),
-          '& .wrapper': {
+          height: 1,
+          objectFit: 'cover',
+          verticalAlign: 'bottom',
+          ...(!!ratio && {
             top: 0,
             left: 0,
-            right: 0,
-            bottom: 0,
-            lineHeight: 0,
             position: 'absolute',
+          }),
+        }}
+      />
+    );
+
+    return (
+      <Box
+        ref={ref}
+        component="span"
+        className="component-image"
+        sx={{
+          overflow: 'hidden',
+          position: 'relative',
+          verticalAlign: 'bottom',
+          display: 'inline-block',
+          ...(!!ratio && {
+            width: 1,
+          }),
+          '& span.component-image-wrapper': {
+            width: 1,
+            height: 1,
+            verticalAlign: 'bottom',
             backgroundSize: 'cover !important',
+            ...(!!ratio && {
+              pt: getRatio(ratio),
+            }),
           },
+          ...overlayStyles,
           ...sx,
         }}
+        {...other}
       >
-        <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0}}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingLeft: '10px', paddingRight: '5px', height: '100%', width: '100%', backgroundColor: backgroundColor}}>
-          {children}
-          </div>
-        </div>
-        <Box
-          component={LazyLoadImage}
-          wrapperClassName="wrapper"
-          effect={disabledEffect ? undefined : effect}
-          placeholderSrc="https://zone-assets-api.vercel.app/assets/img_placeholder.svg"
-          sx={{ width: 1, height: 1, objectFit: 'cover' }}
-          alt={alt}
-          {...other}
-        />
+        {content}
       </Box>
     );
   }
+);
 
-  return (
-    <Box
-      component="span"
-      sx={{
-        lineHeight: 0,
-        display: 'block',
-        overflow: 'hidden',
-        position: 'relative',
-        '& .wrapper': { width: 1, height: 1, backgroundSize: 'cover !important' },
-        ...sx,
-      }}
-    >
-        <Box
-          component={LazyLoadImage}
-          wrapperClassName="wrapper"
-          effect={disabledEffect ? undefined : effect}
-          placeholderSrc="https://zone-assets-api.vercel.app/assets/img_placeholder.svg"
-          sx={{ width: 1, height: 1, objectFit: 'cover' }}
-          alt={alt}
-          {...other}
-        />
-        <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0}}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingLeft: '10px', paddingRight: '5px', height: '100%', width: '100%', backgroundColor: backgroundColor, textAlign: 'center'}}>
-          {children}
-          </div>
-        </div>
-    </Box>
-  );
-}
-
-// ----------------------------------------------------------------------
-
-function getRatio(ratio = '1/1') {
-  return {
-    '4/3': 'calc(100% / 4 * 3)',
-    '3/4': 'calc(100% / 3 * 4)',
-    '6/4': 'calc(100% / 6 * 4)',
-    '4/6': 'calc(100% / 4 * 6)',
-    '16/9': 'calc(100% / 16 * 9)',
-    '9/16': 'calc(100% / 9 * 16)',
-    '21/9': 'calc(100% / 21 * 9)',
-    '9/21': 'calc(100% / 9 * 21)',
-    '1/1': '100%',
-  }[ratio];
-}
+export default Image;

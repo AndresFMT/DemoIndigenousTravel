@@ -1,5 +1,6 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { PortableTextBlock } from '@portabletext/types';
+import { PortableTextProps } from '@portabletext/react';
 
 
 export type Content = {
@@ -178,4 +179,28 @@ export type ReducedContent = {
   messages?: string[];
   hoopImages?: Array<HoopImage>;
 
+}
+
+type SanitySlug = {
+  _type: string;
+  current: string;
+}
+
+export type Operator = {
+  address: string;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+  email: string;
+  images: Array<SanityEnrichedImageObject>;
+  location: string;
+  name: string;
+  phoneNumber: number;
+  region: string;
+  slug: SanitySlug;
+  website: string;
+  description: PortableTextBlock[];
+  shortDescription?: string;
+  _id: string;
 }

@@ -103,11 +103,24 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
         position: 'relative',
       }}
     >
-      <Box component={'span'} sx={{ '& svg, & svg *': { width: '100%' }, color: fontColor, fontWeight: fontWeight }}>
-        <Image src={imageUrl} alt={''} backgroundColor={backgroundColorString} sx={{ clipPath: 'circle(50%)' }} >
-          <Typography variant="h3">{headingOverlay}</Typography>
-          <Typography variant="body1">{textOverlay}</Typography>
+      <Box component={'div'} sx={{ '& svg, & svg *': { width: '100%' }, color: fontColor, fontWeight: fontWeight }}>
+        <Image src={imageUrl} alt={''} overlay={backgroundColorString} sx={{ clipPath: 'circle(50%)' }} >
+        <Typography variant="h3">{headingOverlay}</Typography>
+        <Typography variant="body1">{textOverlay}</Typography>
         </Image>
+        <Box sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection:'column',
+          justifyContent: 'center',
+          alignItems: 'center' }}>
+          <Typography variant="h3">{headingOverlay}</Typography>
+          <Typography variant="body1" sx={{textAlign: 'center', padding: '10px'}}>{textOverlay}</Typography>
+        </Box>
       </Box>
       <m.div
         initial="hidden"

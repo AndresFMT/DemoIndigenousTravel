@@ -18,6 +18,7 @@ import 'leaflet/dist/leaflet.css'
 
 import React from "react"
 import type { ReactNode } from "react"
+import client from 'integrations/sanity.client';
 import dynamic from 'next/dynamic'
 import type { AppProps } from 'next/app'
 import { Page } from "src/@types/app"
@@ -37,14 +38,23 @@ import { InteractiveMapProvider } from "src/contexts/InteractiveMapContext";
 
 
 import { SiteSettingsProvider } from 'src/contexts/SiteSettingsContext';
+import { Operator } from 'src/@types/sanity'
 const InteractiveMap = dynamic(() => import('src/core/components/map/InteractiveMap'), { ssr: false });
 
 type Props = AppProps & {
   Component: Page;
+  operators: Operator[];
+  siteSettings: {
+    title: string;
+    description: string;
+    facebookLink: string;
+    instagramLink: string;
+    linkedinLink: string;
+    twitterLink: string;
+  }
 }
 
-function MyAppWrapper( { Component, pageProps }: Props) {
-  const { siteSettings } = pageProps;
+function MyAppWrapper( { Component, pageProps, operators, siteSettings}: Props) {
 
   const getLayout = Component.getLayout || ( ( page: ReactNode ) => page )
   if (Component.hasOwnProperty('isStudio') === true) {
@@ -64,7 +74,7 @@ function MyAppWrapper( { Component, pageProps }: Props) {
                 <ThemeColorPresets>
                   <MotionLazyContainer>
                     <RtlLayout>
-                      <InteractiveMapProvider>
+                      <InteractiveMapProvider operators={[...operators,...operators,...operators]}>
                       <>
                         <Settings />
                         <ProgressBar />
@@ -84,3 +94,36 @@ function MyAppWrapper( { Component, pageProps }: Props) {
 }
 
 export default MyAppWrapper
+
+
+MyAppWrapper.getInitialProps = async () => {
+
+  console.log('how often do i run');
+  const data = await client.fetch(`{
+    'operators': *[_type == 'operator']{
+      name,
+      slug,
+      images[] {
+        ...,
+        asset -> {
+          ...,
+          metadata
+        }
+      },
+      phoneNumber,
+      email,
+      website,
+      location,
+      address,
+      coordinates,
+      region,
+      description,
+      _id
+    },
+    'siteSettings': *[_type == 'siteSettings'][0]{...}
+    }
+  `)
+  return {...data}
+
+}
+
