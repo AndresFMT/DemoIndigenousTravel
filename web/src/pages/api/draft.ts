@@ -20,7 +20,7 @@ export default async function handler(
 
   // Fetch the headless CMS to check if the provided `slug` exists
   // getPostBySlug would implement the required fetching logic to the headless CMS
-  const post = await getPostBySlug(req.query.slug)
+  const post = await getPostBySlug(req.query.slug as string)
 
   // If the slug doesn't exist prevent draft mode from being enabled
   if (!post || !post.slug || !post.slug.current) {
