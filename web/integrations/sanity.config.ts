@@ -30,6 +30,7 @@ export default defineConfig([
     dataset: sanityDataset,
     plugins: [
       deskTool({
+        defaultDocumentNode: defaultDocumentNodeResolver,
         structure: myStructure,
       }),
       colorInput(),

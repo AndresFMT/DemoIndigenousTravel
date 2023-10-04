@@ -1,5 +1,10 @@
+import { SanityDocument } from '@sanity/client';
+
 import { StructureBuilder } from 'sanity/desk';
-import { JsonPreview } from '../components/jsonView'
+import { JsonPreview, getPreviewUrl } from '../components'
+import { Iframe, IframeOptions } from 'sanity-plugin-iframe-pane';
+
+
 
 export const myStructure = (S: StructureBuilder) => {
   return S.list()
@@ -73,9 +78,32 @@ export const myStructure = (S: StructureBuilder) => {
     ]);
 };
 
-export const defaultDocumentNodeResolver = (S: StructureBuilder) =>
-  S.document().views([
-    S.view.form(),
-    S.view.component(JsonPreview).title('JSON'),
-  ])
+
+export const defaultDocumentNodeResolver = (S: StructureBuilder, {schemaType }: {schemaType: string}) => {
+  switch (schemaType) {
+    case 'homepage':
+    case 'page':
+
+      return (
+        S.document().views([
+          S.view.form(),
+          S.view
+          .component(Iframe)
+          .options({
+            url: (doc: SanityDocument) => getPreviewUrl(doc),
+          })
+          .title('Preview'),
+          S.view.component(JsonPreview).title('JSON'),
+        ])
+      )
+    default:
+      return (
+        S.document().views([
+          S.view.form(),
+          S.view.component(JsonPreview).title('JSON'),
+        ])
+      )
+
+  }
+}
 

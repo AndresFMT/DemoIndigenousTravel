@@ -55,6 +55,7 @@
     "leaflet": "1.9.4",
     "next": "13.4.19",
     "next-sanity": "4.0.0",
+    "next-usequerystate": "1.8.1",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",
     "postcss": "8.4.21",

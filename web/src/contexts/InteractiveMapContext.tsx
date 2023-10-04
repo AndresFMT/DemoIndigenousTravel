@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext, useState, useCallback, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryState } from 'next-usequerystate';
 
-import { useLocalStorage } from 'src/hooks';
+import { useLocalStorage, useSearchParamsState } from 'src/hooks';
 
 import { LatLngExpression } from 'leaflet';
 import { Operator } from 'src/@types/sanity';
@@ -25,20 +25,19 @@ interface InteractiveMapProviderProps {
 }
 
 const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderProps) => {
-  const [isMapVisible, setIsMapVisible] = useLocalStorage('isMapVisible', false);
-  const searchParams = useSearchParams();
-  const operator = searchParams?.has('operator') ? searchParams.get('operator') : null;
 
-  const [selectedOperator, setSelectedOperator] = useState<string | null>(operator);
+  const [isMapVisible, setIsMapVisible] = useQueryState('imv');// is map visible
+  const [selectedOperator, setSelectedOperator] = useQueryState('so');// selected operator
+
 
   const openMap = useCallback(() => {
     console.log('open map');
-    setIsMapVisible(true);
+    setIsMapVisible('true');
   }, [setIsMapVisible]);
 
   const closeMap = useCallback(() => {
     console.log('close map');
-    setIsMapVisible(false);
+    setIsMapVisible(null);
   }, [setIsMapVisible]);
 
   useEffect(() => {
