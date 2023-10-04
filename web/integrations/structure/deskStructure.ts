@@ -2,9 +2,7 @@ import { SanityDocument } from '@sanity/client';
 
 import { StructureBuilder } from 'sanity/desk';
 import { JsonPreview, getPreviewUrl } from '../components'
-import { Iframe, IframeOptions } from 'sanity-plugin-iframe-pane';
-
-
+import { Iframe } from 'sanity-plugin-iframe-pane';
 
 export const myStructure = (S: StructureBuilder) => {
   return S.list()
@@ -103,7 +101,6 @@ export const defaultDocumentNodeResolver = (S: StructureBuilder, {schemaType }: 
           S.view.component(JsonPreview).title('JSON'),
         ])
       )
-
   }
 }
 

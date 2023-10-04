@@ -14,12 +14,3 @@ export const sanityToken = process.env.SANITY_STUDIO_API_DEPLOY_STUDIO || token;
 
 export const sanityPreviewTokenNext = process.env.SANITY_STUDIO_PREVIEW_TOKEN_NEXT || previewSecretId;
 
-console.log('sanityProjectId', sanityProjectId);
-console.log('sanityDataset', sanityDataset);
-console.log('sanityApiVersion', sanityApiVersion);
-console.log('sanityToken', sanityToken);
-console.log('sanityPreviewTokenNext', sanityPreviewTokenNext);
-
-console.log('where are my envs?', process.env);
-
-console.log(process);

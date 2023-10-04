@@ -16,7 +16,6 @@ export default async function handler(
   if (req.query.secret !== token || !req.query.slug) {
     return res.status(401).json({ message: 'Invalid token', token  })
   }
-  console.log('hitting preview');
 
   // Fetch the headless CMS to check if the provided `slug` exists
   // getPostBySlug would implement the required fetching logic to the headless CMS
