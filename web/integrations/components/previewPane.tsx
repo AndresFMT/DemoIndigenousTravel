@@ -17,6 +17,6 @@ export function getPreviewUrl(doc: PreviewPaneProps) {
 
   return (window.location.hostname === 'localhost')
     ? `http://localhost:3000/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`
-    : `${window.location.origin}/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`;
+    : `https://indigenoustourismmanitoba.ca/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`;
 }
 
