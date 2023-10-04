@@ -1,4 +1,3 @@
-import { Iframe, IframeOptions } from 'sanity-plugin-iframe-pane';
 import { SanityDocument } from 'sanity';
 import { sanityPreviewTokenNext } from '../environment';
 
@@ -16,20 +15,8 @@ export function getPreviewUrl(doc: PreviewPaneProps) {
   // if production, return window.location.host
   const slug = doc?.slug?.current;
 
-console.log('getPreviewUrl', sanityPreviewTokenNext);
   return (window.location.hostname === 'localhost')
     ? `http://localhost:3000/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`
     : `${window.location.origin}/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`;
 }
 
-
-export const PreviewPane = (props:any) => {
-
-  return (
-    <Iframe
-      src={getPreviewUrl(props.document)}
-      title="Preview"
-      style={{ width: '100%', height: '100%' }}
-    />
-  );
-}

@@ -10,9 +10,6 @@ import {
 // Import and create a new client instance, and use its methods to interact with your project's Content Lake.
 // Using this client you should be able to create, read, update, and delete documents, as well as perform other operations.
 // https://www.npmjs.com/package/@sanity/client
-console.log('sanityProjectId', sanityProjectId);
-console.log('sanityDataset', sanityDataset);
-console.log('sanityApiVersion', sanityApiVersion);
 
 const client = createClient({
     projectId: sanityProjectId,
