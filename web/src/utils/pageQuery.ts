@@ -36,3 +36,25 @@ export const groqPageQuery = groq`
       }
     }
     `
+export const groqOperatorQuery = groq`
+  *[ _type == "operator" &&
+  !(_id in path('drafts.**'))]{
+    name,
+    slug,
+    'image' : images[] {
+      ...,
+      asset -> {
+        ...,
+        metadata
+      }
+    }[0],
+    phoneNumber,
+    email,
+    website,
+    location,
+    address,
+    region,
+    description,
+    _id,
+  }
+`;
