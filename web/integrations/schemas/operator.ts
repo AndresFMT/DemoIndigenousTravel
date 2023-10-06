@@ -68,6 +68,7 @@ export default defineType({
             { title: 'North', value: 'north' },
             { title: 'Central', value: 'central' },
             { title: 'South', value: 'south' },
+            { title: 'East', value: 'east' },
           ],
       },
     }),
