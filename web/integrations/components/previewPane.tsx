@@ -17,6 +17,6 @@ export function getPreviewUrl(doc: PreviewPaneProps) {
 
   return (window.location.hostname === 'localhost')
     ? `http://localhost:3000/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`
-    : `https://indigenous-travel-manitoba-307inyt2x-indigenous-travel-manitoba.vercel.app/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`;
+    : `https://indigenous-travel-manitoba-f32y6k95d-indigenous-travel-manitoba.vercel.app/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`;
 }
 

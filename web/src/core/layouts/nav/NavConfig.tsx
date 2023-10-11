@@ -9,7 +9,7 @@ export const PageLinks = [
   {
     order: '1',
     subheader: 'About ITM',
-    cover: 'https://placekitten.com/g/900/500',
+    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/c7d834475ab88cf7717c59b726488933a07aa768-2500x1500.jpg?fp-x=0.4965753424657535&fp-y=0.8966894977168942&auto=format&fit=crop&crop=focalpoint&w=3840&h=2160&q=10',
     items: [
       { title: 'Who We Are', path: Routes.whoWeAre},
       { title: 'What We Do', path: Routes.whatWeDo},
@@ -20,20 +20,20 @@ export const PageLinks = [
   {
     order: '2',
     subheader: 'Indigenous Tourism',
-    cover: 'https://placekitten.com/g/1600/900',
+    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=3840&h=2160&q=10',
     items: [
-      { title: 'Explore Indigenous Tourism', path: Routes.explore.landing},
       { title: 'Things To Do', path: Routes.thingsToDo },
       { title: 'Cultural Authenticity', path: Routes.culturalAuthenticity },
+      { title: 'Explore Indigenous Tourism', path: Routes.explore.landing},
     ],
   },
   {
     order: '3',
-    subheader: 'Explore Manitoba',
-    cover: 'https://placekitten.com/1600/900',
+    subheader: 'Members',
+    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ba8ef63228996208f4db7982101914caa2d10cc0-5791x3861.jpg?fp-x=0.5128913443830572&fp-y=0.6907985333399698&auto=format&fit=crop&crop=focalpoint&w=3840&h=2160&q=10',
     items: [
-      { title: 'Tundra', path: Routes.explore.tundra },
-      { title: 'Urban', path: Routes.explore.urban },
+      { title: 'Members', path: Routes.members},
+      { title: 'Become a Member', path: Routes.membership},
       { title: 'Prairie', path: Routes.explore.praire },
       { title: 'Shield', path: Routes.explore.events },
 

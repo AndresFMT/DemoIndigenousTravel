@@ -111,6 +111,7 @@ const Routes = {
   whatWeDo: '/what-we-do',
   ourTeam: '/our-team',
   aboutUs: '/about-us',
+  members: '/members',
   membership: '/membership',
   reconciliation: '/reconciliation',
   contactUs: '/contact-us',

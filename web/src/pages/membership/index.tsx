@@ -42,7 +42,7 @@ export default MemberServicesPage;
 
 export async function getStaticProps() {
 
-  const params = { slug: 'members' };
+  const params = { slug: 'membership' };
   const data = await client.fetch(groqPageQuery, params)
   return {
     props: {
