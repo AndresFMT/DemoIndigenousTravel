@@ -1,49 +1,6 @@
 // ----------------------------------------------------------------------
 
 const Routes = {
-  // Marketing
-  marketing: {
-    landing: '/marketing',
-    services: '/marketing/services',
-    caseStudies: '/marketing/case-studies',
-    caseStudy: (slug) => `/marketing/case-studies/${slug}`,
-    posts: '/marketing/blog',
-    post: (slug) => `/marketing/blog/${slug}`,
-    about: '/marketing/about-us',
-    contact: '/marketing/contact-us',
-  },
-  // Travel
-  travel: {
-    landing: '/travel',
-    tours: '/travel/tours',
-    tour: (id) => `/travel/tours/${id}`,
-    checkout: '/travel/checkout',
-    checkoutComplete: '/travel/checkout/complete',
-    posts: '/travel/blog',
-    post: (slug) => `/travel/blog/${slug}`,
-    about: '/travel/about-us',
-    contact: '/travel/contact-us',
-  },
-  // Career
-  career: {
-    landing: '/career',
-    jobs: '/career/jobs',
-    job: (id) => `/career/jobs/${id}`,
-    posts: '/career/blog',
-    post: (slug) => `/career/blog/${slug}`,
-    about: '/career/about-us',
-    contact: '/career/contact-us',
-  },
-  // E-Learning
-  eLearning: {
-    landing: '/e-learning',
-    courses: '/e-learning/courses',
-    course: (id) => `/e-learning/courses/${id}`,
-    posts: '/e-learning/blog',
-    post: (slug) => `/e-learning/blog/${slug}`,
-    about: '/e-learning/about-us',
-    contact: '/e-learning/contact-us',
-  },
   // Explore ITM
   explore: {
     landing: '/explore',
@@ -117,6 +74,7 @@ const Routes = {
   contactUs: '/contact-us',
   culturalAuthenticity: '/cultural-authenticity',
   thingsToDo: '/things-to-do',
+  operators: '/operators',
 };
 
 export default Routes;

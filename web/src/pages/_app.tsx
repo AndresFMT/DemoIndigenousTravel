@@ -100,7 +100,6 @@ export default MyAppWrapper
 
 MyAppWrapper.getInitialProps = async () => {
 
-  console.log('how often do i run');
   const data = await client.fetch(`{
     'operators': *[_type == 'operator']{
       name,
