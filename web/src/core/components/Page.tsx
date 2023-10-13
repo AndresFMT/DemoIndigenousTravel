@@ -9,7 +9,7 @@ import { HEADER_DESKTOP_HEIGHT, HEADER_MOBILE_HEIGHT } from 'src/config';
 // ----------------------------------------------------------------------
 type PageProps = {
   children: React.ReactNode;
-  meta?: React.ReactNode;
+  meta?: string;
   title: string;
 };
 
@@ -24,7 +24,8 @@ const Page = forwardRef<HTMLDivElement, PageProps>(({ children, meta, title }, r
   <>
     <Head>
       <title>{title}</title>
-      {meta}
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
+      <meta name="description" content={meta} />
     </Head>
 
       {/*<!-- Google tag (gtag.js) -->*/}

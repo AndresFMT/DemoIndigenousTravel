@@ -14,21 +14,13 @@ import Fallback from 'src/sections/fallback';
 import * as HomepageContent from 'src/sections/home'
 
 import { SanityPageProps, Section} from "src/@types/sanity";
+import { Page as AppPage } from "src/@types/app";
 
-type Props = {
-  title?: string;
-  description?: string;
-  sections: SanityPageProps[];
-};
-
-
-
-export default function DynamicPage(props: InferGetStaticPropsType<typeof getStaticProps>) {
+const DynamicPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
 
   const { sections, title, description } = props
-  const metadescription = (<meta name="description" content={description} />)
   return (
-      <Page title={title|| "ITM"} meta={metadescription}>
+      <Page title={title} meta={description}>
         {
           sections && sections.map((item:Section, index: number) => {
             const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback
@@ -39,14 +31,17 @@ export default function DynamicPage(props: InferGetStaticPropsType<typeof getSta
   )
 }
 
+export default DynamicPage;
+
 DynamicPage.getLayout = (page:React.ReactNode) => {
   return <Layout>{page}</Layout>;
 }
 
 export const getStaticPaths = (async () => {
-
   const data = await client.fetch(groqPageSlugsQuery)
-  const slugs = data.map((item: { slug: {current: string, _type:string} }) => {
+  const ignoredSlugs = ['membership', 'new-account-request'];
+  const slugs = data.filter((item: { slug: {current: string, _type:string} }) => (!ignoredSlugs.includes(item.slug.current) ))
+  .map((item: { slug: {current: string, _type:string} }) => {
     return (
       { params: { slug: item.slug.current } }
     )
@@ -54,13 +49,12 @@ export const getStaticPaths = (async () => {
 
   return {
     paths: slugs,
-    fallback: true, // false or "blocking"
+    fallback: true,
   }
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
-console.log('static Props! ', context);
   const  params  =  { slug: context.params?.slug };
   const data = await client.fetch(groqPageQuery, params)
   return { props: { ...data } }
-}) satisfies GetStaticProps<Props>
+}) satisfies GetStaticProps<SanityPageProps>
