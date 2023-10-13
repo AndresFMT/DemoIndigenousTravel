@@ -12,15 +12,14 @@ type OperatorImageGalleryProps = {
   images: SanityImageSource[];
 };
 
-const OperatorImageGallery: React.FC<OperatorImageGalleryProps> = (props) => {
-  const { images } = props;
+const OperatorImageGallery: React.FC<OperatorImageGalleryProps> = ({images}) => {
   if (images.length === 0 || !images[0]) return null;
   const imageUrl = images.map(image => ({ src: urlFor(image).url() }))
   const primaryImage = urlFor(images[0]).url();
 
   const lightbox = useLightbox(imageUrl);
 
-  if (imageUrl.length === 0 || typeof imageUrl[0] === 'undefined') return null;
+  if (typeof imageUrl[0] === 'undefined') return null;
 
 
 

@@ -36,7 +36,7 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
 
         <CustomBreadcrumbs links={breadcrumbs} sx={{mt:3, mb:5}}/>
 
-        <OperatorImageGallery images={images} />
+        {images && <OperatorImageGallery images={images} />}
         <Grid container columnSpacing={8} rowSpacing={5} direction="row-reverse">
 
           <Grid xs={12} md={5} lg={4}>
