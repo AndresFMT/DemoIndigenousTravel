@@ -19,9 +19,8 @@ type Props = {
 
 const MemberServicesPage = (props:Props) => {
   const { sections, title, description } = props
-  const metadescription = (<meta name="description" content={description} />)
   return (
-      <Page title={title|| "ITM"} meta={metadescription}>
+      <Page title={title|| "ITM"} meta={description}>
         {
           sections && sections.map((item, index: number) => {
             const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback

@@ -13,11 +13,10 @@ import { Page as AppPage } from "src/@types/app";
 
 const HomePage: AppPage<SanityPageProps> = (props) => {
   const { sections, title, description } = props
-  const metadescription = (<meta name="description" content={description} />)
 
   return (
     <Suspense fallback="Loading...">
-      <Page title={title || "ITM"} meta={metadescription}>
+      <Page title={title || "ITM"} meta={description}>
         {
           sections && sections.map((item, index: number) => {
             const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback

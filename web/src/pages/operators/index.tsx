@@ -51,14 +51,10 @@ const StyledOperatorCard = styled(Box)(({ theme }) => ({
 }));
 
 const OurTeamPage = (props: Props) => {
-  console.log(props)
-
-  const { title, description, operators} = props;
-
-  const metadescription = (<meta name="description" content={description} />)
+  const {title, description, operators} = props;
 
   return (
-      <Page title={title || "ITM"} meta={metadescription}>
+      <Page title={title || "ITM"} meta={description}>
         <h1>Our Team</h1>
         <p>Our team is made up of a group of people who are passionate about Indigenous tourism and the growth of the industry in Manitoba. We are here to help you with any questions you may have about Indigenous tourism in Manitoba.</p>
 
