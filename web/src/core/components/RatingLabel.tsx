@@ -5,7 +5,7 @@ import { Typography, Stack, Link, StackProps } from '@mui/material';
 // utils
 import { fShortenNumber } from 'src/utils/formatNumber';
 //
-import Iconify from './Iconify';
+import Iconify from './iconify';
 
 // ----------------------------------------------------------------------
 

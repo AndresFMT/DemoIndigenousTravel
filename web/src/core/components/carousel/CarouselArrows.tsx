@@ -6,7 +6,7 @@ import directionStraightRight from '@iconify/icons-carbon/direction-straight-rig
 import { useTheme, styled } from '@mui/material/styles';
 import { Box, BoxProps, Stack, StackProps } from '@mui/material';
 //
-import Iconify from 'src/core/components/Iconify';
+import Iconify from 'src/core/components/iconify';
 import { IconButtonAnimate } from 'src/core/components/animate';
 
 // ----------------------------------------------------------------------

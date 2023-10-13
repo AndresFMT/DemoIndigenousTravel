@@ -5,7 +5,7 @@ import caretRight from '@iconify/icons-carbon/caret-right';
 import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Typography, Box, BoxProps} from '@mui/material';
 //
-import Iconify from '../Iconify';
+import Iconify from '../iconify';
 import { IconButtonAnimate } from '../animate';
 
 // ----------------------------------------------------------------------

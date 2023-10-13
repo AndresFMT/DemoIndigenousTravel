@@ -8,7 +8,7 @@ import logoInstagram from '@iconify/icons-carbon/logo-instagram';
 import { alpha, SxProps } from '@mui/material/styles';
 import { Stack, IconButton, Button, Link, IconButtonProps, ButtonProps} from '@mui/material';
 //
-import Iconify from './Iconify';
+import Iconify from './iconify';
 import { SocialLinks } from 'src/@types/socials';
 
 // ----------------------------------------------------------------------

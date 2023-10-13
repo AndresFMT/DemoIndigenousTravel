@@ -9,7 +9,7 @@ import { Box, CircularProgress } from '@mui/material';
 import { ReactPlayerStyle } from './Player';
 import { DialogAnimate, IconButtonAnimate, FabButtonAnimate, varZoom } from '../animate';
 import Image from '../Image';
-import Iconify from '../Iconify';
+import Iconify from '../iconify';
 import BgOverlay from '../BgOverlay';
 
 // ----------------------------------------------------------------------

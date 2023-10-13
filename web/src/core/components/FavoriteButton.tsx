@@ -4,7 +4,7 @@ import favoriteFilled from '@iconify/icons-carbon/favorite-filled';
 // @mui
 import { Checkbox } from '@mui/material';
 //
-import Iconify from './Iconify';
+import Iconify from './iconify';
 
 // ----------------------------------------------------------------------
 

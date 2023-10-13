@@ -7,7 +7,7 @@ import { Box, CircularProgress } from '@mui/material';
 //
 import { DialogAnimate, IconButtonAnimate, varZoom } from '../animate';
 import { ReactPlayerStyle } from './Player';
-import Iconify from '../Iconify';
+import Iconify from '../iconify';
 
 // ----------------------------------------------------------------------
 

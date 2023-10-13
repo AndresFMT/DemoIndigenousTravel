@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { Typography, Stack, Button } from '@mui/material';
 //
 import Image from './Image';
-import Iconify from './Iconify';
+import Iconify from './iconify';
 
 // ----------------------------------------------------------------------
 

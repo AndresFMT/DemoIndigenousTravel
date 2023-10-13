@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 // @mui
 import { Box, Link, Typography, Breadcrumbs as MUIBreadcrumbs } from '@mui/material';
 //
-import Iconify from './Iconify';
+import Iconify from './iconify';
 
 // ----------------------------------------------------------------------
 
@@ -13,10 +13,11 @@ type BreadCrumbsProps = {
   activeLast?: boolean;
   links: Array<{ name: string; href: string; icon: any; }>;
   onDark?: boolean;
+  sx?: any;
 };
 
 
-export default function Breadcrumbs({ links, activeLast = false, onDark = false, ...other }: BreadCrumbsProps ){
+export default function Breadcrumbs({ links, activeLast = false, onDark = false, sx,  ...other }: BreadCrumbsProps ){
   const currentLink = links[links.length - 1]?.name;
 
   const listDefault = links.map((link) => <LinkItem key={link.name} link={link} onDark={onDark} />);

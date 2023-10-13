@@ -4,7 +4,7 @@ import resetIcon from '@iconify/icons-carbon/reset';
 // @mui
 import { Typography, Stack } from '@mui/material';
 //
-import Iconify from '../Iconify';
+import Iconify from '../iconify';
 import { IconButtonAnimate } from '../animate';
 
 // ----------------------------------------------------------------------

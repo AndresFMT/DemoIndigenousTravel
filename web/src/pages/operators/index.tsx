@@ -1,16 +1,17 @@
-import { ReactElement } from 'react'
+import { ReactElement } from 'react';
+import NextLink from 'next/link';
 
 import client from 'integrations/sanity.client';
 
 import { styled } from '@mui/material/styles';
-import { Box, Typography } from '@mui/material'
+import { Box, Card, Container, Stack, Typography, Link} from '@mui/material'
 
 import Layout from 'src/core/layouts/Layout'
-import { Page, Image, SanityImage } from 'src/core/components'
-import { groqOperatorQuery } from 'src/utils/pageQuery'
+import { Page, Image, TextMaxLine } from 'src/core/components'
+import { groqOperatorsQuery } from 'src/utils/pageQuery'
 
 
-
+import  { urlFor} from 'integrations/sanity.image';
 
 type Props = {
   title?: string;
@@ -19,60 +20,85 @@ type Props = {
 };
 
 const StyledOperatorList = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-  justifyContent: 'center',
-  maxWidth: '100vw',
-  padding: theme.spacing(2),
-  margin: theme.spacing(2),
-  borderRadius: theme.spacing(2),
-  boxShadow: '0 0 10px rgba(0,0,0,0.2)',
+  display: 'grid',
+  columnGap: theme.spacing(2),
+  rowGap: theme.spacing(2),
+  gridTemplateColumns: 'repeat(4, 1fr)',
 }));
 
-const StyledOperatorCard = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '300px',
-  minHeight: '400px',
-  padding: theme.spacing(2),
-  margin: theme.spacing(2),
-  borderRadius: theme.spacing(2),
-  boxShadow: '0 0 10px rgba(0,0,0,0.2)',
-  '& img': {
-    width: '100%',
-    height: 'auto',
-    borderRadius: theme.spacing(2),
-    boxShadow: '0 0 10px rgba(0,0,0,0.2)',
-  },
-}));
+const OperatorCard = (props: any) => {
+  const { operator } = props;
+  const shortDescription = operator?.description?.[0]?.children?.[0]?.text;
+  const image = urlFor(operator.image).width(300).height(300).url();
+  return (
+    <Card>
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{
+          pt: 1.5,
+          pl: 2,
+          pr: 1.5,
+          top: 0,
+          width: 1,
+          zIndex: 9,
+          position: 'absolute',
+        }}
+      >
+        <Stack
+          spacing={0.5}
+          direction="row"
+          sx={{
+            px: 1,
+            borderRadius: 0.75,
+            typography: 'subtitle2',
+            bgcolor: 'text.primary',
+            color: (theme) => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
+          }}
+        >
+
+
+      </Stack>
+      </Stack>
+      <Image src={image} alt={operator.name} ratio="1/1"/>
+            <Stack spacing={0.5} sx={{ p: 2.5 }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          {operator.region}
+        </Typography>
+
+        <Link component={NextLink} href={`/operators/${operator.slug.current}`} color="inherit">
+          <TextMaxLine variant="h6" persistent>
+            {operator.name}
+          </TextMaxLine>
+        </Link>
+      </Stack>
+
+    </Card>
+
+  )
+};
+
+
 
 const OurTeamPage = (props: Props) => {
-  const {title, description, operators} = props;
+  const { title, description, operators } = props;
 
   return (
-      <Page title={title || "ITM"} meta={description}>
-        <h1>Our Team</h1>
-        <p>Our team is made up of a group of people who are passionate about Indigenous tourism and the growth of the industry in Manitoba. We are here to help you with any questions you may have about Indigenous tourism in Manitoba.</p>
+    <Page title={title || "ITM"} meta={description}>
+      <Container>
 
         <StyledOperatorList>
-        {
-          operators.map((operator: any) => {
-            const shortDescription = operator.description?.[0]?.children?.[0]?.text || description
-            return (
-              <StyledOperatorCard key={operator._id} >
-                <SanityImage image={operator.image} alt={operator.name} sx={{height:'300px'}} fullWidth/>
-                <Typography variant={'h4'} component={'h3'}>{operator.name}</Typography>
-                <Typography variant={'body1'}>{shortDescription}</Typography>
-              </StyledOperatorCard>
-            )
-          })
-        }
+          {
+            operators.map((operator: any) => {
+              return (
+                <OperatorCard key={operator._id} operator={operator} />
+              )
+            })
+          }
         </StyledOperatorList>
-      </Page>
+      </Container>
+    </Page>
   )
 }
 
@@ -82,7 +108,7 @@ OurTeamPage.getLayout = function getLayout(page: ReactElement) {
 
 export async function getStaticProps() {
 
-  const data = await client.fetch(groqOperatorQuery)
+  const data = await client.fetch(groqOperatorsQuery)
   return {
     props: {
       operators: [...data]

@@ -2,7 +2,7 @@ import searchIcon from '@iconify/icons-carbon/search';
 // @mui
 import { InputAdornment, FilledInput, FilledInputProps } from '@mui/material';
 //
-import Iconify from './Iconify';
+import Iconify from './iconify';
 
 // ----------------------------------------------------------------------
 

@@ -5,7 +5,7 @@ import settingsAdjust from '@iconify/icons-carbon/settings-adjust';
 import { alpha, styled } from '@mui/material/styles';
 import { Tooltip } from '@mui/material';
 //
-import Iconify from '../Iconify';
+import Iconify from '../iconify';
 import { IconButtonAnimate } from '../animate';
 
 // ----------------------------------------------------------------------

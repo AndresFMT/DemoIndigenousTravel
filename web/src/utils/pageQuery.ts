@@ -1,5 +1,6 @@
 import groq from 'groq'
 
+// used to get data for generated pages
 export const groqPageQuery = groq`
     *[ _type == "page" &&
     !(_id in path('drafts.**')) &&
@@ -36,7 +37,32 @@ export const groqPageQuery = groq`
       }
     }
     `
+// used on /operator page
 export const groqOperatorQuery = groq`
+  *[ _type == "operator" &&
+  !(_id in path('drafts.**')) &&
+  slug.current == $slug][0]{
+    name,
+    slug,
+    images[] {
+      ...,
+      asset -> {
+        ...,
+        metadata
+      }
+    },
+    phoneNumber,
+    email,
+    website,
+    location,
+    address,
+    region,
+    description,
+    _id,
+  }
+`;
+
+export const groqOperatorsQuery = groq`
   *[ _type == "operator" &&
   !(_id in path('drafts.**'))]{
     name,
@@ -59,6 +85,15 @@ export const groqOperatorQuery = groq`
   }
 `;
 
+export const groqOperatorSlugsQuery = groq`
+  *[ _type == "operator" &&
+  !(_id in path('drafts.**'))]{
+    slug
+  }
+`;
+
+
+// used to generate pages
 export const groqPageSlugsQuery = groq`
   *[ _type == "page" &&
   !(_id in path('drafts.**'))]{

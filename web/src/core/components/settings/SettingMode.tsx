@@ -7,7 +7,7 @@ import { ToggleButton, Typography } from '@mui/material';
 // hooks
 import { useSettings } from 'src/hooks';
 //
-import Iconify from 'src/core/components/Iconify';
+import Iconify from 'src/core/components/iconify';
 
 // ----------------------------------------------------------------------
 
