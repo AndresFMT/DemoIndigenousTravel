@@ -58,3 +58,10 @@ export const groqOperatorQuery = groq`
     _id,
   }
 `;
+
+export const groqPageSlugsQuery = groq`
+  *[ _type == "page" &&
+  !(_id in path('drafts.**'))]{
+    slug
+  }
+`;

@@ -194,6 +194,7 @@ export type Operator = {
   };
   email: string;
   images: Array<SanityEnrichedImageObject>;
+  image: SanityEnrichedImageObject;
   location: string;
   name: string;
   phoneNumber: number;

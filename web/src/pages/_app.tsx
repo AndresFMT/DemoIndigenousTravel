@@ -103,7 +103,7 @@ MyAppWrapper.getInitialProps = async () => {
     'operators': *[_type == 'operator']{
       name,
       slug,
-      images[] {
+      'image': images[0] {
         ...,
         asset -> {
           ...,

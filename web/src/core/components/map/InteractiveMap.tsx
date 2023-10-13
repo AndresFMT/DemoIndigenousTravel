@@ -105,7 +105,7 @@ const OperatorList = ({ operators, onItemClick, selectedOperator }: OperatorList
                       paddingLeft: 2,
                     }}
                   />
-                  <ListImage image={operator.images?.at(0)} selected={selected} />
+                  <ListImage image={operator.image} selected={selected} />
                 </ListItemButton>
               </ListItem>
             )
