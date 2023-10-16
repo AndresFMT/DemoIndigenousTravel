@@ -1,16 +1,11 @@
 import { ReactElement } from 'react';
-
 import client from 'integrations/sanity.client';
-
 import { styled } from '@mui/material/styles';
 import { Box, Container } from '@mui/material'
-
 import Layout from 'src/core/layouts/Layout'
 import { Page } from 'src/core/components'
 import { groqOperatorsQuery } from 'src/utils/pageQuery'
 import { OperatorCard, OperatorCardSkeleton } from 'src/sections/operators';
-
-
 
 type Props = {
   title?: string;
@@ -25,9 +20,6 @@ const StyledOperatorList = styled(Box)(({ theme }) => ({
   gridTemplateColumns: 'repeat(4, 1fr)',
 }));
 
-
-
-
 const OurTeamPage = (props: Props) => {
   const { title, description, operators } = props;
   const loading = !operators;
@@ -35,7 +27,6 @@ const OurTeamPage = (props: Props) => {
   return (
     <Page title={title || "ITM"} meta={description}>
       <Container>
-
         <StyledOperatorList>
           {(loading ? [...Array(12)] : operators).map((operator: any) => {
             return (operator ?

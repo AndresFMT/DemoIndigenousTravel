@@ -8,6 +8,7 @@ import { HomepageContent } from 'src/@types/sanity';
 
 const RootStyle = styled('section')(({ theme }) => ({
   paddingTop: theme.spacing(4),
+  overflow: 'hidden',
   [theme.breakpoints.up('md')]: {
     paddingTop: theme.spacing(4),
   },

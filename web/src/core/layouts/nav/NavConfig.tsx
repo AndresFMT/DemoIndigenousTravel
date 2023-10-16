@@ -56,6 +56,6 @@ export const navConfig = [
     children: PageLinks
   },
   { title: 'Contact Us', path: Routes.contactUs },
-  { title: 'Map', path: '?open_map=true' },
+  { title: 'Map', path: '?imv=true' },
 ];
 

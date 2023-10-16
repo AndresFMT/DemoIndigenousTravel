@@ -33,6 +33,7 @@ interface Props {
 
 const RootStyle = styled('section')(({ theme }) => ({
   position: 'relative',
+  overflow: 'hidden',
   [theme.breakpoints.up('md')]: {
     position: 'relative',
     width: '100%',

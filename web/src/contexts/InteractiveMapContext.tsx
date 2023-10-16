@@ -38,6 +38,7 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
   const closeMap = useCallback(() => {
     console.log('close map');
     setIsMapVisible(null);
+    setSelectedOperator(null);
   }, [setIsMapVisible]);
 
   useEffect(() => {

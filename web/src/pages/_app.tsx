@@ -76,7 +76,7 @@ function MyAppWrapper( { Component, pageProps, operators, siteSettings}: Props) 
                 <ThemeColorPresets>
                   <MotionLazyContainer>
                     <RtlLayout>
-                      <InteractiveMapProvider operators={[...operators,...operators,...operators]}>
+                      <InteractiveMapProvider operators={[...operators]}>
                       <>
                         <Settings />
                         <ProgressBar />

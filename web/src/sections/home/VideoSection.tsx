@@ -22,6 +22,7 @@ const SectionContainer = styled('div')(() => ({
   position: 'relative',
   zIndex: 1,
   width: '100%',
+  overflow: 'hidden',
 }));
 
 // ----------------------------------------------------------------------

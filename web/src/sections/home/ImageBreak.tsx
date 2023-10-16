@@ -18,6 +18,7 @@ type Props = {
 
 const RootStyle = styled('section')(({ theme }) => ({
   paddingY: theme.spacing(3),
+  overflow: 'hidden',
   [theme.breakpoints.up('md')]: {
     paddingY: theme.spacing(5),
   },
