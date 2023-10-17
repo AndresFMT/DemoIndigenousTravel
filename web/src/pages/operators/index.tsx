@@ -1,11 +1,10 @@
 import { ReactElement } from 'react';
-import client from 'integrations/sanity.client';
 import { styled } from '@mui/material/styles';
 import { Box, Container } from '@mui/material'
 import Layout from 'src/core/layouts/Layout'
 import { Page } from 'src/core/components'
-import { groqOperatorsQuery } from 'src/utils/pageQuery'
 import { OperatorCard, OperatorCardSkeleton } from 'src/sections/operators';
+import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 
 type Props = {
   title?: string;
@@ -22,7 +21,8 @@ const StyledOperatorList = styled(Box)(({ theme }) => ({
 }));
 
 const OurTeamPage = (props: Props) => {
-  const { title, description, operators } = props;
+  const { operators } = useInteractiveMapContext();
+  const { title, description } = props;
   const loading = !operators;
 
   return (
@@ -45,17 +45,6 @@ const OurTeamPage = (props: Props) => {
 
 OurTeamPage.getLayout = function getLayout(page: ReactElement) {
   return <Layout >{page}</Layout>;
-}
-
-export async function getStaticProps() {
-
-  const data = await client.fetch(groqOperatorsQuery)
-  return {
-    props: {
-      operators: [...data]
-    },
-    revalidate: 300
-  }
 }
 
 export default OurTeamPage;
