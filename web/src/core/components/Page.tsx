@@ -26,6 +26,19 @@ const Page = forwardRef<HTMLDivElement, PageProps>(({ children, meta, title }, r
       <title>{title}</title>
       <meta name="viewport" content="initial-scale=1, width=device-width" />
       <meta name="description" content={meta} />
+
+      {/*<!-- Google tag (gtag.js) -->*/}
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Q51RT4RSMW"></Script>
+      <Script>
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q51RT4RSMW');
+      `}
+      </Script>
+
     </Head>
 
       {/*<!-- Google tag (gtag.js) -->*/}
