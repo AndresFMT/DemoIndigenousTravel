@@ -2,9 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import client from 'integrations/sanity.client'
 
 
+// TODO: update this to select objects by a secondary param (i.e. operator, page, homepage)
 const getPostBySlug = async (slug: string) => {
   // Fetch the headless CMS to check if the provided `slug` exists
-  const data = await client.fetch(`*[_type == "page" && slug.current == $slug][0]`, { slug })
+  const data = await client.fetch(`*[slug.current == $slug][0]`, { slug })
   return data
 }
 

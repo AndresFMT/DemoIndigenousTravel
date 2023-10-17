@@ -12,6 +12,15 @@ export const myStructure = (S: StructureBuilder) => {
         .title('Homepage')
         .child(
           S.document()
+            .views([
+              S.view.form(),
+              S.view.component(Iframe)
+              .options({
+                url: (doc: SanityDocument) => getPreviewUrl(doc),
+              })
+              .title('Preview'),
+              S.view.component(JsonPreview).title('JSON'),
+            ])
             .title('Homepage')
             .schemaType('homepage')
             .documentId('homepage')),
@@ -80,7 +89,31 @@ export const myStructure = (S: StructureBuilder) => {
 export const defaultDocumentNodeResolver = (S: StructureBuilder, {schemaType }: {schemaType: string}) => {
   switch (schemaType) {
     case 'homepage':
+      return (
+        S.document().views([
+          S.view.form(),
+          S.view
+          .component(Iframe)
+          .options({
+            url: (doc: SanityDocument) => getPreviewUrl(doc),
+          })
+          .title('Preview'),
+          S.view.component(JsonPreview).title('JSON'),
+        ])
+      )
     case 'page':
+      return (
+        S.document().views([
+          S.view.form(),
+          S.view
+          .component(Iframe)
+          .options({
+            url: (doc: SanityDocument) => getPreviewUrl(doc),
+          })
+          .title('Preview'),
+          S.view.component(JsonPreview).title('JSON'),
+        ])
+      )
     case 'operator':
       return (
         S.document().views([
