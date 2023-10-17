@@ -56,9 +56,9 @@ type Props = AppProps & {
   }
 }
 
-function MyAppWrapper( { Component, pageProps, operators, siteSettings}: Props) {
+function MyAppWrapper({ Component, pageProps, operators, siteSettings }: Props) {
 
-  const getLayout = Component.getLayout || ( ( page: ReactNode ) => page )
+  const getLayout = Component.getLayout || ((page: ReactNode) => page)
   if (Component.hasOwnProperty('isStudio') === true) {
     return (
       <>
@@ -70,26 +70,26 @@ function MyAppWrapper( { Component, pageProps, operators, siteSettings}: Props) 
   return (
     <>
       <SiteSettingsProvider value={siteSettings} >
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <SettingsProvider>
-              <ThemeProvider>
-                <ThemeColorPresets>
-                  <MotionLazyContainer>
-                    <RtlLayout>
-                      <InteractiveMapProvider operators={[...operators]}>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <SettingsProvider>
+            <ThemeProvider>
+              <ThemeColorPresets>
+                <MotionLazyContainer>
+                  <RtlLayout>
+                    <InteractiveMapProvider operators={[...operators]}>
                       <>
                         <Settings />
                         <ProgressBar />
                         <InteractiveMap />
                         {getLayout(<Component {...pageProps} />)}
                       </>
-                      </InteractiveMapProvider>
-                    </RtlLayout>
-                  </MotionLazyContainer>
-                </ThemeColorPresets>
-              </ThemeProvider>
-            </SettingsProvider>
-          </LocalizationProvider>
+                    </InteractiveMapProvider>
+                  </RtlLayout>
+                </MotionLazyContainer>
+              </ThemeColorPresets>
+            </ThemeProvider>
+          </SettingsProvider>
+        </LocalizationProvider>
       </SiteSettingsProvider>
     </>
   )
@@ -101,7 +101,7 @@ export default MyAppWrapper
 MyAppWrapper.getInitialProps = async () => {
 
   const data = await client.fetch(`{
-    'operators': *[_type == 'operator']{
+    'operators': *[_type == 'operator' && defined(slug) && defined(name) && defined(images) && defined(description) && !(_id in path('drafts.**'))]{
       name,
       slug,
       'image': images[0] {
@@ -111,9 +111,6 @@ MyAppWrapper.getInitialProps = async () => {
           metadata
         }
       },
-      phoneNumber,
-      email,
-      website,
       location,
       address,
       coordinates,
@@ -124,7 +121,7 @@ MyAppWrapper.getInitialProps = async () => {
     'siteSettings': *[_type == 'siteSettings'][0]{...}
     }
   `)
-  return {...data}
+  return { ...data }
 
 }
 
