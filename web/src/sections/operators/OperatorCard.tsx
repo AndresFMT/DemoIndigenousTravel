@@ -41,14 +41,14 @@ const OperatorCard = (props: any) => {
       </Stack>
       <Image src={image} alt={operator.name} ratio="1/1" />
       <Stack spacing={0.5} sx={{ p: 2.5 }}>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="h6" sx={{ color: 'secondary.orange', textTransform: 'capitalize'}}>
           {operator.region}
         </Typography>
 
         <Link component={NextLink} href={`/operators/${operator.slug.current}`} color="inherit">
-          <TextMaxLine variant="h6" persistent>
+          <Typography variant="h6" sx={{lineHeight: '1.2rem', overflow: 'hidden'}}>
             {operator.name}
-          </TextMaxLine>
+          </Typography>
         </Link>
       </Stack>
 

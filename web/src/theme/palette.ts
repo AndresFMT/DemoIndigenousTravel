@@ -29,6 +29,7 @@ declare module '@mui/material/styles/createPalette' {
     lighter: string;
     darker: string;
     burgundy?: string;
+    green?: string;
   }
   interface Palette {
     gradients: GradientsPaletteOptions;

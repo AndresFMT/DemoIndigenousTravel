@@ -45,10 +45,10 @@ export default function ListImage({ image, sx }: Props) {
           position: 'absolute',
           right: 0,
           top: 0,
-          width: '80%',
+          width: '60%',
           height: '100%',
           zIndex: 101,
-          background: 'linear-gradient(90deg, rgba(97, 0, 0, 1) 0%, rgba(97, 20, 20, 0.6) 25%, rgba(181,172,172,0.2) 100%)'
+          background: 'linear-gradient(90deg, rgba(96, 94, 67, 1) 0%, rgba(97, 94, 60, 0.6) 25%, rgba(181,182,172,0.2) 100%)'
         }} />
       <Box component={m.div}
         sx={{
@@ -58,7 +58,7 @@ export default function ListImage({ image, sx }: Props) {
           width: '100%',
           height: '100%',
           zIndex: 101,
-          background: 'linear-gradient(150deg, rgba(97, 0, 0, 0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(203,128,14,0.1) 100%)'
+          background: 'linear-gradient(150deg, rgba(96, 64, 67, 0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(203,128,14,0.1) 100%)'
         }} />
       <Image
         src={urlBuilder.url()}
@@ -67,7 +67,7 @@ export default function ListImage({ image, sx }: Props) {
         height={200}
         alt={image.asset.alt || 'list item operator primary image'}
         placeholder={image.asset.metadata.lqip}
-        style={{ objectFit: 'cover', zIndex: 2, width: '80%'  }}
+        style={{ objectFit: 'cover', zIndex: 2, width: '60%'  }}
 
       />
     </ImageContainer>

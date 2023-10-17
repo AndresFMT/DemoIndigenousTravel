@@ -59,9 +59,8 @@ const InteractiveMap = () => {
           <MapContainer center={position} zoom={6} style={{ height: '90vh', width: '100%', margin: 'auto' }} zoomControl={false} scrollWheelZoom={false}>
             <ZoomControl position="bottomright" />
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"/>
             <OperatorMarkers operators={operators} selectedIndex={selectedOperator} />
           </MapContainer>
         </Grid>

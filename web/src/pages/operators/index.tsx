@@ -15,6 +15,7 @@ type Props = {
 
 const StyledOperatorList = styled(Box)(({ theme }) => ({
   display: 'grid',
+  marginTop: theme.spacing(8),
   columnGap: theme.spacing(2),
   rowGap: theme.spacing(2),
   gridTemplateColumns: 'repeat(4, 1fr)',

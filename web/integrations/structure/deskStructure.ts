@@ -81,7 +81,7 @@ export const defaultDocumentNodeResolver = (S: StructureBuilder, {schemaType }: 
   switch (schemaType) {
     case 'homepage':
     case 'page':
-
+    case 'operator':
       return (
         S.document().views([
           S.view.form(),

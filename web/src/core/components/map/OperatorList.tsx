@@ -16,7 +16,7 @@ type OperatorListProps = {
 }
 
 const StyledListContainer = styled(Stack)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.burgundy,
+  backgroundColor: theme.palette.primary.green,
   paddingTop: theme.spacing(3),
   position: 'relative',
   height: '100%',
@@ -26,7 +26,7 @@ const StyledListContainer = styled(Stack)(({ theme }) => ({
 
 const StyledListTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
-  background: theme.palette.primary.burgundy,
+  background: theme.palette.primary.green,
   fontWeight: 'bold',
   marginBottom: theme.spacing(2),
 }));
