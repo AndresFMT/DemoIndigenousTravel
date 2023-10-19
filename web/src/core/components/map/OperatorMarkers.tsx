@@ -15,7 +15,7 @@ const OperatorMarkers = ({ operators, selectedOperator}: OperatorMarkersProps) =
   return (
     <MarkerClusterGroup
       iconCreateFunction={createClusterIcon}
-      maxClusterRadius={22}
+      maxClusterRadius={35}
     >
       <>
         {
