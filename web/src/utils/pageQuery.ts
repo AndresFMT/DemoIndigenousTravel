@@ -57,6 +57,7 @@ export const groqOperatorQuery = groq`
     location,
     address,
     category,
+    coordinates,
     region,
     description,
     _id,
@@ -85,6 +86,31 @@ export const groqOperatorsQuery = groq`
     _id,
   }
 `;
+
+export const groqOperatorsNearbyQuery = groq`
+  *[ _type == "operator" &&
+  !(_id in path('drafts.**')) &&
+   slug.current != $slug] |
+  order(geo::distance(coordinates, $coordinates) asc) [0...4]{
+    name,
+    slug,
+    'image' : images[] {
+      ...,
+      asset -> {
+        ...,
+        metadata
+      }
+    }[0],
+    phoneNumber,
+    email,
+    website,
+    category,
+    coordinates,
+    location,
+    region,
+    _id,
+  }
+`
 
 export const groqOperatorSlugsQuery = groq`
   *[ _type == "operator" &&

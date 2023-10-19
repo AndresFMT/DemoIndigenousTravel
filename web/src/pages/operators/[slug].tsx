@@ -3,10 +3,12 @@ import type {
   GetStaticProps,
   GetStaticPaths,
 } from 'next'
+import NextLink from 'next/link'
 
-import { groqOperatorQuery, groqOperatorSlugsQuery } from 'src/utils/pageQuery';
+import { groqOperatorQuery, groqOperatorSlugsQuery, groqOperatorsNearbyQuery } from 'src/utils/pageQuery';
 
-import { Container, Typography, Stack, Button, Divider} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Container, Typography, Stack, Button, Divider, Link} from '@mui/material';
 import Grid from "@mui/material/Unstable_Grid2"
 
 import Layout from 'src/core/layouts/Layout'
@@ -14,15 +16,16 @@ import { Page, PortableText} from 'src/core/components'
 import CustomBreadcrumbs from 'src/core/components/custom-breadcrumbs';
 import client from 'integrations/sanity.client';
 
-import { OperatorImageGallery } from 'src/sections/operators';
+import { OperatorImageGallery, FeaturedOperators} from 'src/sections/operators';
 
+import OperatorDetails from 'src/core/components/OperatorDetails';
 
-import { SanityPageProps } from 'src/@types/sanity';
+import { Operator, SanityPageProps } from 'src/@types/sanity';
 import { Page as AppPage } from 'src/@types/app';
 
 
 const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
-  const { title, description, images} = props;
+  const { title, description, images, nearby} = props;
 
   const breadcrumbs = [
     { name: 'Home', href: '/' },
@@ -39,10 +42,8 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
         {images && <OperatorImageGallery images={images} />}
         <Grid container columnSpacing={8} rowSpacing={5} direction="row-reverse">
 
-          <Grid xs={12} md={5} lg={4}>
-            <Typography variant="h4" sx={{ mb: 2 }}>
-              {props.name}
-            </Typography>
+          <Grid xs={12} md={5} lg={4} >
+            <OperatorDetails operator={props} />
           </Grid>
 
           <Grid xs={12} md={7} lg={8}>
@@ -50,10 +51,10 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
               {props.name}
             </Typography>
 
-            <Divider sx={{ borderStyle: 'dashed', my: 5 }} />
 
             <PortableText body={props.description} />
 
+            <Divider sx={{ borderStyle: 'dashed', my: 5 }} />
 
             <Stack direction="row" flexWrap="wrap" sx={{ mt: 5 }}>
               <Typography variant="subtitle2" sx={{ mt: 0.75, mr: 1.5 }}>
@@ -65,6 +66,7 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
             </Stack>
           </Grid>
         </Grid>
+        <FeaturedOperators operators={nearby} />
 
       </Container>
     </Page>
@@ -92,7 +94,9 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
-  const  params  =  { slug: context.params?.slug };
-  const data = await client.fetch(groqOperatorQuery, params)
-  return { props: { ...data } }
-}) satisfies GetStaticProps<SanityPageProps>
+  const  params  =  { slug: context.params?.slug  };
+  const pageData = await client.fetch(groqOperatorQuery, params)
+  const relatedData = await client.fetch(groqOperatorsNearbyQuery, {...params, coordinates: {lng:pageData.coordinates.lng, lat: pageData.coordinates.lat}});
+  return { props: { ...pageData, nearby: relatedData } }
+}) satisfies GetStaticProps<Operator>
+
