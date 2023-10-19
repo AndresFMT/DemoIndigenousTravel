@@ -84,9 +84,9 @@ export default function NavDesktopMenu({
 
   const carouselRef = useRef<Slider | null>(null);
 
-  const carouselList = lists && lists.filter((list) => list.subheader !== 'Common');
+  const carouselList = lists && lists.filter((list) => list.subheader !== 'Discover');
 
-  const commonList = lists && lists.filter((list) => list.subheader === 'Common')[0];
+  const commonList = lists && lists.filter((list) => list.subheader === 'Discover')[0];
 
   const minList = lists && lists.length > 5;
 

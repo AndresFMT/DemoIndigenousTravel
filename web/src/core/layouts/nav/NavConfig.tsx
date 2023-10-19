@@ -45,6 +45,19 @@ export const PageLinks = [
       { title: 'Discover Indigenous Tourism', path: Routes.operators},
     ],
   },
+  {
+    order: '4',
+    subheader: 'Discover',
+    items: [
+      { title: 'Accomodations', path: Routes.thingsToDo },
+      { title: 'Culinary', path: Routes.operators},
+      { title: 'Attactions', path: Routes.thingsToDo },
+      { title: 'Events', path: Routes.thingsToDo },
+      { title: 'Outdoors & Adventure', path: Routes.thingsToDo },
+      { title: 'Tours & Related Services', path: Routes.thingsToDo },
+      { title: 'Workshops, Arts & Culture', path: Routes.thingsToDo },
+    ],
+  },
 ];
 
 export const navConfig = [

@@ -62,6 +62,7 @@ export const groqOperatorQuery = groq`
   }
 `;
 
+// used on /operators page
 export const groqOperatorsQuery = groq`
   *[ _type == "operator" &&
   !(_id in path('drafts.**'))]{
@@ -78,9 +79,7 @@ export const groqOperatorsQuery = groq`
     email,
     website,
     location,
-    address,
     region,
-    description,
     _id,
   }
 `;

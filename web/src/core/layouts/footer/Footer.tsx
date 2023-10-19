@@ -124,6 +124,11 @@ export default function Footer() {
           <Typography variant="body3" sx={{ color: 'text.secondary' }}>
             © 2023. All rights reserved
           </Typography>
+          <Typography variant="body3" sx={{ color: 'text.secondary' }}>
+            <Link href="https://indigpro.ca/" variant="body3" sx={{ color: 'text.secondary' }}>
+            Website Proudly Built in Treaty One Territory by IndigPro
+            </Link>
+          </Typography>
           <Stack direction="row" spacing={3} justifyContent="center">
             <Link href="/privacy-policy" variant="body3" sx={{ color: 'text.secondary' }}>
               Privacy Policy
