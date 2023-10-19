@@ -1,4 +1,3 @@
-
 import { m } from 'framer-motion';
 
 import { styled } from '@mui/material/styles';
@@ -11,8 +10,8 @@ import { Operator } from 'src/@types/sanity';
 
 type OperatorListProps = {
   operators: Operator[];
-  selectedOperator?: Number;
-  onItemClick: (index: Number) => void;
+  selectedOperator?: string;
+  onItemClick: (name: string) => void;
 }
 
 const StyledListContainer = styled(Stack)(({ theme }) => ({
@@ -41,7 +40,7 @@ const OperatorList = ({ operators, onItemClick, selectedOperator }: OperatorList
         {
           operators.map((operator: Operator, index: Number) => {
             const key = `${operator.slug.current}-${index}`;
-            const selected = selectedOperator === index;
+            const selected = selectedOperator === operator.name;
             const primary = (<Typography variant='h5' component={'h5'} color={theme => theme.palette.primary.contrastText} >{operator.name}</Typography>);
             const secondary = `${operator.location}, MB`;
             const selectedSecondary = (<>  {secondary} <br /> <Typography variant='body1'sx={{ fontWeight: 'normal'}} >{operator.shortDescription}</Typography></>);
@@ -75,7 +74,7 @@ const OperatorList = ({ operators, onItemClick, selectedOperator }: OperatorList
 
                   onClick={(e) => {
                     e.preventDefault();
-                    onItemClick(index);
+                    onItemClick(operator.name);
                   }}
                 >
                   <ListItemText

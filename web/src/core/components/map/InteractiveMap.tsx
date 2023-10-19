@@ -39,12 +39,12 @@ const InteractiveMap = () => {
   const { operators, setSelectedOperator, selectedOperator, closeMap } = useInteractiveMapContext();
   const position: LatLngExpression = [54.164, -97.068];
 
-  const handleItemClick = (index: Number) => {
-    setSelectedOperator(index);
+  const handleItemClick = (name: string) => {
+    setSelectedOperator(name);
   }
 
   const handleCloseMapClick = () => {
-    setSelectedOperator(undefined);
+    setSelectedOperator(null);
     closeMap();
   }
 
@@ -61,7 +61,7 @@ const InteractiveMap = () => {
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"/>
-            <OperatorMarkers operators={operators} selectedIndex={selectedOperator} />
+            <OperatorMarkers operators={operators} selectedOperator={selectedOperator} />
           </MapContainer>
         </Grid>
       </InteractiveMapContainer>

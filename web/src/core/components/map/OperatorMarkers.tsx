@@ -1,5 +1,5 @@
 import { Operator } from 'src/@types/sanity';
-import { LatLngTuple } from 'leaflet';
+import { LatLngTuple} from 'leaflet';
 import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster'
 
@@ -7,14 +7,15 @@ import OperatorMarker from './OperatorMarker';
 
 type OperatorMarkersProps = {
   operators: Array<Operator>;
-  selectedIndex: Number;
+  selectedOperator:string ;
 }
 
-const OperatorMarkers = ({ operators, selectedIndex }: OperatorMarkersProps) => {
+const OperatorMarkers = ({ operators, selectedOperator}: OperatorMarkersProps) => {
+
   return (
     <MarkerClusterGroup
       iconCreateFunction={createClusterIcon}
-      maxClusterRadius={75}
+      maxClusterRadius={22}
     >
       <>
         {
@@ -27,7 +28,7 @@ const OperatorMarkers = ({ operators, selectedIndex }: OperatorMarkersProps) => 
                 key={key}
                 center={center}
                 content={operator}
-                openPopup={selectedIndex === index}
+                openPopup={selectedOperator === operator.name}
               />
             )
           })
