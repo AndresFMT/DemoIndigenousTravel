@@ -52,12 +52,13 @@ const PopupContainer = styled(Popup)(({ theme }) => ({
 const OperatorMarker = ({ center, content, openPopup }: OperatorMarkerProps) => {
   const map = useMap();
   const markerRef = useRef(null);
-  const { name, shortDescription } = content;
+  const { name, shortDescription, slug }  = content;
 
-  const imgUrl = urlFor(content.image).width(100).height(100).url();
+  const imgUrl = urlFor(content.image).width(180).height(180).url();
   useEffect(() => {
     if (openPopup && markerRef.current != null && map) {
       map.flyTo(center, 15);
+      map.openPopup(markerRef.current);
       // markerRef.current.openPopup();
     }
   }, [map, center, openPopup]);
@@ -65,17 +66,15 @@ const OperatorMarker = ({ center, content, openPopup }: OperatorMarkerProps) => 
   return (
     <>
       <Marker
-        ref={markerRef}
         position={center}
         icon={PointerIcon}>
         <Popup
           className="popup-container"
-          content={createMarker(imgUrl, name, shortDescription)}
+          ref={markerRef}
+          content={createMarker(imgUrl, name, shortDescription, slug.current)}
         >
-          <Image src={imgUrl} alt={content.name} ratio="1/1" />
         </Popup>
       </Marker>
-
     </>
   );
 }
@@ -83,16 +82,26 @@ const OperatorMarker = ({ center, content, openPopup }: OperatorMarkerProps) => 
 
 // This might fare better as a div overlay. Popup seems to add a lot of overhead. If I can add a div overlay to this component and throw it into the same layer then it might be a lot cleaner of a solution.
 
-const createMarker = (img:string, name:string, shortDescription:string|undefined) => {
+const [markerSizeX, markerSizeY] = [150, 150];
+
+const anchorX = markerSizeX / 2;
+const anchorY = markerSizeY;
+
+const popupAnchorX = (markerSizeX/ 2 + 20 )*.35;
+const popupAnchorY = (markerSizeY + 13)/ 3.6;
+
+const createMarker = (img:string, name:string, shortDescription:string|undefined, url: string) => {
   const container = document.createElement('div');
   container.className = 'marker-container';
+  container.setAttribute('style',`--size:${markerSizeX}px;width:var(--size);height:var(--size);`);
   const image = document.createElement('img');
   image.className = 'marker-image';
   image.src = img;
+  image.setAttribute('style',`--size:${markerSizeX*0.6}px;`);
   container.appendChild(image);
 
   const popup = document.createElement('div');
-  popup.className = 'popup';
+  popup.className = 'popup MuiListItemText-root MuiListItemText-multiline';
   container.appendChild(popup);
   const popupContent = document.createElement('div');
   popupContent.className = 'popup-content';
@@ -107,19 +116,24 @@ const createMarker = (img:string, name:string, shortDescription:string|undefined
   popupContent.appendChild(popupDescription);
   const popupLink = document.createElement('a');
   popupLink.className = 'popup-link';
-  popupLink.innerHTML = 'Operator Link';
+  popupLink.href = `/operators/${url}`;
+  popupLink.innerHTML = 'Read More';
   popupContent.appendChild(popupLink);
 
   return container;
 }
 
+
 const PointerIcon = new Icon({
   className: 'pointer-icon',
   bgPos: [0, 0],
   iconUrl: '/hoop-marker.png',
-  iconSize: [100, 100],
-  iconAnchor: [50, 100],
-  popupAnchor: [0, -50],
+  iconSize: [markerSizeX, markerSizeY],
+  iconAnchor: [anchorX, anchorY],
+  popupAnchor: [popupAnchorX, popupAnchorY],
+  shadowUrl: '/hoop-marker-shadow.png',
+  shadowSize: [markerSizeX, markerSizeY],
+  shadowAnchor: [anchorX-20, anchorY],
 
 });
 

@@ -50,61 +50,149 @@ img {
   background-color: #E0AC0F;
 }
 
-.leaflet-popup.leaflet-zoom-animated {
-  width: 0px !important;
-  height: 0px !important;
+/* leaflet caret  */
+.leaflet-popup-tip-container {
+  display: none;
+}
+.leaflet-popup-close-button {
+  display: none;
+}
+
+/* leaflet popup container */
+.leaflet-popup-content-wrapper {
+  background: transparent;
+  box-shadow: none;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
   position: relative;
 }
 
-.pointer-icon {
-  width: 30px;
-  height: 30px;
-  background-image: url(/hoop-marker.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  cursor: pointer;
-  position: relative;
+.leaflet-popup-content-wrapper .marker-container {
+  background: transparent;
+  display: flex;
+  flex-direction: row;
 }
 
-.marker-container {
-  position: absolute;
-  background-color: transparent;
-  top: -50%;
-  left: -50%;
-  width: 70px;
-  height: 70px;
-}
-
-.marker-image {
-  width: 100%;
-  height: 100%;
+.leaflet-popup-content-wrapper .marker-container .marker-image {
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
 }
 
-
-.popup {
-  width: 300px;
-  height: 100px;
+.leaflet-popup-content-wrapper .marker-container .popup{
+  background: #605e43;
+  border-radius: 10px;
+  border: #E0AC0F 1px solid;
+  height: fit-content;
+  width: 400px;
   position: absolute;
-  background: #fff;
-  top: 0;
+  top: -25%;
   left: 100%;
-  transition: all 0.3s ease-in-out;
-  z-index: 1;
-}
-.marker:hover.popup {
-  width: 200px;
-  height: 200px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 13px 24px 20px 20px;
+  color: #fff;
+  font-family: 'ubuntu', sans-serif;
+
 }
 
-.popup-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+.leaflet-popup-content-wrapper .marker-container .popup .popup-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.leaflet-popup-content-wrapper .marker-container .popup .popup-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.leaflet-popup-content-wrapper .marker-container .popup .popup-link {
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  line-height: 1.7142857142857142;
+  font-size: 0.9375rem;
+  text-transform: capitalize;
+  font-family: 'Nunito Sans',sans-serif;
+  min-width: 64px;
+  padding: 8px 22px;
+  border-radius: 8px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  color: #fff;
+  background-color: #E0AC0F;
+}
+.leaflet-popup-content-wrapper .marker-container .popup .popup-link:hover {
+  background-color: #B3200E;
 }
 
+/* .leaflet-popup.popup-container { */
+/*   position: relative; */
+/* } */
+/**/
+/* .leaflet-popup-content-wrapper { */
+/*   background: transparent; */
+/*   border: none; */
+/*   box-shadow: none; */
+/* } */
+/**/
+/* .leaflet-popup-content { */
+/*   background: transparent; */
+/* } */
+/**/
+/* .leaflet-popup.leaflet-zoom-animated { */
+/*   width: 0px !important; */
+/*   height: 0px !important; */
+/*   position: relative; */
+/* } */
+/**/
+/* .pointer-icon { */
+/*   width: 30px; */
+/*   height: 30px; */
+/*   background-image: url(/hoop-marker.png); */
+/*   background-position: center; */
+/*   background-repeat: no-repeat; */
+/*   background-size: contain; */
+/*   cursor: pointer; */
+/*   position: relative; */
+/* } */
+/**/
+/* .marker-container { */
+/*   position: absolute; */
+/*   background-color: transparent; */
+/*   top: -50%; */
+/*   left: -50%; */
+/*   width: 70px; */
+/*   height: 70px; */
+/* } */
+/**/
+/* .marker-image { */
+/*   width: 100%; */
+/*   height: 100%; */
+/*   border-radius: 50%; */
+/* } */
+/**/
+/**/
+/* .popup { */
+/*   width: 300px; */
+/*   height: 100px; */
+/*   position: absolute; */
+/*   background: #fff; */
+/*   top: 0; */
+/*   left: 100%; */
+/*   transition: all 0.3s ease-in-out; */
+/*   z-index: 1; */
+/* } */
+/* .marker:hover.popup { */
+/*   width: 200px; */
+/*   height: 200px; */
+/*   background-color: #fff; */
+/*   border-radius: 10px; */
+/*   padding: 10px; */
+/*   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+/* } */
+/**/
+/* .popup-img { */
+/*   width: 100%; */
+/*   height: 100%; */
+/*   border-radius: 10px; */
+/* } */
+/**/
