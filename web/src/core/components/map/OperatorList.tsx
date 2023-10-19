@@ -1,8 +1,9 @@
 import { m } from 'framer-motion';
-
 import { styled } from '@mui/material/styles';
-
 import {  Stack,  Typography, List, ListItem, ListItemButton, ListItemText} from '@mui/material';
+import Link from '@mui/material/Link';
+import NextLink from 'next/link';
+
 import { Scrollbar } from 'src/core/components';
 import ListImage from './ListImage';
 
@@ -34,7 +35,7 @@ const OperatorList = ({ operators, onItemClick, selectedOperator }: OperatorList
 
   return (
     <StyledListContainer>
-      <StyledListTitle variant='h3'>Operators</StyledListTitle>
+      <StyledListTitle variant='h3' sx={{paddingLeft: 2}}>Operators</StyledListTitle>
       <List sx={{  height: '100%', overflowY: 'scroll', msOverflowStyle:'none', scrollbarWidth:'none', '&::-webkit-scrollbar': {display: 'none'}}}>
         <Scrollbar >
         {
@@ -43,7 +44,13 @@ const OperatorList = ({ operators, onItemClick, selectedOperator }: OperatorList
             const selected = selectedOperator === operator.name;
             const primary = (<Typography variant='h5' component={'h5'} color={theme => theme.palette.primary.contrastText} >{operator.name}</Typography>);
             const secondary = `${operator.location}, MB`;
-            const selectedSecondary = (<>  {secondary} <br /> <Typography variant='body1'sx={{ fontWeight: 'normal'}} >{operator.shortDescription}</Typography></>);
+            const selectedSecondary = (
+              <>
+              <Typography variant='body1'sx={{ fontWeight: 'medium', textTransform: 'capitalize'}} >{operator.region}</Typography>
+              <Typography variant='body1'sx={{ fontWeight: 'medium', textTransform: 'capitalize'}} >{operator.category}</Typography>
+              {secondary} <br />
+              <Link component={NextLink} href={`/operators/${operator.slug}`}>{'Find Out More'}</Link>
+              </>);
             return (
               <ListItem
                 key={key}

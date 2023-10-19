@@ -201,6 +201,8 @@ export type Operator = {
   region: string;
   slug: SanitySlug;
   website: string;
+  categories?: Array<string>;
+  category?: string;
   description: PortableTextBlock[];
   shortDescription?: string;
   _id: string;

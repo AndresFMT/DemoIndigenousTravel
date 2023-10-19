@@ -114,6 +114,7 @@ MyAppWrapper.getInitialProps = async () => {
       location,
       coordinates,
       region,
+      category,
       description,
       _id
     },
