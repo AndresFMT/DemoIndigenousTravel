@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState, useContext } from 'react';
 // icons
 import chevronDown from '@iconify/icons-carbon/chevron-down';

@@ -19,7 +19,6 @@ type Props = {
 };
 
 export default function FeaturedOperators({ operators }: Props) {
-console.log(operators);
   const {operators: contextOperators} = useInteractiveMapContext();
   const filteredOperators: Operator[] = operators.map((operatorIdentifier) => {
     return contextOperators.find((operator:Operator) => operator.slug.current === operatorIdentifier.slug.current);
@@ -38,7 +37,7 @@ console.log(operators);
   );
 
   return (
-    <Box sx={{ bgcolor: 'background.nuetral' }}>
+    <Box sx={{ bgcolor: 'background.neutral' }}>
       <Container
         sx={{
           py: { xs: 10, md: 15 },

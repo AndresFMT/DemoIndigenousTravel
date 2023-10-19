@@ -12,15 +12,13 @@ type OperatorImageGalleryProps = {
   images: SanityImageSource[];
 };
 
-const OperatorImageGallery: React.FC<OperatorImageGalleryProps> = ({images}) => {
+const OperatorImageGallery: React.FC<OperatorImageGalleryProps> = ({ images }) => {
   if (images.length === 0 || !images[0]) return null;
-  const imageUrl = images.map(image => ({ src: urlFor(image).url() }))
-  const primaryImage = urlFor(images[0]).url();
+  const imageUrls = images.map(image => ({ src: urlFor(image).url() }))
+  const initialUrls = images.map(image => ({ src: urlFor(image).width(400).url() }))
+  const primaryImage = urlFor(images[0]).width(800).url();
 
-  const lightbox = useLightbox(imageUrl);
-
-  if (typeof imageUrl[0] === 'undefined') return null;
-
+  const lightbox = useLightbox(imageUrls);
 
 
   return (
@@ -36,7 +34,7 @@ const OperatorImageGallery: React.FC<OperatorImageGalleryProps> = ({images}) => 
           mb: { xs: 5, md: 10 },
         }}
       >
-        <PhotoItem photo={imageUrl[0].src} onOpenLightbox={() => lightbox.onOpen(primaryImage)} />
+        <PhotoItem photo={primaryImage} onOpenLightbox={() => lightbox.onOpen(imageUrls[0]?.src || '')} />
 
         <Box
           sx={{
@@ -45,11 +43,11 @@ const OperatorImageGallery: React.FC<OperatorImageGalleryProps> = ({images}) => 
             gridTemplateColumns: 'repeat(2, 1fr)',
           }}
         >
-          {imageUrl.slice(1, 5).map((slide) => (
+          {initialUrls.slice(1, 5).map((slide, index) => (
             <PhotoItem
               key={slide.src}
               photo={slide.src}
-              onOpenLightbox={() => lightbox.onOpen(slide.src)}
+              onOpenLightbox={() => lightbox.onOpen(imageUrls[index+1]?.src || '')}
             />
           ))}
         </Box>
@@ -57,7 +55,7 @@ const OperatorImageGallery: React.FC<OperatorImageGalleryProps> = ({images}) => 
       </Box>
       <Lightbox
         index={lightbox.selected}
-        slides={imageUrl}
+        slides={imageUrls}
         open={lightbox.open}
         close={lightbox.onClose}
       />

@@ -3,12 +3,10 @@ import type {
   GetStaticProps,
   GetStaticPaths,
 } from 'next'
-import NextLink from 'next/link'
 
 import { groqOperatorQuery, groqOperatorSlugsQuery, groqOperatorsNearbyQuery } from 'src/utils/pageQuery';
 
-import { styled } from '@mui/material/styles';
-import { Container, Typography, Stack, Button, Divider, Link} from '@mui/material';
+import { Container, Typography, Stack,  Divider } from '@mui/material';
 import Grid from "@mui/material/Unstable_Grid2"
 
 import Layout from 'src/core/layouts/Layout'
@@ -20,7 +18,7 @@ import { OperatorImageGallery, FeaturedOperators} from 'src/sections/operators';
 
 import OperatorDetails from 'src/core/components/OperatorDetails';
 
-import { Operator, SanityPageProps } from 'src/@types/sanity';
+import { Operator } from 'src/@types/sanity';
 import { Page as AppPage } from 'src/@types/app';
 
 
@@ -35,7 +33,8 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
 
   return (
     <Page title={title} meta={description}>
-      <Container sx={{overflow: 'hidden'}}>
+      <>
+      <Container sx={{overflow: 'hidden', mb: 5}}>
 
         <CustomBreadcrumbs links={breadcrumbs} sx={{mt:3, mb:5}}/>
 
@@ -66,9 +65,10 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
             </Stack>
           </Grid>
         </Grid>
-        <FeaturedOperators operators={nearby} />
 
       </Container>
+      <FeaturedOperators operators={nearby} />
+      </>
     </Page>
   )
 }
