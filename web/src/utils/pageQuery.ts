@@ -92,22 +92,7 @@ export const groqOperatorsNearbyQuery = groq`
   !(_id in path('drafts.**')) &&
    slug.current != $slug] |
   order(geo::distance(coordinates, $coordinates) asc) [0...4]{
-    name,
     slug,
-    'image' : images[] {
-      ...,
-      asset -> {
-        ...,
-        metadata
-      }
-    }[0],
-    phoneNumber,
-    email,
-    website,
-    category,
-    coordinates,
-    location,
-    region,
     _id,
   }
 `

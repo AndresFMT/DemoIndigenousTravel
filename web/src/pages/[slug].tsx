@@ -58,3 +58,4 @@ export const getStaticProps = (async (context) => {
   const data = await client.fetch(groqPageQuery, params)
   return { props: { ...data } }
 }) satisfies GetStaticProps<SanityPageProps>
+

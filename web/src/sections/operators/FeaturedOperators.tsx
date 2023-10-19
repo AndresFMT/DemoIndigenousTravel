@@ -3,7 +3,6 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import NextLink from 'next/link';
 import Iconify from 'src/core/components/iconify';
 
@@ -12,6 +11,7 @@ import { OperatorCard } from 'src/sections/operators';
 
 import { Operator } from 'src/@types/sanity';
 import { useResponsive } from 'src/hooks';
+import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 // ----------------------------------------------------------------------
 
 type Props = {
@@ -19,6 +19,11 @@ type Props = {
 };
 
 export default function FeaturedOperators({ operators }: Props) {
+console.log(operators);
+  const {operators: contextOperators} = useInteractiveMapContext();
+  const filteredOperators: Operator[] = operators.map((operatorIdentifier) => {
+    return contextOperators.find((operator:Operator) => operator.slug.current === operatorIdentifier.slug.current);
+  });
   const mdUp = useResponsive('up', 'md')
 
   const viewAllBtn = (
@@ -63,7 +68,7 @@ export default function FeaturedOperators({ operators }: Props) {
             },
           }}
         >
-          {operators.map((operator) => (
+          {filteredOperators.map((operator) => (
             <OperatorCard key={operator._id} operator={operator} />
           ))}
         </Box>
