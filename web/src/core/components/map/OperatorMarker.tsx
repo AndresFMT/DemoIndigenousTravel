@@ -58,8 +58,9 @@ const OperatorMarker = ({ center, content, openPopup }: OperatorMarkerProps) => 
   useEffect(() => {
     if (openPopup && markerRef.current != null && map) {
       map.flyTo(center, 15);
-      map.openPopup(markerRef.current);
-      // markerRef.current.openPopup();
+      if (markerRef.current != null) {
+        map.openPopup(markerRef.current);
+      }
     }
   }, [map, center, openPopup]);
 
