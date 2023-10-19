@@ -68,6 +68,6 @@ export const navConfig = [
     children: PageLinks
   },
   { title: 'Contact Us', path: Routes.contactUs },
-  { title: 'Map', path: { query: {'imv': 'true'} }},
+  { title: 'Map', path: '?imv=true'},// path is irrelevant this is solved on the Link in DesktopNavigation
 ];
 
