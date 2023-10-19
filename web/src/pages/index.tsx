@@ -15,7 +15,6 @@ const HomePage: AppPage<SanityPageProps> = (props) => {
   const { sections, title, description } = props
 
   return (
-    <Suspense fallback="Loading...">
       <Page title={title || "ITM"} meta={description}>
         {
           sections && sections.map((item, index: number) => {
@@ -24,7 +23,6 @@ const HomePage: AppPage<SanityPageProps> = (props) => {
           })
         }
       </Page>
-    </Suspense>
   )
 }
 

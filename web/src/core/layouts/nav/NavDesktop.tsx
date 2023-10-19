@@ -14,6 +14,7 @@ import { NavProps, NavItemDesktopProps } from 'src/@types/layout';
 
 //
 import NavDesktopMenu from './NavDesktopMenu';
+import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 
 // ----------------------------------------------------------------------
 
@@ -106,7 +107,10 @@ export default function NavDesktop({ isScrolling, isTransparent, navConfig }:Nav
 function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProps) {
   const { title, path, children } = item;
 
-  const { pathname, asPath } = useRouter();
+  const { openMap } = useInteractiveMapContext();
+
+  const router = useRouter();
+  const { pathname, asPath } = router;
 
   const [open, setOpen] = useState(false);
 
@@ -172,6 +176,16 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
       </RootLinkStyle>
     );
   }
+
+  if (title === 'Map') {
+
+    return (
+    <RootLinkStyle key={title} href="#" onClick={() => openMap()}>
+      {title}
+    </RootLinkStyle>
+  );
+  }
+
 
   return (
     <RootLinkStyle key={title} href={path} passHref active={isActiveRoot} scrolling={isScrolling} transparent={isTransparent}>
