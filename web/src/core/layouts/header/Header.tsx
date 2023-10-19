@@ -23,13 +23,13 @@ const Header = ({transparent}: ListProps) => {
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
-      <ToolbarStyle disableGutters transparent={transparent} scrolling={isScrolling}>
+      <ToolbarStyle transparent={transparent} scrolling={isScrolling}>
         <Container
           sx={{
             display: 'flex',
             alignItems: 'space-between',
             justifyContent: 'space-between',
-            maxWidth: '1440px !important',
+            maxWidth: '1200px !important',
           }}
         >
           <Box sx={{ lineHeight: 0, position: 'relative' }}>

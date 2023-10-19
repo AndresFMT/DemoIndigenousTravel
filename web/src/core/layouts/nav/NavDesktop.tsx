@@ -183,7 +183,7 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
     <RootLinkStyle key={title} href="#" onClick={() => openMap()}>
       {title}
     </RootLinkStyle>
-    );
+  );
   }
 
 
