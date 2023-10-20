@@ -85,7 +85,7 @@ const SectionBioCards = ({ content}: HomepageContentType) => {
             const bioText = (<PortableText body={bio} />);
 
             return (
-              <Box sx={{ display: 'flex', marginBottom: 1, flexGrow: 1 }} key={index}>
+              <Box sx={{ display: 'flex', marginBottom: 1, flexGrow: 1 }} key={`${name}${index}`}>
                 <MotionViewport>
                   <Card sx={{ width: "100%" }}>
                     <CardContent>

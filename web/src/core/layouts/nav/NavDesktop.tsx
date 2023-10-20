@@ -69,7 +69,50 @@ const RootLinkStyle = styled(NextLink, {
     }),
   };
 });
-
+const RootMapLinkStyle = styled(Link, {
+  shouldForwardProp: (prop) =>
+    prop !== 'active' && prop !== 'scrolling' && prop !== 'transparent' && prop !== 'open',
+})<RootLinkStyleProps>(({ active, scrolling, transparent, open, theme }) => {
+  const dotActiveStyle = {
+    '&:before': {
+      top: 0,
+      width: 6,
+      height: 6,
+      bottom: 0,
+      left: -14,
+      content: '""',
+      display: 'block',
+      margin: 'auto 0',
+      borderRadius: '50%',
+      position: 'absolute',
+      backgroundColor: theme.palette.primary.main,
+    },
+  };
+  return {
+    ...theme.typography.subtitle2,
+    fontWeight: theme.typography.fontWeightMedium,
+    display: 'flex',
+    color: 'inherit',
+    position: 'relative',
+    alignItems: 'center',
+    transition: theme.transitions.create('opacity', {
+      duration: theme.transitions.duration.shortest,
+    }),
+    '&:hover': {
+      opacity: 0.72,
+      textDecoration: 'none',
+    },
+    ...(active && {
+      ...dotActiveStyle,
+      color: theme.palette.primary.burgundy,
+      ...(transparent && { color: theme.palette.common.white }),
+      ...(scrolling && { color: theme.palette.text.primary }),
+    }),
+    ...(open && {
+      color: theme.palette.primary.main,
+    }),
+  };
+});
 // ----------------------------------------------------------------------
 
 export default function NavDesktop({ isScrolling, isTransparent, navConfig }:NavProps) {
@@ -109,8 +152,7 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
 
   const { openMap } = useInteractiveMapContext();
 
-  const router = useRouter();
-  const { pathname, asPath } = router;
+  const { pathname, asPath } = useRouter();
 
   const [open, setOpen] = useState(false);
 
@@ -180,9 +222,9 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
   if (title === 'Map') {
 
     return (
-    <RootLinkStyle key={title} href="#" onClick={() => openMap()}>
+    <RootMapLinkStyle key={title} onClick={(e) => {e.preventDefault();openMap();}}>
       {title}
-    </RootLinkStyle>
+    </RootMapLinkStyle>
   );
   }
 

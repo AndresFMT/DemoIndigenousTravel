@@ -69,7 +69,7 @@ const components: PortableTextComponents = {
   },
   block: {
     // Ex. 1: customizing common block types
-    normal: ({ children }) => <Typography variant='body1' component={m.p} variants={varFade().inUp}>{children}</Typography>,
+    normal: ({ children }) => <Typography variant='body1' component={m.div} variants={varFade().inUp}>{children}</Typography>,
     h1: ({ children }) => <Typography variant='h1' component={m.h2} variants={varFade().inUp}>{children}</Typography>,
     h2: ({ children }) => <Typography variant='h2' component={m.h2} variants={varFade().inUp}>{children}</Typography>,
     h3: ({ children }) => <Typography variant='h3' component={m.h3} variants={varFade().inUp}>{children}</Typography>,

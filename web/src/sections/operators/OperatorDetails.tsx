@@ -1,10 +1,8 @@
 import NextLink from 'next/link';
 import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 
@@ -65,7 +63,7 @@ export default function OperatorDetails({ operator}: Props) {
           <Typography variant="body1">Find Out More</Typography>
         </Stack>
 
-        <Link component={NextLink} passHref href={website}>
+        <Link component={NextLink} passHref href={website} target="_blank">
           <Button size="large" variant="contained" color="inherit" >
             Visit Website
           </Button>

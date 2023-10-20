@@ -44,7 +44,7 @@ const OperatorMarker = ({ center, content, openPopup }: OperatorMarkerProps) => 
       <Marker
         position={center}
         ref={markerRef}
-        riseOnHover
+        riseOnHover={true}
         eventHandlers={{
           click: (e: LeafletMouseEvent) => {
             if (markerRef.current != null &&

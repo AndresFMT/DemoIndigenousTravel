@@ -28,6 +28,7 @@ import { DRAWER_WIDTH } from 'src/config';
 import { Logo, Scrollbar, Iconify, NavSection } from 'src/core/components';
 import { IconButtonAnimate } from 'src/core/components/animate';
 import { NavItemMobileProps, NavProps } from 'src/@types/layout';
+import {useInteractiveMapContext} from 'src/contexts/InteractiveMapContext';
 
 // ----------------------------------------------------------------------
 
@@ -108,6 +109,7 @@ export default function NavMobile({ navConfig, sx }: NavProps) {
 
 
 function NavItemMobile({ item }: NavItemMobileProps) {
+  const {openMap} = useInteractiveMapContext();
   const { pathname } = useRouter();
 
   const { title, path, children } = item;
@@ -188,6 +190,15 @@ function NavItemMobile({ item }: NavItemMobileProps) {
   if (title === 'Documentation') {
     return (
       <Link href={path} underline="none" target="_blank" rel="noopener">
+        <RootLinkStyle>
+          <ListItemText disableTypography primary={title} />
+        </RootLinkStyle>
+      </Link>
+    );
+  }
+  if (title === 'Map') {
+    return (
+      <Link underline="none" onClick={(e) => {e.preventDefault(); openMap();}} rel="noopener">
         <RootLinkStyle>
           <ListItemText disableTypography primary={title} />
         </RootLinkStyle>

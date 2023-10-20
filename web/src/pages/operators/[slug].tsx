@@ -4,36 +4,31 @@ import type {
   GetStaticPaths,
 } from 'next'
 
+import client from 'integrations/sanity.client';
 import { groqOperatorQuery, groqOperatorSlugsQuery, groqOperatorsNearbyQuery } from 'src/utils/pageQuery';
 
-import { Container, Typography, Stack,  Divider } from '@mui/material';
+import { Container, Typography, Stack, Divider } from '@mui/material';
 import Grid from "@mui/material/Unstable_Grid2"
 
 import Layout from 'src/core/layouts/Layout'
-import { Page, PortableText} from 'src/core/components'
-import CustomBreadcrumbs from 'src/core/components/custom-breadcrumbs';
-import client from 'integrations/sanity.client';
-
-import { OperatorImageGallery, FeaturedOperators} from 'src/sections/operators';
-
-import OperatorDetails from 'src/core/components/OperatorDetails';
+import { OperatorImageGallery, FeaturedOperators, OperatorDetails} from 'src/sections/operators';
+import { Page, PortableText, CustomBreadcrumbs} from 'src/core/components'
 
 import { Operator } from 'src/@types/sanity';
 import { Page as AppPage } from 'src/@types/app';
 
 
 const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
-  const { title, description, images, nearby} = props;
+  const { name, images, nearby} = props;
 
   const breadcrumbs = [
     { name: 'Home', href: '/' },
     { name: 'Operators', href: '/operators' },
-    { name: props.name, href: `/operators/${title}`},
+    { name: props.name},
   ];
 
   return (
-    <Page title={title} meta={description}>
-      <>
+    <Page title={name}>
       <Container sx={{overflow: 'hidden', mb: 5}}>
 
         <CustomBreadcrumbs links={breadcrumbs} sx={{mt:3, mb:5}}/>
@@ -67,8 +62,7 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
         </Grid>
 
       </Container>
-      <FeaturedOperators operators={nearby} />
-      </>
+        <FeaturedOperators operators={nearby} />
     </Page>
   )
 }
@@ -96,7 +90,7 @@ export const getStaticPaths = (async () => {
 export const getStaticProps = (async (context) => {
   const  params  =  { slug: context.params?.slug  };
   const pageData = await client.fetch(groqOperatorQuery, params)
-  const relatedData = await client.fetch(groqOperatorsNearbyQuery, {...params, coordinates: {lng:pageData.coordinates.lng, lat: pageData.coordinates.lat}});
-  return { props: { ...pageData, nearby: relatedData } }
+  const nearby = await client.fetch(groqOperatorsNearbyQuery, {...params, coordinates: pageData.coordinates})
+  return { props: { ...pageData, nearby} }
 }) satisfies GetStaticProps<Operator>
 

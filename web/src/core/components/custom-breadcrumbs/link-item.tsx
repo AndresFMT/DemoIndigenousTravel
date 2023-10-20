@@ -50,7 +50,7 @@ export default function BreadcrumbsLink({ link, activeLast, disabled }: Props) {
 
   if (href) {
     return (
-      <Link component={NextLink} href={href} sx={styles}>
+      <Link component={NextLink} href={href} passHref sx={styles}>
         {renderContent}
       </Link>
     );

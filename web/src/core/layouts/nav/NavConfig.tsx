@@ -1,7 +1,5 @@
 // routes
 import Routes from 'src/routes';
-// _data
-import { _tours, _jobs, _courses } from '_data/mock';
 
 // ----------------------------------------------------------------------
 
@@ -16,6 +14,7 @@ export const PageLinks = [
       { title: 'Reconciliation', path: Routes.reconciliation},
       { title: 'Meet Our Team', path: Routes.ourTeam },
       { title: 'Reconcilliation', path: Routes.reconciliation},
+      { title: 'Cultural Authenticity', path: Routes.culturalAuthenticity },
     ],
   },
   {
@@ -29,14 +28,6 @@ export const PageLinks = [
     ],
   },
   {
-    order: '3',
-    subheader: 'Cultural Authenticity',
-    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/d107abda4e74aaa722fee77c57d1a99c7f349425-9087x5111.jpg?fp-x=0.5&fp-y=0.5&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
-    items: [
-      { title: 'Cultural Authenticity', path: Routes.culturalAuthenticity },
-    ],
-  },
-  {
     order: '4',
     subheader: 'Things To Do',
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
@@ -46,7 +37,7 @@ export const PageLinks = [
     ],
   },
   {
-    order: '4',
+    order: '5',
     subheader: 'Discover',
     items: [
       { title: 'Accomodations', path: Routes.thingsToDo },

@@ -2,6 +2,7 @@ export * from './player';
 export * from './animate';
 export * from './carousel';
 export * from './skeleton';
+export * from './custom-breadcrumbs';
 
 export { default as Hoop} from './Hoop';
 export { default as Logo } from './Logo';

@@ -1,12 +1,11 @@
 import NextLink from 'next/link';
-import { Card, Stack, Typography, Link } from '@mui/material'
+import { Card, Stack, Typography } from '@mui/material'
 import { urlFor } from 'integrations/sanity.image';
 
-import { Image, TextMaxLine } from 'src/core/components'
+import { Image } from 'src/core/components'
 
 const OperatorCard = (props: any) => {
   const { operator } = props;
-  const shortDescription = operator?.description?.[0]?.children?.[0]?.text;
   const image = urlFor(operator.image).width(300).height(300).url();
   return (
     <Card>
@@ -41,15 +40,21 @@ const OperatorCard = (props: any) => {
       </Stack>
       <Image src={image} alt={operator.name} ratio="1/1" />
       <Stack spacing={0.5} sx={{ p: 2.5 }}>
-        <Typography variant="h6" sx={{ color: 'secondary.orange', textTransform: 'capitalize'}}>
+        <Typography variant="h6" sx={{ color: 'secondary.orange', textTransform: 'capitalize' }}>
           {operator.region}
         </Typography>
 
-        <Link component={NextLink} href={`/operators/${operator.slug.current}`} color="inherit">
-          <Typography variant="h6" sx={{lineHeight: '1.2rem', overflow: 'hidden'}}>
+        <Typography variant="h6" sx={{ lineHeight: '1.2rem', pb: 2, overflow: 'hidden', '&:hover': { textDecoration: 'underline' } }}>
+          <NextLink
+            passHref
+            href={{
+              pathname: '/operators/[slug]',
+              query: { slug: operator.slug.current }
+            }}
+            color="inherit">
             {operator.name}
-          </Typography>
-        </Link>
+          </NextLink>
+        </Typography>
       </Stack>
 
     </Card>

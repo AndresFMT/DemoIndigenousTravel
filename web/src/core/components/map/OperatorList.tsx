@@ -49,7 +49,7 @@ const OperatorList = ({ operators, onItemClick, selectedOperator }: OperatorList
               <Typography variant='body1'sx={{ fontWeight: 'medium', textTransform: 'capitalize'}} >{operator.region}</Typography>
               <Typography variant='body1'sx={{ fontWeight: 'medium', textTransform: 'capitalize'}} >{operator.category}</Typography>
               {secondary} <br />
-              <Link component={NextLink} href={`/operators/${operator.slug}`}>{'Find Out More'}</Link>
+              <Link component={NextLink} href={`/operators/${encodeURIComponent(operator.slug.current)}`} passHref>{'Find Out More'}</Link>
               </>);
             return (
               <ListItem
