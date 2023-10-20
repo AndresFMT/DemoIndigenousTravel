@@ -56,7 +56,7 @@ const RootLinkStyle = styled(ListItemButton, {
 
 
 export default function NavMobile({ navConfig, sx }: NavProps) {
-  const { pathname } = useRouter();
+  const { pathname, replace } = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -109,8 +109,7 @@ export default function NavMobile({ navConfig, sx }: NavProps) {
 
 
 function NavItemMobile({ item }: NavItemMobileProps) {
-  const {openMap} = useInteractiveMapContext();
-  const { pathname } = useRouter();
+  const { pathname, replace} = useRouter();
 
   const { title, path, children } = item;
   const rootPath = pathname.split('/')[1];
@@ -198,7 +197,7 @@ function NavItemMobile({ item }: NavItemMobileProps) {
   }
   if (title === 'Map') {
     return (
-      <Link underline="none" onClick={(e) => {e.preventDefault(); openMap();}} rel="noopener">
+      <Link underline="none" onClick={(e) => {e.preventDefault(); replace({pathname, query:{'imv': 'true'}}, undefined, {shallow:true});}} rel="noopener">
         <RootLinkStyle>
           <ListItemText disableTypography primary={title} />
         </RootLinkStyle>

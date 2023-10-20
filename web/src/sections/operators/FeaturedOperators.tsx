@@ -11,7 +11,6 @@ import OperatorCard from './OperatorCard';
 
 import { Operator } from 'src/@types/sanity';
 import { useResponsive } from 'src/hooks';
-import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 
 type Props = {
   operators: Operator[];
@@ -19,11 +18,6 @@ type Props = {
 
 export default function FeaturedOperators({ operators }: Props) {
 
-  const { operators: contextOperators } = useInteractiveMapContext();
-
-  const filteredOperators: Operator[] = operators.map((operatorIdentifier) => {
-    return contextOperators.find((operator: Operator) => operator.slug.current === operatorIdentifier.slug.current);
-  });
   const mdUp = useResponsive('up', 'md')
 
   const viewAllBtn = (
@@ -31,13 +25,13 @@ export default function FeaturedOperators({ operators }: Props) {
       sx={{ color: 'theme.primary', fontWeight: 'bold' }}
       endIcon={<Iconify icon="carbon:chevron-right" />}
     >
+      <NextLink href="/operators" passHref>
       <Link
-        component={NextLink}
-        href="/operators"
         color="inherit"
-        passHref>
+        >
         View All
       </Link>
+      </NextLink>
     </Button>
   );
 
@@ -72,7 +66,7 @@ export default function FeaturedOperators({ operators }: Props) {
             },
           }}
         >
-          {filteredOperators.map((operator) => (
+          {operators && operators.map((operator) => (
             <OperatorCard key={operator._id} operator={operator} />
           ))}
         </Box>

@@ -103,7 +103,7 @@ const createMarker = (img: string, name: string, shortDescription: string | unde
   popupContent.appendChild(popupDescription);
   const popupLink = document.createElement('a');
   popupLink.className = 'popup-link';
-  popupLink.href = `/operators/${url}`;
+  popupLink.href = url ? `/operators/${url}`: '#';
   popupLink.innerHTML = 'Read More';
   popupContent.appendChild(popupLink);
 

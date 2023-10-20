@@ -11,27 +11,27 @@ import { Container, Typography, Stack, Divider } from '@mui/material';
 import Grid from "@mui/material/Unstable_Grid2"
 
 import Layout from 'src/core/layouts/Layout'
-import { OperatorImageGallery, FeaturedOperators, OperatorDetails} from 'src/sections/operators';
-import { Page, PortableText, CustomBreadcrumbs} from 'src/core/components'
+import { OperatorImageGallery, FeaturedOperators, OperatorDetails } from 'src/sections/operators';
+import { Page, PortableText, CustomBreadcrumbs } from 'src/core/components'
 
 import { Operator } from 'src/@types/sanity';
 import { Page as AppPage } from 'src/@types/app';
 
 
 const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
-  const { name, images, nearby} = props;
+  const { name, images, nearby } = props;
 
   const breadcrumbs = [
     { name: 'Home', href: '/' },
     { name: 'Operators', href: '/operators' },
-    { name: props.name},
+    { name: props.name },
   ];
 
   return (
     <Page title={name}>
-      <Container sx={{overflow: 'hidden', mb: 5}}>
+      <Container sx={{ overflow: 'hidden', mb: 5 }}>
 
-        <CustomBreadcrumbs links={breadcrumbs} sx={{mt:3, mb:5}}/>
+        <CustomBreadcrumbs links={breadcrumbs} sx={{ mt: 3, mb: 5 }} />
 
         {images && <OperatorImageGallery images={images} />}
         <Grid container columnSpacing={8} rowSpacing={5} direction="row-reverse">
@@ -62,12 +62,12 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
         </Grid>
 
       </Container>
-        <FeaturedOperators operators={nearby} />
+      <FeaturedOperators operators={nearby} />
     </Page>
   )
 }
 
-OperatorPage.getLayout = (page:React.ReactNode) => {
+OperatorPage.getLayout = (page: React.ReactNode) => {
   return <Layout>{page}</Layout>;
 }
 
@@ -75,7 +75,7 @@ export default OperatorPage;
 
 export const getStaticPaths = (async () => {
   const data = await client.fetch(groqOperatorSlugsQuery)
-  const slugs = data.map((item: { slug: {current: string, _type:string} }) => {
+  const slugs = data.map((item: { slug: { current: string, _type: string } }) => {
     return (
       { params: { slug: item.slug.current } }
     )
@@ -88,9 +88,9 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
-  const  params  =  { slug: context.params?.slug  };
+  const params = { slug: context.params?.slug };
   const pageData = await client.fetch(groqOperatorQuery, params)
-  const nearby = await client.fetch(groqOperatorsNearbyQuery, {...params, coordinates: pageData.coordinates})
-  return { props: { ...pageData, nearby} }
+  const nearby = await client.fetch(groqOperatorsNearbyQuery, { ...params, coordinates: pageData.coordinates })
+  return { props: { ...pageData, nearby } }
 }) satisfies GetStaticProps<Operator>
 

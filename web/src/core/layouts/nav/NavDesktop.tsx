@@ -18,7 +18,7 @@ import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 
 // ----------------------------------------------------------------------
 
- interface RootLinkStyleProps extends LinkProps {
+interface RootLinkStyleProps extends LinkProps {
   open?: boolean;
   active?: boolean;
   scrolling?: boolean;
@@ -115,7 +115,7 @@ const RootMapLinkStyle = styled(Link, {
 });
 // ----------------------------------------------------------------------
 
-export default function NavDesktop({ isScrolling, isTransparent, navConfig }:NavProps) {
+export default function NavDesktop({ isScrolling, isTransparent, navConfig }: NavProps) {
   return (
     <Stack
       direction="row"
@@ -150,9 +150,7 @@ export default function NavDesktop({ isScrolling, isTransparent, navConfig }:Nav
 function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProps) {
   const { title, path, children } = item;
 
-  const { openMap } = useInteractiveMapContext();
-
-  const { pathname, asPath } = useRouter();
+  const { pathname, query, asPath, replace } = useRouter();
 
   const [open, setOpen] = useState(false);
 
@@ -220,12 +218,11 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
   }
 
   if (title === 'Map') {
-
     return (
-    <RootMapLinkStyle key={title} onClick={(e) => {e.preventDefault();openMap();}}>
-      {title}
-    </RootMapLinkStyle>
-  );
+      <RootMapLinkStyle key={title} onClick={(e) => { e.preventDefault(); replace({ pathname, query: { ...query,'imv': 'true' } }, undefined, { shallow: true }); }}>
+        {title}
+      </RootMapLinkStyle>
+    );
   }
 
 

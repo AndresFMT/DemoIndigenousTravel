@@ -144,9 +144,8 @@ ThemeDevelopment.getLayout = function getLayout(page: React.ReactElement) {
 }
 
 
-// export function getStaticProps () {
-//   return {
-//     notFound: process.env.NODE_ENV === 'production',
-//   };
-// }
-
+export function getStaticProps () {
+  return {
+    notFound: process.env.NODE_ENV === 'production',
+  };
+}

@@ -63,11 +63,13 @@ export default function OperatorDetails({ operator}: Props) {
           <Typography variant="body1">Find Out More</Typography>
         </Stack>
 
-        <Link component={NextLink} passHref href={website} target="_blank">
-          <Button size="large" variant="contained" color="inherit" >
-            Visit Website
-          </Button>
-        </Link>
+        <NextLink href={`${website}`} passHref>
+          <Link target="_blank">
+            <Button size="large" variant="contained" color="inherit" >
+              Visit Website
+            </Button>
+          </Link>
+        </NextLink>
       </Stack>
     </Card>
   );
