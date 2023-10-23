@@ -60,7 +60,7 @@ const PortableBlock = (props: Props): JSX.Element => {
       <MotionViewport sx={{ width: '100%', height: '100%' }} >
         <ImageBackground image={image} />
 
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Stack
             component={m.div}
             variants={varSlide().inUp}
