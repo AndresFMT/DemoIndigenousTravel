@@ -11,29 +11,39 @@ export const PageLinks = [
     items: [
       { title: 'Who We Are', path: Routes.whoWeAre},
       { title: 'What We Do', path: Routes.whatWeDo},
-      { title: 'Reconciliation', path: Routes.reconciliation},
+      { title: 'Reconciliation', path: Routes.reconcilliation},
       { title: 'Meet Our Team', path: Routes.ourTeam },
-      { title: 'Reconcilliation', path: Routes.reconciliation},
       { title: 'Cultural Authenticity', path: Routes.culturalAuthenticity },
     ],
   },
   {
     order: '2',
-    subheader: 'Membership',
-    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ba8ef63228996208f4db7982101914caa2d10cc0-5791x3861.jpg?fp-x=0.5128913443830572&fp-y=0.6907985333399698&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
-    items: [
-      { title: 'Members', path: Routes.members},
-      { title: 'Become a Member', path: Routes.membership},
-
-    ],
-  },
-  {
-    order: '4',
     subheader: 'Things To Do',
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
       { title: 'Things To Do', path: Routes.thingsToDo },
       { title: 'Discover Indigenous Tourism', path: Routes.operators},
+    ],
+  },
+  {
+    order: '3',
+    subheader: 'Places To Go',
+    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
+    items: [
+      { title: 'Things To Do', path: Routes.thingsToDo },
+      { title: 'Discover Indigenous Tourism', path: Routes.operators},
+    ],
+  },
+  {
+    order: '4',
+    subheader: 'Members',
+    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ba8ef63228996208f4db7982101914caa2d10cc0-5791x3861.jpg?fp-x=0.5128913443830572&fp-y=0.6907985333399698&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
+    items: [
+      { title: 'Membership Benefits', path: Routes.members},
+      { title: 'Industry Partners', path: Routes.members},
+      { title: 'Become a Member', path: Routes.membership},
+      { title: 'Members', path: Routes.members},
+
     ],
   },
   {

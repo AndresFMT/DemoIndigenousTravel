@@ -87,7 +87,7 @@ const SectionBioCards = ({ content}: HomepageContentType) => {
             return (
               <Box sx={{ display: 'flex', marginBottom: 1, flexGrow: 1 }} key={`${name}${index}`}>
                 <MotionViewport>
-                  <Card sx={{ width: "100%" }}>
+                  <Card >
                     <CardContent>
                       <Grid container direction={'row'} spacing={5} columns={{ xs: 1, sm: 1, md: 2 }}>
 

@@ -70,7 +70,7 @@ const Routes = {
   aboutUs: '/about-us',
   members: '/members',
   membership: '/membership',
-  reconciliation: '/reconciliation',
+  reconcilliation: '/reconcilliation',
   contactUs: '/contact-us',
   culturalAuthenticity: '/cultural-authenticity',
   thingsToDo: '/things-to-do',
