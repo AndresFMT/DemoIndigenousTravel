@@ -1,5 +1,5 @@
 import { SanityDocument } from 'sanity';
-import { sanityPreviewTokenNext } from '../environment';
+import { sanityPreviewTokenNext, sanityPreviewIdNext } from '../environment';
 
 interface PreviewPaneProps extends SanityDocument {
   slug?: {
@@ -19,6 +19,6 @@ export function getPreviewUrl(doc: PreviewPaneProps) {
 
   return (window.location.hostname === 'localhost')
     ? `http://localhost:3000/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`
-    : `https://indigenous-travel-manitoba-git-c16ddd-indigenous-travel-manitoba.vercel.app/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`;
+    : `https://indigenous-travel-manitoba-${sanityPreviewIdNext}-indigenous-travel-manitoba.vercel.app/api/draft?secret=${sanityPreviewTokenNext}&slug=${slug}`;
 }
 
