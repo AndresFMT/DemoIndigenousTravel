@@ -1,9 +1,10 @@
 import {
   Button,
   Card,
+  Divider,
   Stack,
   Typography,
-
+  Box,
 } from '@mui/material';
 
 import { Image, Label } from 'src/core/components';
@@ -13,6 +14,10 @@ type Props = {
     license: string;
     price: string;
     icon: string;
+    requirements: {
+      title: string;
+      disabled: boolean;
+    }[];
     options: {
       title: string;
       disabled: boolean;
@@ -20,30 +25,18 @@ type Props = {
   }
 };
 
-const MembershipOffersCard = ({ plan }: Props) => {
-  const basicLicense = plan.license === 'Basic';
-
-  const starterLicense = plan.license === 'Starter';
-
-  const premiumLicense = plan.license === 'Premium';
+const MembershipOffersCard = ({ plan, index}: Props) => {
   return (
     <Card
       sx={{
         p: 5,
         textAlign: 'center',
         boxShadow: (theme) => theme.customShadows.z8,
-        ...(starterLicense && {
-          py: 8,
+        ...(index == 0 && {
           boxShadow: (theme) => theme.customShadows.z24,
         }),
       }}
     >
-      {starterLicense && (
-        <Label color="info" sx={{ position: 'absolute', top: 16, right: 16 }}>
-          POPULAR
-        </Label>
-      )}
-
       <Stack spacing={5} alignItems="center">
         <Typography variant="overline" component="div" sx={{ color: 'text.secondary' }}>
           {plan.license}
@@ -59,15 +52,18 @@ const MembershipOffersCard = ({ plan }: Props) => {
 
         </Stack>
 
-        <Stack spacing={1} sx={{ textAlign: 'center' }}>
-          <Typography variant="h5" component="span">
-            {'Benefits'}
+        <Stack spacing={1} sx={{ textAlign: 'start' }}>
+
+          <Typography variant="h5" component="span" sx={{ pt: 3}}>
+            {'Eligibility'}
           </Typography>
-          {plan.options.map((option) => (
+
+          {plan.requirements.map((option) => (
             <Typography
               key={option.title}
               variant={option.disabled ? 'body2' : 'subtitle2'}
               sx={{
+                  pl: 1,
                 ...(option.disabled && {
                   color: 'text.disabled',
                   textDecoration: 'line-through',
@@ -77,18 +73,41 @@ const MembershipOffersCard = ({ plan }: Props) => {
               {option.title}
             </Typography>
           ))}
+          <Divider sx={{ pt: 3 }} />
+
+          <Typography variant="h5" component="span" sx={{ pt:1 }}>
+            {'Benefits'}
+          </Typography>
+          <Box sx={{ mt: 3, minHeight: 250 }} >
+          {plan.options.map((option) => (
+            <Typography
+              key={option.title}
+              variant={option.disabled ? 'body2' : 'subtitle2'}
+              sx={{
+                  pl: 1,
+                  mt: 1,
+                ...(option.disabled && {
+                  color: 'text.disabled',
+                  textDecoration: 'line-through',
+                }),
+              }}
+            >
+              {option.title}
+            </Typography>
+          ))}
+          </Box>
         </Stack>
 
         <Button
           fullWidth
-          disabled={basicLicense}
+          disabled={ index == 0}
           size="large"
-          variant={basicLicense ? 'outlined' : 'contained'}
-          color={premiumLicense ? 'primary' : 'inherit'}
+          variant={index == 0 ? 'outlined' : 'contained'}
+          color={index == 2 ? 'primary' : 'inherit'}
         >
-          {basicLicense && 'Current Plan'}
-          {starterLicense && 'Choose Starter'}
-          {premiumLicense && 'Choose Premium'}
+          {index == 0 && 'Get Started'}
+          {index == 1 && 'Apply Now'}
+          {index == 2 && 'Market or Export Ready'}
         </Button>
       </Stack>
     </Card>
