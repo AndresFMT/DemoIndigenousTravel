@@ -40,6 +40,11 @@ const Routes = {
 
     contactUs: '/discover/contact-us',
   },
+  members: {
+    landing: '/members',
+    membershipApplication: '/members/apply',
+    newAccountRequest: '/members/new-account-request',
+  },
   // Common
   loginCover: '/auth/login-cover',
   registerCover: '/auth/register-cover',
@@ -68,8 +73,6 @@ const Routes = {
   whatWeDo: '/what-we-do',
   ourTeam: '/our-team',
   aboutUs: '/about-us',
-  members: '/members',
-  membership: '/membership',
   reconcilliation: '/reconcilliation',
   contactUs: '/contact-us',
   culturalAuthenticity: '/cultural-authenticity',

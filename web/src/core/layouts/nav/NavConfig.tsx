@@ -39,10 +39,9 @@ export const PageLinks = [
     subheader: 'Members',
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ba8ef63228996208f4db7982101914caa2d10cc0-5791x3861.jpg?fp-x=0.5128913443830572&fp-y=0.6907985333399698&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
-      { title: 'Membership Benefits', path: Routes.members},
-      { title: 'Industry Partners', path: Routes.members},
-      { title: 'Become a Member', path: Routes.membership},
-      { title: 'Members', path: Routes.members},
+      { title: 'Membership Benefits', path: Routes.members.landing},
+      { title: 'Become a Member', path: Routes.members.membershipApplication},
+      { title: 'Members', path: Routes.members.newAccountRequest},
 
     ],
   },

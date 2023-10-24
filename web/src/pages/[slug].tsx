@@ -39,7 +39,7 @@ DynamicPage.getLayout = (page:React.ReactNode) => {
 
 export const getStaticPaths = (async () => {
   const data = await client.fetch(groqPageSlugsQuery)
-  const ignoredSlugs = ['membership', 'new-account-request'];
+  const ignoredSlugs = ['membership', 'new-account-request', 'apply', 'members'];
   const slugs = data.filter((item: { slug: {current: string, _type:string} }) => (!ignoredSlugs.includes(item.slug.current) ))
   .map((item: { slug: {current: string, _type:string} }) => {
     return (

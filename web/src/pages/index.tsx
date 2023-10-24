@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import { GetStaticProps } from "next";
 import { groq } from 'next-sanity'
 
