@@ -21,6 +21,7 @@ blitz-log.log
 
 
 web/integrations/dist
+web/integrations/.env.*
 # misc
 .DS_Store
 
