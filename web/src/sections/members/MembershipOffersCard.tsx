@@ -23,6 +23,7 @@ type Props = {
       disabled: boolean;
     }[];
   }
+  index: number;
 };
 
 const MembershipOffersCard = ({ plan, index}: Props) => {
