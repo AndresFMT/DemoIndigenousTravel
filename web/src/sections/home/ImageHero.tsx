@@ -33,11 +33,12 @@ type Props = {
   image?: SanityEnrichedImageObject;
   enableCTA?: boolean;
   text?: string;
+  url?: string;
   videoUrl?: string;
 };
 
 export default function ImageHero(props: Props) {
-  const { heading, kicker, image, enableCTA, text } = props;
+  const { heading, kicker, image, enableCTA, text, url} = props;
 
   return (
     <RootStyle>
@@ -64,11 +65,11 @@ export default function ImageHero(props: Props) {
               </Typography>
 
 
-            {enableCTA && <HoopButton
+            {enableCTA && url && <HoopButton
               color="inherit"
               variant="contained"
               sx={{ background: 'primary.darker', transform: { xs: 'scale(0.8)', md: 'scale(0.9)' } }}
-              href={Routes.reconciliation}
+              href={url}
             >
               {text}
             </HoopButton>
