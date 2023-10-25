@@ -28,7 +28,7 @@ export const PageLinks = [
   {
     order: '3',
     subheader: 'Places To Go',
-    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
+    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/5d84a8e52123785bad9adabc9f737479bbfa2064-5472x3648.jpg?fp-x=0.5&fp-y=0.5&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
       { title: 'Places To Go', path: Routes.placesToGo},
       { title: 'North', path: Routes.operatorsRegionFilter('north')},
