@@ -55,13 +55,11 @@ const OperatorsPage = (props: Props) => {
       const filteredOperators =
         contextOperators.filter((operator: any) => {
           if (filter.category && filter.category !== '') {
-            console.log(operator.category, filter.category);
             return operator.category.includes(filter.category);
           }
           return true;
         }).filter((operator: any) => {
           if (filter.region && filter.region !== '') {
-              console.log(operator.region, filter.region);
             return operator.region.includes(filter.region.toLowerCase());
           }
           return true;

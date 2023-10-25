@@ -80,7 +80,6 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
     const imageUrlBuilder = urlFor(image);
     imageUrl = imageUrlBuilder.width(size).height(size).url();
   }
-  console.log('image url', imageUrl);
   const backgroundColorString = backgroundColor ? createColorString(backgroundColor.rgb) : undefined;
 
   const isBackgroundLight = calculateBackgroundLuminance(backgroundColor) < 0.5;
@@ -94,7 +93,6 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
     } , 250);
   }
 
-  console.log('image', image?.asset?.metadata?.lqip);
   return (
     <Box
       component={'div'}

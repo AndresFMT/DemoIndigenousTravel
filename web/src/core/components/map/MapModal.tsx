@@ -20,7 +20,6 @@ const MapModal = ({children}: MapModalProps) => {
   const {isMapVisible, closeMap} = useInteractiveMapContext();
 
   const escape = useCallback((e:KeyboardEvent) => {
-    console.log('intercepted')
     if (e.key === 'Escape') {
       closeMap();
     }
