@@ -6,8 +6,10 @@ import {
   Typography,
   Box,
 } from '@mui/material';
+import NextLink from 'next/link';
 
-import { Image, Label } from 'src/core/components';
+import { Image } from 'src/core/components';
+import Routes from 'src/routes';
 
 type Props = {
   plan: {
@@ -101,14 +103,16 @@ const MembershipOffersCard = ({ plan, index}: Props) => {
 
         <Button
           fullWidth
-          disabled={ index == 0}
           size="large"
           variant={index == 0 ? 'outlined' : 'contained'}
           color={index == 2 ? 'primary' : 'inherit'}
         >
+
+          <NextLink href={Routes.members.membershipApplication}>
           {index == 0 && 'Get Started'}
           {index == 1 && 'Apply Now'}
-          {index == 2 && 'Market or Export Ready'}
+          {index == 2 && 'Become a Member'}
+          </NextLink>
         </Button>
       </Stack>
     </Card>

@@ -22,7 +22,7 @@ export const PageLinks = [
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
       { title: 'Things To Do', path: Routes.thingsToDo },
-      { title: 'Discover Indigenous Tourism', path: Routes.operators},
+      { title: 'Operators', path: Routes.operators},
     ],
   },
   {
@@ -30,8 +30,12 @@ export const PageLinks = [
     subheader: 'Places To Go',
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
-      { title: 'Things To Do', path: Routes.thingsToDo },
-      { title: 'Discover Indigenous Tourism', path: Routes.operators},
+      { title: 'Places To Go', path: Routes.placesToGo},
+      { title: 'North', path: Routes.operatorsRegionFilter('north')},
+      { title: 'East', path: Routes.operatorsRegionFilter('east')},
+      { title: 'South', path: Routes.operatorsRegionFilter('south')},
+      { title: 'West', path: Routes.operatorsRegionFilter('west')},
+
     ],
   },
   {
@@ -41,21 +45,19 @@ export const PageLinks = [
     items: [
       { title: 'Membership Benefits', path: Routes.members.landing},
       { title: 'Become a Member', path: Routes.members.membershipApplication},
-      { title: 'Members', path: Routes.members.newAccountRequest},
-
     ],
   },
   {
     order: '5',
     subheader: 'Discover',
     items: [
-      { title: 'Accomodations', path: Routes.thingsToDo },
-      { title: 'Culinary', path: Routes.operators},
-      { title: 'Attactions', path: Routes.thingsToDo },
-      { title: 'Events', path: Routes.thingsToDo },
-      { title: 'Outdoors & Adventure', path: Routes.thingsToDo },
-      { title: 'Tours & Related Services', path: Routes.thingsToDo },
-      { title: 'Workshops, Arts & Culture', path: Routes.thingsToDo },
+      { title: 'Accomodations', path: Routes.operatorsCategoryFilter('accommodation')},
+      { title: 'Attactions', path: Routes.operatorsCategoryFilter('attractions')},
+      { title: 'Events', path: Routes.operatorsCategoryFilter('events')},
+      { title: 'Outdoors & Adventure', path: Routes.operatorsCategoryFilter('outdoors-and-adventure')},
+      { title: 'Culinary', path: Routes.operatorsCategoryFilter('culinary')},
+      { title: 'Tours & Related Services', path: Routes.operatorsCategoryFilter('tours')},
+      { title: 'Workshops, Arts & Culture', path: Routes.operatorsCategoryFilter('workshops')},
     ],
   },
 ];

@@ -80,7 +80,7 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
     const imageUrlBuilder = urlFor(image);
     imageUrl = imageUrlBuilder.width(size).height(size).url();
   }
-
+  console.log('image url', imageUrl);
   const backgroundColorString = backgroundColor ? createColorString(backgroundColor.rgb) : undefined;
 
   const isBackgroundLight = calculateBackgroundLuminance(backgroundColor) < 0.5;
@@ -94,6 +94,7 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
     } , 250);
   }
 
+  console.log('image', image?.asset?.metadata?.lqip);
   return (
     <Box
       component={'div'}
@@ -104,7 +105,15 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
       }}
     >
       <Box component={'div'} sx={{ '& svg, & svg *': { width: '100%' }, color: fontColor, fontWeight: fontWeight }}>
-        <Image src={imageUrl} alt={''} overlay={backgroundColorString} sx={{ clipPath: 'circle(50%)' }} ratio="1/1">
+        <Image
+          src={imageUrl}
+          alt={''}
+          overlay={backgroundColorString}
+          useIntersectionObserver
+          sx={{ clipPath: 'circle(50%)', height: size, width: size }}
+          ratio="1/1"
+          placeholderSrc={image?.asset?.metadata?.lqip}
+        >
         <Typography variant="h3">{headingOverlay}</Typography>
         <Typography variant="body1">{textOverlay}</Typography>
         </Image>

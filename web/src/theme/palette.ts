@@ -96,7 +96,7 @@ const SECONDARY = {
   orange: '#da5225',
   lighter: '#D2FCF4',
   light: '#77F0ED',
-  main: '#22B8CF',
+  main: '#da5225',
   dark: '#116E95',
   darker: '#063963',
   contrastText: contrastText.white,

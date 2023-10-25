@@ -77,7 +77,10 @@ const Routes = {
   contactUs: '/contact-us',
   culturalAuthenticity: '/cultural-authenticity',
   thingsToDo: '/things-to-do',
+  placesToGo: '/places-to-go',
   operators: '/operators',
+  operatorsCategoryFilter: (filter) => `/operators?category=${filter}`,
+  operatorsRegionFilter: (filter) => `/operators?region=${filter}`,
 };
 
 export default Routes;

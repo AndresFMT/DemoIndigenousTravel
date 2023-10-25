@@ -145,7 +145,11 @@ ThemeDevelopment.getLayout = function getLayout(page: React.ReactElement) {
 
 
 export function getStaticProps () {
+  const title = 'Theme Development';
+  const description = 'Theme Development';
   return {
-    notFound: process.env.NODE_ENV === 'production',
+    props : {
+      notFound: process.env.NODE_ENV === 'production',
+    }
   };
 }

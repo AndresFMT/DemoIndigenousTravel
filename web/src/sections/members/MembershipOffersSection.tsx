@@ -36,7 +36,7 @@ const _pricing01 = [
       { title: 'Meets Market Ready Criteria', disabled: true},
     ],
     options: [
-      { title: 'All In-Development Benefits', disabled: false },
+      { title: 'All "In-Development" Benefits', disabled: false },
       { title: 'Eligible To Be Included in Newsletter', disabled: false },
       { title: 'Included in Blog & Promotional Channels', disabled: false },
       { title: 'Event Promotion with ITM and Partners', disabled: false },
@@ -56,7 +56,7 @@ const _pricing01 = [
       { title: 'Meets Market Ready Criteria', disabled: false },
     ],
     options: [
-      { title: 'All Visitor-Ready Benefits', disabled: false },
+      { title: 'All "Visitor-Ready" Benefits', disabled: false },
       { title: 'AGM Voting Rights', disabled: false },
       { title: 'Board Representation', disabled: false },
       { title: 'Inclusion in Co-op Partnerships and Marketing Programs', disabled: false },

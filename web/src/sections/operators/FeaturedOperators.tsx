@@ -26,11 +26,7 @@ export default function FeaturedOperators({ operators }: Props) {
       endIcon={<Iconify icon="carbon:chevron-right" />}
     >
       <NextLink href="/operators" passHref>
-      <Link
-        color="inherit"
-        >
         View All
-      </Link>
       </NextLink>
     </Button>
   );
