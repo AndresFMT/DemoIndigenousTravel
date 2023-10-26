@@ -1,0 +1,129 @@
+import dynamic from 'next/dynamic';
+
+import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Unstable_Grid2';
+import Container from '@mui/material/Container';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+
+const ContactMap = dynamic(() => import('src/core/components/static-map'), { ssr: false });
+import Iconify from 'src/core/components/iconify';
+
+export const _offices = ['Winnipeg', ''].map((office, index) => ({
+  id: '123lk1234-12kj34hk3j4h20-1kj2h3kj',
+  country: office,
+  address: '1075 Portage Ave, Winnipeg, MB R3G 0S3',
+  phoneNumber: '21042304395',
+  email: 'email@email.com',
+  photo: `/static/contact/${index + 1}.jpg`,
+  lat: 49.88531957670153,
+  lng: -97.17762828465725,
+}));
+
+export const _socials = [
+  {
+    value: 'facebook',
+    label: 'FaceBook',
+    icon: 'carbon:logo-facebook',
+    color: '#1877F2',
+    link: 'https://www.facebook.com/IndigenousTourismManitoba',
+  },
+  {
+    value: 'instagram',
+    label: 'Instagram',
+    icon: 'carbon:logo-instagram',
+    color: '#E02D69',
+    link: 'https://www.instagram.com/indigenoustourismmanitoba/',
+  },
+  {
+    value: 'linkedin',
+    label: 'Linkedin',
+    icon: 'carbon:logo-linkedin',
+    color: '#007EBB',
+    link: 'https://www.linkedin.com/company/indigenous-tourism-manitoba/',
+  },
+  {
+    value: 'twitter',
+    label: 'Twitter',
+    icon: 'carbon:logo-twitter',
+    color: '#00AAEC',
+    link: 'https://twitter.com/IndigenousMB',
+  },
+];
+
+const OfficeInfo = () => {
+
+      return (
+    <Container
+        sx={{
+          pt: { xs: 5, md: 5 },
+          pb: { xs: 10, md: 15 },
+        }}
+      >
+        <Grid container spacing={3} justifyContent={{ md: 'space-between' }}>
+          <Grid xs={12} md={6} lg={4}>
+            <Typography
+              variant="h2"
+              sx={{
+                mb: 5,
+                textAlign: { xs: 'center', md: 'left' },
+              }}
+            >
+              Get In Touch
+            </Typography>
+
+            <Stack spacing={3} alignItems={{ xs: 'center', md: 'flex-start' }}>
+              <Stack spacing={1}>
+                <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
+                  <Iconify icon="carbon:email" width={24} sx={{ mr: 1 }} /> Email
+                </Stack>
+
+                <Link color="inherit" variant="body2" href="mailto:info@indigenoustourismmanitoba.ca">
+                  info@indigenoustourismmanitoba.ca
+                </Link>
+              </Stack>
+
+              <Stack spacing={1}>
+                <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
+                  <Iconify icon="carbon:mobile" width={24} sx={{ mr: 1 }} /> Phone
+                </Stack>
+
+                <Typography variant="body2">(204) 555-0101</Typography>
+              </Stack>
+
+              <Stack spacing={1}>
+                <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
+                  <Iconify icon="carbon:location" width={24} sx={{ mr: 1 }} /> Address
+                </Stack>
+
+                <Typography variant="body2">
+                  1075 Portage Ave, Winnipeg, MB
+                </Typography>
+              </Stack>
+
+              <Divider sx={{ borderStyle: 'dashed', width: 1 }} />
+
+              <Stack spacing={1} alignItems={{ xs: 'center', md: 'flex-start' }}>
+                <Typography variant="overline">Follow Us</Typography>
+                <Stack direction="row">
+                  {_socials.map((social) => (
+                    <IconButton key={social.value} color="inherit" href={social.link}>
+                      <Iconify icon={social.icon} />
+                    </IconButton>
+                  ))}
+                </Stack>
+              </Stack>
+            </Stack>
+          </Grid>
+
+          <Grid xs={12} md={6} lg={7}>
+            <ContactMap offices={_offices} sx={{ borderRadius: 2 }} />
+          </Grid>
+        </Grid>
+      </Container>
+  )
+}
+
+export default OfficeInfo;
