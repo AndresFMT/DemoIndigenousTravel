@@ -29,14 +29,14 @@ const getContentElement = (type: string| undefined) => {
 }
 
 const FlexSection = (props: Props) => {
-  const { content, _type, image} = props;
+  const { content, _type, image } = props;
   if (!content || !_type) {
     return null;
   }
 
   const isBackgroundDark = getBackgroundLuminance( image?.imageOverlay) < 0.5;
   const textColor = isBackgroundDark ? 'primary.contrastText' : 'primary.text';
-  const fontWeight = isBackgroundDark ? 'fontWeightBold': 'fontWeightRegular';
+  const fontWeight = isBackgroundDark ? '700': '500';
 
   return (
     <RootStyle>

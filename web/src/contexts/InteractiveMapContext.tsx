@@ -36,6 +36,11 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
     setSelectedOperator(null);
   }, [setIsMapVisible]);
 
+  const getRandomOperator = useCallback(() => {
+    const randomOperator = operators[Math.floor(Math.random() * operators.length)];
+    return randomOperator?.slug.current || null;
+  }, [operators]);
+
   useEffect(() => {
     if (selectedOperator) {
       openMap();
@@ -61,7 +66,8 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
         selectedOperator,
         setSelectedOperator,
         openMap,
-        closeMap
+        closeMap,
+        getRandomOperator,
       }}>
       {children}
     </InteractiveMapContext.Provider>

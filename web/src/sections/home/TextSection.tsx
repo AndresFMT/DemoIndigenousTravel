@@ -66,7 +66,8 @@ const PortableBlock = (props: Props): JSX.Element => {
             alignItems={{ xs: 'flex-start', md: 'center' }}
             justifyContent="flex-start"
             sx={{ color: fontColor, fontWeight: fontWeight, width: '100%' }}>
-            {heading && (
+            {
+              heading && (
               <Typography variant="h3" component={'div'} sx={{ fontWeight: 900, pt: {xs: 2, md: 5}}}>
                 {heading}
               </Typography>)

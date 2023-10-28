@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEventHandler } from 'react';
 // icons
 import chevronDown from '@iconify/icons-carbon/chevron-down';
 import chevronUp from '@iconify/icons-carbon/chevron-up';
@@ -163,7 +163,8 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
-  const handleOpen = () => {
+  const handleOpen: MouseEventHandler = (e) => {
+    e.preventDefault();
     setOpen(true);
   };
 

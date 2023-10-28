@@ -24,10 +24,10 @@ const ImageBackground = (props: Props) => {
   const backgroundColor = getBackgroundColor(image?.imageOverlay);
 
   return (
-    <Box  sx={{ position: 'absolute', height: '100%', width: '100%',top:0,left:0, zIndex: '-11', ...props.sx }}>
-      <Box sx={{ height: '100%', width: '100%', zIndex: -1, backgroundColor: backgroundColor }} >
-      {image.asset && <SanityImage image={image} fullWidth/>}
+    <Box  sx={{ position: 'absolute', height: '100%', width: '100%', top:0,left:0, zIndex: '-1', ...props.sx }}>
+      <Box sx={{ position: 'absolute', height: '100%', width: '100%', zIndex: 11111, backgroundColor: backgroundColor }} >
       </Box>
+      {image.asset && <SanityImage image={image} fullWidth/>}
     </Box>
   );
 }

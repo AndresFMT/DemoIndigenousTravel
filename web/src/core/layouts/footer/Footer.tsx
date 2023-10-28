@@ -30,6 +30,7 @@ import { SiteSettingsContext } from 'src/contexts/SiteSettingsContext';
 const RootStyle = styled('div')(({ theme }) => ({
   background: theme.palette.footer.background,
   color: theme.palette.footer.text,
+  margin: theme.spacing(10, 0, 0),
 }));
 
 const LinkStyle = styled((props: LinkProps) => <Link target="_blank" rel="noopener" {...props} />)(

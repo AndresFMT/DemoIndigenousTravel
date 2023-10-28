@@ -1,5 +1,6 @@
 import { m } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 
 import { Image } from 'src/core/components';
 import { default as AnimatedHoop } from 'src/core/components/AnimatedHoop';
@@ -14,6 +15,7 @@ type Props = {
   headingOverlay?: string;
   textOverlay?: string;
   imageSize?: number;
+  link?: string;
 }
 
 type Color = {
@@ -65,15 +67,15 @@ const calculateBackgroundLuminance = (color?: SanityColorProps) => {
   return (0.299 * color.rgb.r + 0.587 * color.rgb.g + 0.114 * color.rgb.b) / 255;
 }
 
-const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageSize}: Props) => {
-  // TODO: remove direct call to open map, create a router listener so we can show the operator on the map with direct links.
-  const { openMap } = useInteractiveMapContext();
+const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageSize, link}: Props) => {
+  const { getRandomOperator } = useInteractiveMapContext();
+  const router = useRouter();
   const size = imageSize ? imageSize : 290;
   const hoopSize = size * 1.2;
 
   let imageUrl;
   if (!image) {
-    imageUrl = 'http://placekitten.com/g/300/300';
+    return null;
   } else {
     const imageUrlBuilder = urlFor(image);
     imageUrl = imageUrlBuilder.width(size).height(size).url();
@@ -87,7 +89,15 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
   const handleClick = () => {
     console.log('clicked opening map')
     setTimeout(() => {
-      openMap();
+      if (!link) {
+        router.replace('?imv=true');
+      }
+      if (link?.includes('so=random')) {
+        const randomOperator = getRandomOperator();
+        router.replace(`?so=${randomOperator}`);
+      } else {
+        router.replace(`?imv=true`);
+      }
     } , 150);
   }
 
