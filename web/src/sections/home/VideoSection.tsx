@@ -30,7 +30,6 @@ type Props = {
 };
 
 export default function VideoSection(props: Props) {
-  console.log('VideoSection props', props);
   const { heading, kicker, videoUrl, image} = props;
   if (videoUrl === undefined || image === undefined || image === null) {
     return null;
