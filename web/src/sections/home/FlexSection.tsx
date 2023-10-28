@@ -40,8 +40,8 @@ const FlexSection = (props: Props) => {
 
   return (
     <RootStyle>
-      <Container maxWidth="lg" sx={{ py: 5,position: 'relative', borderRadius: (theme)=> theme.shape.borderRadius }}>
-        <Grid container spacing={3} sx={{ mt: 2, color: textColor, fontWeight: fontWeight}}>
+      <Container maxWidth="lg" sx={{ py: 5, overflow: 'hidden', position: 'relative', borderRadius: (theme)=> theme.shape.borderRadius }}>
+        <Grid container spacing={3} sx={{ color: textColor, fontWeight: fontWeight}}>
           {content.map((item, index, array) => {
             const layout = Math.round(12 / array.length);
             const Content = getContentElement(item._type);

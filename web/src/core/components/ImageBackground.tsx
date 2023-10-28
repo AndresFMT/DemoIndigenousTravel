@@ -1,10 +1,11 @@
-import { Box, Container } from '@mui/system';
+import { Box} from '@mui/system';
 
 import { SanityEnrichedImageObject, SanityColorProps } from 'src/@types/sanity';
 import SanityImage from 'src/core/components/SanityImage';
 
 type Props = {
   image?: SanityEnrichedImageObject;
+  sx?: any;
 };
 
 const getBackgroundColor = (color?: SanityColorProps ) => {
@@ -23,7 +24,7 @@ const ImageBackground = (props: Props) => {
   const backgroundColor = getBackgroundColor(image?.imageOverlay);
 
   return (
-    <Box maxWidth={'xl'} sx={{ position: 'absolute',height: '100%', width: '100%',top:0,left:0, zIndex: '-11' }}>
+    <Box  sx={{ position: 'absolute', height: '100%', width: '100%',top:0,left:0, zIndex: '-11', ...props.sx }}>
       <Box sx={{ height: '100%', width: '100%', zIndex: -1, backgroundColor: backgroundColor }} >
       {image.asset && <SanityImage image={image} fullWidth/>}
       </Box>

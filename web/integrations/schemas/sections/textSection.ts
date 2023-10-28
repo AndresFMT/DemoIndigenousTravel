@@ -42,6 +42,20 @@ export default defineType({
       type: 'cta',
     }),
     defineField({
+      name: 'textWidth',
+      title: 'Text Width',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Xl', value: 'xl'},
+          {title: 'Lg', value: 'lg'},
+          {title: 'Md', value: 'md'},
+          {title: 'Sm', value: 'sm'},
+          {title: 'Xs', value: 'xs'},
+        ],
+      },
+    }),
+    defineField({
       name: 'richText',
       title: 'Rich Text',
       type: 'blockContent',

@@ -30,6 +30,7 @@ interface Props {
     text: string;
     link: string;
   }
+  textWidth?: string;
 };
 
 
@@ -41,7 +42,7 @@ const calculateBackgroundLuminance = (color?: SanityColorProps) => {
 }
 
 const PortableBlock = (props: Props): JSX.Element => {
-  const { heading, richText, image, cta } = props;
+  const { heading, richText, image, cta, textWidth} = props;
 
   const isBackgroundLight = calculateBackgroundLuminance(image?.imageOverlay) < 0.5;
   const fontColor = isBackgroundLight ? 'primary.contrastText' : 'primary.text';
@@ -49,21 +50,30 @@ const PortableBlock = (props: Props): JSX.Element => {
 
   return (
     <RootStyle>
-      <MotionViewport sx={{ width: '100%', height: '100%' }} >
-        <ImageBackground image={image} />
-
-        <Container maxWidth="xl">
+      <MotionViewport >
+        <Container
+          maxWidth="xl"
+          sx={{
+            position: 'relative',
+            borderRadius: (theme) => theme.shape.borderRadius,
+            overflow: 'hidden',
+            py: { xs: 2, md: 5 },
+          }}>
           <Stack
             component={m.div}
             variants={varSlide().inUp}
             spacing={5}
             alignItems={{ xs: 'flex-start', md: 'center' }}
             justifyContent="flex-start"
-            sx={{ color: fontColor, fontWeight: fontWeight, width: '100%', py: { xs: 5, md: 5 }, px: { xs: 5, md: 15, lg: 20 } }}>
-            <Typography variant="h3" sx={{ fontWeight: 900 }}>
-              {heading}
-            </Typography>
-            <PortableTextRender body={richText} />
+            sx={{ color: fontColor, fontWeight: fontWeight, width: '100%' }}>
+            {heading && (
+              <Typography variant="h3" component={'div'} sx={{ fontWeight: 900, pt: {xs: 2, md: 5}}}>
+                {heading}
+              </Typography>)
+            }
+            <Box maxWidth={textWidth || 'lg'} >
+              <PortableTextRender body={richText} />
+            </Box>
             {
               cta &&
               <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', py: 5 }}>
@@ -73,6 +83,7 @@ const PortableBlock = (props: Props): JSX.Element => {
           </Stack>
         </Container>
       </MotionViewport>
+        <ImageBackground image={image} sx={{width: '100%'}} />
     </RootStyle>
   );
 };

@@ -16,6 +16,7 @@ export const groqPageQuery = groq`
         enableCTA,
         cta,
         videoUrl,
+        textWidth,
         richText,
         content[] -> {
           ...,

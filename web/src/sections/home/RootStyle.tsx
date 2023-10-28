@@ -1,9 +1,10 @@
 import { styled } from '@mui/material/styles';
 
 const RootStyle = styled('section')(({ theme }) => ({
+  overflow: 'hidden',
   position: 'relative',
+  width: '100%',
   [theme.breakpoints.up('md')]: {
-    position: 'relative',
     width: '100%',
     height: 'auto',
   },
