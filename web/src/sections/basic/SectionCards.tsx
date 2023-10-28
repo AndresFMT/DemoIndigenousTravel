@@ -108,7 +108,6 @@ const SectionBioCards = ({ content}: HomepageContentType) => {
                             WebkitLineClamp: 4,
                             lineClamp: 4,
                             WebkitBoxOrient: 'vertical',
-                            width: '60%',
                             maxHeight: '200px',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
