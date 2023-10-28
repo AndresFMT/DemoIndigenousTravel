@@ -8,11 +8,12 @@ import {
   Box,
   Button,
 } from '@mui/material'
-import { styled } from '@mui/material/styles';
+
 import { SanityEnrichedImageObject, SanityColorProps } from 'src/@types/sanity';
 import ImageBackground from 'src/core/components/ImageBackground';
 import PortableTextRender from 'src/core/components/PortableText';
 import { MotionViewport, varSlide } from 'src/core/components';
+import RootStyle from './RootStyle';
 
 export interface PortableBlockProps {
   id: string;
@@ -31,15 +32,6 @@ interface Props {
   }
 };
 
-const RootStyle = styled('section')(({ theme }) => ({
-  position: 'relative',
-  overflow: 'hidden',
-  [theme.breakpoints.up('md')]: {
-    position: 'relative',
-    width: '100%',
-    height: 'auto',
-  },
-}));
 
 const calculateBackgroundLuminance = (color?: SanityColorProps) => {
   if (color == undefined) {

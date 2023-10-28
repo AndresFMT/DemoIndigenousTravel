@@ -29,7 +29,12 @@ export default defineType({
       name: 'videoUrl',
       title: 'Video URL',
       type: 'string',
-    })
+    }),
+    defineField({
+      name: 'image',
+      title: 'Placeholder Image',
+      type: 'accessibleImage',
+    }),
   ],
 
   preview: {

@@ -1,16 +1,8 @@
-import { styled } from '@mui/material/styles';
-
 import HoopButton from 'src/core/components/HoopButton';
 
 import { Container, Grid} from '@mui/material';
 
-const RootStye = styled('div')(({ theme }) => ({
-  overflow: 'hidden',
-  position: 'relative',
-  [theme.breakpoints.up('md')]: {
-    height: '100vh',
-  },
-}));
+import RootStyle from './RootStyle';
 
 type HomeHoopProps = {
   kicker?: string;
@@ -20,7 +12,7 @@ type HomeHoopProps = {
 export default function HomeHoop({kicker, redirectUrl} : HomeHoopProps) {
 
   return (
-    <RootStye sx={{
+    <RootStyle sx={{
       height: 1,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
@@ -34,6 +26,6 @@ export default function HomeHoop({kicker, redirectUrl} : HomeHoopProps) {
           </HoopButton>
         </Grid>
       </Container>
-    </RootStye>
+    </RootStyle>
   );
 }

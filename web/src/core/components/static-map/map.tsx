@@ -15,17 +15,12 @@ interface Props extends BoxProps {
   offices: MapOfficeProps[];
 }
 
-// geo coordinates to winnipeg mb
-// const position = [49.8951, -97.1384];
 export default function Map({ offices, sx, ...other }: Props) {
   const [tooltip, setTooltip] = useState<MapOfficeProps | any>(null);
-// 49.88531957670153, -97.17762828465725
   const [centerMap, setCenterMap] = useState({
-  lat: 49.88531957670153,
-  lng: -97.17762828465725,
+    lat: 49.88531957670153,
+    lng: -97.17762828465725,
   });
-
-  const office = [centerMap];
 
   const handleOpen = useCallback(
     (lat: number, lng: number, office: MapOfficeProps) => {
@@ -40,8 +35,8 @@ export default function Map({ offices, sx, ...other }: Props) {
   );
 
   return (
-    <Box sx={{  height: '100%', overflow: 'hidden', ...sx }} {...other}>
-      <MapContainer center={centerMap} zoom={14} zoomControl={false} scrollWheelZoom={false} style={{height:'100%', width: '100%'}}>
+    <Box sx={{ height: '100%', overflow: 'hidden', ...sx }} {...other}>
+      <MapContainer center={centerMap} zoom={14} zoomControl={false} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
         {offices.map((office, index) => (
           <MapMarker
             key={index}
@@ -62,7 +57,7 @@ export default function Map({ offices, sx, ...other }: Props) {
         <ZoomControl position="bottomright" />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"/>
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png" />
       </MapContainer>
 
     </Box>

@@ -29,6 +29,7 @@ const Image = forwardRef<HTMLSpanElement, ImageProps>(
       visibleByDefault,
       wrapperClassName,
       useIntersectionObserver,
+      placeholdersrc,
       sx,
       children,
       ...other
@@ -67,7 +68,7 @@ const Image = forwardRef<HTMLSpanElement, ImageProps>(
         effect={disabledEffect ? undefined : effect}
         useIntersectionObserver={useIntersectionObserver}
         wrapperClassName={wrapperClassName || 'component-image-wrapper'}
-        placeholderSrc={disabledEffect ? '/assets/transparent.png' : '/assets/placeholder.svg'}
+        placeholderSrc={disabledEffect ? placeholdersrc : '/assets/placeholder.svg'}
         sx={{
           width: 1,
           height: 1,

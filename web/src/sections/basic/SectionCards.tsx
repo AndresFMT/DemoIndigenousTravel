@@ -9,11 +9,11 @@ import {
   Card,
   Typography,
   CardContent,
-  Grid,
   CardActions,
   Button,
   Box,
 } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 
 import { HoopImage, PortableText, CardModal } from 'src/core/components';
 
@@ -55,7 +55,7 @@ const SectionBioCards = ({ content}: HomepageContentType) => {
 
   return (
     <RootStyle>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Grid container columns={{ xs: 1, sm: 1, md: 2 }} spacing={{ sm: 2, md: 4 }} justifyContent='space-between'>
 
           {content.map((card, index) => {
@@ -89,12 +89,12 @@ const SectionBioCards = ({ content}: HomepageContentType) => {
                 <MotionViewport>
                   <Card >
                     <CardContent>
-                      <Grid container direction={'row'} spacing={5} columns={{ xs: 1, sm: 1, md: 2 }}>
+                      <Grid container direction={'row'} spacing={5} columns={{ xs: 2, sm: 4, md: 8}}>
 
-                        <Grid component={m.div} variants={variants[imagePosition]} item xs={1} order={imagePosition}>
+                        <Grid component={m.div} variants={variants[imagePosition]} xs={2} md={4} order={imagePosition} direction={'row'}>
                           <HoopImage image={image} />
                         </Grid>
-                        <Grid component={m.div} variants={variants[bioPosition]} item xs={1} order={bioPosition}>
+                        <Grid component={m.div} variants={variants[bioPosition]} xs={2} md={4} order={bioPosition} direction={'column'}>
                           <Typography variant='h3' color="text.primary" >
                             {name}
                           </Typography>
@@ -108,6 +108,7 @@ const SectionBioCards = ({ content}: HomepageContentType) => {
                             WebkitLineClamp: 4,
                             lineClamp: 4,
                             WebkitBoxOrient: 'vertical',
+                            width: '60%',
                             maxHeight: '200px',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',

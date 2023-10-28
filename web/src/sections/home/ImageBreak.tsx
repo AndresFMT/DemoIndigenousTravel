@@ -1,6 +1,5 @@
 import { m } from 'framer-motion';
 import { Box, Grid, Typography, Stack } from '@mui/material';
-import { styled } from '@mui/material/styles';
 
 import { Image } from 'src/core/components';
 
@@ -8,6 +7,7 @@ import { urlFor } from 'integrations/sanity.image';
 import { MotionViewport, varFade } from 'src/core/components/animate';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
+import RootStyle from './RootStyle';
 type Props = {
   sx?: any;
   title?: string;
@@ -15,14 +15,6 @@ type Props = {
   image: SanityImageSource;
   backgroundColor?: { hex: string };
 };
-
-const RootStyle = styled('section')(({ theme }) => ({
-  paddingY: theme.spacing(3),
-  overflow: 'hidden',
-  [theme.breakpoints.up('md')]: {
-    paddingY: theme.spacing(5),
-  },
-}));
 
 const ImageBreak = ({ title, description, image, backgroundColor, ...other }: Props) => {
 

@@ -15,8 +15,11 @@ type PageProps = {
 
 const BoxStyle = styled(Box)(({ theme }) => ({
   paddingTop: HEADER_MOBILE_HEIGHT,
+  display: 'grid',
   [theme.breakpoints.up('md')]: {
     paddingTop: HEADER_DESKTOP_HEIGHT,
+    gap: theme.spacing(10),
+
   },
 }));
 

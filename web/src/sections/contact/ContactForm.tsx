@@ -18,7 +18,7 @@ import FormProvider, { RHFTextField } from 'src/core/components/hook-form';
 export default function ContactForm() {
   const mdUp = useResponsive('up', 'md');
 
-  const ElearningContactSchema = Yup.object().shape({
+  const ContactFormSchema = Yup.object().shape({
     fullName: Yup.string().required('Full name is required'),
     email: Yup.string().required('Email is required').email('That is not an email'),
     subject: Yup.string().required('Subject is required'),
@@ -33,7 +33,7 @@ export default function ContactForm() {
   };
 
   const methods = useForm({
-    resolver: yupResolver(ElearningContactSchema),
+    resolver: yupResolver(ContactFormSchema),
     defaultValues,
   });
 

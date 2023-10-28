@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 // icons
 import closeIcon from '@iconify/icons-carbon/close';
 import playFilledAlt from '@iconify/icons-carbon/play-filled-alt';
 // @mui
 import { Box, CircularProgress } from '@mui/material';
+import { alpha } from '@mui/material/styles';
 //
 import { ReactPlayerStyle } from './Player';
 import { DialogAnimate, IconButtonAnimate, FabButtonAnimate, varZoom } from '../animate';
@@ -14,13 +14,14 @@ import BgOverlay from '../BgOverlay';
 
 // ----------------------------------------------------------------------
 
-PlayerWithImage.propTypes = {
-  imgPath: PropTypes.string,
-  videoPath: PropTypes.string,
-  ratio: PropTypes.oneOf(['4/3', '3/4', '6/4', '4/6', '16/9', '9/16', '21/9', '9/21', '1/1']),
+
+type Props = {
+  imgPath: string;
+  videoPath: string;
+  ratio?: '4/3' | '3/4' | '6/4' | '4/6' | '16/9' | '9/16' | '21/9' | '9/21' | '1/1';
 };
 
-export default function PlayerWithImage({ imgPath, ratio = '16/9', videoPath }) {
+export default function PlayerWithImage({ imgPath, ratio = '16/9', videoPath }: Props) {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
 
@@ -59,7 +60,7 @@ export default function PlayerWithImage({ imgPath, ratio = '16/9', videoPath }) 
           <Iconify icon={playFilledAlt} sx={{ color: 'primary.main' }} />
         </FabButtonAnimate>
 
-        <BgOverlay />
+        <BgOverlay endColor={`${alpha('#000000', .9)} 85%`}/>
 
         <Image alt="hero" src={imgPath} ratio={ratio} />
       </Box>

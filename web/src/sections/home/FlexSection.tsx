@@ -1,6 +1,5 @@
 import { Container } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import { styled } from '@mui/material/styles';
 
 import { HoopImage, PortableText, SanityImage, ImageBackground} from 'src/core/components';
 import Fallback from '../fallback';
@@ -8,15 +7,7 @@ import { Content } from 'src/@types/sanity';
 
 import { getBackgroundLuminance } from 'src/utils/getBackgroundLuminance';
 
-const RootStyle = styled('section')(({ theme }) => ({
-  overflow: 'hidden',
-  position: 'relative',
-  [theme.breakpoints.up('md')]: {
-    position: 'relative',
-    width: '100%',
-    height: 'auto',
-  },
-}));
+import RootStyle from './RootStyle';
 
 type Props = {
   content?: Content[];
@@ -48,9 +39,8 @@ const FlexSection = (props: Props) => {
   const fontWeight = isBackgroundDark ? 'fontWeightBold': 'fontWeightRegular';
 
   return (
-    <RootStyle >
-      <ImageBackground image={image}/>
-      <Container maxWidth="md" sx={{ py: 5 }}>
+    <RootStyle>
+      <Container maxWidth="lg" sx={{ py: 5,position: 'relative', borderRadius: (theme)=> theme.shape.borderRadius }}>
         <Grid container spacing={3} sx={{ mt: 2, color: textColor, fontWeight: fontWeight}}>
           {content.map((item, index, array) => {
             const layout = Math.round(12 / array.length);
@@ -62,6 +52,7 @@ const FlexSection = (props: Props) => {
             )
           })}
         </Grid>
+      <ImageBackground image={image}/>
       </Container>
     </RootStyle>
   )

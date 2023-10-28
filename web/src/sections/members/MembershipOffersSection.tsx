@@ -6,7 +6,7 @@ const _pricing01 = [
   {
     license: 'In Development',
     price: 'Free',
-    icon: '/pricing/ic_plan_basic01.svg',
+    icon: '/pricing/in_development_icon.svg',
     requirements: [
       { title: 'Business (Idea) Currently in Development', disabled: false },
       { title: 'Set Business Hours', disabled: true },
@@ -26,7 +26,7 @@ const _pricing01 = [
   {
     license: 'Visitor Ready',
     price: 'Free',
-    icon: '/pricing/ic_plan_starter01.svg',
+    icon: '/pricing/visitor_ready_icon.svg',
     requirements: [
       { title: 'Business in Operation', disabled: false },
       { title: 'Set Business Hours', disabled: false },
@@ -46,7 +46,7 @@ const _pricing01 = [
   {
     license: 'Market or Export Ready',
     price: 'Free',
-    icon: '/pricing/ic_plan_premium01.svg',
+    icon: '/pricing/market_ready_icon.svg',
     requirements: [
       { title: 'Business in Operation', disabled: false },
       { title: 'Set Business Hours', disabled: false },

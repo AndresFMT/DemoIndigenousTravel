@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 // icons
 import closeIcon from '@iconify/icons-carbon/close';
@@ -11,13 +10,13 @@ import Iconify from '../iconify';
 
 // ----------------------------------------------------------------------
 
-PlayerWithButton.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  videoPath: PropTypes.string.isRequired,
+type Props = {
+  videoPath: string;
+  open: boolean;
+  onClose: () => void;
 };
 
-export default function PlayerWithButton({ videoPath, open, onClose, ...other }) {
+export default function PlayerWithButton({ videoPath, open, onClose, ...other }: Props) {
   const [loading, setLoading] = useState(true);
 
   const onReady = () => {

@@ -1,22 +1,15 @@
-import dynamic from 'next/dynamic'
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Stack, Typography, Grid } from '@mui/material';
+import { Container, Box, Stack, Typography, Grid } from '@mui/material';
 import { SanityEnrichedImageObject } from 'src/@types/sanity';
 
-import {VideoPlayerProps} from 'src/core/components/VideoPlayer';
-const VideoPlayer = dynamic<VideoPlayerProps>(() => import("src/core/components/VideoPlayer"), { ssr: false });
+import { PlayerWithImage } from 'src/core/components';
+import { urlFor } from 'integrations/sanity.image';
+
+import RootStyle from './RootStyle'
+;
 // ----------------------------------------------------------------------
 
-const RootStyle = styled('section')(({ theme }) => ({
-  overflow: 'hidden',
-  position: 'relative',
-  padding: theme.spacing(5, 0),
-  [theme.breakpoints.up('md')]: {
-    width: '100%',
-    padding: theme.spacing(0, 0, 5, 0),
-  },
-}));
 
 const SectionContainer = styled('div')(() => ({
   position: 'relative',
@@ -30,15 +23,19 @@ const SectionContainer = styled('div')(() => ({
 type Props = {
   heading?: string;
   kicker?: string;
-  image?: SanityEnrichedImageObject;
   enableCTA?: boolean;
   text?: string;
   videoUrl?: string;
+  image?: SanityEnrichedImageObject;
 };
 
-
 export default function VideoSection(props: Props) {
-  const { heading, kicker, videoUrl } = props;
+  console.log('VideoSection props', props);
+  const { heading, kicker, videoUrl, image} = props;
+  if (videoUrl === undefined || image === undefined || image === null) {
+    return null;
+  }
+  const placeholderImg = urlFor(image).url();
 
   return (
     <RootStyle>
@@ -50,7 +47,7 @@ export default function VideoSection(props: Props) {
             justifyContent="center"
             sx={{
               width: '100%',
-              px: { xs: 5, md: 15},
+              px: { xs: 5, md: 15 },
               textAlign: { xs: 'left', md: 'center' },
             }}
           >
@@ -60,10 +57,13 @@ export default function VideoSection(props: Props) {
                 {kicker ? kicker : ' '}
               </Box>
             </Typography>
-            <VideoPlayer src={videoUrl} />
+            <Container sx={{ my: 10 }}>
+              <Box >
+                <PlayerWithImage videoPath={videoUrl} imgPath={placeholderImg} />
+              </Box>
+            </Container>
           </Stack>
         </Grid>
-
       </SectionContainer>
     </RootStyle>
   );

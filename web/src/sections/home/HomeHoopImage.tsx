@@ -1,18 +1,11 @@
 import { m } from 'framer-motion';
 import { Box, Typography, Container, Stack } from '@mui/material';
-import { styled } from '@mui/material/styles';
 
 import { HoopImage } from 'src/core/components';
 import { MotionViewport, varFade } from 'src/core/components/animate';
 import { HomepageContent } from 'src/@types/sanity';
 
-const RootStyle = styled('section')(({ theme }) => ({
-  paddingTop: theme.spacing(4),
-  overflow: 'hidden',
-  [theme.breakpoints.up('md')]: {
-    paddingTop: theme.spacing(4),
-  },
-}));
+import RootStyle from './RootStyle';
 
 const HomeHoopImage = (props: HomepageContent ) => {
 

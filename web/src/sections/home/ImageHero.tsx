@@ -4,7 +4,6 @@ import { Box, Stack, Typography, Grid } from '@mui/material';
 import { m } from 'framer-motion';
 // hooks
 // routes
-import Routes from 'src/routes';
 // components
 import { SanityHeroImage, HoopButton, MotionContainer, TextAnimate, varFade} from 'src/core/components';
 import { SanityEnrichedImageObject } from 'src/@types/sanity';

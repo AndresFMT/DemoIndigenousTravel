@@ -65,13 +65,11 @@ const calculateBackgroundLuminance = (color?: SanityColorProps) => {
   return (0.299 * color.rgb.r + 0.587 * color.rgb.g + 0.114 * color.rgb.b) / 255;
 }
 
-const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageSize }: Props) => {
-
-
+const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageSize}: Props) => {
   // TODO: remove direct call to open map, create a router listener so we can show the operator on the map with direct links.
   const { openMap } = useInteractiveMapContext();
   const size = imageSize ? imageSize : 290;
-  const hoopSize = size + 200;
+  const hoopSize = size * 1.2;
 
   let imageUrl;
   if (!image) {
@@ -90,19 +88,21 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
     console.log('clicked opening map')
     setTimeout(() => {
       openMap();
-    } , 250);
+    } , 150);
   }
 
   return (
     <Box
       component={'div'}
       onClick={handleClick}
+      className={'hoop-image'}
       sx={{
-        padding: '20px',
         position: 'relative',
+        width: hoopSize,
+        height: hoopSize,
       }}
     >
-      <Box component={'div'} sx={{ '& svg, & svg *': { width: '100%' }, color: fontColor, fontWeight: fontWeight }}>
+      <Box component={'div'} sx={{ display: 'flex','& svg, & svg *': { width: '100%' }, width: '100%' , height: '100%',color: fontColor, fontWeight: fontWeight, justifyContent: 'center', alignItems: 'center'}}>
         <Image
           src={imageUrl}
           alt={''}
@@ -110,13 +110,12 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
           useIntersectionObserver
           sx={{ clipPath: 'circle(50%)', height: size, width: size }}
           ratio="1/1"
-          placeholderSrc={image?.asset?.metadata?.lqip}
+          placeholdersrc={image?.asset?.metadata?.lqip}
         >
-        <Typography variant="h3">{headingOverlay}</Typography>
-        <Typography variant="body1">{textOverlay}</Typography>
         </Image>
         <Box sx={{
           position: 'absolute',
+          padding: '10px',
           top: 0,
           left: 0,
           width: '100%',

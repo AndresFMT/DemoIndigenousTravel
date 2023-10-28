@@ -11,5 +11,6 @@ export type ImageProps = BoxProps &
     overlay?: string;
     ratio?: ImageRatio;
     disabledEffect?: boolean;
+    placeholdersrc?: string;
   };
 

@@ -41,24 +41,17 @@ const MembershipOffersCard = ({ plan, index}: Props) => {
       }}
     >
       <Stack spacing={5} alignItems="center">
+
+        <Image alt={plan.icon} src={plan.icon} sx={{ width: 80, height: 80 }} />
+
         <Typography variant="overline" component="div" sx={{ color: 'text.secondary' }}>
           {plan.license}
         </Typography>
 
-        <Image alt={plan.icon} src={plan.icon} sx={{ width: 80, height: 80 }} />
-
-        <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5}>
-
-          <Typography variant="h3" component="span">
-            {plan.price}
-          </Typography>
-
-        </Stack>
-
         <Stack spacing={1} sx={{ textAlign: 'start' }}>
 
           <Typography variant="h5" component="span" sx={{ pt: 3}}>
-            {'Eligibility'}
+            {'Requirements'}
           </Typography>
 
           {plan.requirements.map((option) => (
