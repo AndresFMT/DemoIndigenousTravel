@@ -4,7 +4,7 @@ import {PortableTextBlock} from '@portabletext/types';
 import { Typography, Stack } from '@mui/material';
 
 import SanityImage from 'src/core/components/SanityImage';
-import { MotionViewport, varFade } from 'src/core/components';
+import { varFade } from 'src/core/components';
 
 type PortableBlockProps = {
   id: string;

@@ -14,7 +14,6 @@ import { NavProps, NavItemDesktopProps } from 'src/@types/layout';
 
 //
 import NavDesktopMenu from './NavDesktopMenu';
-import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 
 // ----------------------------------------------------------------------
 
