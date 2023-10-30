@@ -12,7 +12,7 @@ const getBackgroundColor = (color?: SanityColorProps ) => {
   if (color == undefined) {
     return 'rgba(0,0,0,0.0)';
   }
-  return `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
+  return `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.alpha})`;
 }
 
 const ImageBackground = (props: Props) => {
