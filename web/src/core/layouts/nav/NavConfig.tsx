@@ -13,7 +13,7 @@ export const PageLinks = [
     items: [
       { title: 'Who We Are', path: Routes.whoweare},
       { title: 'What We Do', path: Routes.whatWeDo},
-      { title: 'Reconcilliation', path: Routes.reconciliation},
+      { title: 'Reconciliation', path: Routes.reconciliation},
     ],
   },
   {

@@ -17,8 +17,8 @@ import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
 import { myStructure, defaultDocumentNodeResolver } from './structure/deskStructure'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID! || 'uimvg3pl'
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET! || 'production'
 // const apiKey = process.env.SANITY_API_DEPLOY_STUDIO;
 
 export default defineConfig([

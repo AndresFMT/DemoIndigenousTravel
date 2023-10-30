@@ -17,7 +17,7 @@ const DynamicGenericSections = (props: Props) => {
   return (
     <>
 
-      {props.sections.length > 0 &&
+      {props.sections && props.sections.length > 0 &&
         props.sections.map((section, index) => {
           if (section.content == null) return <BlankSpace {...section} key={index} />
 

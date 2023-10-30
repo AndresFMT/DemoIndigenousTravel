@@ -36,7 +36,7 @@ ReconciliationPage.getLayout = function getLayout(page: ReactElement) {
 
 export async function getStaticProps() {
 
-  const params = { slug: 'reconciliation' };
+  const params = { slug: 'reconciliation-old' };
   const data = await client.fetch(groqPageQuery, params)
   return {
     props: {

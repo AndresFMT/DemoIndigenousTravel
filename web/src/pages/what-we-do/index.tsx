@@ -38,7 +38,7 @@ WhatWeDoPage.getLayout = function getLayout(page: ReactElement) {
 
 export async function getStaticProps() {
 
-  const params = { slug: 'what-we-do' };
+  const params = { slug: 'what-we-do-old' };
   const data = await client.fetch(groqPageQuery, params)
   return {
     props: {
