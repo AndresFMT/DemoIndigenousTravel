@@ -46,6 +46,21 @@ export const getStaticProps = (async () => {
         cta,
         videoUrl,
         richText,
+        operators[] -> {
+          name,
+          slug,
+          category,
+          location,
+          region,
+          _id,
+          'image': images[0] {
+            ...,
+            asset -> {
+              ...,
+              metadata
+            }
+          }
+        },
         content[] -> {
           ...,
         },

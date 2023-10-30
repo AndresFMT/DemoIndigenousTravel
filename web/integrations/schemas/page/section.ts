@@ -49,6 +49,7 @@ export default defineType({
             {type: 'sectionVideo'},
             {type: 'hoopImage'},
             {type: 'sectionCard'},
+            {type: 'featuredOperators'},
           ],
         },
       ],

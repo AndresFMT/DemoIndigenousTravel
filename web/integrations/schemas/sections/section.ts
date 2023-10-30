@@ -12,6 +12,7 @@ export default defineType({
     {type: 'videoSection'},
     {type: 'flexSection'},
     {type: 'sectionCards'},
+    {type: 'featuredOperators'},
   ],
 })
 

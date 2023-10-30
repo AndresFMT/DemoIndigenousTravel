@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import NextLink from 'next/link';
-import Link from '@mui/material/Link';
 import Iconify from 'src/core/components/iconify';
 
 import OperatorCard from './OperatorCard';
@@ -13,10 +12,11 @@ import { Operator } from 'src/@types/sanity';
 import { useResponsive } from 'src/hooks';
 
 type Props = {
-  operators: Operator[];
+  operators?: Operator[];
+  heading?: string;
 };
 
-export default function FeaturedOperators({ operators }: Props) {
+export default function FeaturedOperators({ operators, heading = "You Might Like"}: Props) {
 
   const mdUp = useResponsive('up', 'md')
 
@@ -31,6 +31,7 @@ export default function FeaturedOperators({ operators }: Props) {
     </Button>
   );
 
+  if (!operators) return null;
   return (
     <Box sx={{ bgcolor: 'background.neutral' }}>
       <Container
@@ -46,7 +47,7 @@ export default function FeaturedOperators({ operators }: Props) {
             mb: { xs: 8, md: 10 },
           }}
         >
-          <Typography variant="h3">You Might Like</Typography>
+          <Typography variant="h3">{heading}</Typography>
 
           {mdUp && viewAllBtn}
         </Stack>

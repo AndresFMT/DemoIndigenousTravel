@@ -1,6 +1,5 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { PortableTextBlock } from '@portabletext/types';
-import { PortableTextProps } from '@portabletext/react';
 
 
 export type Content = {
@@ -26,6 +25,7 @@ export type Content = {
   _type: string;
   _key?: string;
 
+  operators?: Array<Operator>;
 }
 
 export type Section = {
@@ -49,6 +49,7 @@ export type Section = {
   headingOverlay?: string;
   kicker?: string;
   textOverlay?: string;
+  operators?: Array<Operator>;
   _type: string;
   _key?: string;
 
@@ -120,6 +121,7 @@ export type SanityPageProps = {
   videoUrl?: string;
   enableCTA?: boolean;
   kicker?: string;
+  operators?: Array<Operator>;
 }
 
 export type HomepageContent = {
@@ -142,6 +144,7 @@ export type HomepageContent = {
   videoUrl?: string;
   enableCTA?: boolean;
   kicker?: string;
+  operators?: Array<Operator>;
 }
 
 
