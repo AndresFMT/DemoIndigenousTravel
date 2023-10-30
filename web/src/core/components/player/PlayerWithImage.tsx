@@ -60,7 +60,7 @@ export default function PlayerWithImage({ imgPath, ratio = '16/9', videoPath }: 
           <Iconify icon={playFilledAlt} sx={{ color: 'primary.main' }} />
         </FabButtonAnimate>
 
-        <BgOverlay endColor={`${alpha('#000000', .9)} 85%`}/>
+        <BgOverlay endColor={`${alpha('#000000', .8)} 95%`}/>
 
         <Image alt="hero" src={imgPath} ratio={ratio} />
       </Box>

@@ -37,10 +37,13 @@ const FlexSection = (props: Props) => {
   const isBackgroundDark = getBackgroundLuminance( image?.imageOverlay) < 0.5;
   const textColor = isBackgroundDark ? 'primary.contrastText' : 'primary.text';
   const fontWeight = isBackgroundDark ? '700': '500';
+  const hasImage = image && image.asset && image.asset.url;
 
+  const paddingY = hasImage ? { xs: 2, md: 5 } : { xs: 1, md:  0};
+  const overflow = hasImage ? 'hidden' : 'visible';
   return (
     <RootStyle>
-      <Container maxWidth="lg" sx={{ py: 5, overflow: 'hidden', position: 'relative', borderRadius: (theme)=> theme.shape.borderRadius }}>
+      <Container maxWidth="lg" sx={{ py: paddingY, overflow: overflow, position: 'relative', borderRadius: (theme)=> theme.shape.borderRadius }}>
         <Grid container spacing={3} sx={{ color: textColor, fontWeight: fontWeight}}>
           {content.map((item, index, array) => {
             const layout = Math.round(12 / array.length);
