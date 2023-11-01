@@ -73,7 +73,7 @@ const Routes = {
   whatWeDo: '/what-we-do',
   ourTeam: '/our-team',
   aboutUs: '/about-us',
-  reconcilliation: '/reconcilliation',
+  reconciliation: '/reconciliation',
   contactUs: '/contact-us',
   culturalAuthenticity: '/cultural-authenticity',
   thingsToDo: '/things-to-do',

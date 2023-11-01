@@ -35,6 +35,7 @@ export type Section = {
     image: SanityEnrichedImageObject;
     flip: boolean;
   }>;
+  rows?: Array<string>;
   content?: Array<Content>;
   bio?: PortableTextBlock[];
   title?: string;
@@ -78,8 +79,13 @@ export type SanityColorProps = {
     a: number;
   };
 }
+export interface SanityAccessibleImage extends SanityEnrichedImageObject {
+  caption?: string;
+  alt?: string;
+}
 
 export interface SanityEnrichedImageObject extends SanityMetaDataObject {
+  _id: string;
   asset: {
     url: string;
     alt: string;
@@ -111,6 +117,7 @@ export type SanityPageProps = {
     image: SanityEnrichedImageObject;
     flip: boolean;
   }>;
+  regionalImages?: Array<SanityAccessibleImage>;
   content?: Array<Content>;
   sections?: Array<Section>;
   title?: string;

@@ -18,6 +18,9 @@ export const groqPageQuery = groq`
         videoUrl,
         textWidth,
         richText,
+        regionalImages[] {
+        ...,
+        },
         operators[] -> {
           name,
           slug,

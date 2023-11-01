@@ -13,6 +13,7 @@ export default defineType({
     {type: 'flexSection'},
     {type: 'sectionCards'},
     {type: 'featuredOperators'},
+    {type: 'regionalImageSection'},
   ],
 })
 

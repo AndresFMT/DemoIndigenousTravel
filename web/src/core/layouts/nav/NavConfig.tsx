@@ -11,9 +11,8 @@ export const PageLinks = [
     items: [
       { title: 'Who We Are', path: Routes.whoWeAre},
       { title: 'What We Do', path: Routes.whatWeDo},
-      { title: 'Reconciliation', path: Routes.reconcilliation},
+      { title: 'Reconciliation', path: Routes.reconciliation},
       { title: 'Meet Our Team', path: Routes.ourTeam },
-      { title: 'Cultural Authenticity', path: Routes.culturalAuthenticity },
     ],
   },
   {
@@ -31,10 +30,7 @@ export const PageLinks = [
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/5d84a8e52123785bad9adabc9f737479bbfa2064-5472x3648.jpg?fp-x=0.5&fp-y=0.5&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
       { title: 'Places To Go', path: Routes.placesToGo},
-      { title: 'North', path: Routes.operatorsRegionFilter('north')},
-      { title: 'East', path: Routes.operatorsRegionFilter('east')},
-      { title: 'South', path: Routes.operatorsRegionFilter('south')},
-      { title: 'West', path: Routes.operatorsRegionFilter('west')},
+      { title: 'Operators', path: Routes.operators},
 
     ],
   },
@@ -58,6 +54,10 @@ export const PageLinks = [
       { title: 'Culinary', path: Routes.operatorsCategoryFilter('culinary')},
       { title: 'Tours & Related Services', path: Routes.operatorsCategoryFilter('tours')},
       { title: 'Workshops, Arts & Culture', path: Routes.operatorsCategoryFilter('workshops')},
+      { title: 'North', path: Routes.operatorsRegionFilter('north')},
+      { title: 'East', path: Routes.operatorsRegionFilter('east')},
+      { title: 'South', path: Routes.operatorsRegionFilter('south')},
+      { title: 'West', path: Routes.operatorsRegionFilter('west')},
     ],
   },
 ];

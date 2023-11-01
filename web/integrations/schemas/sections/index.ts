@@ -11,6 +11,7 @@ import { default as flexComponent } from './flexComponent';
 import { default as richTextContent } from './richText';
 import { default as imageContent } from './imageContent';
 import { default as featuredOperators } from './featuredOperators';
+import { default as regionalImageSection } from './regionalImageSection';
 
 export const sections = [
   section,
@@ -25,4 +26,5 @@ export const sections = [
   richTextContent,
   imageContent,
   featuredOperators,
+  regionalImageSection,
 ];

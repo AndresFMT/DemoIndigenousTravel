@@ -23,6 +23,7 @@ const DynamicPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (pr
       <Page title={title} meta={description}>
         {
           sections && sections.map((item:Section, index: number) => {
+          console.log(item);
             const Component = HomepageContent[item._type as keyof typeof HomepageContent] || Fallback
             return <Component key={index} {...item} />
           })
