@@ -50,7 +50,6 @@ export default defineType({
             {type: 'hoopImage'},
             {type: 'sectionCard'},
             {type: 'featuredOperators'},
-            {type: 'regionImageSection'},
           ],
         },
       ],

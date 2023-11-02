@@ -5,7 +5,9 @@ import client from 'integrations/sanity.client'
 // TODO: update this to select objects by a secondary param (i.e. operator, page, homepage)
 const getPostBySlug = async (slug: string) => {
   // Fetch the headless CMS to check if the provided `slug` exists
-  const data = await client.fetch(`*[slug.current == $slug][0]`, { slug })
+  // split slug string and get the last item in the array
+  const isolatedSlug = slug.split('/').pop();
+  const data = await client.fetch(`*[slug.current == $slug][0]`, { slug: isolatedSlug  })
   return data
 }
 
@@ -16,6 +18,14 @@ export default async function handler(
   const token = process.env.SANITY_PREVIEW_TOKEN_NEXT;
   if (req.query.secret !== token || !req.query.slug) {
     return res.status(401).json({ message: 'Invalid token', token  })
+  }
+
+  console.log(req.query.home);
+  if (req.query.home === 'true') {
+    // Enable Preview Mode by setting the cookies
+    res.setDraftMode({ enable: true })
+    res.redirect(`/`)
+    return;
   }
 
   // Fetch the headless CMS to check if the provided `slug` exists
@@ -32,5 +42,5 @@ export default async function handler(
 
   // Redirect to the path from the fetched post
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
-  res.redirect(`/${post.slug.current}`)
+  res.redirect(`/${req.query.slug}`)
 }
