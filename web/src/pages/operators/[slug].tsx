@@ -3,16 +3,18 @@ import type {
   GetStaticProps,
   GetStaticPaths,
 } from 'next'
+import { useContext } from 'react';
 
 import client from 'integrations/sanity.client';
 import { groqOperatorQuery, groqOperatorSlugsQuery, groqOperatorsNearbyQuery } from 'src/utils/pageQuery';
 
-import { Container, Typography, Stack, Divider } from '@mui/material';
+import { Container, Typography, Stack, Divider,  alpha} from '@mui/material';
 import Grid from "@mui/material/Unstable_Grid2"
 
 import Layout from 'src/core/layouts/Layout'
 import { OperatorImageGallery, FeaturedOperators, OperatorDetails } from 'src/sections/operators';
-import { Page, PortableText, CustomBreadcrumbs } from 'src/core/components'
+import { Page, PortableText, CustomBreadcrumbs, SocialsButton } from 'src/core/components'
+import { SiteSettingsContext } from 'src/contexts/SiteSettingsContext';
 
 import { Operator } from 'src/@types/sanity';
 import { Page as AppPage } from 'src/@types/app';
@@ -26,6 +28,13 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
     { name: 'Operators', href: '/operators' },
     { name: props.name },
   ];
+
+  const {
+    facebookLink,
+    twitterLink,
+    linkedinLink,
+    instagramLink
+  } = useContext( SiteSettingsContext );
 
   return (
     <Page title={name}>
@@ -52,10 +61,24 @@ const OperatorPage: AppPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
 
             <Stack direction="row" flexWrap="wrap" sx={{ mt: 5 }}>
               <Typography variant="subtitle2" sx={{ mt: 0.75, mr: 1.5 }}>
-                Share: We can put social media cta here, or link to operator socials
+                Share:
               </Typography>
 
               <Stack direction="row" alignItems="center" flexWrap="wrap">
+                <SocialsButton sx={{
+                    color: 'footer.background',
+                    bgcolor: 'text.footer.secondary',
+                    '&:hover': {
+                      bgcolor: alpha('#fff', 0.8),
+                    },
+                  }}
+                  links={{
+                    facebookLink,
+                    twitterLink,
+                    instagramLink,
+                    linkedinLink
+                  }}
+                />
               </Stack>
             </Stack>
           </Grid>

@@ -60,6 +60,11 @@ export default function Footer() {
     ? lists
     : lists.sort((listA, listB) => Number(listA.order) - Number(listB.order));
 
+  const initialYear = 2023;
+  const year = new Date().getFullYear();
+  const isCurrentYear = initialYear === year;
+  const displayYear = isCurrentYear ? year : `${initialYear} - ${year}`;
+
   return (
     <RootStyle>
       <Divider />
@@ -122,7 +127,7 @@ export default function Footer() {
           sx={{ py: 3, textAlign: 'center' }}
         >
           <Typography variant="body3" sx={{ color: 'text.secondary' }}>
-            © 2023. All rights reserved
+            © {displayYear}. All rights reserved
           </Typography>
           <Typography variant="body3" sx={{ color: 'text.secondary' }}>
             <Link href="https://indigpro.ca/" variant="body3" sx={{ color: 'text.secondary' }}>
