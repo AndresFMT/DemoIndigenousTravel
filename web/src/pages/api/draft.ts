@@ -20,7 +20,6 @@ export default async function handler(
     return res.status(401).json({ message: 'Invalid token', token  })
   }
 
-  console.log(req.query.home);
   if (req.query.home === 'true') {
     // Enable Preview Mode by setting the cookies
     res.setDraftMode({ enable: true })
