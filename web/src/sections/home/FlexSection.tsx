@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import { HoopImage, PortableText, SanityImage, ImageBackground} from 'src/core/components';
@@ -44,12 +44,27 @@ const FlexSection = (props: Props) => {
   return (
     <RootStyle>
       <Container maxWidth="lg" sx={{ py: paddingY, overflow: overflow, position: 'relative', borderRadius: (theme)=> theme.shape.borderRadius }}>
-        <Grid container spacing={3} sx={{ color: textColor, fontWeight: fontWeight}}>
+        <Grid
+          container
+          spacing={{ xs: 5, md: 3 }}
+          sx={{ color: textColor, px: {xs: 3, md: 5},fontWeight: fontWeight, textAlign: { xs: 'center', md: 'left' } }}
+          justifyContent="space-between"
+        >
           {content.map((item, index, array) => {
             const layout = Math.round(12 / array.length);
             const Content = getContentElement(item._type);
             return (
-              <Grid display="flex" justifyContent="center" alignItems="center" xs={layout} key={index}>
+              <Grid container alignContent={'center'} xs={12} md={6} lg={5} key={index}>
+                { index == 0 && !hasImage && <Box
+                  sx={{
+                    mb: 2,
+                    width: 24,
+                    height: 3,
+                    borderRadius: 3,
+                    bgcolor: 'primary.main',
+                    mx: { xs: 'auto', md: 0 },
+                  }}
+                />}
                 <Content {...item} />
               </Grid>
             )

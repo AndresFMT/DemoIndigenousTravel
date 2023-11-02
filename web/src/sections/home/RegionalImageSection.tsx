@@ -96,15 +96,13 @@ function DestinationItem({ region, order }: DestinationItemProps) {
   const theme = useTheme();
 
   const mdUp = useResponsive('up', 'md');
-  console.log(region);
 
   if (!region) {
     return null;
   }
   const { caption: location } = region;
-  const coverUrl = urlFor(region.asset).width(600).height(600).url();
+  const coverUrl = urlFor(region.asset).width(400).height(400).url();
 
-  console.log( location );
   return (
     <Box
       sx={{

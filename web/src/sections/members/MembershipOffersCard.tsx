@@ -42,7 +42,7 @@ const MembershipOffersCard = ({ plan, index}: Props) => {
     >
       <Stack spacing={5} alignItems="center">
 
-        <Image alt={plan.icon} src={plan.icon} sx={{ width: 80, height: 80 }} />
+        <Image alt={plan.icon} src={plan.icon} sx={{ width: 120, height: 120}} />
 
         <Typography variant="overline" component="div" sx={{ color: 'text.secondary' }}>
           {plan.license}

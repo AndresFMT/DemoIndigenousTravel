@@ -15,6 +15,15 @@ import FormProvider, { RHFTextField } from 'src/core/components/hook-form';
 
 // ----------------------------------------------------------------------
 
+function sendEmail(data: object) {
+  const apiEndpoint = '/api/mail';
+
+  return fetch(apiEndpoint, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  })
+}
+
 export default function ContactForm() {
   const mdUp = useResponsive('up', 'md');
 
@@ -45,8 +54,16 @@ export default function ContactForm() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
+      sendEmail(data)
+        .then((res) => res.json())
+        .then((response) => {
+          alert(response.message);
+          reset();
+        })
+        .catch((err) => {
+          throw new Error(err);
+        });
+      ;
       console.log('DATA', data);
     } catch (error) {
       console.error(error);
