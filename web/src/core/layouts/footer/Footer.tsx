@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import NextLink from 'next/link';
 // icons
 import chevronDown from '@iconify/icons-carbon/chevron-down';
 import chevronRight from '@iconify/icons-carbon/chevron-right';
@@ -33,7 +34,7 @@ const RootStyle = styled('div')(({ theme }) => ({
   margin: theme.spacing(10, 0, 0),
 }));
 
-const LinkStyle = styled((props: LinkProps) => <Link target="_blank" rel="noopener" {...props} />)(
+const LinkStyle = styled((props: LinkProps) => <Link {...props} />)(
   ({ theme }) => ({
     ...theme.typography.body1,
     marginTop: theme.spacing(1),
@@ -167,9 +168,9 @@ function ListDesktop({ list }: ListProps) {
     <Stack alignItems="flex-start" sx={{ pb: { md: 1 } }}>
       <Typography variant="h6" sx={{color: 'text.footer.secondary'}}>{subheader}</Typography>
       {items?.map((link) => (
-        <LinkStyle key={link.title} href={link.path}>
-          {link.title}
-        </LinkStyle>
+              <LinkStyle key={link.title} href={link.path}>
+            {link.title}
+          </LinkStyle>
       ))}
     </Stack>
   );
@@ -214,9 +215,9 @@ function ListMobile({ list }: ListProps) {
           }}
         >
           {items?.map((link) => (
-            <LinkStyle key={link.title} href={link.path}>
-              {link.title}
-            </LinkStyle>
+              <LinkStyle key={link.title} href={link.path}>
+                {link.title}
+              </LinkStyle>
           ))}
         </Box>
       </Collapse>

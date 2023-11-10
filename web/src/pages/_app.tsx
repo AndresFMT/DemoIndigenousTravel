@@ -18,7 +18,7 @@ import 'react-lazy-load-image-component/src/effects/black-and-white.css'
 // leaflet
 import 'leaflet/dist/leaflet.css'
 
-import React from "react"
+import React, { StrictMode } from "react"
 import type { ReactNode } from "react"
 import client from 'integrations/sanity.client';
 import dynamic from 'next/dynamic'

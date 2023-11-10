@@ -227,7 +227,7 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
 
 
   return (
-    <RootLinkStyle key={title} href={path} passHref active={isActiveRoot} scrolling={isScrolling} transparent={isTransparent}>
+    <RootLinkStyle key={title} href={path} active={isActiveRoot} scrolling={isScrolling} transparent={isTransparent}>
       {title}
     </RootLinkStyle>
   );
