@@ -28,6 +28,8 @@ web/.env.*.local
 web/.envrc
 web/.env.production
 
+web/integrations/dist/*
+
 # Logs
 logs
 *.log
