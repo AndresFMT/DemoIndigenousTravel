@@ -21,7 +21,6 @@ export const PageLinks = [
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
       { title: 'Things To Do', path: Routes.thingsToDo },
-      { title: 'Places To Go', path: Routes.placesToGo },
       { title: 'Operators', path: Routes.operators },
     ],
   },
@@ -45,6 +44,7 @@ export const PageLinks = [
       { title: 'Culinary', path: Routes.operatorsCategoryFilter('culinary') },
       { title: 'Tours & Related Services', path: Routes.operatorsCategoryFilter('tours') },
       { title: 'Workshops, Arts & Culture', path: Routes.operatorsCategoryFilter('workshops') },
+      { title: 'Retail & Other', path: Routes.operatorsCategoryFilter('retail') },
       { title: 'North', path: Routes.operatorsRegionFilter('north') },
       { title: 'East', path: Routes.operatorsRegionFilter('east') },
       { title: 'South', path: Routes.operatorsRegionFilter('south') },
@@ -82,7 +82,7 @@ export const navConfig = [
   {
     title: 'Explore',
     path: '/explore',
-    children: [PageLinks[0], HeaderLinks[0], HeaderLinks[1], PageLinks[2], PageLinks[3]],
+    children: [PageLinks[0], PageLinks[1],  PageLinks[2], PageLinks[3]],
   },
   { title: 'Contact Us', path: Routes.contactUs },
   { title: 'Map', path: '?imv=true' },// path is irrelevant this is solved on the Link in DesktopNavigation

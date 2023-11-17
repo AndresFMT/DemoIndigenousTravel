@@ -76,10 +76,10 @@ const Backdrop = forwardRef<
   HTMLDivElement,
   { open?: boolean; className: string }
 >((props, ref) => {
-  const { open, className, ...other } = props;
+  const { open = false, className, ...other } = props;
   return (
     <m.div
-      className={clsx({ 'MuiBackdrop-open': open }, className)}
+      className={clsx({ 'MuiBackdrop-open': open}, className)}
       ref={ref}
       variants={backdropVariants}
       {...other}

@@ -2,6 +2,7 @@
 import {default as accessibleImage} from './objects/accessibleImage'
 import cta from './objects/cta'
 import blockContent from './objects/blockContent'
+import titleBody from './objects/titleBody'
 
 
 /** documents */
@@ -33,6 +34,7 @@ export const schemaTypes = [
   navItem,
   navItemGroup,
   siteSettings,
+  titleBody,
   ...sections,
   ...pageDocuments,
   ...homepageDocuments,

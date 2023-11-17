@@ -12,6 +12,7 @@ import { default as richTextContent } from './richText';
 import { default as imageContent } from './imageContent';
 import { default as featuredOperators } from './featuredOperators';
 import { default as regionalImageSection } from './regionalImageSection';
+import { default as missionSection } from './missionSection';
 
 export const sections = [
   section,
@@ -27,4 +28,5 @@ export const sections = [
   imageContent,
   featuredOperators,
   regionalImageSection,
+  missionSection,
 ];

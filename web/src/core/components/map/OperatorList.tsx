@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import {  Stack,  Typography, List, ListItem, ListItemButton, ListItemText} from '@mui/material';
 import Link from '@mui/material/Link';
+import NextLink from 'next/link';
 
 import { Scrollbar } from 'src/core/components';
 import ListImage from './ListImage';
@@ -48,7 +49,7 @@ const OperatorList = ({ operators, onItemClick, selectedOperator }: OperatorList
               <Typography variant='body1'sx={{ fontWeight: 'medium', textTransform: 'capitalize'}} >{operator.region}</Typography>
               <Typography variant='body1'sx={{ fontWeight: 'medium', textTransform: 'capitalize'}} >{operator.category}</Typography>
               {secondary} <br />
-              <Link href={`/operators/${encodeURIComponent(operator.slug.current)}`} >{'Find Out More'}</Link>
+              <NextLink href={`/operators/${encodeURIComponent(operator.slug.current)}`} passHref><Link>{'Find Out More'}</Link></NextLink>
               </>);
             return (
               <ListItem

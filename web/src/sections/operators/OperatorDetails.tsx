@@ -15,6 +15,17 @@ type Props = {
 
 };
 
+const formatPhoneNumber = (phoneNumberString: number) => {
+  const cleaned = ('' + phoneNumberString.toString()).replace(/\D/g, '');
+  const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+
+  if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+  }
+
+  return phoneNumberString;
+}
+
 export default function OperatorDetails({ operator}: Props) {
 
   const { website, address, location, phoneNumber, email, category} = operator;
@@ -46,7 +57,8 @@ export default function OperatorDetails({ operator}: Props) {
           <Typography variant="body2" sx={{ color: 'text.disabled' }}>
            Phone
           </Typography>
-          <Typography variant="body2"> {phoneNumber} </Typography>
+
+          <Typography variant="body2"> {formatPhoneNumber(phoneNumber)} </Typography>
         </Stack>
 
         <Stack spacing={1} direction="row" alignItems="center" justifyContent="space-between">

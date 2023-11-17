@@ -116,6 +116,7 @@ MyAppWrapper.getInitialProps = async () => {
       region,
       category,
       description,
+      shortDescription,
       _id
     },
     'siteSettings': *[_type == 'siteSettings'][0]{...}

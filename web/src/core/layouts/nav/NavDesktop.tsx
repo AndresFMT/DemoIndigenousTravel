@@ -149,18 +149,31 @@ export default function NavDesktop({ isScrolling, isTransparent, navConfig }: Na
 function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProps) {
   const { title, path, children } = item;
 
-  const { pathname, query, asPath, replace } = useRouter();
+  const router = useRouter();
+  const { pathname, query, asPath, replace } = router;
 
   const [open, setOpen] = useState(false);
 
   const isActiveRoot = path === pathname || (path !== '/' && asPath.includes(path));
 
   useEffect(() => {
-    if (open) {
-      handleClose();
+    const handleRouteChange: (url: string, props: {shallow: boolean})=> void = (url, {shallow})=> {
+      setOpen(false);
+      console.log(
+        `App is changing to ${url} ${
+          shallow ? 'with' : 'without'
+        } shallow routing`
+      )
+    };
+    router.events.on('routeChangeStart', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+
+  }, [router]);
 
   const handleOpen: MouseEventHandler = (e) => {
     e.preventDefault();

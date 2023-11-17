@@ -51,7 +51,7 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
     if (operators.length > 0) {
       operators.forEach((operator: Operator ) => {
         const firstBlockText = operator.description[0]?.children[0]?.text;
-        if ( typeof firstBlockText === 'string' ) {
+        if ( !operator.shortDescription && typeof firstBlockText === 'string' ) {
           operator.shortDescription =  firstBlockText.split('.')[0] +'.';
         }
       });

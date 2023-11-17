@@ -6,3 +6,4 @@ export { default as flexSection } from './FlexSection';
 export { default as sectionCards } from '../basic/SectionCards';
 export { default as featuredOperators } from '../operators/FeaturedOperators';
 export { default as regionalImageSection } from './RegionalImageSection';
+export { default as missionSection } from './MissionVision';

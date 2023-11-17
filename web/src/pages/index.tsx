@@ -10,6 +10,7 @@ import * as HomepageContent from 'src/sections/home'
 import { SanityPageProps } from "src/@types/sanity";
 import { Page as AppPage } from "src/@types/app";
 
+
 const HomePage: AppPage<SanityPageProps> = (props) => {
   const { sections, title, description } = props
 

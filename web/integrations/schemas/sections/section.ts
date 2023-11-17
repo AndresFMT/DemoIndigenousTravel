@@ -14,6 +14,7 @@ export default defineType({
     {type: 'sectionCards'},
     {type: 'featuredOperators'},
     {type: 'regionalImageSection'},
+    {type: 'missionSection'},
   ],
 })
 

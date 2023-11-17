@@ -53,7 +53,7 @@ export default function Footer() {
     twitterLink,
     linkedinLink,
     instagramLink
-  } = useContext( SiteSettingsContext );
+  } = useContext(SiteSettingsContext);
 
   const isDesktop = useResponsive('up', 'md');
   const lists = PageLinks.filter((list) => list.subheader !== 'Coming Soon');
@@ -82,12 +82,12 @@ export default function Footer() {
 
               <Stack spacing={2}>
                 <SocialsButton sx={{
-                    color: 'footer.background',
-                    bgcolor: 'text.footer.secondary',
-                    '&:hover': {
-                      bgcolor: alpha('#fff', 0.8),
-                    },
-                  }}
+                  color: 'footer.background',
+                  bgcolor: 'text.footer.secondary',
+                  '&:hover': {
+                    bgcolor: alpha('#fff', 0.8),
+                  },
+                }}
                   links={{
                     facebookLink,
                     twitterLink,
@@ -132,16 +132,15 @@ export default function Footer() {
           </Typography>
           <Typography variant="body3" sx={{ color: 'text.secondary' }}>
             <Link href="https://indigpro.ca/" variant="body3" sx={{ color: 'text.secondary' }}>
-            Website Proudly Built in Treaty One Territory by IndigPro
+              Website Proudly Built in Treaty One Territory by IndigPro
             </Link>
           </Typography>
           <Stack direction="row" spacing={3} justifyContent="center">
-            <Link href="/privacy-policy" variant="body3" sx={{ color: 'text.secondary' }}>
-              Privacy Policy
-            </Link>
-            <Link variant="body3" sx={{ color: 'text.secondary' }}>
-              Terms of Service
-            </Link>
+            <NextLink href="/privacy-policy" passHref>
+              <Link variant="body3" sx={{ color: 'text.secondary' }}>
+                Privacy Policy
+              </Link>
+            </NextLink>
           </Stack>
         </Stack>
       </Container>
@@ -166,11 +165,11 @@ function ListDesktop({ list }: ListProps) {
 
   return (
     <Stack alignItems="flex-start" sx={{ pb: { md: 1 } }}>
-      <Typography variant="h6" sx={{color: 'text.footer.secondary'}}>{subheader}</Typography>
+      <Typography variant="h6" sx={{ color: 'text.footer.secondary' }}>{subheader}</Typography>
       {items?.map((link) => (
-              <LinkStyle key={link.title} href={link.path}>
-            {link.title}
-          </LinkStyle>
+        <LinkStyle key={link.title} href={link.path}>
+          {link.title}
+        </LinkStyle>
       ))}
     </Stack>
   );
@@ -215,9 +214,9 @@ function ListMobile({ list }: ListProps) {
           }}
         >
           {items?.map((link) => (
-              <LinkStyle key={link.title} href={link.path}>
-                {link.title}
-              </LinkStyle>
+            <LinkStyle key={link.title} href={link.path}>
+              {link.title}
+            </LinkStyle>
           ))}
         </Box>
       </Collapse>

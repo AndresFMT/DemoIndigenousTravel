@@ -87,6 +87,7 @@ export default defineType({
             { title: 'Culinary', value: 'culinary' },
             { title: 'Tours and Related Services', value: 'tours' },
             { title: 'Workshops, Arts & Culture', value: 'workshops' },
+            { title: 'Retail and Other', value: 'retail' },
           ],
       },
     }),
@@ -94,6 +95,12 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'shortDescription',
+      title: 'Short Description',
+      description: 'This is the description that will appear on the interactive map card',
+      type: 'text',
     }),
   ],
 })

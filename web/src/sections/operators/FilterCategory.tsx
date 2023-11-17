@@ -13,6 +13,7 @@ const categories = [
   { title: 'Culinary', value: 'culinary' },
   { title: 'Tours and Related Services', value: 'tours' },
   { title: 'Workshops, Arts & Culture', value: 'workshops' },
+  { title: 'Retail and Other', value: 'retail' },
 ];
 
 type Props = {
