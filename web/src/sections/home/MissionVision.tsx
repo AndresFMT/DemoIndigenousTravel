@@ -11,20 +11,18 @@ import { useResponsive } from 'src/hooks';
 
 import { SanityAccessibleImage } from 'src/@types/sanity';
 import { urlFor } from 'integrations/sanity.image';
-import { PortableBlockProps } from './TextSection';
 // ----------------------------------------------------------------------
 
 
 // ----------------------------------------------------------------------
 
 type Props = {
-  regionalImages?: SanityAccessibleImage[];
-  rows?: {title:string,body:PortableBlockProps}[];
+  rows?: { title:string,body:string }[];
   heading?: string;
   description?: string;
 }
 
-export default function MissionVision({ regionalImages: regions, rows, heading, description}: Props) {
+export default function MissionVision({  rows, heading, description}: Props) {
 
 
   return (

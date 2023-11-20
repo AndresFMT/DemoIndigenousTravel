@@ -82,7 +82,7 @@ export const navConfig = [
   {
     title: 'Explore',
     path: '/explore',
-    children: [PageLinks[0], PageLinks[1],  PageLinks[2], PageLinks[3]],
+    children: PageLinks,
   },
   { title: 'Contact Us', path: Routes.contactUs },
   { title: 'Map', path: '?imv=true' },// path is irrelevant this is solved on the Link in DesktopNavigation

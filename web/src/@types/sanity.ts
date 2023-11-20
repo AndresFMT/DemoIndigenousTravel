@@ -35,7 +35,7 @@ export type Section = {
     image: SanityEnrichedImageObject;
     flip: boolean;
   }>;
-  rows?: Array<string>;
+  rows?: Array<string | any>;
   content?: Array<Content>;
   bio?: PortableTextBlock[];
   title?: string;
