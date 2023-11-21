@@ -1,4 +1,5 @@
 // routes
+import { NavItemProps } from 'src/@types/layout';
 import Routes from 'src/routes';
 
 // ----------------------------------------------------------------------
@@ -25,7 +26,7 @@ export const PageLinks = [
     ],
   },
   {
-    order: '4',
+    order: '3',
     subheader: 'Members',
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/a13bbb2f19eceef2666fe39d02861634cf13f6ad-6720x4480.jpg?fp-x=0.5128913443830572&fp-y=0.6907985333399698&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
@@ -34,7 +35,7 @@ export const PageLinks = [
     ],
   },
   {
-    order: '5',
+    order: '4',
     subheader: 'Discover',
     items: [
       { title: 'Accommodations', path: Routes.operatorsCategoryFilter('accommodation') },
@@ -54,30 +55,7 @@ export const PageLinks = [
 ];
 
 
-const HeaderLinks = [
-
-  {
-    order: '2',
-    subheader: 'Things To Do',
-    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/ee689889b3c6d4de316174a9584dc71ad6899e7c-2832x2832.jpg?fp-x=0.5122549019607844&fp-y=0.4068627450980393&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
-    items: [
-      { title: 'Things To Do', path: Routes.thingsToDo },
-      { title: 'Operators', path: Routes.operators },
-    ],
-  },
-  {
-    order: '3',
-    subheader: 'Places To Go',
-    cover: 'https://cdn.sanity.io/images/uimvg3pl/production/5d84a8e52123785bad9adabc9f737479bbfa2064-5472x3648.jpg?fp-x=0.5&fp-y=0.5&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
-    items: [
-      { title: 'Places To Go', path: Routes.placesToGo },
-      { title: 'Operators', path: Routes.operators },
-
-    ],
-  },
-]
-
-export const navConfig = [
+export const navConfig: NavItemProps[] = [
   { title: 'Home', path: '/' },
   {
     title: 'Explore',

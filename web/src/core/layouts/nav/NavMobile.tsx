@@ -56,7 +56,7 @@ const RootLinkStyle = styled(ListItemButton, {
 
 
 export default function NavMobile({ navConfig, sx }: NavProps) {
-  const { pathname, replace } = useRouter();
+  const { pathname } = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
