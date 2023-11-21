@@ -32,6 +32,9 @@ web/.envrc
 web/.env.production
 
 web/integrations/dist/*
+web/integrations/.env
+web/integrations/.env.local
+web/integrations/.env.*.local
 
 # Logs
 logs
