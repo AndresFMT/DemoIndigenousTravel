@@ -27,7 +27,7 @@ export default async function (request: NextApiRequest, response: NextApiRespons
 
   const mailOptions: Mail.Options = {
     from: process.env.MY_EMAIL,
-    to: process.env.MY_EMAIL,
+    to: process.env.DESTINATION_EMAIL,
     // cc: email, (uncomment this line if you want to send a copy to the sender)
     subject: `Message from ${fullName} (${email}) RE: ${subject}`,
     text: message,
