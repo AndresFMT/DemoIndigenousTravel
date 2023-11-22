@@ -113,6 +113,7 @@ MyAppWrapper.getInitialProps = async () => {
       },
       location,
       coordinates,
+      zoomLevel,
       region,
       category,
       description,

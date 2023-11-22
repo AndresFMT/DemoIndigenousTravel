@@ -27,7 +27,10 @@ const OperatorMarker = ({ center, content, openPopup }: OperatorMarkerProps) => 
       if (openPopup) {
 
         map.closePopup();
-        map.flyTo(center, 15);
+        console.log('opening popup', content.zoomLevel, content);
+        // temporary fix: i think in development this is getting called twice and running with zoomLevel undefined the second time
+        const zoomLevel = content.zoomLevel ? content.zoomLevel : 15;
+        map.flyTo(center, zoomLevel);
         map.on('moveend', () => {
           if (popupRef.current != null && markerRef.current._popup != null) {
             map.openPopup(popupRef.current);

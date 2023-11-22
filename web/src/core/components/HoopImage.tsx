@@ -1,5 +1,8 @@
 import { m } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
 import { useRouter } from 'next/router';
 
 import { Image } from 'src/core/components';
@@ -89,16 +92,13 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
   const handleClick = () => {
     console.log('clicked opening map')
     setTimeout(() => {
-      if (!link) {
-        router.replace('?imv=true');
-      }
       if (link?.includes('so=random')) {
         const randomOperator = getRandomOperator();
-        router.replace(`?so=${randomOperator}`);
-      } else {
-        router.replace(`?imv=true`);
+        router.query.so = randomOperator;
       }
-    } , 150);
+      router.query.imv = 'true';
+      router.push(router, undefined, { scroll: false})
+    } , 500);
   }
 
   return (
@@ -138,6 +138,13 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
           <Typography variant="body1" sx={{textAlign: 'center', padding: '10px'}}>{textOverlay}</Typography>
         </Box>
       </Box>
+      <Tooltip
+        placement="left-start"
+        followCursor={true}
+        TransitionComponent={Fade}
+        TransitionProps={{ timeout: 600 }}
+        title="Open Map"
+      >
       <m.div
         initial="hidden"
         whileInView="visible"
@@ -155,6 +162,7 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
       >
         <AnimatedHoop size={hoopSize} sx={{ height: '100%', width: '100%' }} />
       </m.div>
+      </Tooltip>
     </Box>
   )
 }

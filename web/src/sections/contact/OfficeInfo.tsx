@@ -95,14 +95,6 @@ const OfficeInfo = () => {
 
             <Stack spacing={1}>
               <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
-                <Iconify icon="carbon:mobile" width={24} sx={{ mr: 1 }} /> Phone
-              </Stack>
-
-              <Typography variant="body2">(204) 555-0101</Typography>
-            </Stack>
-
-            <Stack spacing={1}>
-              <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
                 <Iconify icon="carbon:location" width={24} sx={{ mr: 1 }} /> Address
               </Stack>
 

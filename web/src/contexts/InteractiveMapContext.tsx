@@ -23,8 +23,8 @@ interface InteractiveMapProviderProps {
 
 const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderProps) => {
 
-  const [isMapVisible, setIsMapVisible] = useQueryState('imv', {history: 'replace'}); // is map visible
-  const [selectedOperator, setSelectedOperator] = useQueryState('so', {history: 'replace'}); // selected operator
+  const [isMapVisible, setIsMapVisible] = useQueryState('imv', {history: 'replace', scroll:false}); // is map visible
+  const [selectedOperator, setSelectedOperator] = useQueryState('so', {history: 'replace', scroll:false}); // selected operator
 
 
   const openMap = useCallback(() => {
@@ -38,7 +38,7 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
 
   const getRandomOperator = useCallback(() => {
     const randomOperator = operators[Math.floor(Math.random() * operators.length)];
-    return randomOperator?.slug.current || null;
+    return randomOperator?.name ? randomOperator?.name: null;
   }, [operators]);
 
   useEffect(() => {
@@ -53,6 +53,9 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
         const firstBlockText = operator.description[0]?.children[0]?.text;
         if ( !operator.shortDescription && typeof firstBlockText === 'string' ) {
           operator.shortDescription =  firstBlockText.split('.')[0] +'.';
+        }
+        if (typeof operator.zoomLevel === 'undefined' || !operator.zoomLevel) {
+          operator.zoomLevel = 15;
         }
       });
     }

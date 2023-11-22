@@ -210,6 +210,7 @@ export type Operator = {
   phoneNumber: number;
   region: string;
   slug: SanitySlug;
+  zoomLevel?: number;
   website: string;
   categories?: Array<string>;
   category?: string;

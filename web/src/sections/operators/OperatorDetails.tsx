@@ -79,7 +79,7 @@ export default function OperatorDetails({ operator}: Props) {
         </Stack>
 
         <Button size="large" variant="contained" color="inherit" >
-        <NextLink href={`${website}`} passHref target="_blank">
+        <NextLink href={`${website}`} target="_blank">
               Visit Website
         </NextLink>
         </Button>

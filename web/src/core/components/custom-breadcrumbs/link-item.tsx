@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 
+
 import  NextLink  from 'next/link';
 
 import { BreadcrumbsLinkProps } from './types';
@@ -50,11 +51,9 @@ export default function BreadcrumbsLink({ link, activeLast, disabled }: Props) {
 
   if (href) {
     return (
-      <NextLink href={href} passHref >
-        <Link sx={styles}>
-          {renderContent}
-        </Link>
-      </NextLink>
+      <Link href={href} component={NextLink} sx={styles}>
+        {renderContent}
+      </Link>
     );
   }
 
