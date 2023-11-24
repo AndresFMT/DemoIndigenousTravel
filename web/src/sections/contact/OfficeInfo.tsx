@@ -99,7 +99,7 @@ const OfficeInfo = () => {
               </Stack>
 
               <Typography variant="body2">
-                1075 Portage Ave, Winnipeg, MB
+                1075 Portage Ave, Winnipeg, MB R3G 0S3
               </Typography>
             </Stack>
 
