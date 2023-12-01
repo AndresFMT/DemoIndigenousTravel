@@ -47,6 +47,7 @@ const OperatorCard = (props: any) => {
         <Typography variant="h6" sx={{ lineHeight: '1.2rem', pb: 2, overflow: 'hidden', '&:hover': { textDecoration: 'underline' } }}>
           <NextLink
             passHref
+            legacyBehavior
             href={{
               pathname: '/operators/[slug]',
               query: { slug: operator.slug.current }

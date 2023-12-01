@@ -194,6 +194,7 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
           scrolling={isScrolling}
           transparent={isTransparent}
           href="#"
+          legacyBehavior
         >
           {title}
           <Iconify
@@ -216,20 +217,6 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
     );
   }
 
-  if (title === 'Documentation') {
-    return (
-      <RootLinkStyle
-        href={path}
-        target="_blank"
-        rel="noopener"
-        scrolling={isScrolling}
-        transparent={isTransparent}
-      >
-        {title}
-      </RootLinkStyle>
-    );
-  }
-
   if (title === 'Map') {
     return (
       <RootMapLinkStyle key={title} onClick={(e) => { e.preventDefault(); replace({ pathname, query: { ...query,'imv': 'true' } }, undefined, { shallow: true }); }}>
@@ -240,7 +227,7 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
 
 
   return (
-    <RootLinkStyle key={title} href={path} active={isActiveRoot} scrolling={isScrolling} transparent={isTransparent}>
+    <RootLinkStyle key={title} href={path} active={isActiveRoot} scrolling={isScrolling} transparent={isTransparent} legacyBehavior>
       {title}
     </RootLinkStyle>
   );

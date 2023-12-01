@@ -76,7 +76,7 @@ type LinkItemProps = {
 function LinkItem({ link, onDark }: LinkItemProps) {
   const { href = '', name, icon } = link;
   return (
-    <NextLink key={name} href={href} passHref>
+    <NextLink key={name} href={href} passHref legacyBehavior>
       <Link
         variant="body3"
         sx={{

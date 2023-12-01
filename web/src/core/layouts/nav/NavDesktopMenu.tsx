@@ -155,7 +155,7 @@ export default function NavDesktopMenu({
                     </m.div>
 
                     {cover ? (
-                      <NextLink href={path || '#'} passHref>
+                      <NextLink href={path || '#'} passHref legacyBehavior>
                         <Box
                           component={m.a}
                           variants={varFade({ distance: 80 }).inLeft}
@@ -257,7 +257,7 @@ type LinkItemProps = {
 
 function LinkItem({ title, href, active }: LinkItemProps) {
   return (
-    <NextLink key={title} href={href} passHref>
+    <NextLink key={title} href={href} passHref legacyBehavior>
       <Link
         color="inherit"
         underline="hover"
