@@ -194,7 +194,7 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
           scrolling={isScrolling}
           transparent={isTransparent}
           href="#"
-          legacyBehavior
+          style={{ textDecoration: 'none' }}
         >
           {title}
           <Iconify
@@ -227,7 +227,14 @@ function NavItemDesktop({ item, isScrolling, isTransparent }: NavItemDesktopProp
 
 
   return (
-    <RootLinkStyle key={title} href={path} active={isActiveRoot} scrolling={isScrolling} transparent={isTransparent} legacyBehavior>
+    <RootLinkStyle
+      key={title}
+      href={path}
+      active={isActiveRoot}
+      scrolling={isScrolling}
+      transparent={isTransparent}
+      style={{ textDecoration: 'none' }}
+    >
       {title}
     </RootLinkStyle>
   );

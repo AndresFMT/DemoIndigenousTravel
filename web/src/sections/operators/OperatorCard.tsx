@@ -46,13 +46,13 @@ const OperatorCard = (props: any) => {
 
         <Typography variant="h6" sx={{ lineHeight: '1.2rem', pb: 2, overflow: 'hidden', '&:hover': { textDecoration: 'underline' } }}>
           <NextLink
+            style={{ textDecoration: 'none', color: 'inherit' }}
             passHref
-            legacyBehavior
             href={{
               pathname: '/operators/[slug]',
               query: { slug: operator.slug.current }
             }}
-            color="inherit">
+            >
             {operator.name}
           </NextLink>
         </Typography>

@@ -25,7 +25,7 @@ export default function FeaturedOperators({ operators, heading = "You Might Like
       sx={{ color: 'theme.primary', fontWeight: 'bold' }}
       endIcon={<Iconify icon="carbon:chevron-right" />}
     >
-      <NextLink href="/operators" passHref legacyBehavior>
+      <NextLink href="/operators" passHref style={{textDecoration: 'none', color: 'inherit'}}>
         View All
       </NextLink>
     </Button>

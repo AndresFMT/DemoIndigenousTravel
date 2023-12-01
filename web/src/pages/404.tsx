@@ -50,7 +50,7 @@ export default function PageNotFound() {
               />
             </m.div>
 
-            <NextLink href="/" passHref legacyBehavior>
+            <NextLink href="/" passHref style={{ color: 'inherit', textDecoration: 'none'}}>
               <Button size="large" variant="contained">
                 Go to Home
               </Button>

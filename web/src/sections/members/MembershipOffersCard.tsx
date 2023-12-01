@@ -101,7 +101,10 @@ const MembershipOffersCard = ({ plan, index}: Props) => {
           color={index == 2 ? 'primary' : 'inherit'}
         >
 
-          <NextLink href={Routes.members.membershipApplication}>
+          <NextLink
+            href={Routes.members.membershipApplication}
+            style={{textDecoration: 'none', color: 'inherit'}}
+          >
           {index == 0 && 'Get Started'}
           {index == 1 && 'Apply Now'}
           {index == 2 && 'Become a Member'}

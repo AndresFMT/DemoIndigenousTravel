@@ -136,8 +136,8 @@ export default function Footer() {
             </Link>
           </Typography>
           <Stack direction="row" spacing={3} justifyContent="center">
-            <NextLink href="/privacy-policy" passHref>
-              <Link variant="body3" sx={{ color: 'text.secondary' }}>
+            <NextLink href="/privacy-policy" passHref legacyBehavior>
+              <Link variant="body3" sx={{ color: 'text.secondary', textDecoration: 'none' }}>
                 Privacy Policy
               </Link>
             </NextLink>

@@ -155,7 +155,7 @@ export default function NavDesktopMenu({
                     </m.div>
 
                     {cover ? (
-                      <NextLink href={path || '#'} passHref legacyBehavior>
+                      <NextLink href={path || '#'} passHref style={{textDecoration: 'none', color: 'inherit'}}>
                         <Box
                           component={m.a}
                           variants={varFade({ distance: 80 }).inLeft}

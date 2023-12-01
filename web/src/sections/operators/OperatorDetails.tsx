@@ -79,7 +79,7 @@ export default function OperatorDetails({ operator}: Props) {
         </Stack>
 
         <Button size="large" variant="contained" color="inherit" >
-        <NextLink href={`${website}`} target="_blank" legacyBehavior>
+        <NextLink href={`${website}`} target="_blank" style={{textDecoration: 'none', color: 'inherit'}}>
               Visit Website
         </NextLink>
         </Button>
