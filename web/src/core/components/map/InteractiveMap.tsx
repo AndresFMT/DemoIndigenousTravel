@@ -12,6 +12,7 @@ import { useInteractiveMapContext } from 'src/contexts/InteractiveMapContext';
 import MapModal from './MapModal';
 import OperatorList from './OperatorList';
 import OperatorMarkers from './OperatorMarkers';
+import { useResponsive } from 'src/hooks';
 
 
 
@@ -21,8 +22,6 @@ const InteractiveMapContainer = styled(Grid)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   color: theme.palette.text.primary,
   borderRadius: theme.shape.borderRadius,
-  height: '90vh',
-  width: '85vw',
   overflow: 'hidden',
 }));
 
@@ -48,22 +47,35 @@ const InteractiveMap = () => {
     closeMap();
   }
 
+  const isDesktop = useResponsive( 'up', 'md');
+  const mapHeight = isDesktop ? '90vh' : '50vh';
+  const mapWidth = isDesktop ? '85vw' : '100vw';
+
   return (
     <MapModal>
-      <InteractiveMapContainer container>
-        <Grid xs={4} sx={{ height: '100%' }}>
+      <InteractiveMapContainer
+        container
+        sx={{
+          height: { xs: '100vh', md: '90vh' },
+          width: { xs: '100vw', md: '85vw' },
+        }}
+      >
+        { isDesktop && (<Grid xs={12} md={4} sx={{ height: {xs: '50%', md:'100%'} }}>
           <OperatorList operators={operators} onItemClick={handleItemClick} selectedOperator={selectedOperator} />
-        </Grid>
-        <Grid xs={8}>
+        </Grid>) }
+        <Grid xs={12} md={8} sx={{ height: {xs: '50%', md:'100%'} }}>
           <CloseButton onClick={handleCloseMapClick}>Close</CloseButton>
-          <MapContainer center={position} zoom={6} style={{ height: '90vh', width: '100%', margin: 'auto' }} zoomControl={false} scrollWheelZoom={false}>
+          <MapContainer center={position} zoom={6} style={{ height: mapHeight, width:mapWidth, margin: 'auto' }} zoomControl={false} scrollWheelZoom={false}>
             <ZoomControl position="bottomright" />
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"/>
+              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png" />
             <OperatorMarkers operators={operators} selectedOperator={selectedOperator} />
           </MapContainer>
         </Grid>
+        { !isDesktop && (<Grid xs={12} md={4} sx={{ height: {xs: '50%', md:'100%'} }}>
+          <OperatorList operators={operators} onItemClick={handleItemClick} selectedOperator={selectedOperator} />
+        </Grid>) }
       </InteractiveMapContainer>
     </MapModal>
   )

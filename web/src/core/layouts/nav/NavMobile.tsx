@@ -12,23 +12,18 @@ import {
   Box,
   List,
   Link,
-  Stack,
-  Button,
   Drawer,
   Collapse,
   ListItemText,
   ListItemButton,
   ListItemButtonProps,
 } from '@mui/material';
-// routes
-import Routes from 'src/routes';
 // config
 import { DRAWER_WIDTH } from 'src/config';
 // components
 import { Logo, Scrollbar, Iconify, NavSection } from 'src/core/components';
 import { IconButtonAnimate } from 'src/core/components/animate';
 import { NavItemMobileProps, NavProps } from 'src/@types/layout';
-import {useInteractiveMapContext} from 'src/contexts/InteractiveMapContext';
 
 // ----------------------------------------------------------------------
 
@@ -90,7 +85,7 @@ export default function NavMobile({ navConfig, sx }: NavProps) {
       >
         <Scrollbar>
           <Box sx={{ px: 2.5, py: 3, lineHeight: 0 }}>
-            <Logo />
+            <Logo sx={{py: {xs: 2, md: 4}}}/>
           </Box>
 
           <List sx={{ px: 0 }}>
@@ -125,7 +120,11 @@ function NavItemMobile({ item }: NavItemMobileProps) {
   if (children) {
     return (
       <>
-        <RootLinkStyle onClick={handleOpen} active={isActiveRootWithChild}>
+        <RootLinkStyle
+          onClick={handleOpen}
+          active={isActiveRootWithChild}
+          style={{textDecoration: 'none'}}
+        >
           <ListItemText disableTypography primary={title} />
           <Iconify icon={open ? chevronDown : chevronRight} sx={{ width: 16, height: 16, ml: 1 }} />
         </RootLinkStyle>
@@ -186,15 +185,6 @@ function NavItemMobile({ item }: NavItemMobileProps) {
     );
   }
 
-  if (title === 'Documentation') {
-    return (
-      <Link href={path} underline="none" target="_blank" rel="noopener">
-        <RootLinkStyle>
-          <ListItemText disableTypography primary={title} />
-        </RootLinkStyle>
-      </Link>
-    );
-  }
   if (title === 'Map') {
     return (
       <Link underline="none" onClick={(e) => {e.preventDefault(); replace({pathname, query:{'imv': 'true'}}, undefined, {shallow:true});}} rel="noopener">
@@ -206,8 +196,16 @@ function NavItemMobile({ item }: NavItemMobileProps) {
   }
 
   return (
-    <NextLink key={title} href={path} passHref>
-      <RootLinkStyle active={isActiveRoot}>
+    <NextLink
+      key={title}
+      href={path}
+      passHref
+
+      style={{textDecoration: 'none'}}
+    >
+      <RootLinkStyle
+        active={isActiveRoot}
+      >
         <ListItemText disableTypography primary={title} />
       </RootLinkStyle>
     </NextLink>

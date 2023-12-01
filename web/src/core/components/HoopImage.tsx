@@ -110,6 +110,7 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
         position: 'relative',
         width: hoopSize,
         height: hoopSize,
+        my: {xs: 5, md: 2},
       }}
     >
       <Box component={'div'} sx={{ display: 'flex','& svg, & svg *': { width: '100%' }, width: '100%' , height: '100%',color: fontColor, fontWeight: fontWeight, justifyContent: 'center', alignItems: 'center'}}>

@@ -39,15 +39,15 @@ const FlexSection = (props: Props) => {
   const fontWeight = isBackgroundDark ? '700': '500';
   const hasImage = image && image.asset && image.asset.url;
 
-  const paddingY = hasImage ? { xs: 2, md: 5 } : { xs: 1, md:  0};
+  const paddingY = hasImage ? { xs: 2, md: 5 } : { xs: 4, md:  0};
   const overflow = hasImage ? 'hidden' : 'visible';
   return (
     <RootStyle>
-      <Container maxWidth="lg" sx={{ py: paddingY, overflow: overflow, position: 'relative', borderRadius: (theme)=> theme.shape.borderRadius }}>
+      <Container maxWidth="lg" sx={{ py: paddingY, overflow: overflow, position: 'relative', borderRadius: {'md':(theme)=> theme.shape.borderRadius} }}>
         <Grid
           container
           spacing={{ xs: 5, md: 3 }}
-          sx={{ color: textColor, px: {xs: 3, md: 5},fontWeight: fontWeight, textAlign: { xs: 'center', md: 'left' } }}
+          sx={{ color: textColor, px: {xs: 3, md: 5},fontWeight: fontWeight, textAlign: { xs: 'center', md: 'left' }}}
           justifyContent="space-between"
         >
           {content.map((item, index, array) => {

@@ -39,7 +39,7 @@ export default function PlayerWithImage({ imgPath, ratio = '16/9', videoPath }: 
 
   return (
     <>
-      <Box sx={{ position: 'relative', borderRadius: 2, overflow: 'hidden' }}>
+      <Box sx={{ position: 'relative', borderRadius: 1, overflow: 'hidden' }}>
         <FabButtonAnimate
           size="large"
           color="inherit"

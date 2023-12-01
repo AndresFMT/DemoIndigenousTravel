@@ -180,7 +180,12 @@ function NavSectionItem({ item }: NavSectionItemProps) {
               const isActiveSub = pathname === path || asPath === path;
 
               return (
-                <NextLink key={title} href={path} passHref>
+                <NextLink
+                  key={title}
+                  href={path}
+                  passHref
+                  style={{textDecoration: 'none'}}
+                >
                   <ListItemStyle activeSub={isActiveSub}>
                     <ListItemIconStyle>
                       <ListSubItemIconStyle component="span" active={isActiveSub} />
@@ -197,7 +202,10 @@ function NavSectionItem({ item }: NavSectionItemProps) {
   }
 
   return (
-    <NextLink href={path} passHref>
+    <NextLink
+      href={path}
+      style={{textDecoration: 'none'}}
+      passHref>
       <ListItemStyle activeRoot={isActiveRoot}>
         {icon && <ListItemIconStyle>{icon}</ListItemIconStyle>}
         <ListItemText disableTypography primary={title} />

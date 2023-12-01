@@ -82,7 +82,10 @@ const OfficeInfo = () => {
             Get In Touch
           </Typography>
 
-          <Stack spacing={3} alignItems={{ xs: 'center', md: 'flex-start' }}>
+          <Stack
+            spacing={3}
+            alignItems={{ xs: 'center', md: 'flex-start' }}
+          >
             <Stack spacing={1}>
               <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
                 <Iconify icon="carbon:email" width={24} sx={{ mr: 1 }} /> Email

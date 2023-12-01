@@ -39,25 +39,25 @@ export default function VideoSection(props: Props) {
   return (
     <RootStyle>
       <SectionContainer>
-        <Grid container sx={{ zIndex: 22, position: 'relative' }}>
+        <Grid container sx={{ zIndex: 22, position: 'relative', py: {xs: 4, lg: 5}}}>
           <Stack
-            spacing={5}
+            spacing={{xs:2, md: 5}}
             alignItems={{ xs: 'flex-start', md: 'center' }}
             justifyContent="center"
             sx={{
               width: '100%',
-              px: { xs: 5, md: 15 },
+              px: { xs: 2, md: 15 },
               textAlign: { xs: 'left', md: 'center' },
             }}
           >
             <Typography variant="h3" sx={{ color: 'contrast.black', fontWeight: 900 }}>
               {heading}{<br />}
-              <Box component="span" >
+              <Box component="span">
                 {kicker ? kicker : ' '}
               </Box>
             </Typography>
-            <Container sx={{ my: 10 }}>
-              <Box >
+            <Container sx={{my: {xs: 5, md:10}, px: {xs: 0, md: 3}}}>
+              <Box>
                 <PlayerWithImage videoPath={videoUrl} imgPath={placeholderImg} />
               </Box>
             </Container>
