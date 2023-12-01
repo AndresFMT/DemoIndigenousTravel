@@ -11,7 +11,6 @@ export const PageLinks = [
     cover: 'https://cdn.sanity.io/images/uimvg3pl/production/c7d834475ab88cf7717c59b726488933a07aa768-2500x1500.jpg?fp-x=0.4965753424657535&fp-y=0.8966894977168942&auto=format&fit=crop&crop=focalpoint&w=384&h=216',
     items: [
       { title: 'Who We Are', path: Routes.whoWeAre},
-      { title: 'What We Do', path: Routes.whatWeDo},
       { title: 'Reconciliation', path: Routes.reconciliation },
       { title: 'Meet Our Team', path: Routes.ourTeam },
     ],
