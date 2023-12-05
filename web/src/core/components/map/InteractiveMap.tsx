@@ -48,8 +48,8 @@ const InteractiveMap = () => {
   }
 
   const isDesktop = useResponsive( 'up', 'md');
+  console.log('isDesktop', isDesktop);
   const mapHeight = isDesktop ? '90vh' : '50vh';
-  const mapWidth = isDesktop ? '85vw' : '100vw';
 
   return (
     <MapModal>
@@ -65,7 +65,7 @@ const InteractiveMap = () => {
         </Grid>) }
         <Grid xs={12} md={8} sx={{ height: {xs: '50%', md:'100%'} }}>
           <CloseButton onClick={handleCloseMapClick}>Close</CloseButton>
-          <MapContainer center={position} zoom={6} style={{ height: mapHeight, width:mapWidth, margin: 'auto' }} zoomControl={false} scrollWheelZoom={false}>
+          <MapContainer center={position} zoom={6} style={{ height: mapHeight, width:'100%', margin: 'auto' }} zoomControl={false} scrollWheelZoom={false}>
             <ZoomControl position="bottomright" />
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
