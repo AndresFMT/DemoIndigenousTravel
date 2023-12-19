@@ -132,6 +132,7 @@ export const groqOperatorsNearbyQuery = groq`
 
 export const groqOperatorSlugsQuery = groq`
   *[ _type == "operator" &&
+    defined(slug.current) &&
   !(_id in path('drafts.**'))]{
     slug
   }
