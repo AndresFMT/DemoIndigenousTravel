@@ -101,7 +101,7 @@ export default MyAppWrapper
 MyAppWrapper.getInitialProps = async () => {
 
   const data = await client.fetch(`{
-    'operators': *[_type == 'operator' && defined(slug) && defined(name) && defined(images) && defined(description) && defined(region) && defined(location) && defined(coordinates) && !(_id in path('drafts.**'))]{
+    'operators': *[_type == 'operator' && defined(slug) && defined(name) && defined(images) && defined(description) && defined(region) && defined(location) && defined(coordinates) && defined(slug.current) && !(_id in path('drafts.**'))]{
       name,
       slug,
       'image': images[0] {
