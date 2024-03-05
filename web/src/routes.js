@@ -72,6 +72,7 @@ const Routes = {
   whoWeAre: '/about-itm',
   whatWeDo: '/what-we-do',
   ourTeam: '/our-team',
+  resources: '/resources',
   aboutUs: '/about-us',
   reconciliation: '/reconciliation',
   contactUs: '/contact-us',

@@ -13,6 +13,7 @@ import { default as imageContent } from './imageContent';
 import { default as featuredOperators } from './featuredOperators';
 import { default as regionalImageSection } from './regionalImageSection';
 import { default as missionSection } from './missionSection';
+import { default as pdfSection } from './pdfSection';
 
 export const sections = [
   section,
@@ -21,6 +22,7 @@ export const sections = [
   textSection,
   imageHero,
   videoSection,
+  pdfSection,
   flexSection,
   flexContent,
   flexComponent,
