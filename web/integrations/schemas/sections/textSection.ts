@@ -60,6 +60,11 @@ export default defineType({
       title: 'Rich Text',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'pdfSection',
+      title: 'PDF Section',
+      type: 'file',
+    }),
   ],
 
   preview: {
