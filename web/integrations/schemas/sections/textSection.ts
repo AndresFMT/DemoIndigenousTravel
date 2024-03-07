@@ -61,8 +61,8 @@ export default defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'pdfSection',
-      title: 'PDF Section',
+      name: 'pdf',
+      title: 'PDF',
       type: 'file',
     }),
   ],
