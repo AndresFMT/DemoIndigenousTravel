@@ -62,7 +62,8 @@ const OperatorsPage = (props: Props) => {
             return operator.region.includes(filter.region.toLowerCase());
           }
           return true;
-        });
+        })
+        .sort((a: any, b: any) => a.name.localeCompare(b.name));
       setPageCount(Math.ceil(filteredOperators.length/resultsPerPage));
       setOperators(filteredOperators.slice((page-1)*resultsPerPage, page*resultsPerPage));
     }
