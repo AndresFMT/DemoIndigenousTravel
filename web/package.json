@@ -122,7 +122,8 @@
     "preview-email": "3.0.7",
     "typescript": "^4.8.4",
     "vite-tsconfig-paths": "3.6.0",
-    "vitest": "0.25.3"
+    "vitest": "0.25.3",
+    "webpack-dev-server": "5.0.2"
   },
   "private": true
 }

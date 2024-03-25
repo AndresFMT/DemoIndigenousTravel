@@ -29,7 +29,6 @@ const OperatorsPage = (props: Props) => {
   const {title, description, operatorCount} = props;
   const resultsPerPage = 12;
 
-
   const { operators: contextOperators } = useInteractiveMapContext();
   const [operators, setOperators] = useState(contextOperators.slice(0, resultsPerPage));
   const [page, setPage] = useState(1);
