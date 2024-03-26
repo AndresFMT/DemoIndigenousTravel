@@ -28,7 +28,6 @@ type Props = {
   setCategory: (category: any) => void;
 };
 
-
 export default function FilterCategory({category, setCategory}:Props) {
   return (
     <Autocomplete
