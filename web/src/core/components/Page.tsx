@@ -42,7 +42,7 @@ const Page = forwardRef<HTMLDivElement, PageProps>(({ children, meta, title }, r
       `}
       </Script>
 
-      {/*<!-- Google tag (gtag.js) -->*/}
+      {/*<!-- Google tag (gtag.js) Account IndigPro -->*/}
       <Script async src="https://www.googletagmanager.com/gtag/js?id=G-XHXHMKDPOL"></Script>
       <Script>
         {`
@@ -67,7 +67,8 @@ const Page = forwardRef<HTMLDivElement, PageProps>(({ children, meta, title }, r
         gtag('config', 'G-WCHFVCKNFZ');
       `}
       </Script>
-      {/*<!-- Google tag (gtag.js) -->*/}
+
+      {/*<!-- Google tag (gtag.js) Account IndigPro -->*/}
       <Script async id="gtm-load" src="https://www.googletagmanager.com/gtag/js?id=G-XHXHMKDPOL"></Script>
       <Script id="gtm-dataLayer-init">
         {`
