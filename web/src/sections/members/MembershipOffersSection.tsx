@@ -4,7 +4,7 @@ import MembershipOffersCard from './MembershipOffersCard';
 
 const _pricing01 = [
   {
-    license: 'In Development',
+    license: 'Non Market Ready Indigenous Tourism Experiences',
     price: 'Free',
     icon: '/pricing/in_development_icon.svg',
     requirements: [
@@ -16,15 +16,19 @@ const _pricing01 = [
       { title: 'Meets Market Ready Criteria', disabled: true },
     ],
     options: [
+      { title: 'Development Support', disabled: false },
+      { title: 'One on one mentorship through a Product Development Expert', disabled: false },
+      { title: 'Access to data, studies and research', disabled: false },
+      { title: 'Eligible for ITM training and capacity development programs', disabled: false },
       { title: 'Networking Opportunities', disabled: false },
-      { title: 'Advocacy by ITM to Industry Partners', disabled: false },
-      { title: 'Access to ITM Research and Studies', disabled: false },
-      { title: 'Invite to ITM Annual General Meeting', disabled: false },
-      { title: 'Eligible for ITM Training and Capacity Development', disabled: false },
+      { title: 'Advocacy and political representation by ITM', disabled: false },
+      { title: 'Participation in ITM events', disabled: false },
+      { title: 'Access to ITM annual general meeting as a non-voting organization', disabled: false },
+      { title: 'Access to support and resources via ITM’s partners at Travel Manitoba and the ITAC', disabled: false },
     ],
   },
   {
-    license: 'Visitor Ready',
+    license: 'Industry Partner',
     price: 'Free',
     icon: '/pricing/visitor_ready_icon.svg',
     requirements: [
@@ -36,15 +40,19 @@ const _pricing01 = [
       { title: 'Meets Market Ready Criteria', disabled: true},
     ],
     options: [
-      { title: 'All "In-Development" Benefits', disabled: false },
-      { title: 'Eligible to be Included in Newsletter', disabled: false },
-      { title: 'Included in Blog & Promotional Channels', disabled: false },
-      { title: 'Event Promotion with ITM and Partners', disabled: false },
-      { title: 'Listed on ITM Website', disabled: false },
+      { title: 'Guidance when working with Indigenous tourism partners', disabled: false },
+      { title: 'Access to data, studies and research', disabled: false },
+      { title: 'Eligible for ITM training and capacity development programs', disabled: false },
+      { title: 'Networking Opportunities', disabled: false },
+      { title: 'Advocacy and political representation by ITM', disabled: false },
+      { title: 'Participation in ITM events', disabled: false },
+      { title: 'Access to ITM annual general meeting as a non-voting organization', disabled: false },
+      { title: 'Access to support and resources via ITM’s partners at Travel Manitoba and the ITAC', disabled: false },
+      { title: 'Priority on call for proposals', disabled: false },
     ],
   },
   {
-    license: 'Market or Export Ready',
+    license: 'Market Ready Indigenous Tourism Experiences',
     price: 'Free',
     icon: '/pricing/market_ready_icon.svg',
     requirements: [
@@ -56,12 +64,14 @@ const _pricing01 = [
       { title: 'Meets Market Ready Criteria', disabled: false },
     ],
     options: [
-      { title: 'All "Visitor Ready" Benefits', disabled: false },
-      { title: 'AGM Voting Rights', disabled: false },
-      { title: 'Board Representation', disabled: false },
-      { title: 'Inclusion in Co-op Partnerships and Marketing Programs', disabled: false },
-      { title: 'Included in ITM Experience Guide', disabled: false },
-      { title: 'Participate in Travel Trade Programs', disabled: false },
+      { title: 'All benefits of other categories and:', disabled: false },
+      { title: 'Business listing on Indigenous Tourism Manitoba’s experiences web page', disabled: false },
+      { title: 'Experience will be featured in ITM sales and travel trade activities', disabled: false },
+      { title: 'Ability to be included in provincial press and trade familiarization trips', disabled: false },
+      { title: 'Ability to be included in provincial itinerary development and story ideas', disabled: false },
+      { title: 'Images will be prioritized for marketing and communication materials', disabled: false },
+      { title: 'Ability to apply for subsidized registration at travel trade shows and marketplaces', disabled: false },
+      { title: 'Access to ITM annual general meeting as a voting organization', disabled: false },
     ],
   },
 ];
