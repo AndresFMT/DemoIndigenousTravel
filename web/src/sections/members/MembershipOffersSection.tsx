@@ -8,12 +8,8 @@ const _pricing01 = [
     price: 'Free',
     icon: '/pricing/in_development_icon.svg',
     requirements: [
-      { title: 'Business (Idea) Currently in Development', disabled: false },
-      { title: 'Set Business Hours', disabled: true },
-      { title: 'Business Location', disabled: true },
-      { title: 'Required Staff Employed', disabled: true },
-      { title: 'Relevant Promotional Material', disabled: true },
-      { title: 'Meets Market Ready Criteria', disabled: true },
+      { title: 'An Indigenous tourism business that is no less than 51% Indigenous owned that is still in development and does not yet meet the Business Ready Standard as defined in ITAC’s Accreditation Program.', disabled: false },
+      // { title: 'Market Readiness Checklist:', disabled: false },
     ],
     options: [
       { title: 'Development Support', disabled: false },
@@ -32,12 +28,7 @@ const _pricing01 = [
     price: 'Free',
     icon: '/pricing/visitor_ready_icon.svg',
     requirements: [
-      { title: 'Business in Operation', disabled: false },
-      { title: 'Set Business Hours', disabled: false },
-      { title: 'Business Location', disabled: false },
-      { title: 'Required Staff Employed', disabled: false },
-      { title: 'Relevant Promotional Material', disabled: true},
-      { title: 'Meets Market Ready Criteria', disabled: true},
+      { title: 'Any Indigenous or non-Indigenous Canadian tourism-oriented business, organizations, associations, or persons within Manitoba who wish to support ITM’s vision and mission.', disabled: false },
     ],
     options: [
       { title: 'Guidance when working with Indigenous tourism partners', disabled: false },
@@ -56,15 +47,11 @@ const _pricing01 = [
     price: 'Free',
     icon: '/pricing/market_ready_icon.svg',
     requirements: [
-      { title: 'Business in Operation', disabled: false },
-      { title: 'Set Business Hours', disabled: false },
-      { title: 'Business Location', disabled: false },
-      { title: 'Required Staff Employed', disabled: false },
-      { title: 'Relevant Promotional Material', disabled: false },
-      { title: 'Meets Market Ready Criteria', disabled: false },
+      { title: 'A tourism experience, offered by a business that is no less than 51% Indigenous-owned and meets, the Business Ready standard as defined in ITAC’s Accreditation Program.', disabled: false },
+      // { title: 'Market Readiness Checklist:', disabled: false },
     ],
     options: [
-      { title: 'All benefits of other categories and:', disabled: false },
+      { title: 'All other benefits and:', disabled: false },
       { title: 'Business listing on Indigenous Tourism Manitoba’s experiences web page', disabled: false },
       { title: 'Experience will be featured in ITM sales and travel trade activities', disabled: false },
       { title: 'Ability to be included in provincial press and trade familiarization trips', disabled: false },
