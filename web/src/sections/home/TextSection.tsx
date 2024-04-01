@@ -65,6 +65,7 @@ const PortableBlock = (props: Props): JSX.Element => {
             position: 'relative',
             borderRadius: (theme) => theme.shape.borderRadius,
             overflow: 'hidden',
+            Width : '100%',
             py: { xs: 2, md: 5 },
           }}>
           <Stack

@@ -159,6 +159,8 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
           width: '100%',
           top: 0,
           left: 0,
+          display : 'flex',
+          justifyContent : 'center'
         }}
       >
         <AnimatedHoop size={hoopSize} sx={{ height: '100%', width: '100%' }} />

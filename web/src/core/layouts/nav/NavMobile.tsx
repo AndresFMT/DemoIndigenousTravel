@@ -72,7 +72,7 @@ export default function NavMobile({ navConfig, sx }: NavProps) {
   return (
     <>
       <IconButtonAnimate color="inherit" onClick={handleDrawerOpen} sx={sx}>
-        <Iconify icon={menuIcon} />
+        <Iconify icon={menuIcon} sx={{ width: 48, height: 48 }} />
       </IconButtonAnimate>
 
       <Drawer

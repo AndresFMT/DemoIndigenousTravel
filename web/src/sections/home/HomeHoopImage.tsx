@@ -25,7 +25,7 @@ const HomeHoopImage = (props: HomepageContent ) => {
             </Box>
           </m.div>
 
-          <Stack direction="row" spacing={12} sx={{ my: 5,justifyContent: 'center' }}>
+          <Stack direction="row" spacing={12} sx={{ my: 5, justifyContent: 'center' }}>
 
             {images?.length && images.map((imageData, index) => {
             const {image} = imageData;

@@ -43,24 +43,24 @@ const FlexSection = (props: Props) => {
   const overflow = hasImage ? 'hidden' : 'visible';
   return (
     <RootStyle>
-      <Container maxWidth="lg" sx={{ py: paddingY, overflow: overflow, position: 'relative', borderRadius: {'xs':0 ,'md':5} }}>
+      <Container maxWidth="lg" sx={{ py: paddingY, px : { xs : 0 }, overflow: overflow, position: 'relative', borderRadius: {'xs':0 ,'md':5}, maxWidth : { xs : '100%' }, display : 'flex', justifyContent : 'center' }}>
         <Grid
           container
           spacing={{ xs: 5, md: 3 }}
-          sx={{ color: textColor, px: {xs: 3, md: 5},fontWeight: fontWeight, textAlign: { xs: 'center', md: 'left' }}}
+          sx={{ color: textColor, px: {xs: 3, md: 5},fontWeight: fontWeight, textAlign: { xs: 'center', md: 'left' }, width : {xs: '100%'}}}
           justifyContent="space-between"
         >
           {content.map((item, index, array) => {
             const layout = Math.round(12 / array.length);
             const Content = getContentElement(item._type);
             return (
-              <Grid container alignContent={'center'} xs={12} md={6} lg={5} key={index}>
+              <Grid container alignContent={'center'} xs={12} md={6} lg={5} key={index} sx={{display: 'flex', justifyContent : 'center', px : { xs : 'auto' }}}>
                 { index == 0 && !hasImage && <Box
                   sx={{
                     mb: 2,
                     width: 24,
                     height: 3,
-                    borderRadius: 3,
+                    borderRadius: 50,
                     bgcolor: 'primary.main',
                     mx: { xs: 'auto', md: 0 },
                   }}
