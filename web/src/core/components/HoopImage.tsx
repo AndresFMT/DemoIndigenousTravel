@@ -71,10 +71,11 @@ const calculateBackgroundLuminance = (color?: SanityColorProps) => {
 }
 
 const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageSize, link}: Props) => {
+
   const { getRandomOperator } = useInteractiveMapContext();
   const router = useRouter();
   const size = imageSize ? imageSize : 290;
-  const hoopSize = size * 1.2;
+  const hoopSize = 'auto';
 
   let imageUrl;
   if (!image) {
@@ -108,18 +109,22 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
       className={'hoop-image'}
       sx={{
         position: 'relative',
+        margin : 'auto',
         width: hoopSize,
         height: hoopSize,
+        padding: 4,
         my: {xs: 5, md: 2},
+        justifyContent : 'center',
+        alignItems : 'center',
       }}
     >
-      <Box component={'div'} sx={{ display: 'flex','& svg, & svg *': { width: '100%' }, width: '100%' , height: '100%',color: fontColor, fontWeight: fontWeight, justifyContent: 'center', alignItems: 'center'}}>
+      <Box component={'div'} sx={{ display: 'flex','& svg, & svg *': { width: '100%' }, width: '100%' , height: '100%', color: fontColor, fontWeight: fontWeight, justifyContent: 'center', alignItems: 'center'}}>
         <Image
           src={imageUrl}
-          alt={''}
+          alt={image.alt}
           overlay={backgroundColorString}
           useIntersectionObserver
-          sx={{ clipPath: 'circle(50%)', height: size, width: size }}
+          sx={{ clipPath: 'circle(50%)', height: {xs : 200, md : 290, lg : 290}, width: {xs : 200, md : 290, lg : 290} }}
           ratio="1/1"
           placeholdersrc={image?.asset?.metadata?.lqip}
         >
@@ -127,8 +132,8 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
         <Box sx={{
           position: 'absolute',
           padding: '10px',
-          top: 0,
-          left: 0,
+          // top: 0,
+          // left: 0,
           width: '100%',
           height: '100%',
           display: 'flex',

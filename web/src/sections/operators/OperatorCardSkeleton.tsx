@@ -7,7 +7,7 @@ import Card, { CardProps } from '@mui/material/Card';
 
 export default function TravelTourItemSkeleton({ ...other }: CardProps) {
   return (
-    <Card {...other}>
+    <Card {...other} sx={{display : 'flex'}}>
       <Skeleton variant="rectangular" sx={{ width: 1, height: 240 }} />
 
       <Stack spacing={1} sx={{ p: 3 }}>

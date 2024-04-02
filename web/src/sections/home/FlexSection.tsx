@@ -4,6 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { HoopImage, PortableText, SanityImage, ImageBackground} from 'src/core/components';
 import Fallback from '../fallback';
 import { Content } from 'src/@types/sanity';
+import { pxToRem } from 'src/utils/getFontValue';
 
 import { getBackgroundLuminance } from 'src/utils/getBackgroundLuminance';
 
@@ -43,7 +44,7 @@ const FlexSection = (props: Props) => {
   const overflow = hasImage ? 'hidden' : 'visible';
   return (
     <RootStyle>
-      <Container maxWidth="lg" sx={{ py: paddingY, px : { xs : 0 }, overflow: overflow, position: 'relative', borderRadius: {'xs':0 ,'md':5}, maxWidth : { xs : '100%' }, display : 'flex', justifyContent : 'center' }}>
+      <Container maxWidth="lg" sx={{ py: paddingY, px : { xs : 0 }, my: {xs : 0, md : pxToRem(32), lg : pxToRem(64)}, overflow: overflow, position: 'relative', borderRadius: {'xs':0 ,'md':5}, display : 'flex', justifyContent : 'center' }}>
         <Grid
           container
           spacing={{ xs: 5, md: 3 }}
@@ -53,6 +54,7 @@ const FlexSection = (props: Props) => {
           {content.map((item, index, array) => {
             const layout = Math.round(12 / array.length);
             const Content = getContentElement(item._type);
+            
             return (
               <Grid container alignContent={'center'} xs={12} md={6} lg={5} key={index} sx={{display: 'flex', justifyContent : 'center', px : { xs : 'auto' }}}>
                 { index == 0 && !hasImage && <Box
@@ -74,6 +76,7 @@ const FlexSection = (props: Props) => {
       </Container>
     </RootStyle>
   )
+  
 }
 
 export default FlexSection;

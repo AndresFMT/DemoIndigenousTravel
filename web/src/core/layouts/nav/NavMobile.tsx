@@ -123,10 +123,10 @@ function NavItemMobile({ item }: NavItemMobileProps) {
         <RootLinkStyle
           onClick={handleOpen}
           active={isActiveRootWithChild}
-          style={{textDecoration: 'none'}}
+          style={{ textDecoration: 'none' }}
         >
           <ListItemText disableTypography primary={title} />
-          <Iconify icon={open ? chevronDown : chevronRight} sx={{ width: 16, height: 16, ml: 1 }} />
+          <Iconify icon={open ? chevronDown : chevronRight} sx={{ width: 24, height: 24, ml: 1 }} />
         </RootLinkStyle>
 
         <Collapse in={open} timeout="auto" unmountOnExit>

@@ -96,11 +96,13 @@ const typography = {
     fontWeight: 600,
     lineHeight: 26 / 14,
     fontSize: pxToRem(14),
+    ...responsiveFontSizes({ sm: 16, md: 16, lg: 16 })
   },
   subtitle3: {
     fontWeight: 600,
     lineHeight: 24 / 13,
-    fontSize: pxToRem(13),
+    fontSize: pxToRem(16),
+    ...responsiveFontSizes({ sm: 16, md: 16, lg: 16 })
   },
   body1: {
     fontWeight: 'inherit',
@@ -110,12 +112,14 @@ const typography = {
   body2: {
     fontWeight: 'inherit',
     lineHeight: 26 / 14,
-    fontSize: pxToRem(14),
+    fontSize: pxToRem(16),
+    ...responsiveFontSizes({ sm: 16, md: 16, lg: 16 })
   },
   body3: {
     fontWeight: 'inherit',
     lineHeight: 24 / 13,
-    fontSize: pxToRem(13),
+    fontSize: pxToRem(16),
+    ...responsiveFontSizes({ sm: 16, md: 16, lg: 16 })
   },
   caption: {
     lineHeight: 20 / 12,
@@ -124,14 +128,16 @@ const typography = {
   overline: {
     fontWeight: 600,
     lineHeight: 20 / 12,
-    fontSize: pxToRem(12),
+    fontSize: pxToRem(16),
     textTransform: 'uppercase',
+    ...responsiveFontSizes({ sm: 16, md: 16, lg: 16 })
   },
   button: {
     fontWeight: 600,
     lineHeight: 24 / 14,
-    fontSize: pxToRem(14),
+    fontSize: pxToRem(16),
     textTransform: 'capitalize',
+    ...responsiveFontSizes({ sm: 16, md: 16, lg: 16 })
   },
 } as const;
 

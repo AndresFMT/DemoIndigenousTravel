@@ -8,8 +8,10 @@ import { HomepageContent } from 'src/@types/sanity';
 import RootStyle from './RootStyle';
 
 const HomeHoopImage = (props: HomepageContent ) => {
-
+  console.log(props);
   const { images, heading, description } = props;
+
+  
   return (
     <RootStyle>
       <MotionViewport>
