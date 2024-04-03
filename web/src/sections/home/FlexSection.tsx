@@ -40,7 +40,7 @@ const FlexSection = (props: Props) => {
   const fontWeight = isBackgroundDark ? '700': '500';
   const hasImage = image && image.asset && image.asset.url;
 
-  const paddingY = hasImage ? { xs: 4, md: 5 } : { xs: 4, md:  0};
+  const paddingY = hasImage ? { xs: 8, md: 5 } : { xs: 4, md:  0};
   const overflow = hasImage ? 'hidden' : 'visible';
   return (
     <RootStyle>

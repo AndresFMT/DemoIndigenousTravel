@@ -33,6 +33,7 @@ const MembershipOffersCard = ({ plan, index}: Props) => {
     <Card
       sx={{
         p: 5,
+        height : '100%',
         textAlign: 'center',
         boxShadow: (theme) => theme.customShadows.z8,
         ...(index == 0 && {
