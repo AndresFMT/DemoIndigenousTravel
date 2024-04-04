@@ -65,7 +65,7 @@ const components: PortableTextComponents = {
         </a>
       )
     },
-    strong: ({ children }) => <Typography variant="body1" sx={{ fontWeight: 'bold' }}>{children}</Typography>,
+    strong: ({ children }) => <strong>{children}</strong>,
   },
   block: {
     // Ex. 1: customizing common block types
