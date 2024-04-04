@@ -65,6 +65,7 @@ const MembershipOffersCard = ({ plan, index}: Props) => {
                   textDecoration: 'line-through',
                 }),
               }}
+
             >
               {option.title}
             </Typography>
