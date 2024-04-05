@@ -34,7 +34,7 @@ const ImageBreak = ({ title, description, image, backgroundColor, ...other }: Pr
     <RootStyle>
       <MotionViewport>
         <Stack sx={{ background: hex }}>
-          <m.div variants={varFade().inUp}>
+          <m.div variants={varFade().inUp} >
             <Image src={masterImage}
               alt={''}
               {...other} />
