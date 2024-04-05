@@ -16,6 +16,10 @@ const RootStyle = styled('div')(({ theme }) => ({
     paddingTop: theme.spacing(6),
     paddingBottom: theme.spacing(5),
   },
+  [theme.breakpoints.down('md')]: {
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(10),
+  },
 }));
 
 interface Props extends Section, ReducedContent {

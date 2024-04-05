@@ -23,6 +23,9 @@ const StyledOperatorList = styled(Box)(({ theme }) => ({
   columnGap: theme.spacing(2),
   rowGap: theme.spacing(2),
   gridTemplateColumns: 'repeat(4, 1fr)',
+  [theme.breakpoints.down('md')] : {
+    gridTemplateColumns : 'repeat(1, 1fr)',
+  } 
 }));
 
 const OperatorsPage = (props: Props) => {
