@@ -121,7 +121,7 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
       <Box component={'div'} sx={{ display: 'flex','& svg, & svg *': { width: '100%' }, width: '100%' , height: '100%', color: fontColor, fontWeight: fontWeight, justifyContent: 'center', alignItems: 'center'}}>
         <Image
           src={imageUrl}
-          alt={image.alt}
+          alt={''}
           overlay={backgroundColorString}
           useIntersectionObserver
           sx={{ clipPath: 'circle(50%)', height: {xs : 200, md : 290, lg : 290}, width: {xs : 200, md : 290, lg : 290} }}
