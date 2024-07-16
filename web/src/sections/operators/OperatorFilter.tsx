@@ -31,7 +31,7 @@ export default function TravelFilters({ sx, setFilter, ...other }: Props) {
       spacing={2.5}
       alignItems={{ md: 'center' }}
       direction={{ xs: 'column', md: 'row' }}
-      sx={{ p: 4, borderRadius: 2, bgcolor: 'background.neutral', ...sx }}
+      sx={{ p: { xs : 2, md : 4, lg : 4 }, borderRadius: 2, bgcolor: 'background.neutral', ...sx }}
       {...other}
     >
       {isClient && <FilterLocation region={region} setRegion={setRegion} />}

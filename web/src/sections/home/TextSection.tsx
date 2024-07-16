@@ -21,6 +21,13 @@ export interface PortableBlockProps {
   name: string;
 };
 
+export interface SanityPDFObject {
+  _type: string;
+  asset: {
+    _ref: string; // Reference to the PDF asset in Sanity
+  };
+}
+
 interface Props {
   heading?: string;
   richText?: PortableBlockProps[];
@@ -31,6 +38,7 @@ interface Props {
     link: string;
   }
   textWidth?: string;
+  pdf?: SanityPDFObject;
 };
 
 
@@ -42,7 +50,7 @@ const calculateBackgroundLuminance = (color?: SanityColorProps) => {
 }
 
 const PortableBlock = (props: Props): JSX.Element => {
-  const { heading, richText, image, cta, textWidth} = props;
+  const { heading, richText, image, cta, textWidth, pdf} = props;
 
   const isBackgroundLight = calculateBackgroundLuminance(image?.imageOverlay) < 0.5;
   const fontColor = isBackgroundLight ? 'primary.contrastText' : 'primary.text';
@@ -57,6 +65,7 @@ const PortableBlock = (props: Props): JSX.Element => {
             position: 'relative',
             borderRadius: (theme) => theme.shape.borderRadius,
             overflow: 'hidden',
+            Width : '100%',
             py: { xs: 2, md: 5 },
           }}>
           <Stack

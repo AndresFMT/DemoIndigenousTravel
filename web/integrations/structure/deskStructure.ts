@@ -81,6 +81,7 @@ export const myStructure = (S: StructureBuilder) => {
         'sectionCard',
         'sectionCards',
         'sectionVideo',
+        'sectionPdf',
         'hoopImage',].includes(item.getId())),
     ]);
 };

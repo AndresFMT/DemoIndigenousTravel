@@ -15,6 +15,7 @@ export default defineType({
     {type: 'featuredOperators'},
     {type: 'regionalImageSection'},
     {type: 'missionSection'},
+    {type: 'pdfSection'},
   ],
 })
 

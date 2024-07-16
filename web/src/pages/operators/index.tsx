@@ -23,12 +23,14 @@ const StyledOperatorList = styled(Box)(({ theme }) => ({
   columnGap: theme.spacing(2),
   rowGap: theme.spacing(2),
   gridTemplateColumns: 'repeat(4, 1fr)',
+  [theme.breakpoints.down('md')] : {
+    gridTemplateColumns : 'repeat(1, 1fr)',
+  } 
 }));
 
 const OperatorsPage = (props: Props) => {
   const {title, description, operatorCount} = props;
   const resultsPerPage = 12;
-
 
   const { operators: contextOperators } = useInteractiveMapContext();
   const [operators, setOperators] = useState(contextOperators.slice(0, resultsPerPage));
@@ -63,7 +65,9 @@ const OperatorsPage = (props: Props) => {
             return operator.region.includes(filter.region.toLowerCase());
           }
           return true;
-        });
+        })
+        .sort((a: any, b: any) => a.name.localeCompare(b.name));
+
       setPageCount(Math.ceil(filteredOperators.length/resultsPerPage));
       setOperators(filteredOperators.slice((page-1)*resultsPerPage, page*resultsPerPage));
     }

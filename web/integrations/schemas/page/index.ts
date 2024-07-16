@@ -6,6 +6,7 @@ import { default as sectionText } from './sectionText';
 import { default as sectionCards } from './sectionCards';
 import { default as sectionVideo } from './sectionVideo';
 import { default as sectionCard } from './sectionCard';
+import { default as sectionPdf } from './sectionPdf';
 
 export const pageDocuments = [
   sectionHeading,
@@ -16,4 +17,5 @@ export const pageDocuments = [
   sectionVideo,
   section,
   page,
+  sectionPdf
 ]

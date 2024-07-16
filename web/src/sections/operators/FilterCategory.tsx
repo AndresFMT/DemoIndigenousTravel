@@ -16,6 +16,13 @@ const categories = [
   { title: 'Retail and Other', value: 'retail' },
 ];
 
+// Function to sort categories alphabetically by title
+const sortCategoriesAlphabetically = (categories: { title: string; value: string }[]) => {
+  return categories.slice().sort((a, b) => a.title.localeCompare(b.title));
+};
+
+const sortedCategories = sortCategoriesAlphabetically(categories);
+
 type Props = {
   category: string | null;
   setCategory: (category: any) => void;
@@ -26,9 +33,9 @@ export default function FilterCategory({category, setCategory}:Props) {
     <Autocomplete
       sx={{ width: 1 }}
       popupIcon={null}
-      options={categories}
+      options={sortedCategories}
       getOptionLabel={(option) => option.title}
-      value={categories.find((option) => option.value === category?.toLowerCase() )}
+      value={sortedCategories.find((option) => option.value === category?.toLowerCase() )}
       onChange={(event, value) => {
         setCategory(value?.value || null);
       }}

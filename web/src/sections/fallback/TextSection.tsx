@@ -67,7 +67,7 @@ const PortableBlock = (props: Props): JSX.Element => {
           alignItems={{ xs: 'flex-start', md: 'center' }}
           justifyContent="flex-start"
           sx={{ color: fontColor, fontWeight: fontWeight, width: '100%', py: { xs: 5, md: 5 }, px: { xs: 5, md: 15, lg: 20 } }}>
-          <Typography variant="h3" sx={{ fontWeight: 900 }}>
+          <Typography variant="h3" sx={{ fontWeight: 100 }}>
             {heading}
           </Typography>
           <PortableTextRender body={richText} />

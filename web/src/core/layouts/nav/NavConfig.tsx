@@ -13,7 +13,11 @@ export const PageLinks = [
       { title: 'Who We Are', path: Routes.whoWeAre},
       { title: 'Reconciliation', path: Routes.reconciliation },
       { title: 'Meet Our Team', path: Routes.ourTeam },
+<<<<<<< HEAD
       { title: 'Resources', path: Routes.resources },
+=======
+      // { title: 'resources', path: Routes.resources}
+>>>>>>> 131df36ca831a197cdc5765546322952593236e6
     ],
   },
   {

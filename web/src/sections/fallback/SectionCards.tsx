@@ -109,7 +109,6 @@ const SectionBioCards = ({ content }: SectionCardProps) => {
                             {jobTitle}
                           </Typography>
 
-
                           <Box sx={{
                             display: '-webkit-box',
                             WebkitLineClamp: 4,
