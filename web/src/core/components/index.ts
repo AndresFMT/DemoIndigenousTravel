@@ -12,6 +12,7 @@ export { default as HoopImage } from './HoopImage';
 export { default as SanityHeroImage} from './SanityHeroImage';
 export { default as MembershipForm } from './MembershipForm';
 export { default as NewAccountRequestForm } from './NewAccountRequestForm';
+export { default as ContactRequestNewForm } from './ContactRequestNewForm';
 export { default as Label } from './Label';
 export { default as Iconify } from './iconify';
 export { default as BgOverlay } from './BgOverlay';
