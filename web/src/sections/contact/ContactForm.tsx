@@ -7,68 +7,17 @@ import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
-import LoadingButton from '@mui/lab/LoadingButton';
 
-import { Image } from 'src/core/components';
+import { Image, NewAccountRequestForm } from 'src/core/components';
 import { useResponsive } from 'src/hooks';
-import FormProvider, { RHFTextField } from 'src/core/components/hook-form';
+
+import ContactRequestNewForm from 'src/core/components/ContactRequestNewForm';
 
 // ----------------------------------------------------------------------
 
-function sendEmail(data: object) {
-  const apiEndpoint = '/api/mail';
-
-  return fetch(apiEndpoint, {
-    method: 'POST',
-    body: JSON.stringify(data),
-  })
-}
 
 export default function ContactForm() {
   const mdUp = useResponsive('up', 'md');
-
-  const ContactFormSchema = Yup.object().shape({
-    fullName: Yup.string().required('Full name is required'),
-    email: Yup.string().required('Email is required').email('That is not an email'),
-    subject: Yup.string().required('Subject is required'),
-    message: Yup.string().required('Message is required'),
-  });
-
-  const defaultValues = {
-    fullName: '',
-    subject: '',
-    email: '',
-    message: '',
-  };
-
-  const methods = useForm({
-    resolver: yupResolver(ContactFormSchema),
-    defaultValues,
-  });
-
-  const {
-    reset,
-    handleSubmit,
-    formState: { isSubmitting },
-  } = methods;
-
-  const onSubmit = handleSubmit(async (data) => {
-    try {
-      sendEmail(data)
-        .then((res) => res.json())
-        .then((response) => {
-          alert(response.message);
-          reset();
-        })
-        .catch((err) => {
-          throw new Error(err);
-        });
-      ;
-      console.log('DATA', data);
-    } catch (error) {
-      console.error(error);
-    }
-  });
 
   return (
     <Box
@@ -89,12 +38,12 @@ export default function ContactForm() {
             </Grid>
           )}
 
-          <Grid xs={12} md={6} lg={6}>
+          <Grid xs={12} md={12} lg={12}>
             <Stack
               spacing={2}
               sx={{
                 mb: 5,
-                textAlign: { xs: 'center', md: 'left' },
+                textAlign: { xs: 'center', md: 'center' },
               }}
             >
               <Typography variant="h3">Drop Us A Line</Typography>
@@ -103,32 +52,11 @@ export default function ContactForm() {
                 We normally respond within 2 business days
               </Typography>
             </Stack>
-
-            <FormProvider methods={methods} onSubmit={onSubmit}>
-              <Stack spacing={2.5} alignItems="flex-start">
-                <RHFTextField name="fullName" label="Full name" />
-
-                <RHFTextField name="email" label="Email" />
-
-                <RHFTextField name="subject" label="Subject" />
-
-                <RHFTextField name="message" multiline rows={4} label="Message" sx={{ pb: 2.5 }} />
-
-                <LoadingButton
-                  size="large"
-                  type="submit"
-                  variant="contained"
-                  loading={isSubmitting}
-                  sx={{
-                    mx: { xs: 'auto !important', md: 'unset !important' },
-                  }}
-                >
-                  Send Request
-                </LoadingButton>
-              </Stack>
-            </FormProvider>
-          </Grid>
+          </Grid>    
         </Grid>
+        <div className="min-h-10 w-full">
+          <ContactRequestNewForm />
+        </div>
       </Container>
     </Box>
   );
