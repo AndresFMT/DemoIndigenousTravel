@@ -23,7 +23,7 @@ npm install
 
 ## Github Instructions
   1. **Ensure you are in the root directory**
-  2. **Fetch the latest changes**
+  2. **Fetch the latest changes to update**
     - git fetch
   3. **Create a New Branch**
     - git checkout -b feature/*branch-name* (branch name generally named after what is being done)
