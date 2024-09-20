@@ -2,16 +2,55 @@
 
 This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
 
-# ****name****
+# ****ITM****
 
 ## Getting Started
+- [nvm](https://github.com/nvm-sh/nvm) node version manager
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- [Blitz.js](https://github.com/blitz-js/blitz)
+- [Sanity CLI](https://www.sanity.io/docs/getting-started-with-sanity-cli)
+
+## Install Dependencies
+npm install
+
+## Clone Repository
+  git clone https://github.com/indigpro/indigenous-travel-manitoba.git
+  - https://github.com/indigpro/indigenous-travel-manitoba.git
+
+## Sanity Studio Login
+[https://indigenoustourismmanitoba.sanity.studio/studio]
+
+## Github Instructions
+  1. **Ensure you are in the root directory**
+  2. **Fetch the latest changes**
+    - git fetch
+  3. **Create a New Branch**
+    - git checkout -b feature/*branch-name* (branch name generally named after what is being done)
+  4. **Create Pull Request to Main**
+    - git add .
+    - git commit -m "Your Message Here"
+    - git push origin feature/*branch-name*
+  5. **Pull the Latest Changes to Main**
+    - git checkout main (changes branch to main)
+    - git pull origin main (pulls latest changes from remote repository)
+    - git merge feature/*branch-name* (merge branch into main)
+    - resolve any conflicts
+    - git push origin main (push the merged changes to the remote repository)
+  5. **Deploying Changes to Live**
+    - to deploy changes, go to - https://vercel.com/indigpro/indigpro-home/deployments
+      - click the elipses button in the top right of page, above the current/previous deployments
+      - select "Create Deployment", select the branch you wish to deploy from (99.999% of the time 'main')
+      - click "Create Deployment" button at bottom right of modal window.
+      - Vercel should take a couple minutes to deploy the changes.
 
 Run your app in the development mode.
 
+**Change Directory to Web*
+cd web
 ```
-blitz dev
+npm run dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Environment Variables
@@ -33,7 +72,7 @@ DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/web_test
 Runs your tests using Jest.
 
 ```
-yarn test
+npm run test (vitest run --passWithNoTests)
 ```
 
 Blitz comes with a test setup using [Vitest](https://vitest.dev/) and [react-testing-library](https://testing-library.com/).
