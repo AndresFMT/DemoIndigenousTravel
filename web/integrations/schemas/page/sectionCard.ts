@@ -1,4 +1,5 @@
-import { defineField, defineType } from "sanity";
+import defineField from 'sanity';
+import defineType from 'sanity';
 
 export default defineType({
   name: 'sectionCard',
@@ -66,7 +67,7 @@ export default defineType({
       media: 'image',
       title: 'title',
     },
-    prepare(selection) {
+    prepare(selection:any) {
       return {...selection}
     },
   },

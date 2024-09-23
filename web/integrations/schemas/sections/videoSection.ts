@@ -1,4 +1,5 @@
-import {defineField, defineType} from 'sanity'
+import defineField from 'sanity';
+import defineType from 'sanity';
 
 /**
   * simple video hero document, don't autoplay videos on mobile
