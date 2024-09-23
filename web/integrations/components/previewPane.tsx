@@ -1,4 +1,4 @@
-import { SanityDocument } from 'sanity';
+import { SanityDocument } from '@sanity/client';
 import { sanityPreviewTokenNext, sanityPreviewIdNext } from '../environment';
 
 interface PreviewPaneProps extends SanityDocument {
