@@ -16,7 +16,7 @@ import { SiteSettingsContext } from 'src/contexts/SiteSettingsContext';
 export const _offices = ['Winnipeg'].map((office, index) => ({
   id: '1lk34-12kjh20-1kj2h3kj',
   country: office,
-  address: '100-300 Alpine Way, Headingley, MB R4H 0E1',
+  address: '100 – 300 Alpine Way, Headingley, MB R4H 0E1',
   phoneNumber: '21042304395',
   email: 'email@email.com',
   photo: `/static/contact/${index + 1}.jpg`,
@@ -102,7 +102,7 @@ const OfficeInfo = () => {
               </Stack>
 
               <Typography variant="body2">
-                1075 Portage Ave, Winnipeg, MB R3G 0S3
+                100 - 300 Alpine Way, Headingley, MB, R4H 0E1
               </Typography>
             </Stack>
 
