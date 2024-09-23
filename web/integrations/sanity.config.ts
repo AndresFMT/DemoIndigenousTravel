@@ -38,7 +38,7 @@ export default defineConfig([
       vercelDeployTool(),
     ],
     schema: {
-      types: (prev) => {
+      types: (prev: any) => {
         return [
           ...schemaTypes,
           ...prev,
