@@ -73,7 +73,7 @@ export default defineConfig([
     ],
 
     schema: {
-      types: (prev) => {
+      types: (prev:any) => {
         return [ ...prev];
       },
     },
@@ -96,7 +96,7 @@ export default defineConfig([
     ],
 
     schema: {
-      types: (prev) => {
+      types: (prev:any) => {
         return [ ...prev];
       }
 
@@ -120,7 +120,7 @@ export default defineConfig([
       vercelDeployTool(),
     ],
     schema: {
-      types: (prev) => {
+      types: (prev:any) => {
         return [...prev];
       },
     },
@@ -140,7 +140,7 @@ export default defineConfig([
       vercelDeployTool(),
     ],
     schema: {
-      types: (prev) => {
+      types: (prev:any) => {
         return [...prev];
       },
     },
