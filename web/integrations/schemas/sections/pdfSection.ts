@@ -1,4 +1,5 @@
-import { defineField, defineType } from "sanity";
+import defineField from 'sanity';
+import defineType from 'sanity';
 
 export default defineType({
     name: 'pdfSection',
@@ -26,7 +27,7 @@ export default defineType({
       select: {
         title: 'heading',
       },
-      prepare(selection) {
+      prepare(selection:any) {
         return {...selection }
       },
     },

@@ -1,4 +1,5 @@
-import {defineField, defineType} from 'sanity';
+import defineField from 'sanity';
+import defineType from 'sanity';
 import { EarthAmericasIcon } from '@sanity/icons';
 
 export default defineType({

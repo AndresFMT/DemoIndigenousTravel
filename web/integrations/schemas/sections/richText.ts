@@ -1,4 +1,5 @@
-import { defineType, defineField } from "sanity";
+import defineField from 'sanity';
+import defineType from 'sanity';
 
 export default defineType({
   name: "richTextContent",

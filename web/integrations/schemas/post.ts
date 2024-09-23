@@ -1,4 +1,5 @@
-import {defineField, defineType} from 'sanity'
+import defineField from 'sanity';
+import defineType from 'sanity';
 
 export default defineType({
   name: 'post',
@@ -57,7 +58,7 @@ export default defineType({
       author: 'author.name',
       media: 'image',
     },
-    prepare(selection) {
+    prepare(selection:any) {
       const {author} = selection
       return {...selection, subtitle: author && `by ${author}`}
     },
