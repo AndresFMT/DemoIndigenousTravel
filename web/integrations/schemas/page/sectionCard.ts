@@ -29,7 +29,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: Rule => [
+      validation: (Rule: any) => [
         Rule.required(),
       ]
     }),
@@ -37,7 +37,7 @@ export default defineType({
       name: 'role',
       title: 'Role',
       type: 'string',
-      validation: Rule => [
+      validation: (Rule: any) => [
         Rule.required(),
       ]
     }),
@@ -45,7 +45,7 @@ export default defineType({
       name: 'text',
       title: 'Card Text',
       type: 'text',
-      validation: Rule => [
+      validation: (Rule: any) => [
         Rule.required(),
       ]
     }),
@@ -56,7 +56,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: Rule => [
+      validation: (Rule: any) => [
         Rule.required(),
       ]
     })

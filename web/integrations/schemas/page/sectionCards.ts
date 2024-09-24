@@ -24,7 +24,7 @@ export default defineType( {
     select: {
       title: 'title',
     },
-    prepare( selection ) {
+    prepare( selection: any ) {
       return {...selection}
     },
   },
