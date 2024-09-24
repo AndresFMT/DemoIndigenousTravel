@@ -52,7 +52,7 @@ export default defineType({
       title: 'documentTitle',
       media: 'image',
     },
-    prepare(selection) {
+    prepare(selection: any) {
       return {...selection }
     },
   },

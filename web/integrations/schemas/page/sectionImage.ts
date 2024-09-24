@@ -32,7 +32,7 @@ export default defineType({
       subtitle: 'description',
       media: 'image',
     },
-    prepare(selection) {
+    prepare(selection: any) {
       return {...selection }
     },
   },

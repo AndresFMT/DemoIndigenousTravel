@@ -37,7 +37,7 @@ export default defineType({
       title: 'title',
       subtitle: 'description',
     },
-    prepare(selection) {
+    prepare(selection: any) {
       return {...selection }
     },
   },
