@@ -14,9 +14,9 @@ export default defineType({
       type: 'string',
       title: 'Alt text',
       description: 'Describe the image.',
-      hidden: ({ document }) => !!document?.asset,
-      validation: (Rule) => [
-        Rule.custom((currentValue, { document }) => {
+      hidden: ({ document }: { document: any }) => !!document?.asset,
+      validation: (Rule: any) => [
+        Rule.custom((currentValue: any, { document }: { document: any }) => {
           if (document?.asset && !currentValue) {
             return 'Alternative text is required.';
           }
@@ -28,13 +28,12 @@ export default defineType({
       name: 'caption',
       type: 'string',
       title: 'Caption',
-      hidden: ({ document }) => !!document?.asset,
+      hidden: ({ document }: { document: any }) => !!document?.asset,
     }),
     defineField({
       name: 'imageOverlay',
       type: 'color',
       title: 'Image Overlay',
     }),
-  ]
+  ],
 });
-
