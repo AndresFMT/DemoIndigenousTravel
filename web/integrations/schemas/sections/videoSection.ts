@@ -42,7 +42,7 @@ export default defineType({
     select: {
       title: 'heading',
     },
-    prepare(selection) {
+    prepare(selection: any) {
       return {...selection }
     },
   },

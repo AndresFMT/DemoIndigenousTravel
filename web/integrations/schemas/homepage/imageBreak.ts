@@ -35,7 +35,7 @@ export default defineType({
       title: 'title',
       media: 'image',
     },
-    prepare(selection) {
+    prepare(selection: any) {
       return {...selection }
     },
   },
