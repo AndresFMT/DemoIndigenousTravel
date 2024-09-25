@@ -1,6 +1,6 @@
 import {useCallback, useEffect, forwardRef, JSXElementConstructor, ReactElement} from "react";
 import clsx from "clsx";
-import {Modal, Slide} from "@mui/material";
+import {Modal, Slide, ModalProps} from "@mui/material";
 import {styled} from "@mui/material/styles";
 
 import { m } from 'framer-motion';
@@ -33,6 +33,7 @@ const MapModal = ({children}: MapModalProps) => {
   return (
       <StyledMapModal
         open={isMapVisible}
+        onClose = {closeMap}
         slots={{backdrop: StyledBackdrop}}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
@@ -51,7 +52,7 @@ const MapModal = ({children}: MapModalProps) => {
 
 export default MapModal;
 
-const StyledMapModal = styled(Modal)(({theme}) => ({
+const StyledMapModal = styled(Modal)<ModalProps>(({theme}) => ({
   position: 'fixed',
   top: 0,
   right: 0,
