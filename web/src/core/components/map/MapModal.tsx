@@ -32,7 +32,7 @@ const MapModal = ({children}: MapModalProps) => {
 
   return (
       <StyledMapModal
-        open={isMapVisible}
+        open={!!isMapVisible}
         onClose = {closeMap}
         slots={{backdrop: StyledBackdrop}}
         aria-labelledby="simple-modal-title"
@@ -43,7 +43,7 @@ const MapModal = ({children}: MapModalProps) => {
           },
         }}
       >
-      <Slide direction="up" in={isMapVisible} mountOnEnter unmountOnExit>
+      <Slide direction="up" in={!!isMapVisible} mountOnEnter unmountOnExit>
         {children}
        </Slide>
      </StyledMapModal>

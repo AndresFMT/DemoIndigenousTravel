@@ -61,7 +61,7 @@ const InteractiveMap = () => {
         }}
       >
         { isDesktop && (<Grid xs={12} md={4} sx={{ height: {xs: '50%', md:'100%'} }}>
-          <OperatorList operators={operators} onItemClick={handleItemClick} selectedOperator={selectedOperator} />
+          <OperatorList operators={operators} onItemClick={handleItemClick} selectedOperator={selectedOperator ?? ''} />
         </Grid>) }
         <Grid xs={12} md={8} sx={{ height: {xs: '50%', md:'100%'} }}>
           <CloseButton onClick={handleCloseMapClick}>Close</CloseButton>
@@ -70,11 +70,11 @@ const InteractiveMap = () => {
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png" />
-            <OperatorMarkers operators={operators} selectedOperator={selectedOperator} />
+            <OperatorMarkers operators={operators} selectedOperator={selectedOperator ?? ''} />
           </MapContainer>
         </Grid>
         { !isDesktop && (<Grid xs={12} md={4} sx={{ height: {xs: '50%', md:'100%'} }}>
-          <OperatorList operators={operators} onItemClick={handleItemClick} selectedOperator={selectedOperator} />
+          <OperatorList operators={operators} onItemClick={handleItemClick} selectedOperator={selectedOperator ?? ''} />
         </Grid>) }
       </InteractiveMapContainer>
     </MapModal>
