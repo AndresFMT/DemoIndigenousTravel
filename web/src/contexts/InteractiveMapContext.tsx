@@ -1,31 +1,50 @@
-import { ReactNode, createContext, useContext,  useCallback, useEffect } from 'react';
+import { ReactNode, createContext, useContext, useCallback, useEffect } from 'react';
 import { useQueryState } from 'next-usequerystate';
-
 import { Operator } from 'src/@types/sanity';
 
-const InteractiveMapContext = createContext<any>(null);
+interface InteractiveMapContextType {
+  isMapVisible: string | null;
+  operators: Array<Operator>;
+  selectedOperator: string | null;
+  setSelectedOperator: (operator: string | null) => void;
+  openMap: () => void;
+  closeMap: () => void;
+  getRandomOperator: () => string | null;
+}
 
+// Define el valor por defecto
+const defaultContextValue: InteractiveMapContextType = {
+  isMapVisible: null,
+  operators: [],
+  selectedOperator: null,
+  setSelectedOperator: () => {},
+  openMap: () => {},
+  closeMap: () => {},
+  getRandomOperator: () => null,
+};
+
+// Crea el contexto
+const InteractiveMapContext = createContext<InteractiveMapContextType>(defaultContextValue);
+
+// Hook para usar el contexto
 const useInteractiveMapContext = () => {
-
   const context = useContext(InteractiveMapContext);
   if (!context) {
     throw new Error(
-      'useInteractiveMapContext must be used within a InteractiveMapProvider'
+      'useInteractiveMapContext debe ser utilizado dentro de InteractiveMapProvider'
     );
   }
   return context;
 }
 
 interface InteractiveMapProviderProps {
-  children: ReactNode;
+  children: ReactNode; // Asegúrate de que esto es ReactNode
   operators: Array<Operator>;
 }
 
-const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderProps) => {
-
-  const [isMapVisible, setIsMapVisible] = useQueryState('imv', {history: 'replace', scroll:false}); // is map visible
-  const [selectedOperator, setSelectedOperator] = useQueryState('so', {history: 'replace', scroll:false}); // selected operator
-
+const InteractiveMapProvider: React.FC<InteractiveMapProviderProps> = ({ children, operators }) => {
+  const [isMapVisible, setIsMapVisible] = useQueryState('imv', { history: 'replace', scroll: false });
+  const [selectedOperator, setSelectedOperator] = useQueryState('so', { history: 'replace', scroll: false });
 
   const openMap = useCallback(() => {
     setIsMapVisible('true');
@@ -38,7 +57,7 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
 
   const getRandomOperator = useCallback(() => {
     const randomOperator = operators[Math.floor(Math.random() * operators.length)];
-    return randomOperator?.name ? randomOperator?.name: null;
+    return randomOperator?.name ?? null;
   }, [operators]);
 
   useEffect(() => {
@@ -49,10 +68,10 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
 
   useEffect(() => {
     if (operators.length > 0) {
-      operators.forEach((operator: Operator ) => {
+      operators.forEach((operator: Operator) => {
         const firstBlockText = operator.description[0]?.children[0]?.text;
-        if ( !operator.shortDescription && typeof firstBlockText === 'string' ) {
-          operator.shortDescription =  firstBlockText.split('.')[0] +'.';
+        if (!operator.shortDescription && typeof firstBlockText === 'string') {
+          operator.shortDescription = firstBlockText.split('.')[0] + '.';
         }
         if (typeof operator.zoomLevel === 'undefined' || !operator.zoomLevel) {
           operator.zoomLevel = 15;
@@ -71,11 +90,11 @@ const InteractiveMapProvider = ({ children, operators }: InteractiveMapProviderP
         openMap,
         closeMap,
         getRandomOperator,
-      }}>
-      {children}
+      }}
+    >
+      {children} {/* Asegúrate de que children se pase correctamente */}
     </InteractiveMapContext.Provider>
   );
 }
 
 export { useInteractiveMapContext, InteractiveMapProvider };
-

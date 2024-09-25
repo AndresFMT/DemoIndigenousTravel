@@ -35,6 +35,5 @@ export default defineType({
       type: 'color',
       title: 'Image Overlay',
     }),
-  ]
+  ],
 });
-

@@ -26,7 +26,12 @@ export default defineType({
         name: 'images',
         title: 'Photos',
         type: 'array',
-        of: [{type: 'accessibleImage'}],
+        of: [{
+          type: 'accessibleImage',
+          options: {
+            hotspot: true,
+          },
+        }],
         description: 'Priority is from top to bottom',
     }),
     defineField({

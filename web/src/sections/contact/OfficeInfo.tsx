@@ -8,7 +8,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-
+//Static Section
 const ContactMap = dynamic(() => import('src/core/components/static-map'), { ssr: false });
 import Iconify from 'src/core/components/iconify';
 import { SiteSettingsContext } from 'src/contexts/SiteSettingsContext';
