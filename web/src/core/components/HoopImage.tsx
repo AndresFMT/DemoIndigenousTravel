@@ -95,7 +95,7 @@ const HoopImage = ({ image, backgroundColor, headingOverlay, textOverlay, imageS
     setTimeout(() => {
       if (link?.includes('so=random')) {
         const randomOperator = getRandomOperator();
-        router.query.so = randomOperator;
+        router.query.so = randomOperator ?? '';
       }
       router.query.imv = 'true';
       router.push(router, undefined, { scroll: false})
