@@ -1,4 +1,4 @@
-import defineField from 'sanity';
+import defineField from "sanity";
 import defineType from 'sanity';
 
 export default defineType({
@@ -14,9 +14,9 @@ export default defineType({
       type: 'string',
       title: 'Alt text',
       description: 'Describe the image.',
-      hidden: ({ document }: { document: any }) => !!document?.asset,
+      hidden: ({ document }: any) => !!document?.asset,
       validation: (Rule: any) => [
-        Rule.custom((currentValue: any, { document }: { document: any }) => {
+        Rule.custom((currentValue: any, { document }: any) => {
           if (document?.asset && !currentValue) {
             return 'Alternative text is required.';
           }
@@ -28,7 +28,7 @@ export default defineType({
       name: 'caption',
       type: 'string',
       title: 'Caption',
-      hidden: ({ document }: { document: any }) => !!document?.asset,
+      hidden: ({ document }: any) => !!document?.asset,
     }),
     defineField({
       name: 'imageOverlay',

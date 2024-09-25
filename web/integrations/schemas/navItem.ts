@@ -1,6 +1,5 @@
 import defineType from 'sanity';
 
-
 export default defineType({
   name: "navItem",
   title: "Nav Item",

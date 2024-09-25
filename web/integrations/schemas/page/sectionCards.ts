@@ -1,4 +1,4 @@
-import defineField from 'sanity';
+import defineField from "sanity";
 import defineType from 'sanity';
 
 export default defineType( {
@@ -24,7 +24,7 @@ export default defineType( {
     select: {
       title: 'title',
     },
-    prepare( selection: any ) {
+    prepare( selection:any ) {
       return {...selection}
     },
   },

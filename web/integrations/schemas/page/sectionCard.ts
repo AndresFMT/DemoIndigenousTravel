@@ -1,4 +1,4 @@
-import defineField from 'sanity';
+import defineField from "sanity";
 import defineType from 'sanity';
 
 export default defineType({
@@ -29,7 +29,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => [
+      validation: ({Rule}: any) => [
         Rule.required(),
       ]
     }),
@@ -37,7 +37,7 @@ export default defineType({
       name: 'role',
       title: 'Role',
       type: 'string',
-      validation: (Rule: any) => [
+      validation: ({Rule}: any) => [
         Rule.required(),
       ]
     }),
@@ -45,7 +45,7 @@ export default defineType({
       name: 'text',
       title: 'Card Text',
       type: 'text',
-      validation: (Rule: any) => [
+      validation: ({Rule}: any) => [
         Rule.required(),
       ]
     }),
@@ -56,7 +56,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule: any) => [
+      validation: ({Rule}: any) => [
         Rule.required(),
       ]
     })

@@ -1,5 +1,5 @@
-import defineField from 'sanity';
 import defineType from 'sanity';
+import defineField from 'sanity';
 import { UserIcon } from '@sanity/icons';
 
 export default defineType({

@@ -14,7 +14,7 @@ type OperatorMarkersProps = {
 const OperatorMarkers = ({ operators, selectedOperator }: OperatorMarkersProps) => {
   const [visibleOperators, setVisibleOperators] = useState<Operator[]>([]);
 
-  const updateVisibleMarkers = useCallback((map) => {
+  const updateVisibleMarkers = useCallback((map: any) => {
     if (!map) return;
     const bounds = map.getBounds();
     const filteredOperators = operators.filter((operator) => {
