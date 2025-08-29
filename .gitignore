@@ -35,6 +35,9 @@ web/integrations/dist/*
 web/integrations/.env
 web/integrations/.env.local
 web/integrations/.env.*.local
+web/.env.development
+web/.env.test
+web/.env
 
 # Logs
 logs
@@ -90,3 +93,4 @@ studio/dist
 # Typescript
 *.tsbuildinfo
 .vercel
+.env
